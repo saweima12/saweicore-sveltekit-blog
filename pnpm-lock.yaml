@@ -11,7 +11,7 @@ specifiers:
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.2.1
-  markedpage: ^0.0.5
+  markedpage: ^0.0.8
   postcss: ^8.4.12
   prettier: ^2.5.1
   prettier-plugin-svelte: ^2.5.0
@@ -23,13 +23,13 @@ specifiers:
   typescript: ~4.6.2
 
 dependencies:
-  markedpage: 0.0.5
+  markedpage: 0.0.8
 
 devDependencies:
   '@playwright/test': 1.21.1
   '@sveltejs/adapter-auto': 1.0.0-next.40
   '@sveltejs/adapter-static': 1.0.0-next.29
-  '@sveltejs/kit': 1.0.0-next.323_svelte@3.47.0
+  '@sveltejs/kit': 1.0.0-next.324_svelte@3.47.0
   '@typescript-eslint/eslint-plugin': 5.21.0_bb9518338a760ece3e1b033a5f6af62e
   '@typescript-eslint/parser': 5.21.0_eslint@7.32.0+typescript@4.6.3
   autoprefixer: 10.4.5_postcss@8.4.12
@@ -552,7 +552,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.16.7
       '@babel/parser': 7.17.9
       '@babel/types': 7.17.0
-      debug: 4.3.3
+      debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -722,8 +722,8 @@ packages:
       esbuild: 0.14.38
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.323_svelte@3.47.0:
-    resolution: {integrity: sha512-5JVBfXZqVcWhsvtxdwtFPEzLNM8FmttNNyN0h5P25KLryF3BeOg5OicRK3t7qNBmWTTNovDgChb/gWmne5Oicg==}
+  /@sveltejs/kit/1.0.0-next.324_svelte@3.47.0:
+    resolution: {integrity: sha512-/CGW9rQpHQLBb2EcMw08yelD/C9hTsypymctUWdhryMTI8n1VWb0gkUcSHsz8n8oAAbKLXqwyHqeLATfcIMg2w==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -977,7 +977,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.3
+      debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1739,7 +1739,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.3
+      debug: 4.3.4
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -1953,7 +1953,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.3
+      debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2184,8 +2184,8 @@ packages:
     hasBin: true
     dev: false
 
-  /markedpage/0.0.5:
-    resolution: {integrity: sha512-ymrzZN9mqswTD46TlAh0ZrZgI4+iK+b5cciyIfBqEwMjwJTpH2uRGi9b0UUe9/mNQe3hrc6upvJGChutwr9ycA==}
+  /markedpage/0.0.8:
+    resolution: {integrity: sha512-LRT/L0pARl1UeosO3W+e8Of2of5DHkm/iaoEtyB73gKSXUgS8uZcHWe9vzXYJkWPvQiYoXlnxEOkf2DRKBzFCg==}
     dependencies:
       front-matter: 4.0.2
       marked: 4.0.14
@@ -2699,7 +2699,7 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.3
+      debug: 4.3.4
       socks: 2.6.2
     transitivePeerDependencies:
       - supports-color
