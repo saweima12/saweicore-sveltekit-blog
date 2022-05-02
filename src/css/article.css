@@ -6,3 +6,22 @@
     background-color: #e8e8e8;
     border-radius: .8rem;
 }
+
+.post-page .content > p, ul, ol, pre, blockquote, table, tr, td {
+    font-size: 18px;
+    margin: 0 1.2rem;
+}
+
+.post-page .content > p { 
+    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    margin-top: 2rem; 
+}
+
+.post-page .content  li {
+    margin-top: 1rem;
+}
+
+
+.post-page .content img {
+    margin: 1.5rem auto;
+}

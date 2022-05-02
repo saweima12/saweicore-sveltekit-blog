@@ -3,8 +3,12 @@
 @import "./css/navmenu.css";
 @import "./css/article.css";
 
-.letter-font {
+.letter-title-font {
     font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.letter-content-font {
+    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif
 }
 
 .screenmask {
