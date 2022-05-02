@@ -14,6 +14,7 @@
 
 <script lang="ts">
 	import '../app.css';
+	import '../theme.css';
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';

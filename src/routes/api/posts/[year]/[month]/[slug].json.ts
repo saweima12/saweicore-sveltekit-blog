@@ -16,12 +16,12 @@ export const get : RequestHandler = async ({ params }) => {
   if (!page)
     throw "Can't find target page";
 
-  const context: string = await page.render();
+  const content: string = await page.render();
 
   return {
     body: {
       metadata: page.frontMatter,
-      context: context
+      content: content
     }
   }
 }

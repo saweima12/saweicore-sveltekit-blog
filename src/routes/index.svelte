@@ -4,7 +4,6 @@
 
     export const load: Load = async ({fetch, stuff}) => {
         const apiUrl = dataAPI.getPostList(1);
-        console.log(apiUrl);
         const response = await fetch(apiUrl);
         const { list } = await response.json();
         
