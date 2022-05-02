@@ -7,7 +7,7 @@ const config = {
   },
 
   pagination: {
-    maxPerPage: 10
+    maxPerPage: 8
   },
 
 	classifier: [
