@@ -1,0 +1,79 @@
+<script lang="ts">
+    import type { SourcePage } from 'markedpage';
+    export let post: SourcePage;
+    export let tags: Array<string>;
+    
+    import { siteConfig } from "$lib/store";
+    import { getYYYYMMDD, pageRoute } from '$lib/client';
+    import CalenderIcon from '$lib/components/icon/calender.svelte';
+    import TagIcon from '$lib/components/icon/tag.svelte'; 
+    import MoreIcon from '$lib/components/icon/more.svelte';
+</script>
+
+
+<section class="mx-6 mt-5 post-list-item">
+    <div class="list-item-container">
+        <header class="mb-3 post-header">
+            <div class="flex items-center created-date">
+                <div class="icon-base w-4 h-4"><CalenderIcon /></div>
+                <time class="flex self-center text-sm ml-1">{getYYYYMMDD(post.frontMatter.created)}</time>
+            </div>
+        </header>
+
+        <main class="flex mb-2 post-content">
+            <div class="grow context">
+                <div class="letter-font text-base font-bold post-title">
+                    <a href={pageRoute.getPostPath(post)}>
+                        {post.frontMatter.title}
+                    </a>
+                </div>
+    
+                <div class="hidden sm:inline-block summary">
+                    <a href={pageRoute.getPostPath(post)}>
+                        {#if post.frontMatter.excerpt}
+                            <p>
+                                {post.frontMatter.excerpt}
+                            </p>
+                        {/if}
+                    </a>
+                </div>
+    
+    
+                <footer class="flex items-center my-3">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 mr-2 icon-base"><TagIcon /></div>
+                        <div class="flex tag-list">
+                            {#if tags }
+                                {#each tags as tag}
+                                    <div class="px-3 py-0.5 flex self-center mr-2 tag-list-item">
+                                        <a href={pageRoute.getTagPath(tag)}>{tag}</a>
+                                    </div>
+                                {/each}
+                            {/if}
+                        </div>
+                    </div>
+                    <div class="grow spacer"></div>
+                    
+                    {#if !post.frontMatter.thumbnail}
+                    <div class="flex mr-2 self-center more">
+                        <a href={pageRoute.getPostPath(post)}>
+                            <div class="icon-base w-6 h-6">
+                                <MoreIcon />
+                            </div>
+                        </a>
+                    </div>
+                    {/if}
+                </footer>
+            </div>
+            {#if post.frontMatter.thumbnail}
+            <div class="flex align-center w-20 ml-3 thumbnail">
+                <a href={pageRoute.getPostPath(post)}>
+                    <img src={post.frontMatter.thumbnail} class="object-cover w-16 h-16" alt="test"/>
+                </a>
+            </div>
+            {/if}
+        
+
+        </main>
+    </div>
+</section>

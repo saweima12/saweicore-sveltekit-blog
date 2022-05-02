@@ -1,6 +1,34 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts" context="module">
+    import type { Load } from '@sveltejs/kit';
+    import { dataAPI } from '$lib/client';
 
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+    export const load: Load = async ({fetch, stuff}) => {
+        const apiUrl = dataAPI.getPostList(1);
+        console.log(apiUrl);
+        const response = await fetch(apiUrl);
+        const { list } = await response.json();
+        
+        return {
+            props: {
+                postList: list,
+            },
+        }
+    };
+</script>
+<script lang="ts">
+    import { siteConfig } from '$lib/store';
+    import type { SourcePage } from 'markedpage';
+    import PostList from '$lib/components/article/postlist.svelte';
+
+    export let postList: Array<SourcePage>;
+    // export let tagList: Array<Record<string, number>>;
+</script>
+
+<svelte:head>
+    <title>{$siteConfig.title} - {$siteConfig.description}</title>
+</svelte:head>
+
+<main class="context">
+    <PostList posts={postList} />
+
+</main>
