@@ -22,7 +22,7 @@
 
         <main class="flex mb-2 post-content">
             <div class="grow context">
-                <div class="letter-font text-base font-bold post-title">
+                <div class="letter-title-font text-base font-bold post-title">
                     <a href={pageRoute.getPostPath(post)}>
                         {post.frontMatter.title}
                     </a>
@@ -44,8 +44,11 @@
                         <div class="w-4 h-4 mr-2 icon-base"><TagIcon /></div>
                         <div class="flex tag-list">
                             {#if tags }
-                                {#each tags as tag}
-                                    <div class="px-3 py-0.5 flex self-center mr-2 tag-list-item">
+                                <div class="px-3 py-0.5 flex self-center mr-2 tag-list-item">
+                                    <a href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
+                                </div>
+                                {#each tags.slice(1, 4) as tag}
+                                    <div class="hidden px-3 py-0.5 sm:flex self-center mr-2 tag-list-item">
                                         <a href={pageRoute.getTagPath(tag)}>{tag}</a>
                                     </div>
                                 {/each}
