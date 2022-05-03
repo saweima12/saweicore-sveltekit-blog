@@ -25,7 +25,7 @@
 <div class="post-page wrapper">
     <div class="post-container">
         <header class="mx-6 mt-8 mb-4">
-            <div class="text-3xl tracking-tighter font-bold letter-title-font post-title">
+            <div class="font-bold letter-title-font post-title">
                 {metadata.title}
             </div>
         </header>

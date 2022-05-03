@@ -1,3 +1,4 @@
+/* PostList */
 .post-list-item {
     border-bottom: 1px solid #bbb;
 }
@@ -7,14 +8,33 @@
     border-radius: .8rem;
 }
 
+/* PostPage  */
+.post-page {
+    color: #292929;
+}
+
+.post-page .post-title {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.post-page .content {
+    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-style: normal; 
+}
+
+
 .post-page .content > p, ul, ol, pre, blockquote, table, tr, td {
     font-size: 18px;
     margin: 0 1.2rem;
 }
 
+
 .post-page .content > p { 
-    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
-    margin-top: 2rem; 
+    letter-spacing: -0.003em;
+    line-height: 28px;
+    margin-top: 2rem;
+
 }
 
 .post-page .content  li {

@@ -20,8 +20,8 @@
             </div>
         </header>
 
-        <main class="flex mb-2 post-content">
-            <div class="grow context">
+        <main class="flex flex-row mb-2 post-content">
+            <div class="flex-1 context">
                 <div class="letter-title-font text-base font-bold post-title">
                     <a href={pageRoute.getPostPath(post)}>
                         {post.frontMatter.title}
@@ -32,7 +32,10 @@
                     <a href={pageRoute.getPostPath(post)}>
                         {#if post.frontMatter.excerpt}
                             <p>
-                                {post.frontMatter.excerpt}
+                                {post.frontMatter.excerpt.length > 30 
+                                    ? post.frontMatter.excerpt.slice(0, 60) + "..." 
+                                    : post.frontMatter.excerpt
+                                }
                             </p>
                         {/if}
                     </a>
@@ -41,7 +44,6 @@
     
                 <footer class="flex items-center my-3">
                     <div class="flex items-center">
-                        <div class="w-4 h-4 mr-2 icon-base"><TagIcon /></div>
                         <div class="flex tag-list">
                             {#if tags }
                                 <div class="px-3 py-0.5 flex self-center mr-2 tag-list-item">
@@ -69,14 +71,12 @@
                 </footer>
             </div>
             {#if post.frontMatter.thumbnail}
-            <div class="flex align-center w-20 ml-3 thumbnail">
+            <div class="align-center w-20 ml-3 thumbnail">
                 <a href={pageRoute.getPostPath(post)}>
                     <img src={post.frontMatter.thumbnail} class="object-cover w-16 h-16" alt="test"/>
                 </a>
             </div>
             {/if}
-        
-
         </main>
     </div>
 </section>
