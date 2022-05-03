@@ -1,17 +1,18 @@
 <script lang="ts" context="module">
     import type { Load } from '@sveltejs/kit';
+    import type { TagPageResult } from '$lib/types';
     import { dataAPI } from '$lib/client';
 
     export const load : Load = async ({ params, fetch }) => {
         const { slug } = params; 
         const apiUrl = dataAPI.getTagPageList(slug);
         const response = await fetch(apiUrl);
-        const { tagName, postList } = await response.json();
+        const { name, list } : TagPageResult = await response.json();
 
         return {
             props: {
-                tagName: tagName,
-                postList: postList
+                tagName: name,
+                postList: list
             }
         }
     }

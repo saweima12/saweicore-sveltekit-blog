@@ -3,10 +3,8 @@
     export let post: SourcePage;
     export let tags: Array<string>;
     
-    import { siteConfig } from "$lib/store";
     import { getYYYYMMDD, pageRoute } from '$lib/client';
     import CalenderIcon from '$lib/components/icon/calender.svelte';
-    import TagIcon from '$lib/components/icon/tag.svelte'; 
     import MoreIcon from '$lib/components/icon/more.svelte';
 </script>
 
