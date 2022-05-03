@@ -19,6 +19,8 @@ export const get : RequestHandler = async () => {
   }).sort ((a,b) => b.count - a.count);
 
   return {
-    body: tagCountList
+    body: {
+      list: tagCountList
+    }
   }
 }

@@ -15,8 +15,8 @@ export const get : RequestHandler = async ({params}) => {
 
   return {
     body: {
-      tagName: params.slug,
-      postList: postList
+      name: params.slug,
+      list: postList
     }
   }
 }

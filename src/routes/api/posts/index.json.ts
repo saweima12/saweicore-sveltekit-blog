@@ -10,8 +10,6 @@ export const get: RequestHandler = async ({ params, url }) => {
 	return {
 		body: {
 			list: postList,
-      maxPage: 0,
-
 		}
 	};
 };
