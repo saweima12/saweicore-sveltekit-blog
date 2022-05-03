@@ -27,7 +27,8 @@
     <title>{$siteConfig.title} - {$siteConfig.description}</title>
 </svelte:head>
 
-<main class="context">
-    <PostList posts={postList} />
-
+<main class="index-page wrapper">
+    <div class="index-container">
+        <PostList posts={postList} />
+    </div>
 </main>
