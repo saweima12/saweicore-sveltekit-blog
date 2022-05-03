@@ -10,7 +10,7 @@ export const get : RequestHandler = async ({params}) => {
   // Get: page list by tagName.
   const tagSet = tagSets[params.slug] || [];
   let postList = tagSet.slice().sort((a, b) => {
-    return new Date(a.frontMatter.created).getTime() - new Date(b.frontMatter.created).getTime();
+    return new Date(b.frontMatter.created).getTime() - new Date(a.frontMatter.created).getTime();
   });
 
   return {
