@@ -19,6 +19,7 @@
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
 	import SideNav from '$lib/components/nav/sidenav.svelte';
+	import Footer from '$lib/components/footer.svelte';
 
 	import { isNavMenuShow } from '$lib/store';
 	let isMenuOpen = false;
@@ -32,10 +33,11 @@
 	<Navbar />
 	<SideNav />
 	
-	<div class="wrapper pt-14">
+	<div class="pt-14 min-h-screen wrapper">
 		<slot />
-	</div>	
-	<ScreenMask />
+	</div>
+	<Footer />
 </div>
+<ScreenMask />
 
 <Navmenu />
