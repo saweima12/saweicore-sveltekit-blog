@@ -8,7 +8,7 @@ const config = {
     more: "更多內容",
   },
   pagination: {
-    maxPerPage: 2
+    maxPerPage: 8,
   },
 	classifier: [
 		{ id: 'post', params: { path: '/_posts/' }, type: 'directory' },

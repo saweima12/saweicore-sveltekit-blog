@@ -35,7 +35,10 @@
 	<SideNav />
 	
 	<div class="pt-14 min-h-screen wrapper">
-		<slot />
+		<main class="content-container">
+
+			<slot />
+		</main>
 	</div>
 	<Footer />
 </div>
