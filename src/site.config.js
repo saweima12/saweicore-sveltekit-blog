@@ -1,4 +1,5 @@
 import nav from './config/nav.js';
+import textlang from './config/textlang.js';
 
 const config = {
   title: "Saweicore Stu",
@@ -7,7 +8,7 @@ const config = {
     more: "更多內容",
   },
   pagination: {
-    maxPerPage: 8
+    maxPerPage: 2
   },
 	classifier: [
 		{ id: 'post', params: { path: '/_posts/' }, type: 'directory' },
@@ -17,7 +18,8 @@ const config = {
 		options: {},
 		extensions: {}
 	},
-  nav: nav
+  nav: nav,
+  textlang: textlang
 };
 
 export default config;
