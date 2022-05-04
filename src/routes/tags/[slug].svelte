@@ -5,7 +5,7 @@
 
     export const load : Load = async ({ params, fetch }) => {
         const { slug } = params; 
-        const apiUrl = dataAPI.getTagPageList(slug);
+        const apiUrl = dataAPI.getTagPageList(slug, 1);
         const response = await fetch(apiUrl);
         const { name, list } : TagPageResult = await response.json();
 
