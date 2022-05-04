@@ -1,0 +1,10 @@
+/* PostList */
+.post-list .page-item {
+    border-bottom: 1px solid #bbb;
+}
+
+
+.tag-list .tag-item {
+    background-color: #e8e8e8;
+    border-radius: .8rem;
+}
