@@ -8,7 +8,9 @@ export const dataAPI = {
   getAboutData: ():string => ("/api/about.json"),
   getJournalData: ():string => ("/api/journal.json"),
   getPostList: (pageNum: number): string => (`/api/pages/${pageNum}.json`),
-  getTagPageList: (tagName: string): string => (`/api/tags/${tagName}.json`),
+  getTagPageList: (tagName: string, pageNum:number): string => {
+    return `/api/tags/${tagName}/${pageNum}.json`
+  },
   getPostData: (year:string, month:string, slugKey:string): string => {
     return `/api/posts/${year}/${month}/${slugKey}.json`
   }
