@@ -25,7 +25,7 @@ export const get: RequestHandler = async ({ params }) => {
 
   const groupList = Object.entries(groupMap).map(([name, list]) => {
     return { name, list };
-  });
+  }).sort((a, b) => Number(b.name) - Number(a.name));
 
 	return {
 		body: {
