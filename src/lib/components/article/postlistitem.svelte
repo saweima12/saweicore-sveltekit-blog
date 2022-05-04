@@ -4,16 +4,16 @@
     export let tags: Array<string>;
     
     import { getYYYYMMDD, pageRoute } from '$lib/client';
-    import CalenderIcon from '$lib/components/icon/calender.svelte';
-    import MoreIcon from '$lib/components/icon/more.svelte';
+    import TIcon from '$lib/components/ticon.svelte';
+
 </script>
 
 
-<section class="mx-6 mt-5 post-list-item">
+<section class="mx-6 mt-5 page-item">
     <div class="list-item-container">
         <header class="mb-3 post-header">
             <div class="flex items-center created-date">
-                <div class="icon-base w-4 h-4"><CalenderIcon /></div>
+                <div class="icon-base w-4 h-4"><TIcon key="calender"/></div>
                 <time class="flex self-center text-sm ml-1">{getYYYYMMDD(post.frontMatter.created)}</time>
             </div>
         </header>
@@ -44,11 +44,11 @@
                     <div class="flex items-center">
                         <div class="flex tag-list">
                             {#if tags }
-                                <div class="px-3 py-0.5 flex self-center mr-2 tag-list-item">
+                                <div class="px-3 py-0.5 flex self-center mr-2 tag-item">
                                     <a href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
                                 </div>
                                 {#each tags.slice(1, 4) as tag}
-                                    <div class="hidden px-3 py-0.5 sm:flex self-center mr-2 tag-list-item">
+                                    <div class="hidden px-3 py-0.5 sm:flex self-center mr-2 tag-item">
                                         <a href={pageRoute.getTagPath(tag)}>{tag}</a>
                                     </div>
                                 {/each}
@@ -61,11 +61,12 @@
                     <div class="flex mr-2 self-center more">
                         <a href={pageRoute.getPostPath(post)}>
                             <div class="icon-base w-6 h-6">
-                                <MoreIcon />
+                                <TIcon key="more" />
                             </div>
                         </a>
                     </div>
                     {/if}
+                    
                 </footer>
             </div>
             {#if post.frontMatter.thumbnail}

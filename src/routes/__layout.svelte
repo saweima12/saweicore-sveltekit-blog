@@ -1,13 +1,18 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	import { siteConfig } from '$lib/store';
+	import { iconMap, siteConfig } from '$lib/store';
 	import { dataAPI } from '$lib/client';
 
 	export const load: Load = async ({fetch}) => {
-		const apiUrl = dataAPI.getConfig();
-		const response = await fetch(apiUrl);
-		const data = await response.json();
-		siteConfig.set(data);
+		let apiUrl = dataAPI.getConfig();
+		let response = await fetch(apiUrl);		
+		const config = await response.json();
+		
+		apiUrl = dataAPI.getIcon();
+		response = await fetch(apiUrl);
+		const map = await response.json();
+		siteConfig.set(config);
+		iconMap.set(map);
 		return {}
 	};
 </script>

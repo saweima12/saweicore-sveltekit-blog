@@ -4,6 +4,7 @@ import type { SourcePage } from 'markedpage';
 // API PATH.
 export const dataAPI = {
   getConfig: (): string => ("/api/config.json"),
+  getIcon: (): string => ("/api/icon.json"),
   getAboutData: ():string => ("/api/about.json"),
   getJournalData: ():string => ("/api/journal.json"),
   getPostList: (pageNum: number): string => (`/api/pages/${pageNum}.json`),

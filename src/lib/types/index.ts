@@ -5,6 +5,12 @@ export interface GroupListPair<Locals = Record<string, any>> {
   list: Array<Locals>
 }
 
+export interface NavItem {
+  name: string,
+  link: string,
+  icon: string
+}
+
 export interface JournalResult {
   groups: Array<GroupListPair<SourcePage>>,
 };

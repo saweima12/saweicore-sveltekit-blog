@@ -15,16 +15,20 @@
             }
         }
     }
-
 </script>
 
 <script lang="ts">
-    import { getYYYYMMDD } from '$lib/client'
-    import CalenderIcon from '$lib/components/icon/calender.svelte';
+    import { siteConfig } from '$lib/store';
+    import { getYYYYMMDD, getTitleStr } from '$lib/client';
+    import TIcon from '$lib/components/ticon.svelte';
 
     export let metadata: Record<string, any>;
     export let content: string;
 </script>
+
+<svelte:head>
+    <title>{metadata.title} | {getTitleStr($siteConfig)}</title>
+</svelte:head>
 
 <div class="my-10 post-page wrapper">
     <div class="post-container">
@@ -33,7 +37,7 @@
                 {metadata.title}
             </div>
             <div class="flex flex-row items-center mt-2 created-date">
-                <div class="icon-base w-4"><CalenderIcon /></div>
+                <div class="icon-base w-5"><TIcon key="calender" /></div>
                 <time class="flex self-center ml-2">{getYYYYMMDD(metadata.created)}</time>
             </div>
         </header>
