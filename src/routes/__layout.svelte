@@ -8,11 +8,7 @@
 		let response = await fetch(apiUrl);		
 		const config = await response.json();
 		
-		apiUrl = dataAPI.getIcon();
-		response = await fetch(apiUrl);
-		const map = await response.json();
 		siteConfig.set(config);
-		iconMap.set(map);
 		return {}
 	};
 </script>

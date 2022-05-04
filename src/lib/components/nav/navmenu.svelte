@@ -1,8 +1,6 @@
 <script lang="ts">
     import type { NavItem } from '$lib/types';
     import { isNavMenuShow, siteConfig } from '$lib/store';
-    import TIcon from '../ticon.svelte';
-
 
     let navList : Array<NavItem> = $siteConfig.nav;
     let isVisible = false;
@@ -16,9 +14,6 @@
             <ul>
                 <li class="flex items-center mt-2 ">
                     <div class="icon-base w-6">
-                        {#if navItem.icon}
-                            <TIcon key={navItem.icon} />
-                        {/if}
                     </div>
                     <a href={navItem.link} class="pl-3 text-xl letter-content-font">{navItem.name}</a>
                 </li>

@@ -4,7 +4,8 @@
     export let tags: Array<string>;
     
     import { getYYYYMMDD, pageRoute } from '$lib/client';
-    import TIcon from '$lib/components/ticon.svelte';
+    import CalenderIcon from '$lib/icons/calender.svelte';
+    import MoreIcon from '$lib/icons/more.svelte';
 
 </script>
 
@@ -13,7 +14,7 @@
     <div class="list-item-container">
         <header class="mb-3 post-header">
             <div class="flex items-center created-date">
-                <div class="icon-base w-4 h-4"><TIcon key="calender"/></div>
+                <div class="icon-base w-4 h-4"><CalenderIcon /></div>
                 <time class="flex self-center text-sm ml-1">{getYYYYMMDD(post.frontMatter.created)}</time>
             </div>
         </header>
@@ -61,7 +62,7 @@
                     <div class="flex mr-2 self-center more">
                         <a href={pageRoute.getPostPath(post)}>
                             <div class="icon-base w-6 h-6">
-                                <TIcon key="more" />
+                                <MoreIcon />
                             </div>
                         </a>
                     </div>

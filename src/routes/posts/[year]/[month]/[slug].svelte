@@ -20,7 +20,7 @@
 <script lang="ts">
     import { siteConfig } from '$lib/store';
     import { getYYYYMMDD, getTitleStr } from '$lib/client';
-    import TIcon from '$lib/components/ticon.svelte';
+    import CalenderIcon from '$lib/icons/calender.svelte';
 
     export let metadata: Record<string, any>;
     export let content: string;
@@ -37,7 +37,7 @@
                 {metadata.title}
             </div>
             <div class="flex flex-row items-center mt-2 created-date">
-                <div class="icon-base w-5"><TIcon key="calender" /></div>
+                <div class="icon-base w-5"><CalenderIcon /></div>
                 <time class="flex self-center ml-2">{getYYYYMMDD(metadata.created)}</time>
             </div>
         </header>

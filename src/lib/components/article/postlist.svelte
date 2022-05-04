@@ -5,7 +5,7 @@
     export let posts: Array<SourcePage>;
 </script>
 
-<div class="pt-4 post-list">
+<div class="post-list">
     {#each posts as post}
         {@const tags = post.frontMatter.tags }
         <PostListItem post={post} tags={tags} />
