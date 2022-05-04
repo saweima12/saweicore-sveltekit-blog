@@ -21,7 +21,6 @@
     import PostList from '$lib/components/article/postlist.svelte';
 
     export let list: Array<SourcePage>;
-    // export let tagList: Array<Record<string, number>>;
 </script>
 
 <svelte:head>
@@ -29,7 +28,8 @@
 </svelte:head>
 
 <main class="index-page wrapper">
-    <div class="index-container">
+    <div class="pt-8 index-container">
         <PostList posts={list} />
+
     </div>
 </main>
