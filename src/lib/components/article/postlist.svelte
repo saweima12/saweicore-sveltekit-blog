@@ -2,8 +2,6 @@
     import type { SourcePage } from 'markedpage';
     import PostListItem from '$lib/components/article/postlistitem.svelte';
 
-    import { page } from '$app/stores';
-
     export let posts: Array<SourcePage>;
 </script>
 

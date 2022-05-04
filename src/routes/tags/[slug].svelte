@@ -20,23 +20,30 @@
 </script>
 <script lang="ts">
     import type { SourcePage } from 'markedpage';
+    import { siteConfig } from '$lib/store';
+    import { getTitleStr } from '$lib/client';
+
     import Postlist from '$lib/components/article/postlist.svelte';
-    import TagIcon from '$lib/components/icon/tag.svelte';
+    import TIcon from '$lib/components/ticon.svelte';
 
     export let tagName: string;
     export let postList: Array<SourcePage>;
 </script>
 
+<svelte:head>
+    <title>{tagName} | {getTitleStr(siteConfig)}</title>
+</svelte:head>
+
+
 <div class="tag-page wrapper">
     <div class="tag-page-container">
         <header class="mt-8 mx-6 tag-header">
             <div class="flex items-center">
-                <div class="w-5 h-5 mr-2 icon-base"><TagIcon /></div>
-    
+                <div class="w-5 h-5 mr-2 icon-base"><TIcon key="tag" /></div>
+
                 <h1 class="flex self-center text-2xl font-bold letter-title-font tag-title">
                     {tagName}
                 </h1>
-
             </div>
         </header>
         <Postlist posts={postList}/>    
