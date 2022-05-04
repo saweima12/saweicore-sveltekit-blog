@@ -46,6 +46,9 @@
                 </h1>
             </div>
         </header>
-        <Postlist posts={postList}/>    
+
+        <div class="post-list">
+            <Postlist posts={postList}/>    
+        </div>
     </div>
 </div>

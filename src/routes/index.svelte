@@ -29,7 +29,9 @@
 
 <main class="index-page wrapper">
     <div class="pt-8 index-container">
-        <PostList posts={list} />
+        <div class="post-list">
+            <PostList posts={list} />
+        </div>
 
     </div>
 </main>

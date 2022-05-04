@@ -1,6 +1,8 @@
 <script lang="ts">
+    import { isExternal } from '$lib/client/helper';
     import type { NavItem } from '$lib/types';
     import { isNavMenuShow, siteConfig } from '$lib/store';
+    import ExternalIcon from '$lib/icons/external.svelte';
 
     let navList : Array<NavItem> = $siteConfig.nav;
     let isVisible = false;
@@ -15,7 +17,13 @@
                 <li class="flex items-center mt-2 ">
                     <div class="icon-base w-6">
                     </div>
-                    <a href={navItem.link} class="pl-3 text-xl letter-content-font">{navItem.name}</a>
+                    <a href={navItem.link} class="pl-3 text-xl letter-content-font">
+                        {navItem.name}
+                    </a>
+                    {#if isExternal(navItem.link) }
+                        <ExternalIcon />
+                    {/if}
+                    <div class="icon-base w-3"></div>
                 </li>
             </ul>
         {/each}
