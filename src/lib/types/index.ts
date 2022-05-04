@@ -21,7 +21,9 @@ export interface PageResult {
 };
 
 export interface PageListResult {
-  list: Array<SourcePage>
+  list: Array<SourcePage>,
+  maxPage: number,
+  pageNum: number
 }
 
 export interface TagPageResult {
