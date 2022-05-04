@@ -1,10 +1,29 @@
 /* PostList */
 .post-list .page-item {
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid rgba(0,0,0, .15);
 }
 
+.post-list .page-item:last-child {
+    border-bottom: none;
+}
 
 .tag-list .tag-item {
     background-color: #e8e8e8;
     border-radius: .8rem;
+}
+
+/* Journel */
+.journel-list .group-name {
+    font-size: 1.8rem;
+    color: #333;
+    border-bottom: 2px solid rgba(0,0,0, .15);
+}
+
+.journel-list {
+    margin: 0 1rem;
+}
+
+.journel-list .page-list {
+    margin-left: .3rem;
+    margin-right: .3rem;
 }

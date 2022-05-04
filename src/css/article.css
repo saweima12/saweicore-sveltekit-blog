@@ -14,7 +14,14 @@
 }
 
 
-.post-page .content > p, ul, ol, pre, blockquote, table, tr, td {
+.post-page .content > p, 
+.post-page .content > ul, 
+.post-page .content > ol, 
+.post-page .content > pre, 
+.post-page .content > blockquote, 
+.post-page .content > table, 
+.post-page .content > tr, 
+.post-page .content > td {
     letter-spacing: -0.003em;
     font-size: 18px;
     margin: 0 1.2rem;
