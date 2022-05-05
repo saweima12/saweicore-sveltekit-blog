@@ -28,10 +28,27 @@
     width: 36px;
 }
 
+.side-navbar .nav-item {
+    width: 36px;
+}
+
 /* drawer */
 
 
 /* navmenu */
 .navmenu {
     background-color: #fff;
+}
+
+.navmenu .author {
+    border-bottom: 1px solid #bbb;
+}
+
+.navmenu .author img {
+    width: 5rem;
+    border-radius: 1rem;
+}
+
+.navmenu .nav-item {
+    font-weight: 600;
 }

@@ -6,8 +6,22 @@
     width: 100%;
 }
 
+
 @media screen and (min-width: 720px) {
     .content-container {
         width: 720px;
+    }
+
+    .drawer-wrapper {
+        width: 240px;   
+    }
+    .drawer-container {
+        border-left: 1px solid #ddd;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .drawer-wrapper {
+        width: 400px;
     }
 }
