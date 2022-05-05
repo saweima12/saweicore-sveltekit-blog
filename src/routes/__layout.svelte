@@ -31,16 +31,29 @@
 	 class:-translate-x-60={isMenuOpen}
 	 class:md:-translate-x-80={isMenuOpen}
 	>
-	<Navbar />
-	<SideNav />
-	
-	<div class="pt-14 min-h-screen wrapper">
-		<main class="content-container">
 
-			<slot />
-		</main>
+	<div class="fixed top-0 w-screen lg:hidden wrapper">
+		<Navbar />
 	</div>
-	<Footer />
+
+	<div class="lg:flex lg:flex-row justify-between main-container">
+		<div class="hidden lg:block w-20 wrapper">
+			<SideNav />
+		</div>
+
+		<div class="pt-14 lg:pt-0 flex flex-col content-wrapper">
+			<main class="mx-auto min-h-screen content-container">
+				<slot />
+			</main>
+			<Footer />
+		</div>
+
+		<div class="hidden lg:block lg:w-60  drawer-wrapper">
+			<div class="w-100 h-100 drawer-container">
+				sdiajsdio
+			</div>
+		</div>
+	</div>
 </div>
 <ScreenMask />
 

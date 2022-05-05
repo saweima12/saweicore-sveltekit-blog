@@ -11,16 +11,13 @@ export const get : RequestHandler = async () => {
   // Get: page list count.
   let tagCountList: Array<Record<string, any>>;
 
-  tagCountList = Object.entries(tagSet).map(([tagName, postList]) => {
-    return {
-      tag: tagName,
-      count: postList.length
-    };
-  }).sort ((a,b) => b.count - a.count);
+  tagCountList = Object.entries(tagSet)
+    .map(([tagName, postList]) => ({ tag: tagName,  count: postList.length }))
+    .sort ((a,b) => b.count - a.count);
 
   return {
     body: {
-      list: tagCountList
+      tagList: tagCountList
     }
   }
 }

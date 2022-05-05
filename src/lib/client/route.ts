@@ -1,4 +1,5 @@
 import { getFormatedDate } from '$lib/helper';
+import type { PageMeta } from '$lib/types';
 import type { SourcePage } from 'markedpage';
 
 // API PATH.
@@ -7,6 +8,7 @@ export const dataAPI = {
   getIcon: (): string => ("/api/icon.json"),
   getAboutData: ():string => ("/api/about.json"),
   getJournalData: ():string => ("/api/journal.json"),
+  getTagData: (): string => ('/api/tags.json'),
   getPostList: (pageNum: number): string => (`/api/pages/${pageNum}.json`),
   getTagPageList: (tagName: string, pageNum:number): string => {
     return `/api/tags/${tagName}/${pageNum}.json`
@@ -19,8 +21,8 @@ export const dataAPI = {
 export const pageRoute = {
   getHomePath: (): string => ("/"),
   getTagPath: (tagName: string): string => (`/tags/${tagName}`),
-  getPostPath: (page: SourcePage) => {
-    const dateObj = getFormatedDate(page.frontMatter.created);
+  getPostPath: (page: PageMeta) => {
+    const dateObj = getFormatedDate(page.metadata.created);
     return `/posts/${dateObj.year}/${dateObj.month}/${page.slugKey}`;
   }
 }

@@ -1,14 +1,14 @@
 <script lang="ts">
     import type { SourcePage } from 'markedpage';
+    import type { PageMeta } from '$lib/types';
     import PostListItem from '$lib/components/article/postlistitem.svelte';
 
-    export let posts: Array<SourcePage>;
+    export let posts: Array<PageMeta>;
 </script>
 
-<div class="post-list-container">
-    {#each posts as post}
-        {@const tags = post.frontMatter.tags }
-        <PostListItem post={post} tags={tags} />
-    {/each}
-</div>
+{#each posts as post}
+    {@const tags = post.metadata.tags }
+    <PostListItem post={post} tags={tags} metadata={post.metadata} />
+{/each}
+
 

@@ -1,6 +1,7 @@
 import { classifiedSet, siteConfig } from 'markedpage';
 import type { SourcePage, FrontMatterClassifierResult } from 'markedpage';
 
+import type { PageMeta } from '$lib/types';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const get : RequestHandler = async ({params}) => {
@@ -14,12 +15,15 @@ export const get : RequestHandler = async ({params}) => {
   const tagSetMap: FrontMatterClassifierResult = await classifiedSet("tag");
   const tagSet = tagSetMap[tag] || [];
 
-  let sortList = tagSet.slice().sort((a, b) => {
-    return new Date(b.frontMatter.created).getTime() - new Date(a.frontMatter.created).getTime();
-  });
+  // rearrange sourcePage to PageMeta.
+  let sortList: Array<PageMeta> = tagSet.slice()
+    .map(page => ({ metadata: page.frontMatter, slugKey: page.slugKey }))
+    .sort((a, b) => {
+      return new Date(b.metadata.created).getTime() - new Date(a.metadata.created).getTime();
+    });
 
   const maxPage = Math.ceil(sortList.length / maxPerPage);
-  let list: Array<SourcePage> = []
+  let list: Array<PageMeta> = []
   if (pageNum <= maxPage) {
     let startIndex = (pageNum - 1) * maxPerPage;
     let endIndex = pageNum * maxPerPage;
@@ -29,7 +33,7 @@ export const get : RequestHandler = async ({params}) => {
   return {
     body: {
       name: params.tag,
-      list: list,
+      pageList: list,
       maxPage: maxPage,
       pageNum: pageNum
     }

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
     import type { Load } from '@sveltejs/kit';
-    import type { JournalResult, GroupListPair } from '$lib/types';
+    import type { JournalResult, GroupListPair, PageMeta } from '$lib/types';
     import { dataAPI } from '$lib/client';
 
     export const load: Load = async ({fetch}) => {
@@ -23,7 +23,7 @@ import { getMMDD, pageRoute, getTitleStr } from '$lib/client';
 
 const textlang: Record<string, any> = $siteConfig.textlang.journal;
 
-export let groups: Array<GroupListPair<SourcePage>>;
+export let groups: Array<GroupListPair<PageMeta>>;
 </script>
 
 <svelte:head>
@@ -37,16 +37,16 @@ export let groups: Array<GroupListPair<SourcePage>>;
                 <li class="mb-8 group">
                     <h1 class="text-2xl letter-title-font group-name">{group.name}</h1>
                     <ul class="flex flex-col mt-2 page-list">
-                        {#each group.list as page}
+                        {#each group.pageList as page}
                             <li class="flex flex-row my-2 page-item">
                                 <time class="flex self-center page-date">
-                                    {getMMDD(page.frontMatter.created)}
+                                    {getMMDD(page.metadata.created)}
                                 </time>
-                                <div class="ml-4 post-title">
-                                    <a href={pageRoute.getPostPath(page)}>
-                                        {page.frontMatter.title}
-                                    </a>
-                                </div>
+         
+                                <a class="ml-4 text-lg post-title" href={pageRoute.getPostPath(page)}>
+                                    {page.metadata.title}
+                                </a>
+
                             </li>
                         {/each}
                     </ul>
