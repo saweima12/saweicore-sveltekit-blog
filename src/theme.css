@@ -5,6 +5,8 @@
 @import "./css/list.css";
 @import "./css/article.css";
 
+
+
 .letter-title-font {
     font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -16,8 +18,4 @@
 .screenmask {
     background-color: #000;
     opacity: 0.6;
-}
-
-.site-footer {
-    padding: 5rem 0 2.5rem;
 }
