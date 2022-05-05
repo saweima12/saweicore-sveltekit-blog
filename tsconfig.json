@@ -18,5 +18,5 @@
 			"$lib/*": ["src/lib/*"]
 		}
 	},
-	"exclude": ["src/site.config.js", "tsconfig.json"]
+	"exclude": ["src/site.config.js", "tsconfig.json", "src/**/*.js"]
 }
