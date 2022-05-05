@@ -11,5 +11,5 @@ export type {
 export interface NavItem {
   name: string,
   link: string,
-  icon: string
+  id: string
 }

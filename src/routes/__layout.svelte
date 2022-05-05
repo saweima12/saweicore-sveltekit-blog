@@ -48,8 +48,8 @@
 			<Footer />
 		</div>
 
-		<div class="hidden lg:block lg:w-60  drawer-wrapper">
-			<div class="w-100 h-100 drawer-container">
+		<div class="hidden lg:block drawer-wrapper">
+			<div class="w-100 min-h-screen fixed drawer-container">
 				sdiajsdio
 			</div>
 		</div>
