@@ -3,12 +3,11 @@
 }
 
 .content-container {
-    max-width: 692px;
-    margin: 0 auto;
+    width: 100%;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 720px) {
     .content-container {
-        margin-left: 5rem;
+        width: 720px;
     }
 }

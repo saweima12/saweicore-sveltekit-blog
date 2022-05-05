@@ -1,12 +1,40 @@
 /* PostList */
 
-.post-list .page-item {
+.post-list .post-item {
     border-bottom: 1px solid rgba(0,0,0, .15);
 }
 
-.post-list .page-item:last-child {
+.post-list .post-title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.post-list .post-item:last-child {
     border-bottom: none;
 }
+
+.post-item .thumbnail-pic{
+    width: 4rem;
+    height: 4rem;
+}
+
+/* 
+    sm: 640px  
+    md: 768px 
+    lg: 1024px 
+*/
+@media screen and (min-width: 640px) {
+    .post-list .post-title {
+        font-size: 22px;
+        line-height: 28px;
+    }
+    
+    .post-item .thumbnail-pic {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
 
 .tag-list .tag-item {
     background-color: #e8e8e8;
