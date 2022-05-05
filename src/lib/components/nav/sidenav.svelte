@@ -2,15 +2,15 @@
     import { siteConfig } from '$lib/store';
 </script>
 
-<nav class="hidden lg:block fixed h-full side-navbar">
-    <div class="p-4 flex flex-col sidenav-container">
-        <div class="mt-4 logo">
-            <img class="rounded-full" src="/logo.png" alt={$siteConfig.title}>
-        </div>
+<nav class="flex fixed h-screen side-navbar">
+    <div class="flex flex-col h-full px-5 sidenav-container">
+        <div class="mt-8 logo">
+                <a href="/">
+                    <img class="rounded-full" src="/logo.png" alt={$siteConfig.title}>
+                </a>
+            </div>    
+
         
-        <div class="grow"></div>
-        <div class="mt-4 logo">
-            <img class="rounded-full" src="/logo.png" alt={$siteConfig.title}>
-        </div>
+
     </div>
 </nav>
