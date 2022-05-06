@@ -1,10 +1,5 @@
 export { getYYYYMMDD, getMMDD } from './formater';
 
-export {
-  dataAPI,
-  pageRoute
-} from './route';
+export { dataAPI, pageRoute } from './route';
 
-export {
-  getTitleStr
-} from './helper';
+export { getTitleStr } from './helper';

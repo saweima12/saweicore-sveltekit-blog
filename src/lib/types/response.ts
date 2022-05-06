@@ -1,30 +1,31 @@
 export interface GroupListPair<Locals = Record<string, any>> {
-  name: string,
-  pageList: Array<Locals>
+	name: string;
+	pageList: Array<Locals>;
 }
 
 export interface PageMeta extends Record<string, any> {
-  metadata: Record<string, any>,
-  slugKey: string
+	metadata: Record<string, any>;
+	slugKey: string;
 }
 
-
 export interface JournalResult {
-  groups: Array<GroupListPair<PageMeta>>,
-};
+	groups: Array<GroupListPair<PageMeta>>;
+}
 
 export interface PageResult {
-  metadata: Record<string, any>,
-  content: string
-};
+	metadata: Record<string, any>;
+	content: string;
+}
 
 export interface PageListResult {
-  pageList: Array<PageMeta>,
-  maxPage: number,
-  pageNum: number
+	pageList: Array<PageMeta>;
+	maxPage: number;
+	pageNum: number;
 }
 
 export interface TagPageResult {
-  name: string,
-  pageList: Array<PageMeta>
+	name: string;
+	pageList: Array<PageMeta>;
+	maxPage: number;
+	pageNum: number;
 }

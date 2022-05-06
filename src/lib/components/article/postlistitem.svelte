@@ -13,7 +13,8 @@
 	<header class="mb-3 post-header">
 		<div class="flex items-center">
 			<div class="icon-base w-4 h-4"><CalenderIcon /></div>
-			<time class="flex self-center text-sm ml-1 created-date">{getYYYYMMDD(metadata.created)}</time>
+			<time class="flex self-center text-sm ml-1 created-date">{getYYYYMMDD(metadata.created)}</time
+			>
 		</div>
 	</header>
 
@@ -68,7 +69,11 @@
 		{#if metadata.thumbnail}
 			<div class="align-center min-w-20 ml-3 thumbnail">
 				<a href={pageRoute.getPostPath(post)}>
-					<img src={metadata.thumbnail} class="object-cover thumbnail-pic w-16 h-16 md:w-28 md:h-28" alt="test" />
+					<img
+						src={metadata.thumbnail}
+						class="object-cover thumbnail-pic w-16 h-16 md:w-28 md:h-28"
+						alt="test"
+					/>
 				</a>
 			</div>
 		{/if}

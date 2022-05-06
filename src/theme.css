@@ -1,23 +1,23 @@
-@import "./css/layout.css";
-@import "./css/nav.css";
-@import "./css/hamburger.css";
-@import "./css/list.css";
-@import "./css/article.css";
-
+@import './css/layout.css';
+@import './css/nav.css';
+@import './css/hamburger.css';
+@import './css/list.css';
+@import './css/article.css';
 
 .word-font {
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .letter-title-font {
-    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .letter-content-font {
-    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif
+	font-family: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
 .screenmask {
-    background-color: #000;
-    opacity: 0.6;
+	background-color: #000;
+	opacity: 0.6;
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
-    export let maxPage: number;
-    export let currentPage: number;
+	export let maxPage: number;
+	export let currentPage: number;
 </script>
 
 <a href="/">1</a>

@@ -1,51 +1,51 @@
 .menu-button-wrapper {
-    position: relative;
-    height: 40px;
-    width: 40px;
+	position: relative;
+	height: 40px;
+	width: 40px;
 }
 .menu-button-container {
-  position: absolute;
-  top: 20px;
-  height: 100%;
-  width: 25px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	top: 20px;
+	height: 100%;
+	width: 25px;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .menu-button,
 .menu-button::before,
 .menu-button::after {
-  display: block;
-  background-color: #333;
-  position: absolute;
-  height: 4px;
-  width: 25px;
-  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
-  border-radius: 2px;
+	display: block;
+	background-color: #333;
+	position: absolute;
+	height: 4px;
+	width: 25px;
+	transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+	border-radius: 2px;
 }
 
 .menu-button::before {
-  content: '';
-  margin-top: -8px;
+	content: '';
+	margin-top: -8px;
 }
 
 .menu-button::after {
-  content: '';
-  margin-top: 8px;
+	content: '';
+	margin-top: 8px;
 }
 
 .toggle .menu-button-container .menu-button::before {
-  margin-top: 0px;
-  transform: rotate(405deg);
+	margin-top: 0px;
+	transform: rotate(405deg);
 }
 
 .toggle .menu-button-container .menu-button {
-  background: rgba(255, 255, 255, 0);
+	background: rgba(255, 255, 255, 0);
 }
 
 .toggle .menu-button-container .menu-button::after {
-  margin-top: 0px;
-  transform: rotate(-405deg);
+	margin-top: 0px;
+	transform: rotate(-405deg);
 }

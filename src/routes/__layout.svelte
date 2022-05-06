@@ -1,15 +1,14 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	import { iconMap, siteConfig } from '$lib/store';
+	import { siteConfig } from '$lib/store';
 	import { dataAPI } from '$lib/client';
 
-	export const load: Load = async ({fetch}) => {
+	export const load: Load = async ({ fetch }) => {
 		let apiUrl = dataAPI.getConfig();
-		let response = await fetch(apiUrl);		
+		let response = await fetch(apiUrl);
 		const config = await response.json();
-		
 		siteConfig.set(config);
-		return {}
+		return {};
 	};
 </script>
 
@@ -21,23 +20,24 @@
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
 	import SideNav from '$lib/components/nav/sidenav.svelte';
 	import Footer from '$lib/components/footer.svelte';
+	import Drawer from '$lib/components/drawer/drawer.svelte';
 
 	import { isNavMenuShow } from '$lib/store';
 	let isMenuOpen = false;
-	isNavMenuShow.subscribe(value => isMenuOpen = value);
+	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
 </script>
 
-<div class="transition-all duration-200 min-h-screen main-wrapper relative" 
-	 class:-translate-x-60={isMenuOpen}
-	 class:md:-translate-x-80={isMenuOpen}
-	>
-
+<div
+	class="transition-all duration-200 min-h-screen main-wrapper relative"
+	class:-translate-x-60={isMenuOpen}
+	class:md:-translate-x-80={isMenuOpen}
+>
 	<div class="fixed top-0 w-screen lg:hidden wrapper">
 		<Navbar />
 	</div>
 
 	<div class="lg:flex lg:flex-row justify-between main-container">
-		<div class="hidden lg:block w-20 wrapper">
+		<div class="hidden lg:block nav-wrapper">
 			<SideNav />
 		</div>
 
@@ -50,7 +50,7 @@
 
 		<div class="hidden lg:block drawer-wrapper">
 			<div class="w-100 min-h-screen fixed drawer-container">
-				sdiajsdio
+				<Drawer />
 			</div>
 		</div>
 	</div>

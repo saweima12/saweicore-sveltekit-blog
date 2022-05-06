@@ -1,27 +1,34 @@
+.nav-wrapper {
+	width: 80px;
+}
+
 .site-footer {
-    padding: 5rem 0 2.5rem;
+	padding: 5rem 0 2.5rem;
 }
 
 .content-container {
-    width: 100%;
+	width: 100%;
 }
 
+.content-wrapper {
+	width: 100%;
+}
 
 @media screen and (min-width: 720px) {
-    .content-container {
-        width: 720px;
-    }
+	.content-container {
+		width: 720px;
+	}
 
-    .drawer-wrapper {
-        width: 240px;   
-    }
-    .drawer-container {
-        border-left: 1px solid #ddd;
-    }
+	.drawer-wrapper {
+		width: 240px;
+	}
+	.drawer-container {
+		border-left: 1px solid #ddd;
+	}
 }
 
 @media screen and (min-width: 1280px) {
-    .drawer-wrapper {
-        width: 400px;
-    }
+	.drawer-wrapper {
+		width: 400px;
+	}
 }
