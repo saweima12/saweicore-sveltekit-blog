@@ -53,7 +53,9 @@
 </svelte:head>
 
 <div class="pt-8 index-page wrapper">
-	<div class="list-tabs" />
+	<div class="list-tabs">
+        <div></div>
+    </div>
 
 	<div class="pb-5  list-wrapper">
 		<div class="post-list">
@@ -61,7 +63,7 @@
 		</div>
 
 		<div class="tag-list">
-		
+			<Taglist tags={tagList} />
 		</div>
 	</div>
 </div>
