@@ -10,13 +10,14 @@
 		<h1 class="text-2xl letter-title-font group-name">{group.name}</h1>
 		<ul class="flex flex-col mt-2 page-list">
 			{#each group.pageList as page}
-				<li class="flex flex-row my-2 page-item">
-					<time class="flex self-center page-date">
-						{getMMDD(page.metadata.created)}
-					</time>
-
-					<a class="ml-4 text-lg post-title" href={pageRoute.getPostPath(page)}>
-						{page.metadata.title}
+				<li class="my-2 page-item">
+					<a class="flex flex-row" href={pageRoute.getPostPath(page)}>
+						<time class="flex text-lg self-center page-date">
+							{getMMDD(page.metadata.created)}
+						</time>
+						<div class="ml-4 text-lg word-font post-title">
+							{page.metadata.title}							
+						</div>
 					</a>
 				</li>
 			{/each}

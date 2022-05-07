@@ -49,7 +49,7 @@
 		</div>
 
 		<div class="hidden lg:block drawer-wrapper">
-			<div class="w-100 min-h-screen fixed drawer-container">
+			<div class="w-full min-h-screen fixed drawer-container">
 				<Drawer />
 			</div>
 		</div>

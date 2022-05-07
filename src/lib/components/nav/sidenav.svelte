@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { siteConfig } from '$lib/store';
 	import type { NavItem } from '$lib/types';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
@@ -16,8 +17,8 @@
 
 		<div class="nav-list h-96">
 			{#each navList as navItem}
-				<a href={navItem.link}>
-					<div class="nav-item py-8 flex justify-center">
+				<a class="nav-item" class:active={navItem.link == $page.url.pathname} href={navItem.link}>
+					<div class="py-8 flex justify-center">
 						<div class="icon-base w-6"><NavIcon key={navItem.id} /></div>
 					</div>
 				</a>

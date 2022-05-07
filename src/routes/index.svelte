@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 	import { dataAPI } from '$lib/client';
-	import type { PageListResult, PageMeta, TagItem } from '$lib/types';
+	import type { PageListResult, PageMeta, TabItem, TagItem } from '$lib/types';
 
 	export const load: Load = async ({ fetch, stuff }) => {
 		let apiUrl = dataAPI.getPostList(1);
@@ -24,7 +24,7 @@
 				pageList,
 				maxPage,
 				pageNum,
-				tagList
+				// tagList
 			}
 		};
 	};
@@ -32,13 +32,14 @@
 
 <script lang="ts">
 	import { siteConfig } from '$lib/store';
+	
+	import { goto } from '$app/navigation';
 	import PostList from '$lib/components/article/postlist.svelte';
-	import Taglist from '$lib/components/article/taglist.svelte';
+	import TabGroup from '$lib/components/tabs/tabgroup.svelte';
 
 	export let pageList: Array<PageMeta>;
 	export let pageNum: number;
 	export let maxPage: number;
-	export let tagList: Array<TagItem>;
 
 	const fetchMorePost = async () => {
 		pageNum += 1;
@@ -46,24 +47,26 @@
 		const data: PageListResult = await response.json();
 		pageList = [...pageList, ...data.pageList];
 	};
+
+	const textlang = $siteConfig.textlang.home;
+
+	// Define TabGroup
+	let tabGroup: Array<TabItem> = [ 
+		{ id: "posts", label: textlang.posts, link: '/'}, 
+		{ id: "tags", label: textlang.tags, link: '/tags'}
+	];
+	const clickTab = (item: TabItem) => { const link = item.link as string; goto(link) };	
 </script>
 
 <svelte:head>
 	<title>{$siteConfig.title} - {$siteConfig.description}</title>
 </svelte:head>
 
-<div class="pt-8 index-page wrapper">
-	<div class="list-tabs">
-        <div></div>
-    </div>
-
-	<div class="pb-5  list-wrapper">
+<div class="index-page">
+	<div class="list-wrapper">
+		<TabGroup group={tabGroup}></TabGroup>
 		<div class="post-list">
 			<PostList {pageNum} {maxPage} posts={pageList} callback={() => fetchMorePost()} />
-		</div>
-
-		<div class="tag-list">
-			<Taglist tags={tagList} />
 		</div>
 	</div>
 </div>

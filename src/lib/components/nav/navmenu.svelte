@@ -5,7 +5,7 @@
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
 
-	const textlang = $siteConfig.textlang;
+	const textlang = $siteConfig.textlang.common;
 	const author: Record<string, any> = $siteConfig.author;
 	const navList: Array<NavItem> = $siteConfig.nav;
 	let isVisible = false;
@@ -28,17 +28,17 @@
 		</div>
 		<ul class="nav-list">
 			<li class="flex items-center mt-4 pl-8 nav-item">
-				<div class="icon-base w-8">
+				<div class="icon-base w-6">
 					<NavIcon key="home" />
 				</div>
 				<a href="/" class="pl-4 text-xl letter-content-font">
-					{textlang.common.home}
+					{textlang.home}
 				</a>
 				<div class="icon-base w-3" />
 			</li>
 			{#each navList as navItem}
 				<li class="flex items-center mt-4 pl-8 nav-item">
-					<div class="icon-base w-8">
+					<div class="icon-base w-6">
 						<NavIcon key={navItem.id} />
 					</div>
 					<a href={navItem.link} class="pl-4 text-xl letter-content-font">

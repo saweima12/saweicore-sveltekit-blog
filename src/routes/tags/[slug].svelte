@@ -52,7 +52,7 @@
 </svelte:head>
 
 <div class="tag-page wrapper">
-	<header class="mt-8 mx-6 tag-header">
+	<header class="mt-10 mx-6 mb-8 tag-header">
 		<div class="flex items-center">
 			<div class="w-5 h-5 mr-2 icon-base"><TagIcon /></div>
 			<h1 class="flex self-center text-2xl font-bold letter-title-font tag-title">

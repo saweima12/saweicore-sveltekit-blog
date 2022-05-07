@@ -21,15 +21,15 @@
 	<main class="flex flex-row mb-2 post-content">
 		<div class="flex-1 context">
 			<div class="letter-title-font font-bold ">
-				<a class="post-title" href={pageRoute.getPostPath(post)}>
+				<a sveltekit:prefetch class="post-title" href={pageRoute.getPostPath(post)}>
 					{metadata.title}
 				</a>
 			</div>
 
 			<div class="hidden sm:inline-block summary">
-				<a href={pageRoute.getPostPath(post)}>
+				<a sveltekit:prefetch href={pageRoute.getPostPath(post)}>
 					{#if metadata.excerpt}
-						<p>
+						<p class="letter-content-font">
 							{metadata.excerpt.length > 30
 								? metadata.excerpt.slice(0, 60) + '...'
 								: metadata.excerpt}
@@ -40,13 +40,13 @@
 
 			<footer class="flex items-center my-3">
 				<div class="flex items-center">
-					<div class="flex tag-list">
+					<div class="flex post-tag-list">
 						{#if tags}
-							<div class="px-3 py-0.5 flex self-center mr-2 tag-item">
+							<div class="px-3 py-0.5 flex self-center mr-2 post-tag-item">
 								<a href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
 							</div>
 							{#each tags.slice(1, 5) as tag}
-								<div class="hidden px-3 py-0.5 sm:flex self-center mr-2 tag-item">
+								<div class="hidden px-3 py-0.5 mr-2  sm:flex self-center post-tag-item">
 									<a href={pageRoute.getTagPath(tag)}>{tag}</a>
 								</div>
 							{/each}
@@ -56,8 +56,8 @@
 				<div class="grow spacer" />
 
 				{#if !metadata.thumbnail}
-					<div class="flex mr-2 self-center more">
-						<a href={pageRoute.getPostPath(post)}>
+					<div class="mr-2 flex self-center more">
+						<a sveltekit:prefetch href={pageRoute.getPostPath(post)}>
 							<div class="icon-base w-6 h-6">
 								<MoreIcon />
 							</div>
@@ -67,11 +67,11 @@
 			</footer>
 		</div>
 		{#if metadata.thumbnail}
-			<div class="align-center min-w-20 ml-3 thumbnail">
+			<div class="min-w-20 ml-3 align-center thumbnail">
 				<a href={pageRoute.getPostPath(post)}>
 					<img
 						src={metadata.thumbnail}
-						class="object-cover thumbnail-pic w-16 h-16 md:w-28 md:h-28"
+						class="w-16 h-16 md:w-28 md:h-28 object-cover thumbnail-pic"
 						alt="test"
 					/>
 				</a>
