@@ -13,12 +13,14 @@ export interface NavItem {
 	id: string;
 }
 
-export interface TabItem {
+export interface TabItem extends Record<string, any> {
+  id: string;
 	label: string;
-	component: any;
+  link: string
 }
 
 export interface TagItem {
 	name: string;
+  updated: string | Date;
 	count: number;
 }
