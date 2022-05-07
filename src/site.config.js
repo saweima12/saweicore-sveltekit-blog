@@ -10,7 +10,7 @@ const config = {
 		avatar: 'https://avatars.githubusercontent.com/u/62002212'
 	},
 	pagination: {
-		maxPerPage: 2
+		maxPerPage: 8
 	},
 	classifier: [
 		{ id: 'post', params: { path: '/_posts/' }, type: 'directory' },
