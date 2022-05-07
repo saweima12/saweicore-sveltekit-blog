@@ -1,5 +1,22 @@
-/* PostList */
+.tab-btn-list {
+    color: #757575;
+	font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+}
 
+.tab-btn-list .tab-btn-item:hover {
+	color: #333;
+	border-bottom: 2px solid #aaa;
+}
+
+.tab-btn-list .active, 
+.tab-btn-list .active:hover {
+	color: #000;
+	border-bottom: 2px solid #000;
+}
+
+
+/* PostList */
 .post-list .post-item {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -35,7 +52,7 @@
 	}
 }
 
-.tag-list .tag-item {
+.post-tag-list .post-tag-item {
 	background-color: #e8e8e8;
 	border-radius: 0.8rem;
 }
@@ -58,6 +75,15 @@
 }
 
 .journel-list .page-list {
-	margin-left: 0.3rem;
-	margin-right: 0.3rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.journel-list .page-item {
+	padding: .5rem 1rem;
+	border-radius: .2rem;
+}
+
+.journel-list .page-item:nth-child(odd) {
+	background-color: #E9EFF5;
 }

@@ -1,0 +1,16 @@
+.tag-list thead tr {
+    background-color: #E9EFF5;
+    border: 1px solid #bbb;
+}
+
+.tag-list tbody tr {
+    border: 1px solid #bbb;
+}
+
+.tag-list tbody tr:nth-child(odd) {
+    background-color: #FAFAFA;
+}
+
+.tag-list .tag-name {
+    text-align: lef;
+}

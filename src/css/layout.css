@@ -1,3 +1,8 @@
+.main-wrapper {
+	max-width: 1504px;
+	margin: 0 auto;
+}
+
 .nav-wrapper {
 	width: 80px;
 }
@@ -10,9 +15,6 @@
 	width: 100%;
 }
 
-.content-wrapper {
-	width: 100%;
-}
 
 @media screen and (min-width: 720px) {
 	.content-container {
