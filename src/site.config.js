@@ -3,7 +3,7 @@ import textlang from './config/textlang.js';
 
 const config = {
 	title: 'Saweicore Stu',
-	description: '幣圈新知 | 程式開發 | 網站架設 | 各項知識集散地',
+	description: ' 程式開發 | 網站架設 | 幣圈科普 | 各項知識集散地',
 	author: {
 		name: 'Saweima',
 		description: '邊緣工作者',
