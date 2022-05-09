@@ -1,0 +1,3 @@
+<div>
+    AuthorWidget
+</div>
