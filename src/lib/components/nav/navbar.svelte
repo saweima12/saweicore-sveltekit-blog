@@ -4,7 +4,7 @@
 </script>
 
 <nav class="flex items-center h-14 p-2 top-navbar">
-	<a class="flex site-title ml-2" href="/">
+	<a class="flex ml-2 raleway-font site-title" href="/">
 		<div class="logo">
 			<img src="/logo.png" alt={$siteConfig.title} />
 		</div>
@@ -17,3 +17,12 @@
 
 	<Hamburger />
 </nav>
+
+<style>
+
+.top-navbar .logo {
+	width: 35px;
+	height: 35px;
+}
+
+</style>

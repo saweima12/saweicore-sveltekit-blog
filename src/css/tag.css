@@ -1,16 +1,14 @@
-.tag-list thead tr {
-    background-color: #E9EFF5;
-    border: 1px solid #bbb;
+.tag-list .tag-list-head {
+    font-weight: 600;
+    background-color: #E9EEF5
 }
 
-.tag-list tbody tr {
-    border: 1px solid #bbb;
+.tag-list-item {
+    font-size: 1.1rem;
 }
 
-.tag-list tbody tr:nth-child(odd) {
+.tag-list .tag-list-item:nth-child(even) {
     background-color: #FAFAFA;
-}
-
-.tag-list .tag-name {
-    text-align: lef;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }

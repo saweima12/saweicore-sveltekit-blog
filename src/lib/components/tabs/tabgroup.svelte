@@ -17,3 +17,22 @@
 
 
 <slot />
+
+<style>
+.tab-btn-list {
+    color: #757575;
+	font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+}
+
+.tab-btn-list .tab-btn-item:hover {
+	color: #333;
+	border-bottom: 2px solid #aaa;
+}
+
+.tab-btn-list .active, 
+.tab-btn-list .active:hover {
+	color: #000;
+	border-bottom: 2px solid #000;
+}
+</style>

@@ -27,3 +27,9 @@
 		<div class="spacer" />
 	</div>
 </nav>
+
+<style>
+.side-navbar .logo {
+	width: 36px;
+}
+</style>

@@ -1,20 +1,6 @@
-.main-wrapper {
-	max-width: 1504px;
-	margin: 0 auto;
-}
-
-.nav-wrapper {
-	width: 80px;
-}
-
-.site-footer {
-	padding: 5rem 0 2.5rem;
-}
-
 .content-container {
 	width: 100%;
 }
-
 
 @media screen and (min-width: 720px) {
 	.content-container {

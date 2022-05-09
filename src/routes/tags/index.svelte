@@ -36,10 +36,10 @@
 	<title>{$siteConfig.title} - {$siteConfig.description}</title>
 </svelte:head>
 
-<div class="index-page ">
+<div class="tag-page">
 	<div class="list-wrapper">
 		<TabGroup group={tabGroup} /> 
-        <div class="tag-list">
+        <div class="tag-list-wrapper">
             <Taglist tags={tagList} />
         </div>
 	</div>

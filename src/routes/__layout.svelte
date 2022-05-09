@@ -58,3 +58,16 @@
 <ScreenMask />
 
 <Navmenu />
+
+<style>
+.main-wrapper {
+	max-width: 1504px;
+	margin: 0 auto;
+}
+
+
+.nav-wrapper {
+	width: 80px;
+}
+
+</style>

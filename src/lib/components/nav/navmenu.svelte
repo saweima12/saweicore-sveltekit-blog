@@ -52,3 +52,25 @@
 		</ul>
 	</div>
 </div>
+
+<style>
+
+/* navmenu */
+.navmenu {
+	background-color: #fff;
+}
+
+.navmenu .author {
+	border-bottom: 1px solid #bbb;
+}
+
+.navmenu .author img {
+	width: 5rem;
+	border-radius: 1rem;
+}
+
+.navmenu .nav-item {
+	color: #111;
+	font-weight: 500;
+}
+</style>
