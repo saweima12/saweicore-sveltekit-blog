@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { siteConfig } from '$lib/store';
 	import { pageRoute, getYYYYMMDD } from '$lib/client';
 	import type { TagItem } from '$lib/types';
@@ -9,23 +8,23 @@
 </script>
 
 <div class="mt-5 mx-5">
-	<table class="w-full text-center tag-table border">
-		<thead>
-			<tr class="h-10 ">
-				<th class="tag-name">{textlang.tagName}</th>
-				<th class="hidden lg:table-cell tag-updated">{textlang.tagUpdated}</th>
-				<th class="tag-count">{textlang.tagCount}</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each tags as tag}
-			<tr class="h-10 cursor-pointer" on:click={() => goto(pageRoute.getTagPath(tag.name))}>
-				<td class="tag-name">{tag.name} </td>
-				<td class="hidden lg:table-cell tag-updated">{getYYYYMMDD(tag.updated)}</td>
-				<td class="tag-count">{tag.count}</td>
-			</tr>
-			{/each}
-		</tbody>
+	<ul class="w-full text-center tag-list">
+		<li class="py-2 tag-list-head">
+			<div class="flex flex-row justify-around">
+				<div class="w-60 tag-name">{textlang.tagName}</div>
+				<div class="flex-1 hidden lg:flex justify-center tag-updated">{textlang.tagUpdated}</div>
+				<div class="flex-1 tag-count">{textlang.tagCount}</div>
+			</div>
+		</li>
+		{#each tags as tag}
+		<li class="py-3 tag-list-item">
+			<a class="flex flex-row justify-around" href={pageRoute.getTagPath(tag.name)}>
+				<div class="w-60 tag-name">{tag.name}</div>
+				<div class="flex-1 hidden lg:flex justify-center tag-updated">{getYYYYMMDD(tag.updated)}</div>
+				<div class="flex-1 tag-count">{tag.count}</div>
+			</a>
+		</li>
+		{/each}
 
-	</table>
+	</ul>
 </div>

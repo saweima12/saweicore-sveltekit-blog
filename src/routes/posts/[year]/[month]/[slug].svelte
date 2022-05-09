@@ -33,9 +33,9 @@
 <div class="my-10 post-page wrapper">
 	<div class="post-container">
 		<header class="mx-6 mb-4">
-			<div class="font-bold letter-title-font post-title">
+			<h1 class="font-bold letter-title-font post-title">
 				{metadata.title}
-			</div>
+			</h1>
 			<div class="flex flex-row items-center mt-2 created-date">
 				<div class="icon-base w-5"><CalenderIcon /></div>
 				<time class="flex self-center ml-2">{getYYYYMMDD(metadata.created)}</time>
