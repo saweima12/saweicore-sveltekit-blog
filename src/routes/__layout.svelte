@@ -65,7 +65,6 @@
 	margin: 0 auto;
 }
 
-
 .nav-wrapper {
 	width: 80px;
 }
