@@ -2,6 +2,7 @@
 	width: 100%;
 }
 
+
 @media screen and (min-width: 720px) {
 	.content-container {
 		width: 720px;
@@ -11,12 +12,17 @@
 		width: 240px;
 	}
 	.drawer-container {
+		width: 240px;
 		border-left: 1px solid #ddd;
 	}
 }
 
 @media screen and (min-width: 1280px) {
-	.drawer-wrapper {
+	.drawer-wrapper{
+		width: 400px;
+	}
+
+	.drawer-container {
 		width: 400px;
 	}
 }
