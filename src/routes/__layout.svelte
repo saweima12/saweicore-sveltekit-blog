@@ -16,6 +16,7 @@
 	import '../app.css';
 	import '../theme.css';
 	import ScreenMask from '$lib/components/screenmask.svelte';
+	import SearchBox from '$lib/components/serach/searchbox.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
 	import SideNav from '$lib/components/nav/sidenav.svelte';
@@ -58,6 +59,7 @@
 <ScreenMask />
 
 <Navmenu />
+<SearchBox />
 
 <style>
 .main-wrapper {

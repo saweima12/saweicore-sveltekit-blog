@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { isNavMenuShow, isMaskShow } from '$lib/store';
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { isNavMenuShow, isSearBoxShow, isMaskShow } from '$lib/store';
+	import { beforeNavigate } from '$app/navigation';
 
 	let isVisible = false;
 	isMaskShow.subscribe((value) => (isVisible = value));
 
 	const closeMaskHandle = () => {
 		isNavMenuShow.set(false);
+		isSearBoxShow.set(false);
 		setTimeout(() => isMaskShow.set(false), 300);
 	};
 
