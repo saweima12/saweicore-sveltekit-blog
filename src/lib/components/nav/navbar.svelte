@@ -1,6 +1,8 @@
 <script>
 	import { siteConfig } from '$lib/store';
 	import Hamburger from '$lib/components/nav/hamburger.svelte';
+	import SearchWidget from '$lib/components/widgets/searchwidget.svelte';
+
 </script>
 
 <nav class="flex items-center h-14 p-2 top-navbar">
@@ -8,12 +10,17 @@
 		<div class="logo">
 			<img src="/logo.png" alt={$siteConfig.title} />
 		</div>
-
-		<div class="flex self-center ml-2 name">
-			{$siteConfig.title}
-		</div>
 	</a>
+
 	<div class="grow spacer" />
+
+	<div class="w-40 search-box">
+		<SearchWidget />
+	</div>
+	
+	<div class="grow spacer" />
+
+
 
 	<Hamburger />
 </nav>
@@ -25,4 +32,14 @@
 	height: 35px;
 }
 
+.top-navbar .search-box{
+	width: 10rem;
+}
+
+@media screen and (min-width: 640px) {
+	.top-navbar .search-box{
+		width: 14rem;
+	}
+
+}
 </style>
