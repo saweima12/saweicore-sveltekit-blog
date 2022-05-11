@@ -5,7 +5,7 @@
 
 @media screen and (min-width: 720px) {
 	.content-container {
-		max-width: 720px;
+		width: 720px;
 	}
 
 	.drawer-wrapper {
