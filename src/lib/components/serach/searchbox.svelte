@@ -3,10 +3,13 @@ import { onMount } from 'svelte';
 import { isSearBoxShow, isMaskShow } from '$lib/store';
 import SearchIcon from '$lib/icons/search.svelte';
 import TypeHead from '$lib/components/serach/typehead.svelte';
+import Typehead from '$lib/components/serach/typehead.svelte';
+import { navigating } from '$app/stores';
 
 let searchText: string;
 let searchObj: HTMLElement;
 let isVisible = false;
+let hits: Array<any> = [];
 
 onMount(() => {
     isSearBoxShow.subscribe(value => {
@@ -14,14 +17,15 @@ onMount(() => {
         $isMaskShow = value;
 
         if(isVisible) {
-
+            searchText = "";
             setTimeout(() => searchObj?.focus(), 100);
         }
     });
 })
 
 const comboHandle = (e: KeyboardEvent) => {
-    const platform = navigator?.userAgentData?.platform || navigator?.platform; 
+    const _navigator : any = navigator;
+    const platform = _navigator?.userAgentData?.platform || navigator?.platform; 
     if (e.key === '/' && (platform == 'MacIntel' ? e.metaKey : e.ctrlKey)) {
         e.preventDefault();
         $isSearBoxShow = !isVisible;
@@ -29,8 +33,14 @@ const comboHandle = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && isVisible) {
         $isSearBoxShow = false;
     }
-
 }  
+
+const searchHandle = (e: Event) => {
+    if (searchText.length < 2 ) 
+        return;
+    
+    
+}
 </script>
 
 <svelte:window on:keydown={(e) => comboHandle(e)} />
@@ -44,12 +54,13 @@ const comboHandle = (e: KeyboardEvent) => {
                 class="h-full w-full" 
                 bind:this={searchObj}
                 bind:value={searchText}
+                on:input={searchHandle}
             >
         </form>
     </div>
     <div class="typehead-wrapper">
-        <div class="test">
-
+        <div class="typehead-container">
+            <Typehead {hits}/>
         </div>
     </div>
 </div>
