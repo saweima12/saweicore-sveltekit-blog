@@ -1,17 +1,24 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 import { isSearBoxShow, isMaskShow } from '$lib/store';
 import SearchIcon from '$lib/icons/search.svelte';
 import TypeHead from '$lib/components/serach/typehead.svelte';
 
+let searchText: string;
+let searchObj: HTMLElement;
 let isVisible = false;
-isSearBoxShow.subscribe(value => {
-    isVisible = value;
-    $isMaskShow = value;
-});
 
-const closeHandle = () => {
-    isVisible = false;
-}
+onMount(() => {
+    isSearBoxShow.subscribe(value => {
+        isVisible = value;
+        $isMaskShow = value;
+
+        if(isVisible) {
+
+            setTimeout(() => searchObj?.focus(), 100);
+        }
+    });
+})
 
 const comboHandle = (e: KeyboardEvent) => {
     const platform = navigator?.userAgentData?.platform || navigator?.platform; 
@@ -19,6 +26,10 @@ const comboHandle = (e: KeyboardEvent) => {
         e.preventDefault();
         $isSearBoxShow = !isVisible;
     }
+    if (e.key === 'Escape' && isVisible) {
+        $isSearBoxShow = false;
+    }
+
 }  
 </script>
 
@@ -28,7 +39,12 @@ const comboHandle = (e: KeyboardEvent) => {
     <div class="search-bar">
         <form class="flex items-center p-5 h-full" role="search">
             <div class="icon-base w-8 mr-4"><SearchIcon /></div>
-            <input id="search-input" type="text"  class="h-full w-full">
+            <input id="search-input" 
+                type="text" 
+                class="h-full w-full" 
+                bind:this={searchObj}
+                bind:value={searchText}
+            >
         </form>
     </div>
     <div class="typehead-wrapper">
@@ -41,7 +57,7 @@ const comboHandle = (e: KeyboardEvent) => {
 
 <style>
 .search-box {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -57,7 +73,7 @@ const comboHandle = (e: KeyboardEvent) => {
 }
 
 input[type="text"] {
-    border: none;
+    background-color: transparent;
     outline: none;
     font-size:24px;
 }
