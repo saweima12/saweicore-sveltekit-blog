@@ -63,7 +63,8 @@
 </svelte:head>
 
 <div class="index-page">
-	<div class="list-wrapper">
+	
+	<div class="mt-8 lg:mt-10 list-wrapper">
 		<TabGroup group={tabGroup}></TabGroup>
 		<div class="post-list">
 			<PostList {pageNum} {maxPage} posts={pageList} callback={() => fetchMorePost()} />

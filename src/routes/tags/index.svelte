@@ -37,7 +37,7 @@
 </svelte:head>
 
 <div class="tag-page">
-	<div class="list-wrapper">
+	<div class="mt-10 list-wrapper">
 		<TabGroup group={tabGroup} /> 
         <div class="tag-list-wrapper">
             <Taglist tags={tagList} />
