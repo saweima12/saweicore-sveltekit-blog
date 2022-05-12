@@ -1,11 +1,18 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+import { siteConfig } from '$lib/store';
 import { isSearBoxShow, isMaskShow } from '$lib/store';
-import SearchIcon from '$lib/icons/search.svelte';
-import TypeHead from '$lib/components/serach/typehead.svelte';
-import Typehead from '$lib/components/serach/typehead.svelte';
-import { navigating } from '$app/stores';
+import type { SearchClient } from 'algoliasearch';
+import algoliasearch from 'algoliasearch';
 
+import SearchIcon from '$lib/icons/search.svelte';
+import Typehead from '$lib/components/serach/typehead.svelte';
+
+const appKey = atob($siteConfig.search.appKey);
+const apiKey = atob($siteConfig.search.apiKey);
+const appIndex = $siteConfig.search.index;
+
+let client: SearchClient;
 let searchText: string;
 let searchObj: HTMLElement;
 let isVisible = false;
@@ -18,9 +25,12 @@ onMount(() => {
 
         if(isVisible) {
             searchText = "";
+            hits = [];
             setTimeout(() => searchObj?.focus(), 100);
         }
     });
+
+    client = algoliasearch(appKey, apiKey);
 })
 
 const comboHandle = (e: KeyboardEvent) => {
@@ -35,11 +45,16 @@ const comboHandle = (e: KeyboardEvent) => {
     }
 }  
 
-const searchHandle = (e: Event) => {
+const searchHandle = async (e: Event) => {
     if (searchText.length < 2 ) 
         return;
     
-    
+    // const index = client.initIndex(appIndex);
+    // let response = await index.search(searchText)
+    // test data
+    const response = await fetch("/api/test/search.json");
+    let data = await response.json();
+    hits = data.hits;
 }
 </script>
 
