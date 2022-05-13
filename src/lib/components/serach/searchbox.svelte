@@ -48,12 +48,13 @@ const comboHandle = (e: KeyboardEvent) => {
 const searchHandle = async (e: Event) => {
     if (searchText.length < 2 ) 
         return;
-    
-    // const index = client.initIndex(appIndex);
-    // let response = await index.search(searchText)
+
+    const index = client.initIndex(appIndex);
+    let response = await index.search(searchText)
+    let data = response;
     // test data
-    const response = await fetch("/api/test/search.json");
-    let data = await response.json();
+    // const response = await fetch("/api/test/search.json");
+    // let data = await response.json();
     hits = data.hits;
 }
 </script>
@@ -75,7 +76,7 @@ const searchHandle = async (e: Event) => {
     </div>
     <div class="typehead-wrapper">
         <div class="typehead-container">
-            <Typehead {hits}/>
+            <Typehead list={hits}/>
         </div>
     </div>
 </div>

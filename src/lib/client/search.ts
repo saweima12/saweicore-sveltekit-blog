@@ -1,22 +1,24 @@
+  const checkMatch = (fieldId:string, matchObj:any , callback: Function): boolean => {
+    if (Array.isArray(matchObj))
+      return matchObj.some((item: any) => checkMatch(fieldId, item, callback));
+
+    if (matchObj.hasOwnProperty("matchLevel")) {
+      if (matchObj.matchLevel == "full") {
+        callback({ ...matchObj, fieldId: fieldId});
+        return true;
+      }
+    }
+    return false;
+  }
+
 export const findMatchFull = (_highlightField: Record<string, any>) => {
   let result: Record<string, any> = {};
   // deinfe check method.
-  const checkMatch = (fieldId:string, matchObj:any ) => {
-    if (Array.isArray(matchObj))
-      matchObj.forEach((item) => checkMatch(fieldId, matchObj));
-
-    if (matchObj.hasOwnProperty("matchLevel")) {
-      if (matchObj.matchlevel == "full") {
-        return matchObj;
-      }
-    }
-    return null;
-  }
-
-  Object.entries(_highlightField).map( ([matchField, matchObj]) => {
-    if (matchObj.matchLevel == 'full')
-      result = { ...matchObj, matchField: matchField }
+  Object.entries(_highlightField).some(([matchField, matchObj]) => {
+    return checkMatch(matchField, matchObj, (value: any) => result = value);
   });
 
-  return result;
-}
+  console.log(result);
+
+  return result || {};
+};
