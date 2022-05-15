@@ -3,12 +3,14 @@
 	import ArchiveIcon from '$lib/icons/archive.svelte';
 	import BookIcon from '$lib/icons/book.svelte';
 	import GithubIcon from '$lib/icons/github.svelte';
+	import ThemModeIcon from '$lib/icons/thememode.svelte';
 
 	const iconMap: Record<string, any> = {
 		home: HomeIcon,
 		journal: ArchiveIcon,
 		about: BookIcon,
-		github: GithubIcon
+		github: GithubIcon,
+		theme: ThemModeIcon
 	};
 	export let key: string;
 </script>
