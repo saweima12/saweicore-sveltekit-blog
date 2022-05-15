@@ -23,9 +23,17 @@
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
 
-	import { isNavMenuShow } from '$lib/store';
-	let isMenuOpen = false;
+	import { onMount } from 'svelte';
+	import { isNavMenuShow, themeMode } from '$lib/store';
+	let isMenuOpen = false;	
 	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
+	
+	onMount(() => {
+		// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		// 	themeMode.set("dark")
+		// }
+		themeMode.subscribe(value => document.body.className = value);
+	})
 </script>
 
 <div
