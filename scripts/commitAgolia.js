@@ -33,7 +33,6 @@ const result = pages.map(page => {
     title: metadata.title,
     tags: metadata.tags,
     headings: headings,
-    excerpt: metadata.excerpt,
     permalink: getPostLink(page),
     objectID: page.indexPath
   };
