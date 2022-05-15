@@ -15,12 +15,28 @@ body {
 	--border: rgba(0, 0, 0, 0.15);
 	--navitem: #757575;
 	--navitem-hover: #333;
-	--navitem-active: 000;
+	--navitem-active: #000;
+	--tagitem-bg: #e8e8e8;
+	--mask-bg: #555;
+	--odd-bg: #E9EFF5;
+	--even-bg: #d2e7fa;
+	--second-bg: #FAFAFA;
+	--text: #292929;
 }
 
 .dark {
 	background-color: #282c34;
-	--tg-navbar: #2f333d;
+	--navbar: #2f333d;
+	--border: rgba(175,175,175,0.15);
+	--navitem: #757575;
+	--navitem-hover: #e8e8e8;
+	--navitem-active: #fff;
+	--tagitem-bg: #e8e8e8;
+	--mask-bg: #555;
+	--odd-bg: #E9EFF5;
+	--even-bg: #d2e7fa;
+	--second-bg: #FAFAFA;
+	--text: #292929;
 }
 
 
@@ -49,6 +65,6 @@ body {
 }
 
 .screenmask {
-	background-color: #555;
+	background-color: var(--mask-bg);
 	opacity: 0.6;
 }

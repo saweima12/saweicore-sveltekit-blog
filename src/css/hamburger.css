@@ -18,7 +18,7 @@
 .menu-button::before,
 .menu-button::after {
 	display: block;
-	background-color: #333;
+	background-color: var(--navitem-hover);
 	position: absolute;
 	height: 4px;
 	width: 25px;
@@ -42,7 +42,7 @@
 }
 
 .toggle .menu-button-container .menu-button {
-	background: rgba(255, 255, 255, 0);
+	background: transparent;
 }
 
 .toggle .menu-button-container .menu-button::after {

@@ -1,5 +1,6 @@
 .post-list .post-item {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	color: var(--text);
+	border-bottom: 1px solid var(--border);
 }
 
 .post-list .post-title {
@@ -12,7 +13,7 @@
 }
 
 .post-list .post-item {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	border-bottom: 1px solid var(--border);
 }
 
 /* 
@@ -33,24 +34,24 @@
 }
 
 .post-tag-list .post-tag-item {
-	background-color: #e8e8e8;
+	background-color: var(--tagitem-bg);
 	border-radius: 0.8rem;
 }
 
 /* Journel */
 .journel-list .group-name {
 	font-size: 1.8rem;
-	color: #333;
-	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+	color: var(--navitem-hover);
+	border-bottom: 2px solid var(--border)
 }
 
 .journel-list .page-item:nth-child(odd) {
-	background-color: #E9EFF5;
+	background-color: var(--odd-bg);
 }
 
 
 .journel-list .page-item:nth-child(even) {
-	background-color: #d2e7fa;
+	background-color: var(--even-bg);
 }
 
 /* hit-list content */

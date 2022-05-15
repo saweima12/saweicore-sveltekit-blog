@@ -20,19 +20,19 @@
 
 <style>
 .tab-btn-list {
-    color: #757575;
+    color: var(--navitem);
 	font-size: 14px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+    border-bottom: 1px solid var(--border);
 }
 
 .tab-btn-list .tab-btn-item:hover {
-	color: #333;
+	color: var(--navitem-hover);
 	border-bottom: 2px solid #aaa;
 }
 
 .tab-btn-list .active, 
 .tab-btn-list .active:hover {
-	color: #000;
+	color: var(--navitem-active);
 	border-bottom: 2px solid #000;
 }
 </style>

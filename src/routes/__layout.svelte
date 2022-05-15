@@ -24,14 +24,15 @@
 	import Drawer from '$lib/components/drawer/drawer.svelte';
 
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { isNavMenuShow, themeMode } from '$lib/store';
 	let isMenuOpen = false;	
 	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
 	
 	onMount(() => {
-		// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		// 	themeMode.set("dark")
-		// }
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			// themeMode.set("dark")
+		}
 		themeMode.subscribe(value => document.body.className = value);
 	})
 </script>
@@ -76,7 +77,7 @@
 }
 
 .nav-wrapper {
-	width: 80px;
+	min-width: 80px;
 }
 
 </style>

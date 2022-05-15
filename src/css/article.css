@@ -1,6 +1,6 @@
 /* PostPage  */
 .post-page {
-	color: #292929;
+	color: var(--text);
 }
 
 .post-page .post-title {

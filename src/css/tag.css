@@ -1,6 +1,6 @@
 .tag-list .tag-list-head {
     font-weight: 600;
-    background-color: #E9EEF5
+    background-color: #E9EEF5;
 }
 
 .tag-list-item {
@@ -8,7 +8,7 @@
 }
 
 .tag-list .tag-list-item:nth-child(even) {
-    background-color: #FAFAFA;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    background-color: var(--second-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
