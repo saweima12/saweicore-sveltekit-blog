@@ -13,6 +13,7 @@ const apiKey = atob($siteConfig.search.apiKey);
 const appIndex = $siteConfig.search.index;
 
 let client: SearchClient;
+let preSearchText: string;
 let searchText: string;
 let searchObj: HTMLElement;
 let isVisible = false;
@@ -45,16 +46,26 @@ const comboHandle = (e: KeyboardEvent) => {
     }
 }  
 
-const searchHandle = async (e: Event) => {
+const searchHandle = async (e: Record<string, any> | any) => {
     if (searchText.length < 2 ) 
         return;
+
+    if (preSearchText == searchText)
+        return;
+
+    // if (e.key.length > 1) {
+    //     console.log(e.key);
+    //     return;
+    // }
 
     const index = client.initIndex(appIndex);
     let response = await index.search(searchText)
     let data = response;
-    // test data
+    // test data_highlightResult
     // const response = await fetch("/api/test/search.json");
     // let data = await response.json();
+
+    preSearchText = searchText;
     hits = data.hits;
 }
 </script>
@@ -63,10 +74,11 @@ const searchHandle = async (e: Event) => {
 
 <div class="search-box" class:hidden={!isVisible}>
     <div class="search-bar">
-        <form class="flex items-center p-5 h-full" role="search">
+        <form class="flex items-center p-5 h-full" autocomplete="off" role="search">
             <div class="icon-base w-8 mr-4"><SearchIcon /></div>
             <input id="search-input" 
                 type="text" 
+                autocomplete="off" 
                 class="h-full w-full" 
                 bind:this={searchObj}
                 bind:value={searchText}
@@ -84,7 +96,7 @@ const searchHandle = async (e: Event) => {
 
 <style>
 .search-box {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

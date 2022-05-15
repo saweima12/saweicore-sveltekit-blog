@@ -1,24 +1,44 @@
-  const checkMatch = (fieldId:string, matchObj:any , callback: Function): boolean => {
-    if (Array.isArray(matchObj))
-      return matchObj.some((item: any) => checkMatch(fieldId, item, callback));
+import type { MatchItem } from '$lib/types'
 
-    if (matchObj.hasOwnProperty("matchLevel")) {
-      if (matchObj.matchLevel == "full") {
-        callback({ ...matchObj, fieldId: fieldId});
-        return true;
-      }
+const checkMatch = (fieldId:string, matchObj:any , callback: Function): boolean => {
+  if (Array.isArray(matchObj))
+    return matchObj.some((item: any) => checkMatch(fieldId, item, callback));
+
+  if (matchObj.hasOwnProperty("matchLevel")) {
+    if (matchObj.matchLevel == "full") {
+      callback({ attach: matchObj, field: fieldId});
+      return true;
     }
-    return false;
+  } else {
+    Object.values(matchObj).some((item: any) => checkMatch(fieldId, item, callback));
   }
+  return false;
+}
 
-export const findMatchFull = (_highlightField: Record<string, any>) => {
-  let result: Record<string, any> = {};
+export const findMatchFull = (hit: Record<string, any>): MatchItem => {
+  let result: MatchItem = {};
   // deinfe check method.
-  Object.entries(_highlightField).some(([matchField, matchObj]) => {
+  Object.entries(hit._highlightResult).some(([matchField, matchObj]) => {
     return checkMatch(matchField, matchObj, (value: any) => result = value);
   });
 
-  console.log(result);
 
-  return result || {};
+  if (result.field) {
+    result.link = hit.permalink;
+
+    const htmltagPtn = /(&nbsp;|<([^>]+)>)/ig
+    // process attach to value
+    if (result.field == "tags")
+      result.value = hit.tags;
+
+    if (result.field == "headings") {
+      const text = result.attach.value.replace(htmltagPtn, "");
+      result.link = `${hit.permalink}#${text}`;
+    }
+
+    result.value = result.value || result.attach.value;
+    return result
+  }
+
+  return {};
 };
