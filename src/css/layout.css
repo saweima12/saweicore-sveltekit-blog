@@ -13,7 +13,7 @@
 	}
 	.drawer-container {
 		width: 240px;
-		border-left: 1px solid #ddd;
+		border-left: 1px solid var(--navbar);
 	}
 
 }

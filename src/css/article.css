@@ -8,10 +8,11 @@
 	line-height: 40px;
 }
 
-.post-page .content {
+.post-page .content  {
 	font-family: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
 	font-style: normal;
 }
+
 
 .post-page .content > p,
 .post-page .content > ul,
@@ -22,13 +23,40 @@
 .post-page .content > tr,
 .post-page .content > td {
 	letter-spacing: -0.003em;
+	line-height: 1.7em;
+	min-height: 1.7em;
 	font-size: 18px;
 	margin: 0 1.2rem;
 }
 
-.post-page .content > p {
-	line-height: 28px;
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+	margin: 0 1.2rem;
+	font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	letter-spacing: -0.003em;
+	line-height: 1.7rem;
 	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.content > h1 { font-size: 32px;}
+.content > h2 { font-size: 30px;}
+.content > h3 { font-size: 28px;}
+.content > h4 { font-size: 26px;}
+.content > h5 { font-size: 24px;}
+.content > h6 { font-size: 22px;}
+
+.content hr {
+	margin: 2rem auto;
+}
+
+.post-page .content > p {
+	line-height: 1.7em;
+	margin-bottom: 1.8rem;
 }
 
 .post-page .content li {
@@ -41,12 +69,19 @@
 
 .post-page .content ul {
 	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .post-page .content ul li {
 	list-style-type: disc;
 	margin: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
+
+.content ol li {
+	list-style: decimal;
+	margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
 
 @media screen and (min-width: 640px) {
 }

@@ -5,6 +5,25 @@
 @import './css/tag.css';
 @import './css/article.css';
 
+body {
+	transition: all .3s;
+}
+
+.light {
+	background-color: #fff;
+	--navbar: #fff;
+	--border: rgba(0, 0, 0, 0.15);
+	--navitem: #757575;
+	--navitem-hover: #333;
+	--navitem-active: 000;
+}
+
+.dark {
+	background-color: #282c34;
+	--tg-navbar: #2f333d;
+}
+
+
 .word-font {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
 		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -30,6 +49,6 @@
 }
 
 .screenmask {
-	background-color: #000;
+	background-color: #555;
 	opacity: 0.6;
 }
