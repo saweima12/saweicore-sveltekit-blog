@@ -19,9 +19,6 @@
 	</div>
 	
 	<div class="grow spacer" />
-
-
-
 	<Hamburger />
 </nav>
 

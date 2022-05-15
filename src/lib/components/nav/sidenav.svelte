@@ -15,7 +15,7 @@
 			</a>
 		</div>
 
-		<div class="nav-list h-96">
+		<div class="nav-list h-100">
 			{#each navList as navItem}
 				<a class="nav-item" class:active={navItem.link == $page.url.pathname} href={navItem.link}>
 					<div class="py-8 flex justify-center">
@@ -24,12 +24,19 @@
 				</a>
 			{/each}
 		</div>
-		<div class="spacer" />
+
+		<div class="w-6 pb-8">
+			<NavIcon key="theme" />
+		</div>
 	</div>
 </nav>
 
 <style>
 .side-navbar .logo {
 	width: 36px;
+}
+
+.nav-item {
+	transition: all .3s;
 }
 </style>

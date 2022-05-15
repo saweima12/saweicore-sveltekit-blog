@@ -79,3 +79,12 @@
 		{/if}
 	</main>
 </section>
+
+<style>
+/* PostList */
+.post-item .thumbnail-pic {
+	width: 4rem;
+	height: 4rem;
+}
+</style>
+

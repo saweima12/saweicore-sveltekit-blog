@@ -22,7 +22,7 @@
 				<img src={author.avatar} alt="saweima" />
 				<div class="flex flex-col items-center justify-center ml-4 avatar-info">
 					<div class="word-font font-bold text-lg">{author.name}</div>
-					<div class="word-font">{author.description}</div>
+					<div class="word-font">{author.summary}</div>
 				</div>
 			</div>
 		</div>

@@ -5,6 +5,7 @@
 	export let groups: Array<GroupListPair<PageMeta>>;
 </script>
 
+<ol class="flex flex-col journel-list">
 {#each groups as group}
 	<li class="mb-8 group">
 		<h1 class="text-2xl letter-title-font group-name">{group.name}</h1>
@@ -24,4 +25,26 @@
 		</ul>
 	</li>
 {/each}
+</ol>
+
+<style>
+	.journel-list {
+		margin: 0 1rem;
+	}
+
+	.journel-list .page-list {
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+	}
+
+	.journel-list .page-item {
+		padding: .5rem 1rem;
+		border-radius: .2rem;
+	}
+
+	.journel-list .page-item a:hover {
+		padding-left: 1rem;
+	}
+
+</style>
 

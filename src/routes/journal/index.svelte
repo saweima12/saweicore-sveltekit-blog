@@ -32,8 +32,7 @@
 
 <div class="mt-8 wrapper journal-page">
 	<div class="journel-container pt-2">
-		<ol class="flex flex-col journel-list">
+		
 			<JournalList {groups} />
-		</ol>
 	</div>
 </div>
