@@ -6,7 +6,8 @@ const config = {
 	description: ' 程式開發 | 網站架設 | 幣圈科普 | 各項知識集散地',
 	author: {
 		name: 'Saweima',
-		description: '邊緣工作者',
+    summary: '邊緣工作者',
+		description: '邊緣工作者 | 幣圈新人 | 記錄自己所見所聞 ',
 		avatar: 'https://avatars.githubusercontent.com/u/62002212'
 	},
 	pagination: {
