@@ -30,6 +30,7 @@
 <style>
 	.journel-list {
 		margin: 0 1rem;
+		color: var(--text);
 	}
 
 	.journel-list .page-list {

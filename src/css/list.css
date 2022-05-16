@@ -16,6 +16,17 @@
 	border-bottom: 1px solid var(--border);
 }
 
+.post-item .summary {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+
+/* PostList */
+.post-item .thumbnail-pic {
+	width: 4rem;
+	height: 4rem;
+}
+
 /* 
     sm: 640px  
     md: 768px 
@@ -35,7 +46,13 @@
 
 .post-tag-list .post-tag-item {
 	background-color: var(--tagitem-bg);
+	padding: 0.125rem 0.75rem;
+	margin-right: 0.5rem;
 	border-radius: 0.8rem;
+}
+
+.post-tag-list .post-tag-item:hover {
+	background-color: var(--tagitem-hover);
 }
 
 /* Journel */

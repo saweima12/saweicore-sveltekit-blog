@@ -42,11 +42,11 @@
 				<div class="flex items-center">
 					<div class="flex post-tag-list">
 						{#if tags}
-							<div class="px-3 py-0.5 flex self-center mr-2 post-tag-item">
+							<div class="flex self-center mr-2 post-tag-item">
 								<a href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
 							</div>
 							{#each tags.slice(1, 5) as tag}
-								<div class="hidden px-3 py-0.5 mr-2  sm:flex self-center post-tag-item">
+								<div class="hidden sm:flex self-center post-tag-item">
 									<a href={pageRoute.getTagPath(tag)}>{tag}</a>
 								</div>
 							{/each}
@@ -71,7 +71,7 @@
 				<a href={pageRoute.getPostPath(post)}>
 					<img
 						src={metadata.thumbnail}
-						class="w-16 h-16 md:w-28 md:h-28 object-cover thumbnail-pic"
+						class="object-cover thumbnail-pic"
 						alt="test"
 					/>
 				</a>
@@ -79,12 +79,3 @@
 		{/if}
 	</main>
 </section>
-
-<style>
-/* PostList */
-.post-item .thumbnail-pic {
-	width: 4rem;
-	height: 4rem;
-}
-</style>
-

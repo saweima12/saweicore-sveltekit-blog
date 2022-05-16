@@ -3,6 +3,7 @@
 	import { siteConfig } from '$lib/store';
 	import { dataAPI } from '$lib/client';
 
+
 	export const load: Load = async ({ fetch }) => {
 		let apiUrl = dataAPI.getConfig();
 		let response = await fetch(apiUrl);
@@ -15,6 +16,7 @@
 <script lang="ts">
 	import '../app.css';
 	import '../theme.css';
+	import PageTransition from '$lib/components/pagetransition.svelte';
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import SearchBox from '$lib/components/serach/searchbox.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
@@ -23,17 +25,24 @@
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
 
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import { isNavMenuShow, themeMode } from '$lib/store';
 	let isMenuOpen = false;	
 	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
 	
 	onMount(() => {
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			// themeMode.set("dark")
+		let _themeMode = localStorage.getItem("mode");
+		themeMode.subscribe(value => {
+			localStorage.setItem("mode", value);
+			document.body.className = value;
+		});
+
+		if (_themeMode) { $themeMode = _themeMode}
+
+		if (!_themeMode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			themeMode.set("dark")
 		}
-		themeMode.subscribe(value => document.body.className = value);
 	})
 </script>
 
@@ -53,7 +62,9 @@
 
 		<div class="pt-14 lg:pt-0 flex flex-col content-wrapper">
 			<main class="mx-auto min-h-screen content-container">
-				<slot />
+				<PageTransition refresh={$page.url.pathname}>
+					<slot />
+				</PageTransition>
 			</main>
 			<Footer />
 		</div>

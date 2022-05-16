@@ -11,12 +11,14 @@ body {
 
 .light {
 	background-color: #fff;
+	--bg-color: #fff;
 	--navbar: #fff;
 	--border: rgba(0, 0, 0, 0.15);
 	--navitem: #757575;
 	--navitem-hover: #333;
 	--navitem-active: #000;
 	--tagitem-bg: #e8e8e8;
+	--tagitem-hover: #6c6c6c;
 	--mask-bg: #555;
 	--odd-bg: #E9EFF5;
 	--even-bg: #d2e7fa;
@@ -25,18 +27,21 @@ body {
 }
 
 .dark {
-	background-color: #282c34;
+	background-color: #1e1e22;
+	--bg-color: #1e1e22;
+
 	--navbar: #2f333d;
 	--border: rgba(175,175,175,0.15);
 	--navitem: #757575;
 	--navitem-hover: #e8e8e8;
 	--navitem-active: #fff;
-	--tagitem-bg: #e8e8e8;
+	--tagitem-bg: #525252;
+	--tagitem-hover: #6c6c6c;
 	--mask-bg: #555;
-	--odd-bg: #E9EFF5;
-	--even-bg: #d2e7fa;
-	--second-bg: #FAFAFA;
-	--text: #292929;
+	--odd-bg: hsla(0,0%,58.8%,.1);
+	--even-bg: #24272b;
+	--second-bg: #1e1e22;
+	--text: #9b9baa;
 }
 
 

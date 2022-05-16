@@ -4,6 +4,7 @@
 	background-color: var(--navbar);
 	border-bottom: 1px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px -2px 10px;
+	transition: all .3s;
 }
 
 
@@ -12,18 +13,28 @@
 	background-color: var(--navbar);
 	border-right: 1px solid ;
 	border-color: var(--border);
+	transition: all .3s;
 }
 
 .side-navbar .nav-item {
 	width: 36px;
 	color: var(--navitem);
+	transition: all .3s;
 }
 
 .side-navbar .nav-item:hover {
-	color: var(--navitem-hover)
+	color: var(--navitem-hover);
 }
 
-.side-navbar .nav-item.active {
+
+.nav-item.active {
 	color: var(--navitem-active);
 	font-weight: 600;
+}
+
+
+@media screen and (min-width: 1504px) {
+	.side-navbar {
+		background-color: var(--bg-color);
+	}
 }

@@ -33,6 +33,6 @@
 .tab-btn-list .active, 
 .tab-btn-list .active:hover {
 	color: var(--navitem-active);
-	border-bottom: 2px solid #000;
+	border-bottom: 2px solid var(--navitem-active);
 }
 </style>

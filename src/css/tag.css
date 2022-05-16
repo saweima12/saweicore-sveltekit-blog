@@ -1,14 +1,22 @@
+.tag-list {
+    color: var(--text);
+}
+
 .tag-list .tag-list-head {
     font-weight: 600;
-    background-color: #E9EEF5;
+    background-color: var(--second-bg);
 }
 
 .tag-list-item {
     font-size: 1.1rem;
 }
 
+.tag-list .tag-list-item:nth-child(odd) {
+    background-color: var(--odd-bg);
+}
+
 .tag-list .tag-list-item:nth-child(even) {
-    background-color: var(--second-bg);
+    background-color: var(--even-bg);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }

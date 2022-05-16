@@ -50,6 +50,13 @@
 .content > h5 { font-size: 24px;}
 .content > h6 { font-size: 22px;}
 
+.content > blockquote {
+	background-color: var(--second-bg);
+	border-left: 5px solid var(--border);
+	padding: 1rem 1rem 1rem 1rem;
+	font-family: "Fira Mono", monospace;
+}
+
 .content hr {
 	margin: 2rem auto;
 }

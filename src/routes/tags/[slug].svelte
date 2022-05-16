@@ -65,3 +65,9 @@
 		<Postlist {pageNum} {maxPage} posts={pageList} callback={() => fetchMorePost()} />
 	</div>
 </div>
+
+<style>
+	.tag-page {
+		color: var(--text);
+	}
+</style>

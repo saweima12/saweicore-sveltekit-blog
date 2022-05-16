@@ -19,18 +19,18 @@
 
 <style>
 .search-widget .search-bar {
-    border: 1px solid #bbb;
+    border: 1px solid var(--border);
     border-radius: 1.6rem;
     height: 2.5rem;
 }
 
 .search-bar .label {
     font-size:12px;
-    color: #444;
+    color: var(--text);
 }
 
 .label-key {
-    background: #c8c8c8;
+    background: var(--tagitem-bg);
     border-radius: .2rem;
 
     padding: 0.1rem 0.5rem;

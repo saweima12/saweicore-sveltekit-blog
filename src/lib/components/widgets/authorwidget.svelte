@@ -25,7 +25,7 @@
 }
 
 .name {
-    color: #292929;
+    color: var(--text);
     font-weight: 600;
     font-size: 18px;
 }

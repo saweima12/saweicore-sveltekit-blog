@@ -3,3 +3,9 @@
 		<div class="copyright">Copyright © 2020 - {new Date().getFullYear()}</div>
 	</div>
 </footer>
+
+<style>
+	.site-footer {
+		color: var(--text);
+	}
+</style>

@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { siteConfig } from '$lib/store';
+	import { siteConfig, themeMode } from '$lib/store';
 	import type { NavItem } from '$lib/types';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
+
+	const handleThemeChange = () => {
+		$themeMode = $themeMode == "light" ? "dark" : "light";
+	}
 
 	const navList: Array<NavItem> = $siteConfig.nav;
 </script>
@@ -25,8 +29,10 @@
 			{/each}
 		</div>
 
-		<div class="w-6 pb-8">
-			<NavIcon key="theme" />
+		<div class="nav-item pb-8"  on:click={() => handleThemeChange()}>
+			<div class="w-6 icon-base" >
+				<NavIcon key="theme" />
+			</div>
 		</div>
 	</div>
 </nav>
@@ -34,9 +40,5 @@
 <style>
 .side-navbar .logo {
 	width: 36px;
-}
-
-.nav-item {
-	transition: all .3s;
 }
 </style>

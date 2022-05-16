@@ -57,11 +57,12 @@
 
 /* navmenu */
 .navmenu {
-	background-color: #fff;
+	color: var(--text);
+	background-color: var(--bg-color);
 }
 
 .navmenu .author {
-	border-bottom: 1px solid #bbb;
+	border-bottom: 1px solid var(--border);
 }
 
 .navmenu .author img {
@@ -70,7 +71,6 @@
 }
 
 .navmenu .nav-item {
-	color: #111;
 	font-weight: 500;
 }
 </style>
