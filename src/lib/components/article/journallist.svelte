@@ -45,6 +45,8 @@
 
 	.journel-list .page-item a:hover {
 		padding-left: 1rem;
+		color: var(--navitem-active);
+		transition: all .2s;
 	}
 
 </style>

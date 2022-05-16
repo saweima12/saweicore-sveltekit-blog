@@ -31,7 +31,9 @@
 
 		<div class="nav-item pb-8"  on:click={() => handleThemeChange()}>
 			<div class="w-6 icon-base" >
-				<NavIcon key="theme" />
+				<a href="#!">
+					<NavIcon key="theme" />
+				</a>
 			</div>
 		</div>
 	</div>

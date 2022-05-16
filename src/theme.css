@@ -29,7 +29,6 @@ body {
 .dark {
 	background-color: #1e1e22;
 	--bg-color: #1e1e22;
-
 	--navbar: #2f333d;
 	--border: rgba(175,175,175,0.15);
 	--navitem: #757575;
