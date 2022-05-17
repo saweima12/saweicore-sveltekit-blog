@@ -16,7 +16,6 @@
 }
 
 .tag-list .tag-list-item:nth-child(even) {
-    background-color: var(--even-bg);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
