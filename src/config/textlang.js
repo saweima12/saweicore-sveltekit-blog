@@ -6,7 +6,7 @@ const config = {
     posts: '文章列表',
     tags: '標籤清單',
     tagName: '標籤名稱',
-    tagUpdated: '更新日期',
+    lastUpdated: '最後更新日期',
     tagCount: '文章數'
   },
 	journal: {

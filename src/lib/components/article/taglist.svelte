@@ -12,7 +12,7 @@
 		<li class="py-2 tag-list-head">
 			<div class="flex flex-row justify-around">
 				<div class="w-60 tag-name">{textlang.tagName}</div>
-				<div class="flex-1 hidden lg:flex justify-center tag-updated">{textlang.tagUpdated}</div>
+				<div class="flex-1 hidden lg:flex justify-center tag-updated">{textlang.lastUpdated}</div>
 				<div class="flex-1 tag-count">{textlang.tagCount}</div>
 			</div>
 		</li>

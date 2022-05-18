@@ -1,8 +1,12 @@
 import nav from './config/nav.js';
 import textlang from './config/textlang.js';
+import { CustomClassifierHandle } from './lib/classifier/custom.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config = {
-	title: 'Saweicore Stu',
+	title: 'Saweicore Lab',
 	description: ' 程式開發 | 網站架設 | 幣圈科普 | 各項知識集散地',
 	author: {
 		name: 'Saweima',
@@ -15,7 +19,8 @@ const config = {
 	},
 	classifier: [
 		{ id: 'post', params: { path: '/_posts/' }, type: 'directory' },
-		{ id: 'tag', params: { keys: ['tag', 'tags'] }, type: 'frontmatter' }
+		{ id: 'tag', params: { keys: ['tag', 'tags'] }, type: 'frontmatter' },
+		{ id: 'custom', params: { path: '/_posts/' }, type: CustomClassifierHandle },
 	],
 	marked: {
 		options: {},

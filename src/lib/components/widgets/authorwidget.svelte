@@ -5,8 +5,8 @@
 
 </script>
 <div>
-    <div class="w-32">
-        <img class="avatar" src={author.avatar} alt="{author.name}">
+    <div class="w-32 h-32">
+        <img class="avatar" src={author.avatar} alt="{author.name}" loading="lazy">
     </div>  
     <div class="mt-3 name">
         <h2>{author.name}</h2>

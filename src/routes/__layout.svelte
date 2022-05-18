@@ -3,7 +3,6 @@
 	import { siteConfig } from '$lib/store';
 	import { dataAPI } from '$lib/client';
 
-
 	export const load: Load = async ({ fetch }) => {
 		let apiUrl = dataAPI.getConfig();
 		let response = await fetch(apiUrl);

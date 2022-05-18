@@ -73,4 +73,8 @@
 .navmenu .nav-item {
 	font-weight: 500;
 }
+
+.navmenu .nav-item:hover {
+	color: var(--navitem-hover);
+}
 </style>
