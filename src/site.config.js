@@ -1,6 +1,5 @@
 import nav from './config/nav.js';
 import textlang from './config/textlang.js';
-import { CustomClassifierHandle } from './lib/classifier/custom.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -20,7 +19,6 @@ const config = {
 	classifier: [
 		{ id: 'post', params: { path: '/_posts/' }, type: 'directory' },
 		{ id: 'tag', params: { keys: ['tag', 'tags'] }, type: 'frontmatter' },
-		{ id: 'custom', params: { path: '/_posts/' }, type: CustomClassifierHandle },
 	],
 	marked: {
 		options: {},
