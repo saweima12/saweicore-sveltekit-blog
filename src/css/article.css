@@ -9,7 +9,7 @@
 }
 
 .post-page .content  {
-	font-family: 'Arial', charter, Georgia, Cambria, 'Times New Roman', Times, serif;
+	font-family: "Microsoft JhengHei fixed", "Helvetica Neue", "Microsoft JhengHei", Helvetica, "Segoe UI", Tahoma;
 	font-style: normal;
 }
 
@@ -39,7 +39,7 @@
 	font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: 600;
 	letter-spacing: -0.003em;
-	line-height: 1.7rem;
+	line-height: 2rem;
 }
 
 .content > h1 { font-size: 30px;}
@@ -67,14 +67,36 @@
 	margin: 0 auto;
 }
 
-.post-page .content a {
+.content strong {
+	color: var(--bold-text);
+}
+
+
+.content a {
 	text-decoration: underline;
+}
+
+.content ol li {
+	list-style: decimal;
+	margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.content details {
+	border-top: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
+	padding: 1rem;
+	transition: all .3s;
+}
+
+.content details summary{
+	font-size: 24px;
 }
 
 .post-page .content > p {
 	margin-top: 1.5rem;
 	line-height: 1.7em;
 	margin-bottom: 1rem;
+	/* text-align: justify; */
 }
 
 .post-page .content li {
@@ -95,21 +117,6 @@
 	margin: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
 
-.content ol li {
-	list-style: decimal;
-	margin: 0.5rem 1.5rem 0.5rem 1.5rem;
-}
-
-.content details {
-	border-top: 1px solid var(--border);
-	border-bottom: 1px solid var(--border);
-	padding: 1rem;
-	transition: all .3s;
-}
-
-.content details summary{
-	font-size: 24px;
-}
 
 
 @media screen and (min-width: 640px) {

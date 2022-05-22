@@ -1,6 +1,7 @@
 const config = {
 	common: {
 		home: '首頁',
+    themeMode: '深淺模式'
 	},
   home: {
     posts: '文章列表',

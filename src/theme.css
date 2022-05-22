@@ -19,11 +19,12 @@ body {
 	--navitem-active: #000;
 	--tagitem-bg: #e8e8e8;
 	--tagitem-hover: #9e9e9e;
-	--mask-bg: #555;
+	--mask-bg: rgba(60, 60, 60, 0.6);
 	--odd-bg: #E9EFF5;
 	--even-bg: #d2e7fa;
 	--second-bg: #FAFAFA;
 	--text: #3f3f3f;
+	--bold-text: #333;
 }
 
 .dark {
@@ -36,11 +37,12 @@ body {
 	--navitem-active: #fff;
 	--tagitem-bg: #525252;
 	--tagitem-hover: #6c6c6c;
-	--mask-bg: #555;
+	--mask-bg: rgba(60, 60, 60, 0.6);
 	--odd-bg: hsla(0,0%,58.8%,.1);
 	--even-bg: #24272b;
 	--second-bg: #282c35;
 	--text: #9b9baa;
+	--bold-text: rgb(65, 190, 97);
 }
 
 
@@ -54,7 +56,7 @@ body {
 }
 
 .letter-content-font {
-	font-family: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
+	font-family: "Microsoft JhengHei fixed", "Helvetica Neue", "Microsoft JhengHei", Helvetica, "Segoe UI", Tahoma;
 }
 
 
@@ -70,5 +72,4 @@ body {
 
 .screenmask {
 	background-color: var(--mask-bg);
-	opacity: 0.6;
 }
