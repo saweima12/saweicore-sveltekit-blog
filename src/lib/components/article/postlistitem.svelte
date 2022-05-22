@@ -31,7 +31,7 @@
 					{#if metadata.excerpt}
 						<p class="letter-content-font">
 							{metadata.excerpt.length > 30
-								? metadata.excerpt.slice(0, 60) + '...'
+								? metadata.excerpt.slice(0, 100) + '...'
 								: metadata.excerpt}
 						</p>
 					{/if}

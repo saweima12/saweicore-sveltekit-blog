@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { SourcePage } from 'markedpage';
 	import type { PageMeta } from '$lib/types';
 	import InfiniteScroll from '$lib/components/infinitescroll.svelte';
 	import PostListItem from '$lib/components/article/postlistitem.svelte';
