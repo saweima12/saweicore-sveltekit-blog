@@ -18,11 +18,13 @@
 	import PageTransition from '$lib/components/pagetransition.svelte';
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import SearchBox from '$lib/components/serach/searchbox.svelte';
+	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
 	import SideNav from '$lib/components/nav/sidenav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
+
 
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -79,15 +81,21 @@
 
 <Navmenu />
 <SearchBox />
+<ImageLightBox />
 
 <style>
 .main-wrapper {
 	max-width: 1504px;
 	margin: 0 auto;
+	overflow-x: hidden;
 }
 
 .nav-wrapper {
 	min-width: 80px;
 }
+
+.drawer-container {
+	position: relative;
+ }
 
 </style>
