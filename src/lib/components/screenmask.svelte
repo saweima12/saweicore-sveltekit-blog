@@ -1,13 +1,20 @@
 <script lang="ts">
-	import { isNavMenuShow, isSearBoxShow, isMaskShow } from '$lib/store';
+	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
+	import { isNavMenuShow, isSearBoxShow, isMaskShow, lightBoxContent } from '$lib/store';
 
 	let isVisible = false;
-	isMaskShow.subscribe((value) => (isVisible = value));
+
+	onMount(() => {
+		isMaskShow.subscribe((value) => {
+			isVisible = value
+		});
+	});
 
 	const closeMaskHandle = () => {
 		isNavMenuShow.set(false);
 		isSearBoxShow.set(false);
+		lightBoxContent.set("");
 		setTimeout(() => isMaskShow.set(false), 300);
 	};
 
