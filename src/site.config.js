@@ -6,11 +6,11 @@ dotenv.config();
 
 const config = {
 	title: 'Saweicore Lab',
-	description: ' 程式開發 | 網站架設 | 幣圈科普 | 各項知識集散地',
+	description: ' 程式開發 | 網站架設 | 幣圈雜談 | 各項雜燴集散地',
 	author: {
 		name: 'Saweima',
     summary: '邊緣工作者',
-		description: '邊緣工作者 | 幣圈新人 | 記錄自己所見所聞 ',
+		description: '邊緣人 | 幣圈小白 | 想到再寫',
 		avatar: 'https://avatars.githubusercontent.com/u/62002212'
 	},
 	pagination: {
