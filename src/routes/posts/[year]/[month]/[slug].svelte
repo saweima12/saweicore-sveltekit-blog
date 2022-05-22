@@ -21,12 +21,12 @@
 	import { siteConfig } from '$lib/store';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import CalenderIcon from '$lib/icons/calender.svelte';
-
+	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
 
 	export let metadata: Record<string, any>;
 	export let content: string;
 
-	let tags: Array<string> = metadata.tags;
+	let tags: Array<string> = metadata.tags || [];
 
 </script>
 
@@ -62,3 +62,5 @@
 		</article>
 	</div>
 </div>
+
+<LightBoxListener />
