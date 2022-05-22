@@ -10,11 +10,11 @@
 
 	.drawer-wrapper {
 		width: 240px;
+		border-left: 1px solid var(--border);
 	}
 	
 	.drawer-container {
 		width: 240px;
-		border-left: 1px solid var(--border);
 	}
 
 }

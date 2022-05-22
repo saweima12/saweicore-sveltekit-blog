@@ -18,12 +18,12 @@ body {
 	--navitem-hover: #333;
 	--navitem-active: #000;
 	--tagitem-bg: #e8e8e8;
-	--tagitem-hover: #6c6c6c;
+	--tagitem-hover: #9e9e9e;
 	--mask-bg: #555;
 	--odd-bg: #E9EFF5;
 	--even-bg: #d2e7fa;
 	--second-bg: #FAFAFA;
-	--text: #292929;
+	--text: #3f3f3f;
 }
 
 .dark {
@@ -39,7 +39,7 @@ body {
 	--mask-bg: #555;
 	--odd-bg: hsla(0,0%,58.8%,.1);
 	--even-bg: #24272b;
-	--second-bg: #1e1e22;
+	--second-bg: #282c35;
 	--text: #9b9baa;
 }
 
