@@ -21,11 +21,12 @@
 </script>
 
 <script lang="ts">
-	import { siteConfig } from '$lib/store';
+	import type { PageMeta } from '$lib/types';
+	import { afterNavigate } from '$app/navigation';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
+	import { siteConfig } from '$lib/store';
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
-	import type { PageMeta } from '$lib/types';
 
 	export let metadata: Record<string, any>;
 	export let content: string;
@@ -33,6 +34,12 @@
 
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
 	let tags: Array<string> = metadata.tags || [];
+
+	// Fix: navigation/goto can't support id.
+	afterNavigate(() => {
+		if (location.hash.length > 1)
+			location.href = location.href;
+	});
 </script>
 
 <svelte:head>
