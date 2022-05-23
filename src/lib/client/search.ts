@@ -33,7 +33,10 @@ export const findMatchFull = (hit: Record<string, any>): MatchItem => {
 
     if (result.field == "headings") {
       const text = result.attach.value.replace(htmltagPtn, "");
-      result.link = `${hit.permalink}#${text}`;
+      const headings: Array<{text:string, id:string}> = hit.headings;
+      const id = headings.find(item => item.text == text)?.id;
+
+      result.link = `${hit.permalink}#${id}`;
     }
 
     result.value = result.value || result.attach.value;

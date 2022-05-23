@@ -28,7 +28,7 @@ const config = {
   search: {
     appKey: Buffer.from("BHODY4NQKK").toString('base64'),
     apiKey: Buffer.from("5f4c05344cf6d1cbe581c20e049a7c14").toString('base64'),
-    index: "SaweicoreStu"
+    index: "SaweicoreLab"
   },
 	nav: nav,
 	textlang: textlang

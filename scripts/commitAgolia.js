@@ -43,7 +43,7 @@ console.log(result);
 // Loading
 
 const conn = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_ADMINKEY);
-const index = conn.initIndex("SaweicoreStu");
+const index = conn.initIndex("SaweicoreLab");
 
 let response = await index.saveObjects(result);
 console.log(response.objectIDs);
