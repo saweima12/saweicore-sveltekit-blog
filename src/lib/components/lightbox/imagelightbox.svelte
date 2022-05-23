@@ -16,15 +16,17 @@
 
 </script>
 
-    <div class="lightbox-wrapper" 
-        class:translate-x-full={!isVisible} 
-        class:opacity-0={!isVisible}
-        on:click={closeHandle}>
-        <div class="flex items-center h-full  lightbox-container">
-            <img src={picUrl} alt="lightbox-pic" class="lightbox-pic">
-    
-        </div>
+<div class="lightbox-wrapper" 
+class:translate-x-full={!isVisible} 
+class:opacity-0={!isVisible}
+on:click={closeHandle}>
+
+<div class="flex items-center h-full  lightbox-container">
+    {#if isVisible}
+        <img src="{picUrl}" alt="lightbox-pic" class="lightbox-pic">
+    {/if}
     </div>
+</div>
 
 
 <style>
