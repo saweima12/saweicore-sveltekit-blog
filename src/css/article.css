@@ -1,5 +1,5 @@
 /* PostPage  */
-.post-page {
+.post-page, .about-page {
 	color: var(--text);
 }
 
@@ -14,14 +14,14 @@
 }
 
 
-.post-page .content > p,
-.post-page .content > ul,
-.post-page .content > ol,
-.post-page .content > pre,
-.post-page .content > blockquote,
-.post-page .content > table,
-.post-page .content > tr,
-.post-page .content > td {
+.content > p,
+.content > ul,
+.content > ol,
+.content > pre,
+.content > blockquote,
+.content > table,
+.content > tr,
+.content > td {
 	letter-spacing: -0.003em;
 	line-height: 1.7em;
 	min-height: 1.7em;
@@ -92,32 +92,31 @@
 	font-size: 24px;
 }
 
-.post-page .content > p {
+.content > p {
 	margin-top: 1.5rem;
 	line-height: 1.7em;
 	margin-bottom: 1rem;
 	/* text-align: justify; */
 }
 
-.post-page .content li {
+.content li {
 	margin-top: 1rem;
 }
 
-.post-page .content img {
+.content img {
 	margin: 1.5rem auto;
+	cursor: pointer;
 }
 
-.post-page .content ul {
+.content ul {
 	margin-top: .5rem;
 	margin-bottom: 1rem;
 }
 
-.post-page .content ul li {
+.content ul li {
 	list-style-type: disc;
 	margin: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
-
-
 
 @media screen and (min-width: 640px) {
 }
