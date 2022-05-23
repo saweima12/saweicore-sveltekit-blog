@@ -26,13 +26,13 @@
 	import Drawer from '$lib/components/drawer/drawer.svelte';
 
 
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 	import { isNavMenuShow, themeMode } from '$lib/store';
 	let isMenuOpen = false;	
 	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
 	
-	onMount(() => {
+	afterNavigate(() => {
 		let _themeMode = localStorage.getItem("mode");
 		themeMode.subscribe(value => {
 			localStorage.setItem("mode", value);
