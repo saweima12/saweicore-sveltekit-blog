@@ -8,10 +8,13 @@
 		const apiUrl = dataAPI.getPostData(year, month, slug);
 		const response = await fetch(apiUrl);
 		const { metadata, content }: PageResult = await response.json();
+
+		const pageMeta = { metadata: metadata, slugKey: slug };
 		return {
 			props: {
 				metadata: metadata,
-				content: content
+				content: content,
+				pageMeta: pageMeta
 			}
 		};
 	};
@@ -22,19 +25,35 @@
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
+	import type { PageMeta } from '$lib/types';
 
 	export let metadata: Record<string, any>;
 	export let content: string;
+	export let pageMeta: PageMeta;
 
+	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
 	let tags: Array<string> = metadata.tags || [];
-
 </script>
 
 <svelte:head>
 	<title>{metadata.title} | {getTitleStr($siteConfig)}</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-dracula.min.css">
+
+	<!-- OpenGraph -->
+	<meta property="og:url" content="{routePath}"/>
+	<meta property="og:locale" content="zh_TW" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="{metadata.title}" />
+	{#if metadata.excerpt}
+		<meta property="og:description" content="{metadata.excerpt}"/>
+	{/if}
+	{#if metadata.thumbnail}
+		<meta property="og:image" content="{metadata.thumbnail}" />
+		<meta property="og:image" content="image/jpg" />
+	{/if}
 </svelte:head>
+
 
 <div class="my-10 post-page wrapper">
 	<div class="post-container">

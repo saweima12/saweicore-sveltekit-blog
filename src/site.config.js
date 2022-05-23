@@ -7,6 +7,7 @@ dotenv.config();
 const config = {
 	title: 'Saweicore Lab',
 	description: ' 程式開發 | 網站架設 | 幣圈雜談 | 各項雜燴集散地',
+  url: "https://saweicore.com",
 	author: {
 		name: 'Saweima',
     summary: '邊緣工作者',
