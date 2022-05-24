@@ -1,4 +1,5 @@
 @import './css/layout.css';
+@import './css/nprogress.css';
 @import './css/nav.css';
 @import './css/hamburger.css';
 @import './css/list.css';
@@ -25,6 +26,7 @@ body {
 	--second-bg: #FAFAFA;
 	--text: #3f3f3f;
 	--bold-text: #333;
+	--progress-bg: rgb(136, 197, 135);
 }
 
 .dark {
@@ -43,6 +45,7 @@ body {
 	--second-bg: #282c35;
 	--text: #9b9baa;
 	--bold-text: rgb(65, 190, 97);
+	--progress-bg: rgb(151, 199, 223);
 }
 
 

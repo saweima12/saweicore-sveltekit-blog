@@ -15,7 +15,7 @@
 <script lang="ts">
 	import '../app.css';
 	import '../theme.css';
-
+	// Components
 	import PageTransition from '$lib/components/pagetransition.svelte';
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import SearchBox from '$lib/components/serach/searchbox.svelte';
@@ -27,13 +27,29 @@
 	import Drawer from '$lib/components/drawer/drawer.svelte';
 	import GoogleAnalytics from '$lib/components/googleanalytics.svelte';
 
-
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { isNavMenuShow, themeMode } from '$lib/store';
 	let isMenuOpen = false;	
 	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
 	
+	import { navigating } from '$app/stores';
+	import NProgress from 'nprogress';
+
+	NProgress.configure({
+		// Full list: https://github.com/rstacruz/nprogress#configuration
+		minimum: 0.16
+	});
+	
+	$: {
+		if ($navigating) {
+			NProgress.start();
+		}
+		if (!$navigating) {
+			NProgress.done();
+		}
+	}
+
 	onMount(() => {
 		let _themeMode = localStorage.getItem("mode");
 		themeMode.subscribe(value => {
