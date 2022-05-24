@@ -1,14 +1,12 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script lang="ts">
-    import { dev } from '$app/env';
-
     export let id: string;
     $: {
         if (typeof window !== 'undefined' ) {
-            console.log(window);
             let _window: any = window;
-            let dataLayer = _window.dataLayer || [];
-            _window.gtag = () => { dataLayer.push(arguments) }
+            _window.dataLayer = _window.dataLayer || [];
+
+            _window.gtag = () => { _window.dataLayer.push(arguments) }
             _window.gtag('js', new Date());
             _window.gtag('config', id);
         }
