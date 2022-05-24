@@ -1,6 +1,7 @@
 set -e
 
 pnpm run build
+pnpm run postbuild
 GIT_URL="git@github.com:saweima12/saweima12.github.io.git master"
 BUILD_DATE=$(date +"%Y%m%d%H%M")
 
@@ -18,4 +19,4 @@ git add -A
 git commit -m "deploy at $BUILD_DATE"
 
 
-git-ssh -i ~/.ssh/tassis-laptop push -f $GIT_URL
+git-ssh -i ~/.ssh/cctips push -f $GIT_URL
