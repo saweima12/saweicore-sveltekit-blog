@@ -15,6 +15,7 @@
 <script lang="ts">
 	import '../app.css';
 	import '../theme.css';
+
 	import PageTransition from '$lib/components/pagetransition.svelte';
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import SearchBox from '$lib/components/serach/searchbox.svelte';
@@ -24,15 +25,16 @@
 	import SideNav from '$lib/components/nav/sidenav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
+	import GoogleAnalytics from '$lib/components/googleanalytics.svelte';
 
 
-	import { afterNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { isNavMenuShow, themeMode } from '$lib/store';
 	let isMenuOpen = false;	
 	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
 	
-	afterNavigate(() => {
+	onMount(() => {
 		let _themeMode = localStorage.getItem("mode");
 		themeMode.subscribe(value => {
 			localStorage.setItem("mode", value);
@@ -82,6 +84,11 @@
 <Navmenu />
 <SearchBox />
 <ImageLightBox />
+
+{#if $siteConfig.ga}
+	<GoogleAnalytics id={$siteConfig.ga} />
+{/if}
+
 
 <style>
 .main-wrapper {
