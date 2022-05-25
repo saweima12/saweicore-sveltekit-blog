@@ -4,16 +4,13 @@
 </script>
 
 <div class="widget-list-wrapper">
-    <div class="widget-list-container">
-        <div class="flex flex-col widget-list">
-            <div class="widget-list-item my-8">
-                <SearchWidget />
-            </div>
-            <div class="widget-list-item">
-                <AuthorWidget />
-            </div>
+    <div class="flex flex-col widget-list">
+        <div class="widget-list-item my-8">
+            <SearchWidget />
         </div>
-
+        <div class="widget-list-item">
+            <AuthorWidget />
+        </div>
     </div>
 </div>
 
