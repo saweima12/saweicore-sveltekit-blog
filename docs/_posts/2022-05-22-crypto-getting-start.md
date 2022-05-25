@@ -101,7 +101,7 @@ excerpt: 想要踏入加密貨幣的世界卻又不知道如何開始嗎？這�
 **目標是用最少的新台幣換到最多的 USD 穩定幣。**
 
 這裡引用 Ace 交易所官方提供的教學影片：
-<iframe src="https://www.youtube.com/embed/pKmfpMhwfHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/pKmfpMhwfHs" loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 如何轉帳到其他交易所 / 其他錢包 ?
 
@@ -117,10 +117,10 @@ excerpt: 想要踏入加密貨幣的世界卻又不知道如何開始嗎？這�
 <table>
     <tr>
         <td>
-            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-page-1.jpg" style="max-height:500px" class="lightbox">
+            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-page-1.jpg" style="max-height:500px" class="lightbox" loading="lazy">
         </td>
         <td>
-            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-withdrawal-2.jpg" style="max-height:500px" class="lightbox">
+            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-withdrawal-2.jpg" style="max-height:500px" class="lightbox" loading="lazy">
         </td>
     </tr>
 </table>
