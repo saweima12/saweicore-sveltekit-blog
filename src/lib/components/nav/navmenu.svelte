@@ -28,7 +28,7 @@
 	<div class="flex flex-col h-full navmenu-container">
 		<div class="mx-6 py-4 mb-6 author">
 			<div class="flex flex-row avatar-block">
-				<img src={author.avatar} alt="saweima" />
+				<img src={author.avatar} alt="saweima" loading="lazy"/>
 				<div class="flex flex-col items-center justify-center ml-4 avatar-info">
 					<div class="word-font font-bold text-lg">{author.name}</div>
 					<div class="word-font">{author.summary}</div>

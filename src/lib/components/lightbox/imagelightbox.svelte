@@ -23,7 +23,7 @@ on:click={closeHandle}>
 
 <div class="flex items-center h-full  lightbox-container">
     {#if isVisible}
-        <img src="{picUrl}" alt="lightbox-pic" class="lightbox-pic">
+        <img src="{picUrl}" alt="lightbox-pic" class="lightbox-pic" loading="lazy">
     {/if}
     </div>
 </div>
