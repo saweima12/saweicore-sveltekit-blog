@@ -2,7 +2,7 @@ set -e
 
 pnpm run build
 pnpm run postbuild
-GIT_URL="git@github.com:saweima12/saweima12.github.io.git master"
+GIT_URL="git@github.com:saweima12/saweima12.github.io.git"
 BUILD_DATE=$(date +"%Y%m%d%H%M")
 
 # go into build directory
@@ -15,8 +15,8 @@ touch .nojekyll
 
 # git process
 git init 
-git add -A
+git add -Af
 git commit -m "deploy at $BUILD_DATE"
 
-
-git-ssh -i ~/.ssh/cctips push -f $GIT_URL
+# commit
+git-ssh -i ~/.ssh/cctips push -f $GIT_URL master
