@@ -6,9 +6,9 @@
             let _window: any = window;
             _window.dataLayer = _window.dataLayer || [];
 
-            _window.gtag = () => { _window.dataLayer.push(arguments) }
-            _window.gtag('js', new Date());
-            _window.gtag('config', id);
+            const gtag:any  = () => { _window.dataLayer.push(arguments) }
+            gtag('js', new Date());
+            gtag('config', id);
         }
     }
 </script>
