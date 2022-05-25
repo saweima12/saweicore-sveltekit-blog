@@ -71,6 +71,12 @@
 	color: var(--bold-text);
 }
 
+.content p > code,
+.content li > code {
+	background-color: var(--tagitem-bg);
+	padding: .2rem .5rem;
+	border-radius: .8rem;
+}
 
 .content a {
 	text-decoration: underline;
