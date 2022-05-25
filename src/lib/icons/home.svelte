@@ -1,6 +1,5 @@
 <svg
 	version="1.1"
-	id="Capa_1"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	x="0px"
@@ -10,7 +9,7 @@
 	xml:space="preserve"
 >
 	<g>
-		<g id="c14_house">
+		<g>
 			<path
 				fill="currentColor"
 				d="M3.588,24.297c0,0-0.024,0.59,0.553,0.59c0.718,0,6.652-0.008,6.652-0.008l0.01-5.451c0,0-0.094-0.898,0.777-0.898h2.761
