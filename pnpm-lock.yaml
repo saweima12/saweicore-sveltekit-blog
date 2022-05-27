@@ -15,7 +15,7 @@ specifiers:
   eslint: ^7.32.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^3.4.1
-  markedpage: ^0.0.14
+  markedpage: ^0.0.16
   nprogress: ^0.2.0
   postcss: ^8.4.14
   prettier: ^2.6.2
@@ -46,7 +46,7 @@ devDependencies:
   eslint: 7.32.0
   eslint-config-prettier: 8.5.0_eslint@7.32.0
   eslint-plugin-svelte3: 3.4.1_eslint@7.32.0+svelte@3.48.0
-  markedpage: 0.0.14
+  markedpage: 0.0.16
   nprogress: 0.2.0
   postcss: 8.4.14
   prettier: 2.6.2
@@ -1809,8 +1809,8 @@ packages:
     hasBin: true
     dev: true
 
-  /markedpage/0.0.14:
-    resolution: {integrity: sha512-RVfArc/Tv72eh5ahr1JuzH48OL8/akCrs3fb/JD1+DLF+YcW6kwmnmRexQYqW/Yc8suR61PfTgru8qapWNYpNg==}
+  /markedpage/0.0.16:
+    resolution: {integrity: sha512-IX5ZB+crrimQ0XWHtXNYhrkh4YAoMv00o2ze7pm+xfv/0bO6MO95tmvupFKkNDZpGFvRCBE38D/0ZqvZrF+WWg==}
     dependencies:
       front-matter: 4.0.2
       marked: 4.0.16
