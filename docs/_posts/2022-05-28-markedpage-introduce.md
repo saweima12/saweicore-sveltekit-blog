@@ -1,24 +1,24 @@
 ---
-title: 為 SvelteKit Blog 而生的工具 — MarkedPage
+title: SvelteKit 靜態網站的內容管理方案 — MarkedPage
 tags:
 - svelte
-- marked
+- markdown
 - programing
-excerpt: >
+excerpt: 想試著做個靜態網站卻又對現成的生成器感到不滿意？也許可以試看看 SvelteKit 與這個專門為靜態網站而生的 Markdown 內容管理工具，
 ---
 
-<!-- more -->
-## Features
+嘿，午安呀旅人。這是為了搭建這個部落格時所製作的工具
 
-- 讀取 Markdown 作為資料源。
-- 使用 Marked 作為解析器。
-- 簡易分類器，可依據 `路徑` 或是 `FrontMatter` 欄位進行分類。
-- 自定義分類器，可依照自己的需求客製化分類方式。
-- 支援 Yaml FrontMatter  。
-- 支援 Heading 抽出。
-- 支援 `<!-- more -->`  標記，自動抽取 excerpt 至 metadata。
+<!-- more -->
+## 這能夠做些什麼？
+- 使用 Markdown 作為資料來源，不需要額外的內容管理系統(CMS)。
+- 內建 `FrontMatter`、`<!--more--> 標籤`及`headings 抽取`功能。
+- 內置簡易分類器，可依據 **資料夾路徑** 或是 **FrontMatter 欄位** 進行分類，省去撰寫繁雜的分類邏輯。
+- 支援**自定義分類器**，依照自己需求客製化分類方式。
 
 ## 事前準備
+
+需要使用 M
 
 ### 安裝
 
@@ -281,8 +281,8 @@ export const CustomClassifierHandle = async ({options, pages}) => {
 
 ## TL;DR
 
-- MarkedPage 是為了輔助 SvelteKit Static Blog 而製作的工具。
+- MarkedPage 是為了輔助 SvelteKit Static Site 而製作的工具。
 - 目的在簡化 Markdown 資料的讀取及建立索引的繁雜過程。
 - site.config.js 可以用來填入網站的基本資料方便後續使用。
-- classifer 可選擇基於`路徑`與`frontmatter`兩種簡易分類器或是客製化分類器。
-- 使用 Marked 作為轉譯器，可使用 extension 功能修改 parse 結果 (可參考 [Document](https://marked.js.org/using_pro))
+- classifer 可選擇基於`資料夾路徑`與`frontmatter`兩種簡易分類器。
+- marked 作為轉譯器，可使用 extension 功能修改 parse 結果 (可參考 [Document](https://marked.js.org/using_pro))
