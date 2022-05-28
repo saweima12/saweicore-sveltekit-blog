@@ -1,28 +1,31 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
-	import { isNavMenuShow, isSearBoxShow, isMaskShow, lightBoxContent } from '$lib/store';
+	import { viewStack } from '$lib/store';
 
 	let isVisible = false;
 
-	onMount(() => {
-		isMaskShow.subscribe((value) => {
-			isVisible = value
-		});
+	viewStack.subscribe(arr => {
+		if (!isVisible && arr.length > 0)
+			isVisible = true;
+
+		if (isVisible && arr.length < 1) {
+			isVisible = false;
+		}
 	});
 
-	const closeMaskHandle = () => {
-		isNavMenuShow.set(false);
-		isSearBoxShow.set(false);
-		lightBoxContent.set("");
-		setTimeout(() => isMaskShow.set(false), 300);
+
+	const closeHandle = () => {
+		if(isVisible) {
+			viewStack.reset();
+			setTimeout(() => (isVisible = false), 200);
+		}
 	};
 
-	beforeNavigate(() => closeMaskHandle());
+	beforeNavigate(() => closeHandle());
 </script>
 
 <div
 	class="fixed top-0 z-10 w-screen h-screen screenmask"
 	class:hidden={!isVisible}
-	on:click={closeMaskHandle}
+	on:click={closeHandle}
 />

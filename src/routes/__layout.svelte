@@ -17,38 +17,28 @@
 	import '../theme.css';
 	// Components
 	import PageTransition from '$lib/components/pagetransition.svelte';
-	import ScreenMask from '$lib/components/screenmask.svelte';
-	import SearchBox from '$lib/components/serach/searchbox.svelte';
-	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
 	import SideNav from '$lib/components/nav/sidenav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
+	// 
+	import ScreenMask from '$lib/components/screenmask.svelte';
+	import SearchView from '$lib/components/serach/searchview.svelte';
+	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import GoogleAnalytics from '$lib/components/googleanalytics.svelte';
 
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { isNavMenuShow, themeMode } from '$lib/store';
-	let isMenuOpen = false;	
-	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
+	import { themeMode, viewStack, viewId } from '$lib/store';
+	$: isMenuOpen = $viewStack.includes(viewId.navMenu);
 	
 	import { navigating } from '$app/stores';
 	import NProgress from 'nprogress';
-
-	NProgress.configure({
-		// Full list: https://github.com/rstacruz/nprogress#configuration
-		minimum: 0.16
-	});
 	
-	$: {
-		if ($navigating) {
-			NProgress.start();
-		}
-		if (!$navigating) {
-			NProgress.done();
-		}
-	}
+	// Full list: https://github.com/rstacruz/nprogress#configuration
+	NProgress.configure({minimum: 0.16});
+	$: $navigating ? NProgress.start() : NProgress.done();
 
 	onMount(() => {
 		let _themeMode = localStorage.getItem("mode");
@@ -95,10 +85,10 @@
 		</div>
 	</div>
 </div>
-<ScreenMask />
 
+<ScreenMask />
 <Navmenu />
-<SearchBox />
+<SearchView />
 <ImageLightBox />
 
 {#if $siteConfig.ga}

@@ -1,10 +1,14 @@
 <script lang="ts">
-    import { isSearBoxShow } from '$lib/store';
+    import { viewStack, viewId } from '$lib/store';
     import SearchIcon from '$lib/icons/search.svelte';
+
+    const clickHandle  = () => {
+        viewStack.push(viewId.searchView);
+    }
 
 </script>
 
-<div class="w-full cursor-pointer search-widget" on:click="{() => isSearBoxShow.set(true)}">
+<div class="w-full cursor-pointer search-widget" on:click="{clickHandle}">
     <div class="flex flex-row h-full justify-center items-center label">
         <div class="flex self-center mr-2 w-4 label-icon"><SearchIcon /></div>
         <div class="label-text mr-2">Search</div>

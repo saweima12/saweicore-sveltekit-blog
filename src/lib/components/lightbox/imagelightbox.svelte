@@ -1,18 +1,18 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
-    import { lightBoxContent } from '$lib/store';
+    import { lightBoxView } from '$lib/store';
 
     let picUrl: string = "";
     let isVisible: boolean = false;
 
     onMount(()=> {
-        lightBoxContent.subscribe((value) => {
-            picUrl = value;
+        lightBoxView.subscribe((value) => {
+            picUrl = value.content;
             isVisible = (value && value.length > 0) ? true : false;
         })
     });  
 
-    const closeHandle = () => lightBoxContent.set("");
+    const closeHandle = () => $lightBoxView.content = "";
 
 </script>
 
