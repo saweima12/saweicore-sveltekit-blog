@@ -50,7 +50,6 @@ const openHandle = () => {
     if($viewStack.length) {
         searchText = "";
         hits = [];
-        console.log(searchObj);
         setTimeout(() => {
             searchObj?.click();
             searchObj?.focus();
