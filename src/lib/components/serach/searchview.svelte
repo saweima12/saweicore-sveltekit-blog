@@ -51,7 +51,10 @@ const openHandle = () => {
         searchText = "";
         hits = [];
         console.log(searchObj);
-        setTimeout(() => searchObj?.focus(), 200);
+        setTimeout(() => {
+            searchObj?.click();
+            searchObj?.focus();
+        }, 200);
     }
 }
 
