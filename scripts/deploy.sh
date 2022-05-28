@@ -19,4 +19,4 @@ git add -Af
 git commit -m "deploy at $BUILD_DATE"
 
 # commit
-git-ssh -i ~/.ssh/cctips push -f $GIT_URL master
+git-ssh -i ~/.ssh/tassis-laptop push -f $GIT_URL master
