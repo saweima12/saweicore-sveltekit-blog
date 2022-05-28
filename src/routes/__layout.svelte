@@ -40,19 +40,23 @@
 	NProgress.configure({minimum: 0.16});
 	$: $navigating ? NProgress.start() : NProgress.done();
 
-	onMount(() => {
-		let _themeMode = localStorage.getItem("mode");
-		themeMode.subscribe(value => {
-			localStorage.setItem("mode", value);
-			document.body.className = value;
-		});
-
-		if (_themeMode) { $themeMode = _themeMode}
-
-		if (!_themeMode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			themeMode.set("dark")
+	// onMount(() => {
+	$: {
+		if (typeof window !== "undefined") {
+			let _themeMode = localStorage.getItem("mode");
+			themeMode.subscribe(value => {
+				localStorage.setItem("mode", value);
+				document.body.className = value;
+			});
+	
+			if (_themeMode) { $themeMode = _themeMode}
+	
+			if (!_themeMode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				themeMode.set("dark")
+			}
 		}
-	})
+	}
+	// })
 </script>
 
 <div
