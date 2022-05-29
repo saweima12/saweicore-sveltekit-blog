@@ -16,10 +16,19 @@ export const get: RequestHandler = async ({ params }) => {
 
 	const content: string = await page.render();
 
+  const headings = page.headings.map(item => {
+    return {
+		depth: item.depth,
+		text: item.text,
+		id: item.id
+    }
+  });
+
 	return {
 		body: {
 			metadata: page.frontMatter,
-			content: content
+			content: content,
+      		headings: headings
 		}
 	};
 };

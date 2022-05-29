@@ -7,7 +7,7 @@
 		const { year, month, slug } = params;
 		const apiUrl = dataAPI.getPostData(year, month, slug);
 		const response = await fetch(apiUrl);
-		const { metadata, content }: PageResult = await response.json();
+		const { metadata, content, headings }: PageResult = await response.json();
 
 		const pageMeta = { metadata: metadata, slugKey: slug };
 		return {
@@ -15,6 +15,9 @@
 				metadata: metadata,
 				content: content,
 				pageMeta: pageMeta
+			},
+			stuff: {
+				headings: headings
 			}
 		};
 	};
@@ -22,14 +25,14 @@
 
 <script lang="ts">
 	import PrismJs from 'prismjs';
-	import type { PageMeta } from '$lib/types';
-	import { afterNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import { siteConfig, headingList } from '$lib/store';
+	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
-	import { siteConfig } from '$lib/store';
+	import type { PageMeta } from '$lib/types';
+	
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
-	import { onMount } from 'svelte';
-
 	export let metadata: Record<string, any>;
 	export let content: string;
 	export let pageMeta: PageMeta;
@@ -38,15 +41,18 @@
 	let tags: Array<string> = metadata.tags || [];
 
 	import { page } from '$app/stores';
+
 	// Fix: navigation/goto can't support id.
 	afterNavigate(() => {
 		if ($page.url.hash.length > 0) {
 			location.href = location.href;
 		}
 	});
+
 	onMount(async () => {
 		await PrismJs.highlightAll();
 	});
+	
 </script>
 
 <svelte:head>

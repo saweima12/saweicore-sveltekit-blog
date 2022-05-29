@@ -28,7 +28,6 @@
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import GoogleAnalytics from '$lib/components/googleanalytics.svelte';
 
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { themeMode, viewStack, viewId } from '$lib/store';
 	$: isMenuOpen = $viewStack.includes(viewId.navMenu);
@@ -60,7 +59,7 @@
 </script>
 
 <div
-	class="transition-all duration-200 min-h-screen main-wrapper relative"
+	class="transition-all duration-200 min-h-screen main-wrapper"
 	class:-translate-x-60={isMenuOpen}
 	class:md:-translate-x-80={isMenuOpen}
 >
@@ -82,8 +81,8 @@
 			<Footer />
 		</div>
 
-		<div class="hidden lg:block drawer-wrapper">
-			<div class="w-full min-h-screen fixed drawer-container">
+		<div class="hidden lg:block drawer-wrapper mr-0.5">
+			<div class="w-full min-h-screen h-full drawer-container">
 				<Drawer />
 			</div>
 		</div>
@@ -104,15 +103,10 @@
 .main-wrapper {
 	max-width: 1504px;
 	margin: 0 auto;
-	overflow-x: hidden;
 }
 
 .nav-wrapper {
 	min-width: 80px;
 }
-
-.drawer-container {
-	position: relative;
- }
 
 </style>
