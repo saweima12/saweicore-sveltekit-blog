@@ -7,7 +7,7 @@
 	let newScrollY: number = 0;
 	let isHide: boolean = false;
 	$: { 
-		if (Math.abs(newScrollY - prevScrollY) > 80) {
+		if (Math.abs(newScrollY - prevScrollY) > 50) {
 			isHide = newScrollY - prevScrollY > 0 
 			prevScrollY = newScrollY;
 		}
