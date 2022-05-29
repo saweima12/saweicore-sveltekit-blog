@@ -26,8 +26,8 @@
 <script lang="ts">
 	import PrismJs from 'prismjs';
 	import { onMount } from 'svelte';
-	import { siteConfig, headingList } from '$lib/store';
-	import { beforeNavigate, afterNavigate } from '$app/navigation';
+	import { siteConfig } from '$lib/store';
+	import { afterNavigate } from '$app/navigation';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import type { PageMeta } from '$lib/types';
 	

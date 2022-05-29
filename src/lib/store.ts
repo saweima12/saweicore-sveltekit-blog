@@ -1,16 +1,11 @@
 import { writable } from 'svelte/store';
 import type { Writable } from 'svelte/store';
+import type { HeadingItem } from './types/response';
 
 export const viewId = {
   navMenu: "navMenu",
   searchView: "searchView"
 }
-
-export const siteConfig: Writable<Record<string, any>> = writable({});
-export const themeMode: Writable<string> = writable("light");
-
-export const lightBoxView: Writable<Record<string,any>> = writable({content: ""});
-
 
 const cViewStack = () => {
   const { subscribe, set, update }: Writable<Array<string>> = writable([]);
@@ -24,4 +19,7 @@ const cViewStack = () => {
   }
 };
 
+export const siteConfig: Writable<Record<string, any>> = writable({});
+export const themeMode: Writable<string> = writable("light");
+export const lightBoxView: Writable<Record<string,any>> = writable({content: ""});
 export const viewStack = cViewStack();
