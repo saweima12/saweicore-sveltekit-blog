@@ -4,21 +4,22 @@ tags:
 - svelte
 - markdown
 - programing
-excerpt: 想試著做個靜態網站卻又對現成的生成器感到不滿意？也許可以試看看 SvelteKit 與這個專門為靜態網站而生的 Markdown 內容管理工具，
+excerpt: 想試著做個靜態網站卻又對現成的生成器感到不滿意？不妨試試看 SvelteKit 與這個專門為靜態網站而生的 Markdown 內容索引工具吧，相信能夠帶來些不一樣的使用體驗。
 ---
 
-嘿，午安呀旅人。這是為了搭建這個部落格時所製作的工具
-
 <!-- more -->
+午安呀旅人，若你看到了這邊，在此先感謝你願意看看這東西。 Markedpage 是為了搭建這個部落格時一起製作的工具包，用意在解決 SvelteKit 使用 Markdown 及建立索引時缺乏相關工具的問題，希望能帶給你不錯的體驗。
+
 ## 這能夠做些什麼？
 - 使用 Markdown 作為資料來源，不需要額外的內容管理系統(CMS)。
-- 內建 `FrontMatter`、`<!--more--> 標籤`及`headings 抽取`功能。
+- 內建 `FrontMatter`、`<!--more--> 標籤`、`headings 抽取`及 draft 功能。
 - 內置簡易分類器，可依據 **資料夾路徑** 或是 **FrontMatter 欄位** 進行分類，省去撰寫繁雜的分類邏輯。
 - 支援**自定義分類器**，依照自己需求客製化分類方式。
 
 ## 事前準備
 
-需要使用 M
+1. pnpm
+2. SvelteKit 專案
 
 ### 安裝
 
