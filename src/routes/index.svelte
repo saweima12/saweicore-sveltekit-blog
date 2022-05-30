@@ -14,17 +14,12 @@
 				await fetch(apiUrl);
 			}
 		}
-		// cache taglist.
-		apiUrl = dataAPI.getTagList();
-		response = await fetch(apiUrl);
-		const { tagList } = await response.json();
 
 		return {
 			props: {
 				pageList,
 				maxPage,
 				pageNum,
-				// tagList
 			}
 		};
 	};

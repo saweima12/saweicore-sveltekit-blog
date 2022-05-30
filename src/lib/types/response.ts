@@ -8,6 +8,12 @@ export interface PageMeta extends Record<string, any> {
 	slugKey: string;
 }
 
+export interface HeadingItem extends Record<string, any>{
+  depth: string;
+  text: string;
+  id: string;
+}
+
 export interface JournalResult {
 	groups: Array<GroupListPair<PageMeta>>;
 }
@@ -15,6 +21,7 @@ export interface JournalResult {
 export interface PageResult {
 	metadata: Record<string, any>;
 	content: string;
+  headings?: Array<HeadingItem>;
 }
 
 export interface PageListResult {

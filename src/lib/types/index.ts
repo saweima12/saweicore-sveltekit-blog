@@ -7,7 +7,6 @@ export type {
 	PageMeta
 } from './response';
 
-
 export interface NavItem {
 	name: string;
 	link: string;

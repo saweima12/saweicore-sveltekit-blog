@@ -15,7 +15,7 @@ specifiers:
   eslint: ^7.32.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^3.4.1
-  markedpage: ^0.0.16
+  markedpage: ^0.0.17
   nprogress: ^0.2.0
   postcss: ^8.4.14
   prettier: ^2.6.2
@@ -46,7 +46,7 @@ devDependencies:
   eslint: 7.32.0
   eslint-config-prettier: 8.5.0_eslint@7.32.0
   eslint-plugin-svelte3: 3.4.1_eslint@7.32.0+svelte@3.48.0
-  markedpage: 0.0.16
+  markedpage: 0.0.17
   nprogress: 0.2.0
   postcss: 8.4.14
   prettier: 2.6.2
@@ -882,7 +882,7 @@ packages:
     dev: true
 
   /console-control-strings/1.1.0:
-    resolution: {integrity: sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=}
+    resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
   /core-util-is/1.0.3:
@@ -941,7 +941,7 @@ packages:
     dev: true
 
   /delegates/1.0.0:
-    resolution: {integrity: sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=}
+    resolution: {integrity: sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==}
     dev: true
 
   /detect-indent/6.1.0:
@@ -950,7 +950,7 @@ packages:
     dev: true
 
   /detect-libc/1.0.3:
-    resolution: {integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=}
+    resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
     engines: {node: '>=0.10'}
     hasBin: true
     dev: true
@@ -1809,8 +1809,8 @@ packages:
     hasBin: true
     dev: true
 
-  /markedpage/0.0.16:
-    resolution: {integrity: sha512-IX5ZB+crrimQ0XWHtXNYhrkh4YAoMv00o2ze7pm+xfv/0bO6MO95tmvupFKkNDZpGFvRCBE38D/0ZqvZrF+WWg==}
+  /markedpage/0.0.17:
+    resolution: {integrity: sha512-6nb5zOgzaJQEJY0pzlLJbpfbc7L9lKtMFnwhEifQPtiOheXGBS5lusM/hPjOOfVuP9FBVq8URxmnbMv2WRBpXg==}
     dependencies:
       front-matter: 4.0.2
       marked: 4.0.16

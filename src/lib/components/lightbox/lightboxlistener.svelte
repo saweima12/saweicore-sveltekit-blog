@@ -1,11 +1,11 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
-    import { lightBoxContent } from '$lib/store';
+    import { lightBoxView } from '$lib/store';
     let elements : Array<Element>;
 
     const listenerHandle = (e: Event) => {
         const src: string = (e.target as Element).getAttribute("src") as string;
-        lightBoxContent.set(src);
+        $lightBoxView.content= src;
     }
 
     onMount(() => {

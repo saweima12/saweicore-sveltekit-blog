@@ -1,25 +1,25 @@
 <script lang="ts">
 	import { isExternal } from '$lib/client/helper';
 	import type { NavItem } from '$lib/types';
-	import { isNavMenuShow, isMaskShow, themeMode, siteConfig } from '$lib/store';
+	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
 
 	const textlang = $siteConfig.textlang.common;
 	const author: Record<string, any> = $siteConfig.author;
 	const navList: Array<NavItem> = $siteConfig.nav;
-	let isVisible = false;
-	isNavMenuShow.subscribe((value) => (isVisible = value));
 
-	const keyHandler = (e: KeyboardEvent) => {
-		if (e.key == "Escape" && isVisible) {
-			isMaskShow.set(false);
-			isNavMenuShow.set(false);
+	export const uniqueId: string = viewId.navMenu;
+	$: isVisible = $viewStack.includes(uniqueId);
+
+	const escapeHandle = (e: KeyboardEvent) => {
+		if (isVisible && e.key == "Escape") {
+			viewStack.remove(uniqueId);
 		}
 	}
 </script>
 
-<svelte:window on:keydown={(e) => keyHandler(e)} />
+<svelte:window on:keydown={(e) => escapeHandle(e)} />
 
 <div
 	class="fixed z-30 top-0 right-0 bottom-0 w-60 md:w-80 transition-all duration-200 navmenu"

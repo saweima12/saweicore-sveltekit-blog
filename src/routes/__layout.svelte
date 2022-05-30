@@ -17,56 +17,49 @@
 	import '../theme.css';
 	// Components
 	import PageTransition from '$lib/components/pagetransition.svelte';
-	import ScreenMask from '$lib/components/screenmask.svelte';
-	import SearchBox from '$lib/components/serach/searchbox.svelte';
-	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
 	import SideNav from '$lib/components/nav/sidenav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
+	// 
+	import ScreenMask from '$lib/components/screenmask.svelte';
+	import SearchView from '$lib/components/serach/searchview.svelte';
+	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import GoogleAnalytics from '$lib/components/googleanalytics.svelte';
 
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { isNavMenuShow, themeMode } from '$lib/store';
-	let isMenuOpen = false;	
-	isNavMenuShow.subscribe((value) => (isMenuOpen = value));
+	import { themeMode, viewStack, viewId } from '$lib/store';
+	$: isMenuOpen = $viewStack.includes(viewId.navMenu);
 	
 	import { navigating } from '$app/stores';
 	import NProgress from 'nprogress';
-
-	NProgress.configure({
-		// Full list: https://github.com/rstacruz/nprogress#configuration
-		minimum: 0.16
-	});
 	
+	// Full list: https://github.com/rstacruz/nprogress#configuration
+	NProgress.configure({minimum: 0.16});
+	$: $navigating ? NProgress.start() : NProgress.done();
+
+	// onMount(() => {
 	$: {
-		if ($navigating) {
-			NProgress.start();
-		}
-		if (!$navigating) {
-			NProgress.done();
+		if (typeof window !== "undefined") {
+			let _themeMode = localStorage.getItem("mode");
+			themeMode.subscribe(value => {
+				localStorage.setItem("mode", value);
+				document.body.className = value;
+			});
+	
+			if (_themeMode) { $themeMode = _themeMode}
+	
+			if (!_themeMode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				themeMode.set("dark")
+			}
 		}
 	}
-
-	onMount(() => {
-		let _themeMode = localStorage.getItem("mode");
-		themeMode.subscribe(value => {
-			localStorage.setItem("mode", value);
-			document.body.className = value;
-		});
-
-		if (_themeMode) { $themeMode = _themeMode}
-
-		if (!_themeMode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			themeMode.set("dark")
-		}
-	})
+	// })
 </script>
 
 <div
-	class="transition-all duration-200 min-h-screen main-wrapper relative"
+	class="transition-all duration-200 min-h-screen main-wrapper"
 	class:-translate-x-60={isMenuOpen}
 	class:md:-translate-x-80={isMenuOpen}
 >
@@ -88,17 +81,17 @@
 			<Footer />
 		</div>
 
-		<div class="hidden lg:block drawer-wrapper">
-			<div class="w-full min-h-screen fixed drawer-container">
+		<div class="hidden lg:block drawer-wrapper mr-0.5">
+			<div class="w-full min-h-screen h-full drawer-container">
 				<Drawer />
 			</div>
 		</div>
 	</div>
 </div>
-<ScreenMask />
 
+<ScreenMask />
 <Navmenu />
-<SearchBox />
+<SearchView />
 <ImageLightBox />
 
 {#if $siteConfig.ga}
@@ -110,15 +103,10 @@
 .main-wrapper {
 	max-width: 1504px;
 	margin: 0 auto;
-	overflow-x: hidden;
 }
 
 .nav-wrapper {
 	min-width: 80px;
 }
-
-.drawer-container {
-	position: relative;
- }
 
 </style>

@@ -1,5 +1,6 @@
 import nav from './config/nav.js';
 import textlang from './config/textlang.js';
+import { headingClassName } from './marked/index.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -24,7 +25,7 @@ const config = {
 	],
 	marked: {
 		options: {},
-		extensions: {}
+		extensions: [ headingClassName("heading-item") ]
 	},
   search: {
     appKey: Buffer.from("BHODY4NQKK").toString('base64'),

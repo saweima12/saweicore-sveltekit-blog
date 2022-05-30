@@ -1,10 +1,9 @@
 <script lang="ts">
     import { siteConfig } from '$lib/store';
-
     const author: Record<string, any> = $siteConfig.author;
 
 </script>
-<div>
+<div class="author-widget">
     <div class="w-32 h-32">
         <img class="avatar" src={author.avatar} alt="{author.name}" loading="lazy">
     </div>  

@@ -1,17 +1,16 @@
 <script lang="ts">
-	import { isNavMenuShow, isMaskShow } from '$lib/store';
+	import { viewStack, viewId } from '$lib/store';
 
-	let toggle: boolean = false;
-	isNavMenuShow.subscribe((value) => (toggle = value));
-
-	const toggleMenuHandle = () => {
-		toggle = !toggle;
-		$isNavMenuShow = toggle;
-		$isMaskShow = toggle;
+	const uniqueId = viewId.navMenu;
+	$: toggle = $viewStack.includes(uniqueId);
+	
+	const toggleHandle = () => {
+		if (!toggle) viewStack.push(uniqueId);
+		else viewStack.remove(uniqueId);
 	};
 </script>
 
-<div class="menu-button-wrapper" class:toggle on:click={toggleMenuHandle}>
+<div class="menu-button-wrapper" class:toggle on:click={toggleHandle}>
 	<div class="menu-button-container">
 		<div class="menu-button" />
 	</div>

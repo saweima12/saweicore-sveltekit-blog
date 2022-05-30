@@ -1,7 +1,7 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import { siteConfig } from '$lib/store';
-import { isSearBoxShow, isMaskShow } from '$lib/store';
+import { viewId, viewStack } from '$lib/store';
 import type { SearchClient } from 'algoliasearch';
 import algoliasearch from 'algoliasearch';
 
@@ -16,21 +16,20 @@ let client: SearchClient;
 let preSearchText: string;
 let searchText: string;
 let searchObj: HTMLElement;
-let isVisible = false;
 let hits: Array<any> = [];
 
+const uniqueId = viewId.searchView;
+
+let isVisible: boolean = false;
+
+viewStack.subscribe(arr => {
+    if(!isVisible && arr.includes(uniqueId))
+        openHandle();    
+    // sync state.
+    isVisible = arr.includes(uniqueId);
+});
+
 onMount(() => {
-    isSearBoxShow.subscribe(value => {
-        isVisible = value;
-        $isMaskShow = value;
-
-        if(isVisible) {
-            searchText = "";
-            hits = [];
-            setTimeout(() => searchObj?.focus(), 100);
-        }
-    });
-
     client = algoliasearch(appKey, apiKey);
 })
 
@@ -39,12 +38,24 @@ const comboHandle = (e: KeyboardEvent) => {
     const platform = _navigator?.userAgentData?.platform || navigator?.platform; 
     if (e.key === '/' && (platform == 'MacIntel' ? e.metaKey : e.ctrlKey)) {
         e.preventDefault();
-        $isSearBoxShow = !isVisible;
+        $viewStack.includes(uniqueId) ? viewStack.remove(uniqueId) : viewStack.push(uniqueId);
     }
     if (e.key === 'Escape' && isVisible) {
-        $isSearBoxShow = false;
+        viewStack.remove(uniqueId);
     }
 }  
+
+const openHandle = () => {
+    isVisible = true;
+    if($viewStack.length) {
+        searchText = "";
+        hits = [];
+        setTimeout(() => {
+            searchObj?.click();
+            searchObj?.focus();
+        }, 200);
+    }
+}
 
 const searchHandle = async (e: Record<string, any> | any) => {
     if (searchText.length < 2 ) 
@@ -53,17 +64,9 @@ const searchHandle = async (e: Record<string, any> | any) => {
     if (preSearchText == searchText)
         return;
 
-    // if (e.key.length > 1) {
-    //     console.log(e.key);
-    //     return;
-    // }
-
     const index = client.initIndex(appIndex);
     let response = await index.search(searchText)
     let data = response;
-    // test data_highlightResult
-    // const response = await fetch("/api/test/search.json");
-    // let data = await response.json();
 
     preSearchText = searchText;
     hits = data.hits;

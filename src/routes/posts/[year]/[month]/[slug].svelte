@@ -7,7 +7,7 @@
 		const { year, month, slug } = params;
 		const apiUrl = dataAPI.getPostData(year, month, slug);
 		const response = await fetch(apiUrl);
-		const { metadata, content }: PageResult = await response.json();
+		const { metadata, content, headings }: PageResult = await response.json();
 
 		const pageMeta = { metadata: metadata, slugKey: slug };
 		return {
@@ -15,19 +15,24 @@
 				metadata: metadata,
 				content: content,
 				pageMeta: pageMeta
+			},
+			stuff: {
+				headings: headings
 			}
 		};
 	};
 </script>
 
 <script lang="ts">
-	import type { PageMeta } from '$lib/types';
+	import PrismJs from 'prismjs';
+	import { onMount } from 'svelte';
+	import { siteConfig } from '$lib/store';
 	import { afterNavigate } from '$app/navigation';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
-	import { siteConfig } from '$lib/store';
+	import type { PageMeta } from '$lib/types';
+	
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
-
 	export let metadata: Record<string, any>;
 	export let content: string;
 	export let pageMeta: PageMeta;
@@ -35,16 +40,23 @@
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
 	let tags: Array<string> = metadata.tags || [];
 
+	import { page } from '$app/stores';
+
 	// Fix: navigation/goto can't support id.
 	afterNavigate(() => {
-		if (location.hash.length > 1)
+		if ($page.url.hash.length > 0) {
 			location.href = location.href;
+		}
 	});
+
+	onMount(async () => {
+		await PrismJs.highlightAll();
+	});
+	
 </script>
 
 <svelte:head>
 	<title>{metadata.title} | {getTitleStr($siteConfig)}</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-dracula.min.css">
 
 	<!-- OpenGraph -->
@@ -60,7 +72,6 @@
 		<meta property="og:image" content="image/jpg" />
 	{/if}
 </svelte:head>
-
 
 <div class="my-10 post-page wrapper">
 	<div class="post-container">
