@@ -26,7 +26,7 @@
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import SearchView from '$lib/components/serach/searchview.svelte';
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
-	import GoogleAnalytics from '$lib/components/googleanalytics.svelte';
+	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
 
 	import { page } from '$app/stores';
 	import { themeMode, viewStack, viewId } from '$lib/store';
@@ -95,7 +95,7 @@
 <ImageLightBox />
 
 {#if $siteConfig.ga}
-	<GoogleAnalytics id={$siteConfig.ga} />
+	<GoogleAnalytics properties={[ $siteConfig.ga ]} />
 {/if}
 
 
