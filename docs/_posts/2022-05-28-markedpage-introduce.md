@@ -74,9 +74,9 @@ export default config;
   - params	=> 傳入分類器的參數 - 型別為 Object 
   - type	=>  選用的分類器類型
 
-關於分類器的詳情可參考 [#**Classifier**](#classifier) 節
+關於分類器的詳情可參考 [**#Classifier**](#classifier) 節
 
-- `marked` 欄位用於配置 marked  的設置以及使用擴展功能。詳情可參閱 [#**Marked**](#marked) 小節。
+- `marked` 欄位用於配置 marked  的設定及擴展功能。詳情可參閱 [**#Marked**](#marked) 節。
 
 
 除以上用途外也可用於配置網站的自定義內容，如： title 、description ...等，可自行運用。範例如下：
