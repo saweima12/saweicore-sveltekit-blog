@@ -20,7 +20,7 @@
 	class:hide={isHide}>
 	<a class="flex ml-2 raleway-font site-title" href="/">
 		<div class="logo">
-			<img src="/logo.png" alt={$siteConfig.title} />
+			<img width="36" height="36" src="/logo.png" alt={$siteConfig.title} />
 		</div>
 	</a>
 

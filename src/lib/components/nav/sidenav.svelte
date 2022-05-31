@@ -15,7 +15,7 @@
 	<div class="flex flex-col justify-between h-full px-5 sidenav-container">
 		<div class="mt-8 logo">
 			<a href="/">
-				<img class="rounded-full" src="/logo.png" alt={$siteConfig.title} />
+				<img width="36" height="36" class="rounded-full" src="/logo.png" alt={$siteConfig.title} />
 			</a>
 		</div>
 
