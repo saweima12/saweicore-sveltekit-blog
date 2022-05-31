@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	import { dataAPI } from '$lib/client';
+	import { dataAPI, getTitleStr } from '$lib/client';
 	import type { PageListResult, PageMeta, TabItem, TagItem } from '$lib/types';
 
 	export const load: Load = async ({ fetch, stuff }) => {
@@ -54,7 +54,7 @@
 </script>
 
 <svelte:head>
-	<title>{$siteConfig.title} - {$siteConfig.description}</title>
+	<title>{getTitleStr($siteConfig)}</title>
 </svelte:head>
 
 <div class="index-page">

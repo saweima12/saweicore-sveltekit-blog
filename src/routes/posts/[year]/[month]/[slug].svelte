@@ -56,7 +56,7 @@
 </script>
 
 <svelte:head>
-	<title>{metadata.title} | {getTitleStr($siteConfig)}</title>
+	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-dracula.min.css">
 
 	<!-- OpenGraph -->

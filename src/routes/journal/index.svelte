@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>{textlang.title} | {getTitleStr($siteConfig)}</title>
+	<title>{textlang.title} - {getTitleStr($siteConfig)}</title>
 </svelte:head>
 
 <div class="mt-8 wrapper journal-page">

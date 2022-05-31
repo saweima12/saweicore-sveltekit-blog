@@ -1,13 +1,14 @@
 import nav from './config/nav.js';
 import textlang from './config/textlang.js';
-import { headingClassName } from './marked/index.js';
+import { headingClassName, customALink } from './marked/index.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const config = {
 	title: 'Saweicore Lab',
-	description: ' 程式開發 | 網站架設 | 幣圈雜談 | 各項雜燴集散地',
+	summary: ' 程式開發 | 網站架設 | 幣圈雜談 | 各項雜燴集散地',
+  description: '',
   url: "https://saweicore.com",
   ga: "G-RL4EVSDCRW",
 	author: {
@@ -25,7 +26,7 @@ const config = {
 	],
 	marked: {
 		options: {},
-		extensions: [ headingClassName("heading-item") ]
+		extensions: [headingClassName("heading-item"), customALink()]
 	},
   search: {
     appKey: Buffer.from("BHODY4NQKK").toString('base64'),

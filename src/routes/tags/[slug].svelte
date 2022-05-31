@@ -48,7 +48,7 @@
 </script>
 
 <svelte:head>
-	<title>{tagName} | {getTitleStr($siteConfig)}</title>
+	<title>{tagName} - {getTitleStr($siteConfig)}</title>
 </svelte:head>
 
 <div class="tag-page wrapper">

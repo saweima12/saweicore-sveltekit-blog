@@ -26,7 +26,7 @@ export let metadata: Record<string,any>;
 </script>
 
 <svelte:head>
-	<title>{metadata.title} | {getTitleStr($siteConfig)}</title>
+	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
 </svelte:head>
 
 <div class="my-10 about-page wrapper">
