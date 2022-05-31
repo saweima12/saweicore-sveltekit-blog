@@ -8,10 +8,10 @@ excerpt: 想試著做個靜態網站卻又對現成的生成器感到不滿意�
 ---
 
 <!-- more -->
-午安呀旅人，若你看到了這邊，在此先感謝你願意看看這東西。 Markedpage 是搭建這個部落格時一起製作的工具包，用意在解決 SvelteKit 使用 Markdown 及建立索引時缺乏相關工具的問題，希望能帶給你不錯的體驗。
+午安呀旅人，若你看到了這邊，在此先感謝你願意看看這東西。 MarkedPage 是搭建這個部落格時一起製作的工具包，用意在解決 SvelteKit 使用 Markdown 及建立索引時缺乏相關工具的問題，希望能帶給你不錯的體驗。
 
 ## 這能夠做些什麼？
-- 使用 Markdown 作為資料來源，不需要額外的內容管理系統(CMS)。
+- 使用 .md 檔案作為資料來源，不需要額外的內容管理系統(CMS)。
 - 內建 `FrontMatter`、`<!--more--> 標籤`、`headings 抽取` 功能。
 - 內置[簡易分類器](#classifier)，可依據 **資料夾路徑** 或是 **FrontMatter 欄位** 進行分類，省去撰寫繁雜的分類邏輯。
 - 支援[自定義分類器](#customclassifier)，依照自己需求客製化分類方式。
@@ -325,7 +325,7 @@ title: MarkedPage test.
 
 ### Draft
 
-此為 FrontMatter 的延伸功能，當 FrontMatter 內容包含 `_draft: true` 時，該篇文章在 `NODE_ENV="production"` （使用 svelte-kit build 時)不會被列入有效檔案中。
+此為 FrontMatter 的延伸功能，當 FrontMatter 內容包含 `_draft: true` 時，該篇文章在 `NODE_ENV="production"` 狀態（也就是使用 svelte-kit build ) 下不會被列入有效檔案中。
 
 ```md
 ---
