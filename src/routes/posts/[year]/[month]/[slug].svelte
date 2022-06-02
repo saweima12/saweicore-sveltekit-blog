@@ -24,6 +24,7 @@
 </script>
 
 <script lang="ts">
+	import 'prism-themes/themes/prism-dracula.css';
 	import PrismJs from 'prismjs';
 	import { onMount } from 'svelte';
 	import { siteConfig } from '$lib/store';
@@ -57,7 +58,6 @@
 
 <svelte:head>
 	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-dracula.min.css">
 
 	<!-- OpenGraph -->
 	<meta property="og:url" content="{routePath}"/>

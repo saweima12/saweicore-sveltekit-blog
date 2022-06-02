@@ -55,6 +55,10 @@
 
 <svelte:head>
 	<title>{getTitleStr($siteConfig)}</title>
+	<meta property="og:url" content="{$siteConfig.url}"/>
+	<meta property="og:locale" content="zh_TW" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{getTitleStr($siteConfig)}" />
 </svelte:head>
 
 <div class="index-page">
