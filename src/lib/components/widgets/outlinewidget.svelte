@@ -29,22 +29,29 @@ const refreshOffsetArr = () => {
     });
 
     // calculate maxScrollY
-    maxScrollY = document.body.clientHeight - window.innerHeight;
+    maxScrollY = Math.max(document.body.scrollHeight, document.body.offsetHeight) - window.innerHeight; 
+    console.log(maxScrollY);
     refreshActiveIndex();
 }
 
 const refreshActiveIndex = () => {
-    const _index = offsetArr.findIndex(item => item > scrollY + (windowInnerHeight / 2));
+    const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+    const _index = offsetArr.findIndex(item => item > currentScrollY + (windowInnerHeight / 2));
     activeIndex = _index < 0 ? offsetArr.length - 1 
                 : _index > 0 ? _index - 1: _index;
     // process threshold
-    activeIndex = maxScrollY - scrollY <= 100 ? (offsetArr.length - 1) : activeIndex;
+    activeIndex = maxScrollY - currentScrollY <= 100 ? (offsetArr.length - 1) : activeIndex;
+    console.log(maxScrollY, currentScrollY);
 }
 
 afterNavigate(() => {
     // Register new details elements
     detailsArr = Object.values(document.getElementsByTagName("details"));
     detailsArr.map(item => item.addEventListener("toggle", detailsToggleHandle))
+    // refresh scrollList
+    refreshOffsetArr();
+    refreshActiveIndex();
 });
 
 // On headings update.
