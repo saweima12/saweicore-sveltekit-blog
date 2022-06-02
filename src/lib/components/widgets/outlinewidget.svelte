@@ -42,7 +42,6 @@ const refreshActiveIndex = () => {
                 : _index > 0 ? _index - 1: _index;
     // process threshold
     activeIndex = maxScrollY - currentScrollY <= 100 ? (offsetArr.length - 1) : activeIndex;
-    console.log(maxScrollY, currentScrollY);
 }
 
 afterNavigate(() => {
