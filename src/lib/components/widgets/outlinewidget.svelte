@@ -1,5 +1,5 @@
 <script lang="ts">
-import { afterNavigate } from "$app/navigation";
+import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 import type { HeadingItem } from "$lib/types/response";
 
@@ -28,14 +28,16 @@ const refreshOffsetArr = () => {
         return element.offsetTop + (element.clientHeight / 2);
     });
 
-    // calculate maxScrollY
-    maxScrollY = Math.max(document.body.scrollHeight, document.body.offsetHeight) - window.innerHeight; 
-    console.log(maxScrollY);
     refreshActiveIndex();
 }
 
 const refreshActiveIndex = () => {
     const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+    const _html = document.documentElement;
+    const _body = document.body;
+    // calculate maxScrollY
+    maxScrollY = Math.max(_body.scrollHeight, _body.offsetHeight, _html.clientHeight, _html.scrollHeight, _html.offsetHeight) - window.innerHeight; 
 
     const _index = offsetArr.findIndex(item => item > currentScrollY + (windowInnerHeight / 2));
     activeIndex = _index < 0 ? offsetArr.length - 1 
@@ -43,6 +45,8 @@ const refreshActiveIndex = () => {
     // process threshold
     activeIndex = maxScrollY - currentScrollY <= 100 ? (offsetArr.length - 1) : activeIndex;
 }
+
+beforeNavigate(() => unRegisterDetailsToggle())
 
 afterNavigate(() => {
     // Register new details elements

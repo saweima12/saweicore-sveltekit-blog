@@ -8,12 +8,11 @@
     onMount(()=> {
         lightBoxView.subscribe((value) => {
             picUrl = value.content;
-            isVisible = (value && value.length > 0) ? true : false;
+            isVisible = picUrl.length > 1 ? true : false;
         })
     });  
 
     const closeHandle = () => $lightBoxView.content = "";
-
 </script>
 
 <div class="lightbox-wrapper" 
