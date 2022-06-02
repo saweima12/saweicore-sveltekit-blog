@@ -54,20 +54,7 @@ afterNavigate(() => {
     detailsArr.map(item => item.addEventListener("toggle", detailsToggleHandle))
     // refresh scrollList
     refreshOffsetArr();
-    refreshActiveIndex();
 });
-
-// On headings update.
-$: {
-    if (typeof document !== 'undefined' 
-        && headings.length > 0) {
-        // Unregister old detials element
-        unRegisterDetailsToggle();
-        // update OffsetArr
-        refreshOffsetArr();
-        refreshActiveIndex();
-    }
-}
 
 // On ScrollUpdate
 $: {
