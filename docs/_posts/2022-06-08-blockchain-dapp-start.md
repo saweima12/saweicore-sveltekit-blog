@@ -13,18 +13,22 @@ _draft: true
 > 連結：[**如何取得加密貨幣 — 加密貨幣入門大小事**](/posts/2022/05/crypto-getting-start)
 
 ## 這篇文章希望能帶你
-
 - 建立自己的鏈上錢包
 - 嘗試進入去中心化金融 (De-fi)
 - 初步理解區塊鏈為何存在
 - 簡單理解加密貨幣種類
 
-
 ## 建立鏈上錢包
 
-目前常見的公鏈有：ETH、CARDANO(ADA) 、AVAX 及 SOLANA。不論你最終選擇哪個，想要**進入區塊鏈領域第一件事情便是建立一個鏈上錢包地址**，並將你的資金轉到鏈上。
+目前常見的公鏈有：ETH、CARDANO(ADA) 、AVAX 及 SOLANA。不論最終選擇哪個，想要**進入區塊鏈領域第一件事情便是建立一個鏈上錢包地址**，並將資金轉到鏈上。
 
-> 由於現今存在著許多區塊鏈，每條鏈的特性及功能雖然略有不同，但終端使用者操作步驟都大同小異。因此這邊會以我自己最熟悉的 Cardano(ADA) 區塊鏈為例。
+在開始之前有以下幾點需要注意：
+- **做好事前調查**：請確保對自己所選擇的公鏈有一定程度的了解，並且確認其足以信任。
+- **永遠為自己的行為負責**：絕對不要過度投入，確保能夠承擔多少風險，沒人能夠替你負責。
+- **要有防範意識**：在加密貨幣市場中，大多人是不太理性的，即便是市值前五名的公鏈都有可能一夕蒸發，務必做好風險控管。
+
+> 由於現今區塊鏈數量眾多，每條鏈的特性及功能雖然略有不同，但終端使用者操作步驟都大同小異。因此這邊會以我自己最熟悉的 Cardano(ADA) 區塊鏈為例。
+
 ### 選擇使用的錢包
 
 在 Cardano 中有多種錢包可以選擇，其中大多數都以瀏覽器插件的形式存在，這邊推薦使用 [Eternl Wallet](https://eternl.io/) 。
@@ -36,17 +40,33 @@ _draft: true
 
 ### 透過錢包創建自己的錢包地址
 
-// **TODO** 一系列的圖片與說明
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-01.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+1. 點擊 「Add Wallet」 進入選單
+</p>
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-02.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+2. 點擊 「Create Wallet」 創建自己的錢包地址 / 若已經有了其他的錢包，可以選擇 「Restore Wallet」 透過助記詞登入。
+</p>
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-03.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+3. 輸入自訂的錢包名稱及錢包密碼（此名稱與密碼僅適用於該裝置，用於避免有他人盜用裝置付款。）
+</p>
+
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-04.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+4. 最後會顯示由 24 個單字組成的助記詞，請務必保存好並且不要洩漏出去，若失去助記詞等同於失去錢包。會有資金損失的風險。
+</p>
 
 
 ### 目前使用鏈上錢包的好處
 
 - 可以透過鍊上錢包使用 DApp、質押和參與鏈上事務。
-- Not your key, not your money，將公鏈幣提領至對應公鏈幣的錢包，可以避免交易所倒掉時資產消失的窘境。
+- Not your key, not your money，將公鏈幣提領至對應公鏈幣的錢包，可以避免交易所倒掉時資產消失的窘境。(與區塊鍊共存亡)
 
 ### 其他的錢包
 
-另外，也有以下幾種錢包可以選擇：
+另外也有以下幾種錢包可以選擇：
 - Typhon Wallet - https://typhonwallet.io/
 - Gero Wallet - https://gerowallet.io/
 - Nami Wallet - https://namiwallet.io/
@@ -56,14 +76,17 @@ _draft: true
 
 ## 區塊鏈與質押
 
-在區塊鏈中 **質押 (Stake)** 是用來形容「將自己所持有的代幣進行鎖定，用來投票 / 提供流動性來協助維護區塊鏈網路」的稱呼。 
+在區塊鏈中 **質押 (Stake)** 是用來表示「將自己所持有的代幣進行鎖定，用來投票 / 提供流動性來協助維護區塊鏈網路」的簡稱。 
 
 在 PoS (權益證明) 基礎的區塊鏈中質押尤為重要，透過**持有者們質押代幣進行投票來決定哪一些節點更有驗證交易的優先權**。作為回報，會返還交易手續費或是獎勵池中的額度來鼓勵人們進行質押。
 
 透過 Eternl 錢包質押賺取額外的代幣非常簡單，操作如下：
 
 
-// **TODO** Eternl 錢包質押說明
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-05.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+切換到 Staking 介面，挑選喜歡的質押池。 按下 Delegate 即可（推薦挑選 Fees 為 0% 、 ROS > 4% 並且 Situ的池子進行質押）
+</p>
 
 
 在 Cardano 生態中，質押與其他區塊鏈有些許不同。
@@ -81,19 +104,36 @@ _draft: true
 
 ### 連接錢包到 DApp
 
-// **TODO** MinSwap 示範
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-06.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+先在錢包頁面中點擊插頭圖案，允許 DApp 連接。
+</p>
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/cnft-01.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+點擊右上角的 Link Wallet 選擇自己當前檢測到的錢包插件，點擊後會跳出視窗，讓錢包插件進行確認。
+</p>
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/cnft-02.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<p class="text-center">
+經過錢包插件確認後，即可看到連接完成。
+</p>
 
+連接 DApp 的操作步驟都大同小異，部份 DApp 甚至不需要進行錢包連接。下面會介紹些目前較為有用的 DApp 。
 
 ### 去中心化交易所 (DEX)
 
+目前為止使用的國內交易所 Ace 、國際交易所 Binance 都屬於「中心化交易所 (CEX)」， 在區塊鏈中有著與之相對的透過區塊鏈的去中心化基礎與智能合約創造的「去中心化交易所（DEX）」，作為區塊鍊上代幣交易的集中地。目前 DEX 的方便性與交易量還無法媲美 CEX ，但相信未來非常具有成長潛力。
 
+- [MinSwap](https://minswap.org/) 是 Cardano 社群中較為活躍的 DEX 之一，採用 Auto Market Maker 模型（AMM)，讓流動性提供者可透過鎻倉代幣提供流動性賺取額外收入，交易者依據需要從流動池中兌換代幣，可在此將 ADA 更換為其他 Cardano 生態上的代幣。
 
-### 消費性質的產品與 NFT
+- [MuesliSwap](https://muesliswap.com/markets) 是另外一個在 Cardano 社群中活躍的 DEX 之一，採用傳統的訂單簿模型 (OrderBook)撮合需求者與供給者雙方進行交易。
 
-- JpgStore
+### 消費性質產品與 NFT
 
+在 Cardano 中目前具有消費性質的產品還不夠多，大多是音樂、繪畫、動畫等相關作品。
 
-- ADAHandle
+- [Jpg.store](https://www.jpg.store/) 是 Cardano 社群中 NFT 小圖片的交易集散地。在這邊可以進行大多數的 NFT 販售與購買，與拍賣網站類似。
+
+- [ADAHandle](https://adahandle.com/) 在區塊鍊中的錢包地址總是很長，AdaHandle 可以透過 NFT 應用進行地址 Mapping 。縮短到像是: $handle.it 
 
 ## 深入探討
 
@@ -133,6 +173,7 @@ _draft: true
 ## TL;DR
 - 不論選擇哪條區塊鏈，要踏入區塊鏈生態的第一步都是先建立該鏈的錢包地址。
 - 錢包地址可以透過公鍊提供的錢包軟體建立。
+- 錢包的助記詞必須保存好且避免洩漏，預防有資金損失的風險。
 - 在 PoS 基礎的區塊鍊中，透過在區塊鏈上質押代幣，可以協助區塊鍊網路運作並賺取質押獎勵。
 - 去中心化應用程式 (DApp) 是建立在區塊鍊之上不需私人資料庫的應用程式。
 - 目前 DApp 的生態還在發展中，能做的事情還不多。
