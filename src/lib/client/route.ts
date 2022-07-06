@@ -1,6 +1,5 @@
 import { getFormatedDate } from '$lib/helper';
 import type { PageMeta } from '$lib/types';
-import type { SourcePage } from 'markedpage';
 
 // API PATH.
 export const dataAPI = {
