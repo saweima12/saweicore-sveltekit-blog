@@ -1,3 +1,3 @@
-node ./scripts/commitAgolia.js
+# node ./scripts/commitAgolia.js
 
-npx svelte-sitemap --domain https://saweicore.com/ -c daily
+pnpm exec svelte-sitemap --domain https://saweicore.com/ -c daily
