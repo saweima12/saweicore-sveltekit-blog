@@ -59,7 +59,7 @@
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{getTitleStr($siteConfig)}" />
-	<meta property="description" content="" />
+	<meta property="description" content="{$siteConfig.description}" />
 </svelte:head>
 
 <div class="index-page">

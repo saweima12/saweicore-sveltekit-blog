@@ -7,8 +7,8 @@ dotenv.config();
 
 const config = {
 	title: 'Saweicore Lab',
-	summary: ' 程式開發 | 網站架設 | 幣圈雜談 | 各項雜燴集散地',
-  description: '',
+	summary: '程式開發 | 網站架設 | 幣圈雜談 | 各項雜燴集散地',
+  description: 'SaweiCore Lab 是用於記錄與歸檔個人的研究心得的集散地，內容多以網站架設、程式開發、幣圈探索為主並以需求導向探討問題並記錄對應的解決方案，以便後續查閱。',
   url: "https://saweicore.com",
   ga: "G-RL4EVSDCRW",
 	author: {
