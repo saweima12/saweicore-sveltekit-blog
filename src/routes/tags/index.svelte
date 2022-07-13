@@ -18,12 +18,12 @@
 </script>
 
 <script lang="ts">
+	import textstr from '$lib/textstr';
 	import { siteConfig } from '$lib/store';
-    import { goto } from '$app/navigation';
 	import Taglist from '$lib/components/article/taglist.svelte';
 	import TabGroup from '$lib/components/tabs/tabgroup.svelte';
 
-	const textlang = $siteConfig.textlang.home;
+	const textlang = textstr.home;
     export let tagList: Array<TagItem>;
 
 	let tabGroup: Array<TabItem> = [ 

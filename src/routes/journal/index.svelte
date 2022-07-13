@@ -17,11 +17,12 @@
 </script>
 
 <script lang="ts">
+	import textstr from '$lib/textstr';
 	import { siteConfig } from '$lib/store';
 	import { getTitleStr } from '$lib/client';
 	import JournalList from '$lib/components/article/journallist.svelte';
 
-	const textlang: Record<string, any> = $siteConfig.textlang.journal;
+	const textlang: Record<string, any> = textstr.journal;
 
 	export let groups: Array<GroupListPair<PageMeta>>;
 </script>

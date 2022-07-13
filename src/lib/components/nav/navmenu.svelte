@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { isExternal } from '$lib/client/helper';
+	import textstr from '$lib/textstr';
 	import type { NavItem } from '$lib/types';
+	import { isExternal } from '$lib/client/helper';
 	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
 
-	const textlang = $siteConfig.textlang.common;
+	const textlang = textstr.common;
 	const author: Record<string, any> = $siteConfig.author;
 	const navList: Array<NavItem> = $siteConfig.nav;
 

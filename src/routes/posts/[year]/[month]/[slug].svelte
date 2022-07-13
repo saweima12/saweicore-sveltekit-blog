@@ -66,7 +66,7 @@
 	<meta property="og:title" content="{metadata.title}" />
 	{#if metadata.excerpt}
 		<meta property="og:description" content="{metadata.excerpt}"/>
-		<meta property="description" content="{metadata.excerpt}"/>
+		<meta name="description" content="{metadata.excerpt}"/>
 	{/if}
 	{#if metadata.thumbnail}
 		<meta property="og:image" content="{metadata.thumbnail}" />

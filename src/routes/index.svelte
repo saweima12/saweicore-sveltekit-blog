@@ -26,6 +26,7 @@
 </script>
 
 <script lang="ts">
+	import textstr from '$lib/textstr';
 	import { siteConfig } from '$lib/store';
 	
 	import { goto } from '$app/navigation';
@@ -43,7 +44,7 @@
 		pageList = [...pageList, ...data.pageList];
 	};
 
-	const textlang = $siteConfig.textlang.home;
+	const textlang = textstr.home;
 
 	// Define TabGroup
 	let tabGroup: Array<TabItem> = [ 
@@ -59,7 +60,7 @@
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{getTitleStr($siteConfig)}" />
-	<meta property="description" content="{$siteConfig.description}" />
+	<meta name="description" content="{$siteConfig.description}" />
 </svelte:head>
 
 <div class="index-page">

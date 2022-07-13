@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { siteConfig } from '$lib/store';
+	import textstr from '$lib/textstr'
 	import { pageRoute, getYYYYMMDD } from '$lib/client';
 	import type { TagItem } from '$lib/types';
 
-	const textlang: Record<string, any> = $siteConfig.textlang.home;
+	const textlang: Record<string, any> = textstr.home;
 	export let tags: Array<TagItem>;
 </script>
 
