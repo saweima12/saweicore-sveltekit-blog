@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 	import { dataAPI, getTitleStr } from '$lib/client';
-	import type { PageListResult, PageMeta, TabItem, TagItem } from '$lib/types';
+	import type { PageListResult, PageMeta, TabItem } from '$lib/types';
 
-	export const load: Load = async ({ fetch, stuff }) => {
+	export const load: Load = async ({ fetch }) => {
 		let apiUrl = dataAPI.getPostList(1);
 		let response = await fetch(apiUrl);
 		const { pageList, maxPage, pageNum }: PageListResult = await response.json();
@@ -59,6 +59,7 @@
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{getTitleStr($siteConfig)}" />
+	<meta property="description" content="" />
 </svelte:head>
 
 <div class="index-page">
