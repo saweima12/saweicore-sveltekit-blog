@@ -1,5 +1,4 @@
 import nav from './config/nav.js';
-import textlang from './config/textlang.js';
 import { headingClassName, customALink } from './marked/index.js';
 import dotenv from 'dotenv';
 
@@ -33,8 +32,7 @@ const config = {
     apiKey: Buffer.from("5f4c05344cf6d1cbe581c20e049a7c14").toString('base64'),
     index: "SaweicoreLab"
   },
-	nav: nav,
-	textlang: textlang
+	nav: nav
 };
 
 export default config;
