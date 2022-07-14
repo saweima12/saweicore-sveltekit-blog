@@ -39,9 +39,7 @@ const result = pages.map(page => {
 });
 
 
-console.log(result);
 // Loading
-
 const conn = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_ADMINKEY);
 const index = conn.initIndex("SaweicoreLab");
 

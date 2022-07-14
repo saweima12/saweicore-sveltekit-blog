@@ -1,5 +1,5 @@
 ---
-title: SvelteKit 靜態網站的內容管理方案 — MarkedPage
+title: MarkedPage — SvelteKit 靜態網站的內容管理方案
 tags:
 - svelte
 - markdown
