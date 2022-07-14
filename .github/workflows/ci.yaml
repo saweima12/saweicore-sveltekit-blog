@@ -24,5 +24,7 @@ jobs:
       - name: run publish
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          ALGOLIA_APPID: ${{ secrets.ALGOLIA_APPID }}
+          ALGOLIA_ADMINKEY: ${{ secrets.ALGOLIA_ADMINKEY }}
         run: "pnpm install && pnpm run publish"
           
