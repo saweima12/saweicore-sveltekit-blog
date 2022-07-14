@@ -21,6 +21,8 @@ jobs:
         with:
           version: 7
         
-      - name: run deploy
+      - name: run publish
         env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: "pnpm install && pnpm run publish"
           
