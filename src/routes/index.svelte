@@ -52,6 +52,12 @@
 		{ id: "tags", label: textlang.tags, link: '/tags'}
 	];
 	const clickTab = (item: TabItem) => { const link = item.link as string; goto(link) };	
+	// support HMR
+	import { invalidate } from '$app/navigation';
+	import { onContentUpdate } from 'markedpage';
+	onContentUpdate((payload: Record<string, any>) => {
+		invalidate(dataAPI.getPostList(1))
+	})
 </script>
 
 <svelte:head>

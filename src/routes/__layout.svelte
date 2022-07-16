@@ -28,18 +28,16 @@
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
 
-	import { page } from '$app/stores';
+	import { page, navigating } from '$app/stores';
 	import { themeMode, viewStack, viewId } from '$lib/store';
 	$: isMenuOpen = $viewStack.includes(viewId.navMenu);
 	
-	import { navigating } from '$app/stores';
 	import NProgress from 'nprogress';
 	
 	// Full list: https://github.com/rstacruz/nprogress#configuration
 	NProgress.configure({minimum: 0.16});
 	$: $navigating ? NProgress.start() : NProgress.done();
 
-	// onMount(() => {
 	$: {
 		if (typeof window !== "undefined") {
 			let _themeMode = localStorage.getItem("mode");
@@ -55,7 +53,6 @@
 			}
 		}
 	}
-	// })
 </script>
 
 <div

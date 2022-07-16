@@ -54,6 +54,13 @@
 		await PrismJs.highlightAll();
 	});
 	
+	// support HMR
+	import { invalidate } from '$app/navigation';
+	import { onContentUpdate } from 'markedpage';
+	onContentUpdate((payload: Record<string, any>) => {
+		const { year, month, slug} = $page.params;
+		invalidate(dataAPI.getPostData(year, month,slug))
+	})
 </script>
 
 <svelte:head>
