@@ -4,14 +4,14 @@ import type { SourcePage, FrontMatterClassifierResult } from 'markedpage';
 import type { PageMeta } from '$lib/types';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	//  get params
 	const { tag, slug } = params;
 	const pageNum = Number(slug);
 	// load config.
 	const config = await siteConfig();
 	const maxPerPage = config.pagination.maxPerPage;
-	// Get: tag list.
+	// GET: tag list.
 	const tagSetMap: FrontMatterClassifierResult = await classifiedSet('tag');
 	const tagSet = tagSetMap[tag] || [];
 

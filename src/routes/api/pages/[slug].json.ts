@@ -4,7 +4,7 @@ import type { PageMeta } from '$lib/types';
 
 import { siteConfig, classifiedSet } from 'markedpage';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	// get url params
 	const { slug } = params;
 	const pageNum = Number(slug);

@@ -4,7 +4,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 import { getFormatedDate } from '$lib/helper';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	const { year, month, slug } = params;
 	// Search page by params.
 	const page: SourcePage = await getPage(slug, (page) => {

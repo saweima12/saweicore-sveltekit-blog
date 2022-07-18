@@ -5,7 +5,7 @@ import type { DirectoryClassifierResult, SourcePage } from 'markedpage';
 import { classifiedSet } from 'markedpage';
 import { getFormatedDate } from '$lib/helper';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	// process postList & sort by created time descending.
 	const postSet: DirectoryClassifierResult = await classifiedSet('post');
 	const postList: Array<PageMeta> = postSet.pages

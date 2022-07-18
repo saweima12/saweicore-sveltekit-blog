@@ -4,10 +4,10 @@ import type { SourcePage, FrontMatterClassifierResult } from 'markedpage';
 import type { RequestHandler } from '@sveltejs/kit';
 import Postlist from '$lib/components/article/postlist.svelte';
 
-export const get: RequestHandler = async () => {
-	// Get: tag list.
+export const GET: RequestHandler = async () => {
+	// GET: tag list.
 	const tagSet: FrontMatterClassifierResult = await classifiedSet('tag');
-	// Get: page list count.
+	// GET: page list count.
 	let tagList: Array<Record<string, any>>;
 
 	tagList = Object.entries(tagSet)

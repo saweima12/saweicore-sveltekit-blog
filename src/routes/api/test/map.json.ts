@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { pathMap, slugMap, classifiedSet } from 'markedpage';
 
-export const get: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url }) => {
 
   const _pathMap = await pathMap();
   const _slugMap = await slugMap();

@@ -3,7 +3,7 @@ import type { DirectoryClassifierResult, SourcePage } from 'markedpage';
 
 import { classifiedSet } from 'markedpage';
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
 	// get all page list.
 	const postSet: DirectoryClassifierResult = await classifiedSet('post');
 	const rawList: Array<SourcePage> = postSet.pages.slice().sort((a, b) => {
