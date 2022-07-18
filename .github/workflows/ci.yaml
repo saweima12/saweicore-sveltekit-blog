@@ -26,5 +26,5 @@ jobs:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           ALGOLIA_APPID: ${{ secrets.ALGOLIA_APPID }}
           ALGOLIA_ADMINKEY: ${{ secrets.ALGOLIA_ADMINKEY }}
-        run: "pnpm install --no-frozen-lockfile" && pnpm run publish"
+        run: "pnpm install --no-frozen-lockfile && pnpm run publish"
           
