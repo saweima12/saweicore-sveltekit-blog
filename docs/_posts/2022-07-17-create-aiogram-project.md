@@ -1,5 +1,5 @@
 ---
-title: 建立專案基本形狀 — Telegram Bot 開發雜談（一）
+title: 用 AIOGram 建立機器人專案 — Telegram Bot 開發雜談（一）
 tags:
  - bot
  - python
@@ -11,40 +11,48 @@ _draft: true
 
 考量到管理員不可能時時刻刻都在，並且刪除圖片時管理員自身也不可避免的會受到精神攻擊，人工處理顯然不是一種好辦法，必須要由機器人來處理。由於需求的急迫性花了幾週專心研究，以下是一些相關紀錄。
 
-##  註冊 Telegram Bot 
+## 註冊 Telegram Bot 
 
-透過 Telegram 加入 Bot Father 註冊新的 bot
+透過 Telegram Bot Father 註冊新的 bot
+
+
 
 最後保存好取得的 BotToken 字串，未來所有操作都會需要。
 
 ## 如何操作 Bot ?
 
-所有操作包含接收資訊及發送訊息都是透過 HTTP API 來進行，基本結構如下：
+在 Telegram Bot 中所有操作包含 **[接收資訊]** 及 **[發送訊息]** 都是透過 HTTP API 來進行。
 
 ```url
 https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}
 ```
 
-- `BOT_TOKEN` -> 填入從 BotFather 取得的 Token String.
+- `BOT_TOKEN` -> 填入從 BotFather 取得的 Token String. 如：5292723007:AAE-APVbUkZgOZ6CVb4GM_KfV7CtE5dgLmw
 - `METHOD_NAME` -> 填入對應的方法名稱，如：getMe
 
-支援 GET 與 POST 的操作，對於簡單的訊息可以直接使用 Get 搭配 Query Params 如:
-
+支援 GET 與 POST 的操作，對於簡單的訊息可以直接使用 Url QueryParams。
 ```text
-https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME?url={API_URL}
+https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
 ```
-
-針對複雜的操作可以透過 POST 並夾帶於 Body 之中。支援 Content-Type：
+針對複雜的操作可以透過 POST 並夾帶於 Body 中。支援 Content-Type：
 
 - `application/x-www-form-urlencoded`
 - `application/json (except for uploading files)`
 - `multipart/form-data (use to upload files)`
+
+
+```
+5292183007:AAE-APVbUkZgOZ6CVb4ZM_KfV7CiE5dcLmw
+```
+
+
 
 **重點整理：**
 - BOT_TOKEN 是從 BotFather 註冊時取得的亂數字串。
 - 大多 Method 皆支援 GET 與 POST 的操作。
 - application/json 適用於除上傳檔案以外的所有操作。
 - multipart/form-data  適用於上傳檔案（如有必要），通常是圖片。
+
 
 
 雖然透過 HTTP request 就能夠發送指令，但在代碼中混用 URL 字串並不直觀，為解決這問題，社群也有提供各語言的 API 包裝器。
@@ -89,8 +97,6 @@ ngrok config add-authtoken {AUTH_TOKEN}
 ```sh
 ngrok http 8000
 ```
-
-
 
 
 
