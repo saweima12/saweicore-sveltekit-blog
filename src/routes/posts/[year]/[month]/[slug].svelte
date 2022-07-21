@@ -24,8 +24,11 @@
 </script>
 
 <script lang="ts">
-	import 'prism-themes/themes/prism-dracula.css';
+	// import prismjs
 	import PrismJs from 'prismjs';
+	import 'prism-themes/themes/prism-dracula.css';
+	import 'prismjs/components/prism-python.min.js';
+
 	import { onMount } from 'svelte';
 	import { siteConfig } from '$lib/store';
 	import { afterNavigate } from '$app/navigation';

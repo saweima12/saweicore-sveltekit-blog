@@ -28,6 +28,7 @@
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
 
+	import { dev } from '$app/env';
 	import { page, navigating } from '$app/stores';
 	import { themeMode, viewStack, viewId } from '$lib/store';
 	$: isMenuOpen = $viewStack.includes(viewId.navMenu);
@@ -91,7 +92,7 @@
 <SearchView />
 <ImageLightBox />
 
-{#if $siteConfig.ga}
+{#if $siteConfig.ga && !dev}
 	<GoogleAnalytics properties={[ $siteConfig.ga ]} />
 {/if}
 
