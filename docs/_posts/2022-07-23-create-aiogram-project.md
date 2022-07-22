@@ -4,7 +4,6 @@ tags:
  - bot
  - python
  - programing
-_draft: true
 ---
 
 午安旅人，這裡是一個月沒有更新文章的 Saweima。不知道旅人有沒有在 Telegram 公開群組遇到過惡意騷擾人士呢？時不時的開新帳號跑進群組貼一些會讓人感到噁心的圖片，踢完過一陣子又再次故技重施，猶如蟑螂一般，殺也殺不完。
@@ -87,10 +86,10 @@ if __name__ == "__main__":
 Polling 方式是透過一個迴圈，定期的呼叫 Telegram Bot API 的 getUpdate 方法取得新的訊息，並將其傳入 dispatcher 進行分發，直到被中斷為止。
 
 - `Bot` 類負責與 Bot API 溝通，包含 **send_message** 或 **deleted_message** 等主動操作的 method 。
-- `Dispatcher` 類負責接收 API 的 Update 訊息（不論是透過 Polling 還是 Webhook 接收的）依據特徵分發給各 message_handler 。
-- `Message` 類是透過 Dispatcher 分類過後的訊息物件，包含 message_id , chat_id, user_id 等關鍵的判斷訊息， AIOGram 也有在此基礎上實作許多輔助方法。
-- `dp.message_handler()` 可以將底下的 function 註冊為處理器，並且透過參數如: **content_types** 、**commands** 設定只接包含哪些特徵的訊息。
-- `start_polling` 用於執行**自動抓取 Telegram 的訊息**更新。
+- `Dispatcher` 類負責**接收 API 的 Update 訊息**（不論是透過 Polling 還是 Webhook 接收的）依據特徵分發給各 message_handler 。
+- `Message` 類是**透過 Dispatcher 分類過後的訊息物件**，包含 message_id , chat_id, user_id 等關鍵的判斷訊息， AIOGram 也有在此基礎上實作許多輔助方法。
+- `dp.message_handler()` 可以**將底下的 function 註冊為處理器**，並且透過參數如: **content_types** 、**commands** 設定只接包含哪些特徵的訊息。
+- `start_polling` 用於執行**輪詢抓取 Telegram 的訊息**更新。
 
 
 ### 使用 Webhook
@@ -153,33 +152,38 @@ Webhook 方式是在啟動時通知 Telegram 伺服器將新訊息傳輸至對�
 - `bot.delete_webhook` 用於關閉時通知 Telegram 伺服器停止輸送訊息至註冊的 URL
 - `start_webhook` 用於啟動一個小型的 HTTP Server 監聽 webhook_path 參數指定的路徑。host、port 用於配置啟動的 host 與 port。
 
-> - 較為推薦使用 **Webhook** 方式接收 Update 訊息，可以節省頻繁發送封包的流量及不斷輪詢計算損耗的電腦資源。
+> - 較為推薦使用 Webhook 方式接收 Update 訊息，可以節省頻繁發送封包的流量及不斷輪詢計算損耗的電腦資源。
 > - 不過要以此作為接收訊息方式，至少會需要一個支援 HTTPS 的網域。因此還是依據手邊的資源決定。
 
 ## 如何在本地端進行測試？
 
-如果使用 Polling 接收資訊的話倒還好，如果使用 Webhook 的話，最先遇上的問題大概就是怎麼進行測試，總不能每次都先發布到遠端伺服器，又或是根本沒有遠端伺服器，這時怎麼辦呢？可以考慮使用反向代理工具。
+如果使用 Polling 接收資訊的話倒還好，如果使用 Webhook 的話，最先遇上的問題大概就是怎麼進行測試，總不能每次都先發布到遠端伺服器，又或是根本沒有遠端伺服器，這時可以考慮使用反向代理工具。
 
 ### Ngrok
 
 > **Ngrok** <br/>
 > https://ngrok.com/
 
-Ngrok 是一款有提供免費方案的反向代理工具，並且也支援 HTTPS 轉發，可以用於本地端的 WEBHOOK 測試，並且完全滿足這次的需求，使用前需要先在官網註冊帳號取得 AUTH_TOKEN 並下載對應作業系統的檔案。輸入以下指令設定 {AUTH_TOKEN}
+Ngrok 是一款有提供免費方案的反向代理工具，並且也支援 HTTPS 轉發，可以用於本地端的 Webhook 測試，並且完全滿足這次的需求，使用前需要先在官網註冊帳號取得 AUTH_TOKEN 並下載對應作業系統的檔案。輸入以下指令設定 {AUTH_TOKEN}
 
 ```sh
 ngrok config add-authtoken {AUTH_TOKEN}
 ```
 
-設定完成後，再來只需要輸入以下指令即可將自己的 API PORT 綁定到 ngrok 提供的 domain 上。
+設定完成後，再來只需要輸入以下指令即可將自己的 PORT 8000 綁定到 ngrok 提供的 domain 上。
 ```sh
 ngrok http 8000
 ```
 
+<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/ngrok-test.jpg">
+
+圖中的 `https://928c-211-23-21-139.ngrok.io` 就是透過 ngrok 取得的 URL DOMAIN，它就相當於連接到本機的 port 8000 。
+
+當一切就緒，就可以試著與機器人對話，如果按照上面的範例，旅人應該會收到一串神奇的數字，那便是自己的 user_id 。
 
 ## 如果不使用包裝器的話？
 
-在 Telegram Bot API 中所有的操作，不論是 **[接收資訊]** 還是 **[發送訊息]** 都是透過 HTTP API 來進行。`結構如下：
+若不使用包裝器，在 Telegram Bot API 中所有的操作，不論是 **[接收資訊]** 還是 **[發送訊息]** 都是透過 HTTP API 來進行。結構如下：
 
 ```text
 https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}
@@ -198,8 +202,53 @@ https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
 - `application/json (except for uploading files)`
 - `multipart/form-data (use to upload files)`
 
+以 GetUpdates 為例，透過呼叫 API：
+`https://api.telegram.org/bot{BOT_TOKEN}/getUpdates`
+
+最後獲得的 response：
+```js
+{
+  "ok":true,
+  "result":[
+    {
+      "update_id":136940592,
+      "message":{
+        "message_id":964,
+        "from":{
+          "id":549919258,
+          "is_bot":false,
+          "first_name":"Ch.",
+          "last_name":"S",
+          "username":"Saweima"
+        },
+        "chat":{
+          "id":-1001756617092,
+          "title":"T1 Group",
+          "type":"supergroup"
+        },
+        "date":1657095304,
+        "text":"test"
+      }
+    }
+  ]
+}
+```
 
 ## 注意事項
 
-- Telegram 超過 500人的群組有可能收不到 Join Message 
-- 機器人之間會互相打架。 
+- 部份機器人的操作（如：刪除其他人訊息、設定權限...等）需要有對應的群組權限。
+- 非群組管理員的機器人，只在遇到自己登記過的指令才會有收到相關的 Update 訊息。
+- 若為群組管理員的機器人，會接收到所有群組內的 Update 訊息。
+- 若一則訊息在 Telegram 伺服器發送給機器人之前被刪除，則機器人會收不到該則訊息。
+- Telegram 超過 500 人的群組有可能收不到 Join Message。
+- 機器人之間會互相干擾，必須確保機器人產生的對話內容、接收的指令不會觸發其他機器人。
+
+
+## TL;DR
+
+- AIOGram 是 Telegram Bot API 的包裝器，用以簡化機器人開發流程。
+- AIOGram 支援輪詢抓取更新 - Polling 及被動接收更新 - Webhook。
+- 使用 Webhook 接收更新的最低條件為支援 https 的 domain。
+- 推薦使用 Webhook 作為接收更新的方式，用以節省流量與運算資源。
+- 可以透過 Ngrok 的反向代理，測試本機端的 Webhook 與 API 。
+- 若不使用包裝器，則需要自己組合出 HTTP URL 及自行處理訊息的解析。
