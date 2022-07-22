@@ -12,7 +12,7 @@ _draft: true
 考量到管理員不可能時時刻刻都在、刪除圖片時管理員自身也不可避免的會受到精神攻擊，人工處理顯然不是一種好辦法。考量到需求的急迫性，花了幾週時間研究及編寫機器人，在這邊記錄下自己用到的東西們。
 
 
-## AIOGram 是什麼？
+## AIOGram
 
 AIOGram 是 Telegram Bot API 的 Python 包裝器，用於將繁瑣的 HTTP API 呼叫流程包裝為程式物件並解析 API 的回傳資料，讓操作流程與程式語句一樣直觀。
 
@@ -46,6 +46,10 @@ AIOGram 是 Telegram Bot API 的 Python 包裝器，用於將繁瑣的 HTTP API 
 
 ## 建立基本結構
 
+AIOGram 有兩種取得 update 資訊的方式。以下為兩種範例。
+
+### 使用 Polling 
+
 ```py
 # 導入 Aiogram 包
 from aiogram import Bot
@@ -67,7 +71,6 @@ async def on_start_command(message: Message):
 # Process all messages except start command
 @dp.message_handler(content_types=ContentTypes.ANY)
 async def on_message(message: Message):
-    Bot.
     await message.reply(message.from_user.id)
 
 async def on_startup(dispatcher: Dispatcher):
@@ -81,34 +84,102 @@ if __name__ == "__main__":
     start_polling(dp, on_startup=on_startup, on_shutdown=on_shutdown)
 ```
 
-幾項要點：
-- `Bot` 類負責與 Bot API 溝通，包含 `send_message`、`deleted_message` 等主動操作的 method 
-- `Dispatcher` 類負責接收 API 的 Update 訊息（不論是透過 Polling 還是 Webhook 接收的）依據特徵分發給各 message_handler
-- `dp.message_handler()` 可以將底下的 function 註冊為處理器，並且透過參數如: `content_types` 設定只接包含哪些特徵的訊息
+Polling 方式是透過一個迴圈，定期的呼叫 Telegram Bot API 的 getUpdate 方法取得新的訊息，並將其傳入 dispatcher 進行分發，直到被中斷為止。
+
+- `Bot` 類負責與 Bot API 溝通，包含 **send_message** 或 **deleted_message** 等主動操作的 method 。
+- `Dispatcher` 類負責接收 API 的 Update 訊息（不論是透過 Polling 還是 Webhook 接收的）依據特徵分發給各 message_handler 。
+- `Message` 類是透過 Dispatcher 分類過後的訊息物件，包含 message_id , chat_id, user_id 等關鍵的判斷訊息， AIOGram 也有在此基礎上實作許多輔助方法。
+- `dp.message_handler()` 可以將底下的 function 註冊為處理器，並且透過參數如: **content_types** 、**commands** 設定只接包含哪些特徵的訊息。
+- `start_polling` 用於執行**自動抓取 Telegram 的訊息**更新。
 
 
+### 使用 Webhook
 
-## Ngrok
+```py
+from aiogram import Bot
+from aiogram.types import Message, ContentTypes
+from aiogram.dispatcher import Dispatcher
+from aiogram.utils.executor import start_webhook
+
+BOT_TOKEN = "5292723007:AAE-APVbUkZgOZ6CBGM_KfV7CtE5dgLmw"
+
+# WEBHOOK SETTING
+WEBHOOK_DOMAIN = "https://68dc-211-23-21-139.jp.ngrok.io"
+WEBHOOK_PATH="/api"
+WEBHOOK_URI=f"{WEBHOOK_DOMAIN}{WEBHOOK_PATH}"
+
+# WEBHOST SETTING
+WEB_HOST = "0.0.0.0" # or ip
+WEB_HOST_PORT = 8000
+
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher(bot)
+
+# Process start command
+@dp.message_handler(commands=['start'])
+async def on_start_command():  
+    print("on start command")
+
+# Process all messages except start command
+@dp.message_handler(content_types=ContentTypes.ANY)
+async def on_message(message: Message):
+    await message.reply(message.from_user.id)
+
+
+async def on_startup(dispatcher: Dispatcher):
+    print("startup")
+    await bot.set_webhook(WEBHOOK_URI)
+
+
+async def on_shutdown(dispatcher: Dispatcher):
+    print("shutdown")
+    await bot.delete_webhook()
+
+
+if __name__ == "__main__":
+    start_webhook(dispatcher=dp, 
+                webhook_path=WEBHOOK_PATH,
+                on_startup=on_startup,
+                on_shutdown=on_shutdown,
+                skip_updates=True,
+                host=WEB_HOST, 
+                port=WEB_HOST_PORT)
+```
+
+Webhook 方式是在啟動時通知 Telegram 伺服器將新訊息傳輸至對應的 URL，透過 HTTP 接口來接收資訊的方式。
+
+大多數結構與使用 Polling 時相同，因此這邊僅列舉差異的地方。
+- `bot.set_webook` 用於通知 Telegram 伺服器，將訊息傳輸到註冊的 URL。
+- `bot.delete_webhook` 用於關閉時通知 Telegram 伺服器停止輸送訊息至註冊的 URL
+- `start_webhook` 用於啟動一個小型的 HTTP Server 監聽 webhook_path 參數指定的路徑。host、port 用於配置啟動的 host 與 port。
+
+> - 較為推薦使用 **Webhook** 方式接收 Update 訊息，可以節省頻繁發送封包的流量及不斷輪詢計算損耗的電腦資源。
+> - 不過要以此作為接收訊息方式，至少會需要一個支援 HTTPS 的網域。因此還是依據手邊的資源決定。
+
+## 如何在本地端進行測試？
+
+如果使用 Polling 接收資訊的話倒還好，如果使用 Webhook 的話，最先遇上的問題大概就是怎麼進行測試，總不能每次都先發布到遠端伺服器，又或是根本沒有遠端伺服器，這時怎麼辦呢？可以考慮使用反向代理工具。
+
+### Ngrok
 
 > **Ngrok** <br/>
 > https://ngrok.com/
 
-反向代理工具，用於在本機開發時測試 HTTPS WEBHOOK。在官網下載並註冊後取得 authToken，輸入以下指令完成設定。
+Ngrok 是一款有提供免費方案的反向代理工具，並且也支援 HTTPS 轉發，可以用於本地端的 WEBHOOK 測試，並且完全滿足這次的需求，使用前需要先在官網註冊帳號取得 AUTH_TOKEN 並下載對應作業系統的檔案。輸入以下指令設定 {AUTH_TOKEN}
 
 ```sh
 ngrok config add-authtoken {AUTH_TOKEN}
 ```
-* `AUTH_TOKEN` 為註冊後，在後台取得的字串。
 
-只需要輸入指令即可將自己的 API PORT 綁定到 ngrok 提供的 domain 上。
-
+設定完成後，再來只需要輸入以下指令即可將自己的 API PORT 綁定到 ngrok 提供的 domain 上。
 ```sh
 ngrok http 8000
 ```
 
+
 ## 如果不使用包裝器的話？
 
-在 Telegram Bot API 中所有的操作，不論是 **[接收資訊]** 還是 **[發送訊息]** 都是透過 HTTP API 來進行。結構如下：
+在 Telegram Bot API 中所有的操作，不論是 **[接收資訊]** 還是 **[發送訊息]** 都是透過 HTTP API 來進行。`結構如下：
 
 ```text
 https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}
@@ -126,8 +197,6 @@ https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
 - `application/x-www-form-urlencoded`
 - `application/json (except for uploading files)`
 - `multipart/form-data (use to upload files)`
-
-
 
 
 ## 注意事項

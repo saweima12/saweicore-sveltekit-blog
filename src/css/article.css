@@ -78,6 +78,7 @@
 
 .content p > code,
 .content li > code {
+	color: var(--code-text);
 	background-color: var(--tagitem-bg);
 	padding: .2rem .5rem;
 	border-radius: .8rem;
