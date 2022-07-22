@@ -28,8 +28,8 @@ AIOGram 是 Telegram Bot API 的 Python 包裝器，用於將繁瑣的 HTTP API 
 其他的 API 包裝器可參考 [**Telegram 的官方列表**](https://core.telegram.org/bots/samples)
 
 
-## 註冊 Telegram Bot 
-
+## 註冊 Telegram Bot
+ 
 在使用之前，必須先透過 Telegram Bot Father 註冊新的 bot 帳戶。
 
 <div class="flex flex-col">
@@ -82,9 +82,9 @@ if __name__ == "__main__":
 ```
 
 幾項要點：
-- `Bot` 類負責與 Bot API 溝通，包含 `send_message`、`deleted_message` 等主動操作的 method.
-- `Dispatcher` 類負責接收 API 的 Update 訊息（不論是透過 Polling 還是 Webhook 接收的）依據特徵分發給各 message handler
-- `dp.message_handler()` 可以將他底下的 function 註冊為處理
+- `Bot` 類負責與 Bot API 溝通，包含 `send_message`、`deleted_message` 等主動操作的 method 
+- `Dispatcher` 類負責接收 API 的 Update 訊息（不論是透過 Polling 還是 Webhook 接收的）依據特徵分發給各 message_handler
+- `dp.message_handler()` 可以將底下的 function 註冊為處理器，並且透過參數如: `content_types` 設定只接包含哪些特徵的訊息
 
 
 
