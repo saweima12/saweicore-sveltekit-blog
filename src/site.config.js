@@ -12,8 +12,8 @@ const config = {
 	ga: "G-KY269QECHX",
 		author: {
 			name: 'Saweima',
-		summary: '邊緣工作者',
-			description: '邊緣人 | 幣圈小白 | 想到再寫',
+		  summary: '邊緣工作者',
+			description: '雜項工程師 | 幣圈小白 | 想到再寫',
 			avatar: 'https://avatars.githubusercontent.com/u/62002212'
 		},
 		pagination: {

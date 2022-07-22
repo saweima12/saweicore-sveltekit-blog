@@ -24,8 +24,11 @@
 </script>
 
 <script lang="ts">
-	import 'prism-themes/themes/prism-dracula.css';
+	// import prismjs
 	import PrismJs from 'prismjs';
+	import 'prism-themes/themes/prism-dracula.css';
+	import 'prismjs/components/prism-python.min.js';
+
 	import { onMount } from 'svelte';
 	import { siteConfig } from '$lib/store';
 	import { afterNavigate } from '$app/navigation';
@@ -57,9 +60,13 @@
 	// support HMR
 	import { invalidate } from '$app/navigation';
 	import { onContentUpdate } from 'markedpage';
-	onContentUpdate((payload: Record<string, any>) => {
+	onContentUpdate(async (payload: Record<string, any>) => {
 		const { year, month, slug} = $page.params;
 		invalidate(dataAPI.getPostData(year, month,slug))
+
+		setTimeout(() => {
+			PrismJs.highlightAll();
+		}, 500);
 	})
 </script>
 

@@ -45,7 +45,7 @@ npm install markedpage
 └ package.json
 ```
 
-在目錄配置方面，遵循約定大於配置原則。幾項重點：
+在目錄配置方面，遵循約定大於配置原則。
 - /docs
   - 所有 .md 檔案必須放置於此路徑下。
   - 分類器會以此路徑為基準進行解析。
@@ -54,7 +54,7 @@ npm install markedpage
 - /src/site.config.js
   - MarkedPage 主要的配置檔案，用於配置 Classifier 及 Marked 擴展。
 
-## site.config.js
+### 配置 site.config.js
 
 ```js
 const config = {
@@ -100,6 +100,25 @@ const config = {
 };
 
 ```
+
+### 配置 vite.config.js
+
+```js
+import { sveltekit } from '@sveltejs/kit/vite';
+import { markedpageVitePlugin } from 'markedpage';
+
+import siteConfig from './src/site.config.js';
+
+/** @type {import('vite').UserConfig} */
+const config = {
+	plugins: [sveltekit(), markedpageVitePlugin(siteConfig)]
+};
+
+export default config;
+```
+
+透過導入 **markedpageVitePlugin** 及 **site.config.js** 可支援 markdown 檔案及 site.config.js 的熱更新（檔案更新後不需要重啟，會自動刷新）。
+
 
 ## 如何使用？
 
@@ -184,6 +203,25 @@ const pageSet = await classifiedSet("post");
 }
 ```
 
+### onContentUpdate(callback)
+
+```js
+  // src/routes/__layout.svelte
+  import { invalidate } from '$app/navigation';
+  import { page } from '$app/stores';
+  import { onContentUpdate } from 'markedpage';
+
+  onContentUpdate((payload: Record<string, any>) => {
+      let slug = $page.params.slug;
+      // update endpoint data.
+      invalidate(`/api/posts.json`);
+      invalidate(`/api/posts/${slug}.json`);
+  });
+```
+
+用於實作 HMR 更新：
+ - 透過 `onContentUpdate` 監聽 markdown 檔案是否有變動。
+ - 使用 `invalidate` 通知 SvelteKit 刷新 Endpoint 並自動更新 Client端。
 
 ## Classifier
 
