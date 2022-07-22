@@ -18,7 +18,7 @@
 
 <nav class="flex items-center h-14 p-2 top-navbar"
 	class:hide={isHide}>
-	<a class="flex ml-2 raleway-font site-title" href="/">
+	<a sveltekit:prefetch class="flex ml-2 raleway-font site-title" href="/">
 		<div class="logo">
 			<img width="36" height="36" src="/logo.png" alt={$siteConfig.title} />
 		</div>

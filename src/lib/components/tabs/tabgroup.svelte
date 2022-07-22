@@ -6,7 +6,8 @@
 
 <div class="mx-5 tab-btn-list">
     {#each group as item}
-        <a class="py-3 px-5 mr-1 inline-block tab-btn-item" 
+        <a  sveltekit:prefetch
+            class="py-3 px-5 mr-1 inline-block tab-btn-item" 
             class:active={$page.url.pathname == item.link} 
             href={item.link}
         >

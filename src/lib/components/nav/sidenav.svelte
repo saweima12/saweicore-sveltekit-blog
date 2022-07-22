@@ -14,14 +14,14 @@
 <nav class="flex fixed h-screen side-navbar">
 	<div class="flex flex-col justify-between h-full px-5 sidenav-container">
 		<div class="mt-8 logo">
-			<a href="/">
+			<a sveltekit:prefetch href="/">
 				<img width="36" height="36" class="rounded-full" src="/logo.png" alt={$siteConfig.title} />
 			</a>
 		</div>
 
 		<div class="nav-list h-100">
 			{#each navList as navItem}
-				<a class="nav-item" class:active={navItem.link == $page.url.pathname} href={navItem.link}>
+				<a sveltekit:prefetch class="nav-item" class:active={navItem.link == $page.url.pathname} href={navItem.link}>
 					<div class="py-8 flex justify-center">
 						<div class="icon-base w-6"><NavIcon key={navItem.id} /></div>
 					</div>
