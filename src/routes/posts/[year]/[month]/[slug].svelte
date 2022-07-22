@@ -103,7 +103,7 @@
 			<div class="mt-4 flex flex-row post-tag-list">
 				{#each tags as tag}
 					<div class="post-tag-item">
-						<a href="{pageRoute.getTagPath(tag)}">{tag}</a>
+						<a sveltekit:prefetch href="{pageRoute.getTagPath(tag)}">{tag}</a>
 					</div>
 				{/each}
 			</div>

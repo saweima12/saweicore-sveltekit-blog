@@ -122,10 +122,11 @@ export default config;
 
 ## 如何使用？
 
-MarkedPage 提供 3 個主要 Function。
+MarkedPage 提供 3 個主要 Function 及 1 個 HMR 輔助 Hook。
 - siteConfig()
 - getPage(slug)
 - classifiedSet(id)
+- onContentUpdate(callback)
 
 
 ### siteConfig() 
@@ -221,7 +222,7 @@ const pageSet = await classifiedSet("post");
 
 用於實作 HMR 更新：
  - 透過 `onContentUpdate` 監聽 markdown 檔案是否有變動。
- - 使用 `invalidate` 通知 SvelteKit 刷新 Endpoint 並自動更新 Client端。
+ - 使用 `invalidate` 通知 SvelteKit 刷新 Endpoint 並自動更新 Client 端。
 
 ## Classifier
 
