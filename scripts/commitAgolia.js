@@ -43,6 +43,7 @@ const result = pages.map(page => {
 const conn = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_ADMINKEY);
 const index = conn.initIndex("SaweicoreLab");
 
+await index.clearObjects()
 let response = await index.saveObjects(result);
 console.log(response.objectIDs);
 // console.log(JSON.stringify(result));

@@ -60,9 +60,13 @@
 	// support HMR
 	import { invalidate } from '$app/navigation';
 	import { onContentUpdate } from 'markedpage';
-	onContentUpdate((payload: Record<string, any>) => {
+	onContentUpdate(async (payload: Record<string, any>) => {
 		const { year, month, slug} = $page.params;
 		invalidate(dataAPI.getPostData(year, month,slug))
+
+		setTimeout(() => {
+			PrismJs.highlightAll();
+		}, 500);
 	})
 </script>
 
