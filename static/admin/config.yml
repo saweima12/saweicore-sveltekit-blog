@@ -23,5 +23,5 @@ collections:
         label: "Tags" 
         widget: "list"
       - { name: "excerpt", label: "Excerpt", widget: "string" }
-      - { name: "body", label: "Body", widget: "markdown"}
       - { name: "_draft", label: "isDraft", widget: "boolean", default: true}
+      - { name: "body", label: "Body", widget: "markdown"}
