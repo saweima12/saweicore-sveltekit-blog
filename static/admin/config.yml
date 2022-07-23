@@ -2,6 +2,7 @@ backend:
   name: github
   repo: saweima12/saweicore-sveltekit-blog
   branch: master
+  site_domain: legendary-ganache-357ad5.netlify.app
 
 # This line should *not* be indented
 publish_mode: editorial_workflow
