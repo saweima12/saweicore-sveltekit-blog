@@ -78,6 +78,7 @@
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{metadata.title}" />
+	<meta property="og:site_name" content="{getTitleStr($siteConfig)}" />
 	{#if metadata.excerpt}
 		<meta property="og:description" content="{metadata.excerpt}"/>
 		<meta name="description" content="{metadata.excerpt}"/>
