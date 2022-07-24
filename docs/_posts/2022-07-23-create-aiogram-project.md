@@ -4,12 +4,12 @@ tags:
  - bot
  - python
  - programing
-excerpt: 廣告機器人一大堆、鬧群份子一個接一個？又或是想要做些聊天機器人小工具？透過 AIOGram 快速開發 Python Telegram Bot，透過流程自動化解決所有麻煩事情。
+excerpt: 廣告機器人一大堆、鬧群份子一個接一個？又或是想要做些聊天機器人小工具？透過 AIOGram 快速開發 Python Telegram Bot，用流程自動化解決所有麻煩事情。
 ---
 
 午安旅人，這裡是一個月沒有更新文章的 Saweima。不知道旅人有沒有在 Telegram 公開群組遇到過惡意騷擾人士呢？時不時的開新帳號跑進群組貼一些會讓人感到噁心的圖片，踢完過一陣子又再次故技重施，猶如蟑螂一般，殺也殺不完。
 
-考量到管理員不可能時時刻刻都在、刪除圖片時管理員自身也不可避免的會受到精神攻擊，人工處理顯然不是一種好辦法。考量到需求的急迫性，花了幾週時間研究及編寫機器人，在這邊記錄下自己用到的東西們。
+考量到管理員不可能時時刻刻都在、刪除圖片時管理員自身也不可避免的會受到精神攻擊，人工處理顯然不是一種好辦法。由於需求的急迫性，花了幾週時間研究及編寫機器人，在這邊記錄下自己用到的東西們。
 
 
 ## AIOGram
@@ -146,26 +146,26 @@ if __name__ == "__main__":
                 port=WEB_HOST_PORT)
 ```
 
-Webhook 方式是在啟動時通知 Telegram 伺服器將新訊息傳輸至對應的 URL，透過 HTTP 接口來接收資訊的方式。
+Webhook 方式是在啟動時通知 Telegram 伺服器將新訊息傳輸至對應的 URL，透過 HTTP 接口來接收資訊。
 
 大多數結構與使用 Polling 時相同，因此這邊僅列舉差異的地方。
 - `bot.set_webook` 用於通知 Telegram 伺服器，將訊息傳輸到註冊的 URL。
 - `bot.delete_webhook` 用於關閉時通知 Telegram 伺服器停止輸送訊息至註冊的 URL
-- `start_webhook` 用於啟動一個小型的 HTTP Server 監聽 webhook_path 參數指定的路徑。host、port 用於配置啟動的 host 與 port。
+- `start_webhook` 用於啟動 AIOGram 內建的小型 HTTP Server 監聽 webhook_path 參數指定的路徑。host、port 用於配置啟動的 host 與 port。
 
 > - 較為推薦使用 Webhook 方式接收 Update 訊息，可以節省頻繁發送封包的流量及不斷輪詢計算損耗的電腦資源。
-> - 不過要以此作為接收訊息方式，至少會需要一個支援 HTTPS 的網域。因此還是依據手邊的資源決定。
+> - 不過要以此作為接收訊息方式，需要一個支援 HTTPS 的網域。因此還是依據手邊的資源決定。
 
 ## 如何在本地端進行測試？
 
-如果使用 Polling 接收資訊的話倒還好，如果使用 Webhook 的話，最先遇上的問題大概就是怎麼進行測試，總不能每次都先發布到遠端伺服器，又或是根本沒有遠端伺服器，這時可以考慮使用反向代理工具。
+如果使用 Polling 接收資訊的話倒還好，但使用 Webhook 的話，最先遇上的問題就是怎麼進行測試，總不能每次都先發布到遠端伺服器，又或是先改成 Polling 要發布時才改回來，很沒有效率，這時候就可以考慮使用反向代理工具。
 
 ### Ngrok
 
 > **Ngrok** <br/>
 > https://ngrok.com/
 
-Ngrok 是一款有提供免費方案的反向代理工具，並且也支援 HTTPS 轉發，可以用於本地端的 Webhook 測試，並且完全滿足這次的需求，使用前需要先在官網註冊帳號取得 AUTH_TOKEN 並下載對應作業系統的檔案。輸入以下指令設定 {AUTH_TOKEN}
+Ngrok 是一款有提供免費方案的反向代理工具，並且支援 HTTPS 轉發，可以用於本地端的 Webhook 測試，完全滿足這次的需求，使用前需要先在官網註冊帳號取得 AUTH_TOKEN 並下載對應作業系統的檔案。輸入以下指令設定 AUTH_TOKEN
 
 ```sh
 ngrok config add-authtoken {AUTH_TOKEN}
@@ -175,6 +175,7 @@ ngrok config add-authtoken {AUTH_TOKEN}
 ```sh
 ngrok http 8000
 ```
+成功後如下：
 
 <img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/ngrok-test.jpg">
 
@@ -234,12 +235,14 @@ https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
   ]
 }
 ```
+在不使用包裝器的情況下，需要自己組合出對應的 API URL 呼叫，並且自己處理回傳的 message。 這些是包裝器主要節省的部份。
+
 
 ## 注意事項
 
 - 部份機器人的操作（如：刪除其他人訊息、設定權限...等）需要有對應的群組權限。
-- 非群組管理員的機器人，只在遇到自己登記過的指令才會有收到相關的 Update 訊息。
-- 若為群組管理員的機器人，會接收到所有群組內的 Update 訊息。
+- 非群組管理員的機器人，只在遇到自己登記過的指令才會收到相關訊息。
+- 若為群組管理員的機器人，會接收到該群組內的所有訊息。
 - 若一則訊息在 Telegram 伺服器發送給機器人之前被刪除，則機器人會收不到該則訊息。
 - Telegram 超過 500 人的群組有可能收不到 Join Message。
 - 機器人之間會互相干擾，必須確保機器人產生的對話內容、接收的指令不會觸發其他機器人。
@@ -248,8 +251,8 @@ https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
 ## TL;DR
 
 - AIOGram 是 Telegram Bot API 的包裝器，用以簡化機器人開發流程。
-- AIOGram 支援輪詢抓取更新 - Polling 及被動接收更新 - Webhook。
-- 使用 Webhook 接收更新的最低條件為支援 https 的 domain。
+- AIOGram 支援**輪詢抓取更新 - Polling** 及**被動接收更新 - Webhook**。
 - 推薦使用 Webhook 作為接收更新的方式，用以節省流量與運算資源。
+- 使用 Webhook 接收更新需要有支援 https 的 domain。
 - 可以透過 Ngrok 的反向代理，測試本機端的 Webhook 與 API 。
 - 若不使用包裝器，則需要自己組合出 HTTP URL 及自行處理訊息的解析。
