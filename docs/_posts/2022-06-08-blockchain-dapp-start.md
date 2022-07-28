@@ -40,20 +40,20 @@ excerpt: 投入了加密貨幣後，想要進一步探索區塊鍊上的生態�
 
 ### 透過錢包創建自己的錢包地址
 
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-01.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-01.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 1. 點擊 「Add Wallet」 進入選單
 </p>
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-02.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-02.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 2. 點擊 「Create Wallet」 創建自己的錢包地址 / 若已經有了其他的錢包，可以選擇 「Restore Wallet」 透過助記詞登入。
 </p>
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-03.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-03.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 3. 輸入自訂的錢包名稱及錢包密碼（此名稱與密碼僅適用於該裝置，用於避免有他人盜用裝置付款。）
 </p>
 
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-04.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-04.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 4. 最後會顯示由 24 個單字組成的助記詞，請務必保存好並且不要洩漏出去，若失去助記詞等同於失去錢包。會有資金損失的風險。
 </p>
@@ -83,7 +83,7 @@ excerpt: 投入了加密貨幣後，想要進一步探索區塊鍊上的生態�
 透過 Eternl 錢包質押賺取額外的代幣非常簡單，操作如下：
 
 
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-05.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-05.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 切換到 Staking 介面，挑選喜歡的質押池。 按下 Delegate 即可（推薦挑選 Fees 為 0% 、 ROS > 4% 並且 Situ的池子進行質押）
 </p>
@@ -104,15 +104,15 @@ excerpt: 投入了加密貨幣後，想要進一步探索區塊鍊上的生態�
 
 ### 連接錢包到 DApp
 
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-06.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/eternl-06.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 先在錢包頁面中點擊插頭圖案，允許 DApp 連接。
 </p>
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/cnft-01.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/cnft-01.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 點擊右上角的 Link Wallet 選擇自己當前檢測到的錢包插件，點擊後會跳出視窗，讓錢包插件進行確認。
 </p>
-<img src="https://media.saweicore.com/blog/blockchain-dapp-start/cnft-02.jpg" style="max-height:720px" loading="lazy" class="lightbox">
+<img src="https://media.saweicore.com/blog/blockchain-dapp-start/cnft-02.jpg" style="max-height:720px" loading="lazy" class="lightbox"/>
 <p class="text-center">
 經過錢包插件確認後，即可看到連接完成。
 </p>

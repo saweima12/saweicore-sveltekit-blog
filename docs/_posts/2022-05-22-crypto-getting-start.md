@@ -102,14 +102,14 @@ _draft: false
 **目標是用最少的新台幣換到最多的 USD 穩定幣。**
 
 這裡引用 Ace 交易所官方提供的教學影片：
-<iframe src="https://www.youtube.com/embed/pKmfpMhwfHs" loading="lazy" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/pKmfpMhwfHs" loading="lazy" title="YouTube video player" frameborder="0" allow="fullscreen;"></iframe>
 
 ## 如何轉帳到其他交易所 / 其他錢包 ?
 
 這邊以從 Ace 交易所轉帳至幣安交易所為例：
-<details><summary>點擊展開 - 觀看操作步驟</summary>
-
-<img src="https://media.saweicore.com/blog/crypto-getting-start/ace-withdrawal-1.jpg" loading="lazy" style="max-height:500px" class="lightbox">
+<details>
+<summary>點擊展開 - 觀看操作步驟</summary>
+<img src="https://media.saweicore.com/blog/crypto-getting-start/ace-withdrawal-1.jpg" loading="lazy" style="max-height:500px" class="lightbox"/>
 
 <p class="text-center">
 1. 取得幣安交易所的 TRC20 通道地址
@@ -118,10 +118,10 @@ _draft: false
 <table>
     <tr>
         <td>
-            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-page-1.jpg" style="max-height:500px" class="lightbox" loading="lazy">
+            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-page-1.jpg" style="max-height:500px" class="lightbox" loading="lazy"/>
         </td>
         <td>
-            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-withdrawal-2.jpg" style="max-height:500px" class="lightbox" loading="lazy">
+            <img src="https://media.saweicore.com/blog/crypto-getting-start/ace-withdrawal-2.jpg" style="max-height:500px" class="lightbox" loading="lazy"/>
         </td>
     </tr>
 </table>
