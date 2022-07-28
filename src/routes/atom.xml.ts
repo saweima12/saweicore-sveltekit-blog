@@ -1,6 +1,10 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { siteConfig, classifiedSet} from 'markedpage';
+import type { XMLBuilder } from 'xmlbuilder2/lib/interfaces';
 import type { SourcePage, DirectoryClassifierResult } from 'markedpage';
+
+import { minify } from 'html-minifier';
+import { create } from 'xmlbuilder2';
+import { siteConfig, classifiedSet, type FrontMatterClassifierResult} from 'markedpage';
 
 import { pageRoute } from '$lib/client/route';
 
@@ -8,6 +12,7 @@ export const GET: RequestHandler = async () => {
   // get config & pages.
   const config = await siteConfig();
   const postSet: DirectoryClassifierResult = await classifiedSet("post");
+  const tagSet: FrontMatterClassifierResult = await classifiedSet("tag");
 
   // declare headers
   const headers = {
@@ -15,31 +20,46 @@ export const GET: RequestHandler = async () => {
     'Content-Type': 'application/xml',
   }
 
-  // combine page xml data.
-  const head = `<?xml version="1.0" encoding="UTF-8"?>
-    <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-      <title>${config.title}</title>
-      <id>${config.url}</id>
-      <link href="${config.url}"/>
-      <description>${config.description}</description>
-      <updated>${new Date().toISOString()}</updated>
-  `
-  const tail = `</feed>`
+  const builder = create({ version: '1.0', encoding: "UTF-8"})
+    .ele("feed", { xmlns: 'http://www.w3.org/2005/Atom', 'xml:lang': 'zh'})
+    .ele("title").ele({"$": config.title}).up()
+    .ele("subtitle").ele({"$": config.summary}).up()
+    .ele("id").txt(config.url).up()
+    .ele("link", { href: config.url}).up()
+    .ele("link", { href: `${config.url}/atom.xml`, rel: "self", type:"application/atom+xml"}).up()
+    .ele("author")
+      .ele("name").txt(`${config.author.name}`).up()
+      .ele("email").txt(`${config.author.email}`).up()
+      .ele("url").txt(config.url).up()
+      .up()
+    .ele("updated").txt(new Date().toISOString()).up()
 
-  const content = await pageXML(postSet.pages, config.url);
+  // generate category & entry
+  const tags = Object.keys(tagSet);
+  await generateCategory(tags, config, builder);
+  await generateEntry(postSet.pages.slice(), config, builder);
+
+  const xml = builder.end({ prettyPrint: true})
 
   return {
     headers: headers,
-    body: head + content + tail
+    body: xml
   }
 }
 
-// generate client page route.
-const pageXML = async (pages: Array<SourcePage>, siteUrl: string) => {
-  let result = ``;
+const generateCategory = async(tags: Array<string>, config:Record<string, any>, builder: XMLBuilder )=> {
+  await Promise.all(tags.map(async (term: string)=> {
+    const tagUrl = `${config.url}${pageRoute.getTagPath(term)}`;
+    builder.ele("category", {term: term, scheme: tagUrl});
+  }));
+}
 
+// generate client page route entry.
+const generateEntry = async (pages: Array<SourcePage>, config: Record<string, any>, builder: XMLBuilder) => {
   await Promise.all(pages
+    .slice()
     .sort((a, b) => new Date(b.frontMatter.created).getTime() - new Date(a.frontMatter.created).getTime())
+    .slice(0, 500)
     .map(async (page, index) => {
     // deinfe pageMeta struct.
     const pageMeta = {
@@ -49,20 +69,27 @@ const pageXML = async (pages: Array<SourcePage>, siteUrl: string) => {
     // get post url.
     const postPath = pageRoute.getPostPath(pageMeta);
     const lastmod = new Date(page.frontMatter.created).toISOString();
-    const postUrl = `${siteUrl}${postPath}`;
-
+    const postUrl = `${config.url}${postPath}`;
     const content = await page.render();
+    const tags = page.frontMatter.tags;
 
-    result += `
-      <entry>
-          <title>${page.frontMatter.title}</title>
-          <link href="${postUrl}" />
-          <id>${postUrl}</id>
-          <published>${lastmod}</published>
-          <updated>${lastmod}</updated>
-          <summary type="text">${page.frontMatter.excerpt}</summary>
-      </entry>
-    `}));
+    // generate struct.
+    let entry = builder.ele("entry")
+      .ele("title").ele({"$": page.frontMatter.title}).up()
+      .ele("id").txt(postUrl).up()
+      .ele("link", { href: postUrl }).up()
+      .ele("published").txt(lastmod).up()
+      .ele("updated").txt(lastmod).up()
+      .ele("summary", { type: "text"}).ele({"$": page.frontMatter.excerpt}).up()
+      .ele("content", { type: "html"}).ele({"$": minify(content, { trimCustomFragments: true, collapseWhitespace: true})}).up()
 
-  return result;
+    // generate category
+    tags.map((term: string) => {
+      const tagUrl = `${config.url}${pageRoute.getTagPath(term)}`
+      entry.ele("category", { term: term, scheme:tagUrl }).up()
+    });
+
+    }));
+
+  return builder;
 }
