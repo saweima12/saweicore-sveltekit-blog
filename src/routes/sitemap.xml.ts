@@ -1,13 +1,18 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { siteConfig, classifiedSet} from 'markedpage';
 import type { SourcePage, DirectoryClassifierResult } from 'markedpage';
+import type { XMLBuilder } from 'xmlbuilder2/lib/interfaces';
+
+import { create } from 'xmlbuilder2';
+import { siteConfig, classifiedSet, type FrontMatterClassifierResult} from 'markedpage';
 
 import { pageRoute } from '$lib/client/route';
 
 export const GET: RequestHandler = async () => {
   // get config & pages.
   const config = await siteConfig();
+  const tagSet: FrontMatterClassifierResult = await classifiedSet("tag");
   const postSet: DirectoryClassifierResult = await classifiedSet("post");
+
 
   // declare headers
   const headers = {
@@ -15,28 +20,40 @@ export const GET: RequestHandler = async () => {
     'Content-Type': 'application/xml',
   }
 
-  // combine page xml data.
-  const head = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-      <loc>${ config.url }</loc>
-      <changefreq>weekly</changefreq>
-      <priority>0.5</priority>
-    </url>`;
+  const builder = create({ version: '1.0', encoding: "UTF-8"})
+    .ele("urlset", { xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9"})
+      .ele("url")
+        .ele("loc").txt(config.url).up()
+        .ele("lastmod").txt(new Date().toISOString()).up()
+      .up()
 
-  const tail = `</urlset>`
+  // generate tag & post url.
+  const tags = Object.keys(tagSet);
+  const posts = postSet.pages.slice();
 
-  const content = pageXML(postSet.pages, config.url);
+  generateTagUrl(tags, config.url, builder);
+  generatePostUrl(posts, config.url, builder);
 
+  // generate xml.
+  const xml = builder.end({ prettyPrint: true});
 
   return {
     headers: headers,
-    body: head + content + tail
+    body: xml
   }
 }
 
+const generateTagUrl = (tags: Array<string>, siteUrl:string, builder: XMLBuilder) => {
+  tags.map(term => {
+    const tagUrl = `${siteUrl}${pageRoute.getTagPath(term)}`;
+    builder.ele("url")
+      .ele("loc").txt(tagUrl).up()
+      .ele("priority").txt("0.4").up()
+  });
+}
+
 // generate client page route.
-const pageXML = (pages: Array<SourcePage>, siteUrl: string) => {
+const generatePostUrl = (pages: Array<SourcePage>, siteUrl: string, builder: XMLBuilder) => {
   let result = ``;
 
   pages.map((page, index) => {
@@ -49,14 +66,11 @@ const pageXML = (pages: Array<SourcePage>, siteUrl: string) => {
     const postPath = pageRoute.getPostPath(pageMeta);
     const lastmod = new Date(page.frontMatter.created).toISOString();
     const priority = index < 10 ? 0.7 : 0.5;
+    const postUrl = `${siteUrl}${postPath}`;
 
-    result = `
-      <url>
-          <loc>${siteUrl}${postPath}</loc>
-          <lastmod>${lastmod}</lastmod>
-          <priority>${priority}</priority>
-      </url>
-    `});
-
-  return result;
+    builder.ele("url")
+      .ele("loc").txt(postUrl).up()
+      .ele("lastmod").txt(lastmod).up()
+      .ele("priority").txt(priority.toString()).up()
+  });
 }
