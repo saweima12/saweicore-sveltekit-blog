@@ -8,8 +8,8 @@ import algoliasearch from 'algoliasearch';
 import SearchIcon from '$lib/icons/search.svelte';
 import Typehead from '$lib/components/serach/typehead.svelte';
 
-const appKey = atob($siteConfig.search.appKey);
-const apiKey = atob($siteConfig.search.apiKey);
+const appKey = $siteConfig.search.appKey;
+const apiKey = $siteConfig.search.apiKey;
 const appIndex = $siteConfig.search.index;
 
 let client: SearchClient;
