@@ -236,7 +236,7 @@ app = Sanic.get_app("my_server")
 
 ## App Context
 
-App Context （中文翻譯稱作上下文），用於附加希望能夠重複使用的 instance ，像是與資料庫的連接 、定期運作的排程器等。
+App Context （中文翻譯稱作上下文）用於附加希望**能夠重複使用的 instance** ，像是與資料庫的連接 、定期運作的排程器等。
 
 - **app.py**
 
@@ -298,9 +298,9 @@ def typed(request: Request) -> HTTPResponse:
 
 ## Listener (LifeCycle)
 
-Sanic 包含 8 個切入點：
+Sanic 包含 8 個 Hook：
 
-**只在 sanic app 建立時執行一次:**
+**只在 sanic app 建立/停止時執行一次:**
 - main_process_start
 - main_process_stop
 
@@ -326,7 +326,6 @@ async def main_start(*_):
 
 ```
 
-個人使用習慣上：
 -  `main_process_start` 經常用於初始化僅能初始化一次的時候（設置遠端的 webhook)
 -  `before_server_start` 及 `after_server_start` 常用於建立可重複使用的 instance 並且附加至 app.ctx 作為常駐 service 使用。
 -  `before_server_stop` 用於關閉各 service 的連接並清除資料。
@@ -334,7 +333,7 @@ async def main_start(*_):
 ## 應用範例
 
 > Sanic Example
-> 
+> Github: [點我進入](https://github.com/saweima12/sanic-example)
 
 ## Sanic Extension
 
@@ -343,9 +342,14 @@ async def main_start(*_):
 pip install sanic[ext]
 # 連同 sanic 一起安裝
 ```
+安裝後不需要增加任何代碼會自行啟用，替 Sanic 增加以下功能：
+- 添加 HTTP Method 支援 `HEAD`. `OPTIONS`. `TRACE`
+- CORS 保護
+- OpenAPI 支援（Swagger 及 Redoc)
+- Jinja2 樣板支援
+- 可針對 Post Data 進行資料驗證
 
-### TortoiseORM
+詳細內容可參考[官方文檔](https://sanic.dev/en/plugins/sanic-ext/getting-started.html#features)
 
-
-### Databases
+## TL;DR
 
