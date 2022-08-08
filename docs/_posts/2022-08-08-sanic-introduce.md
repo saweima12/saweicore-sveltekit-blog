@@ -1,9 +1,10 @@
 ---
-title: Sanic - 輕量快速的 Python Web 框架
+title: Sanic - 輕量快速的 Python Web Framework
 tags:
 - web
 - python
 - programing
+excerpt: 一款支援非同步調用不阻塞執行緒、編寫風格簡潔不拖泥帶水、內置高效率伺服器方便部署的 Python 框架，適合用於快速開發中小型專案。
 ---
 
 Sanic 是一款 Python 的 Web 框架，編寫風格繼承了老牌框架 Flask 的簡潔並在其之上添加 async / await 的非同步調用支援，外加內建快速高效的 HTTP Server，提供了開箱即用、快速開發、生產部署的解決方案。
@@ -331,7 +332,7 @@ async def main_start(*_):
 
 ## 應用範例
 
-> Sanic Example
+> **Sanic Example**<br/>
 > Github: [點我進入](https://github.com/saweima12/sanic-example)
 
 
