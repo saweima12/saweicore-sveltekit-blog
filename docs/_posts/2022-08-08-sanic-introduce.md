@@ -18,7 +18,7 @@ pip install sanic
 ```
 
 
-## 框架特性：
+## 框架特性
 
 - 使用 Python 3.8 以上的版本（推薦直接使用 Python 3.10）
 - 支援 async / await 非同步特性（執行 IO 操作時不會阻塞）
