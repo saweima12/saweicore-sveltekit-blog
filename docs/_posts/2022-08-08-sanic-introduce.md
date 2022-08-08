@@ -4,7 +4,6 @@ tags:
 - web
 - python
 - programing
-_draft: true
 ---
 
 Sanic 是一款 Python 的 Web 框架，編寫風格繼承了老牌框架 Flask 的簡潔並在其之上添加 async / await 的非同步調用支援，外加內建快速高效的 HTTP Server，提供了開箱即用、快速開發、生產部署的解決方案。
@@ -20,7 +19,7 @@ pip install sanic
 
 ## 框架特性：
 
-- 使用 Python 3.7 以上的版本（推薦直接使用 Python 3.10）
+- 使用 Python 3.8 以上的版本（推薦直接使用 Python 3.10）
 - 支援 async / await 非同步特性（執行 IO 操作時不會阻塞）
 - 內建快速的 HTTP Server 
 - 類 Flask 的簡潔架構，易於擴充與編寫。
@@ -33,7 +32,7 @@ pip install sanic
 - 透過腳本運行 -> 在編寫腳本中使用 `Sanic.run()` 運行。
 - 使用 CLI -> 使用 `Sanic CLI` 將 application 作為 module 導入(**推薦**) 
 
-### 透過腳本運行
+### 透過 app.run() 運行
 
 在根目錄中建立 app.py ，並建立 Sanic instance，透過 app.run 運行伺服器。
 
@@ -335,21 +334,12 @@ async def main_start(*_):
 > Sanic Example
 > Github: [點我進入](https://github.com/saweima12/sanic-example)
 
-## Sanic Extension
-
-**安裝方式**
-```sh
-pip install sanic[ext]
-# 連同 sanic 一起安裝
-```
-安裝後不需要增加任何代碼會自行啟用，替 Sanic 增加以下功能：
-- 添加 HTTP Method 支援 `HEAD`. `OPTIONS`. `TRACE`
-- CORS 保護
-- OpenAPI 支援（Swagger 及 Redoc)
-- Jinja2 樣板支援
-- 可針對 Post Data 進行資料驗證
-
-詳細內容可參考[官方文檔](https://sanic.dev/en/plugins/sanic-ext/getting-started.html#features)
 
 ## TL;DR
 
+- Sanic 是 Python 3.8 版本以上的輕量 Web 框架，支援 async / await 的非同步特性。
+- 推薦使用 Sanic CLI 運行 Server ，在環境配置上有更多的彈性。
+- Handler 是處理 Request 的基本單元，會**至少接收一個 Request 物件並返回 HttpResponse 物件**。
+- 應該盡量使用 async / await 處理 handler 邏輯，避免執行緒阻塞、增加運作效率。
+- Routing 用於將路由與 Handler 進行綁定，當 Server 接收到指定的路徑時，會將資料打包成 Request 送至對應的 Handler。
+- App Context 用於存放希望重複使用的 instance，像是資料庫連接、排程器等。
