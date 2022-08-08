@@ -19,9 +19,11 @@
 </svelte:head>
 
 <div class="col-md-9">
-	<h1>{status}</h1>
 
-	<p>{error.message}</p>
+	{#if status != "500"}
+		<h1>{status}</h1>
+		<p>{error.message}</p>
+	{/if}
 
 	{#if dev && error.stack}
 		<pre>{error.stack}</pre>
