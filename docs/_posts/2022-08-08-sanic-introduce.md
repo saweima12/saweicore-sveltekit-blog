@@ -66,9 +66,10 @@ from sanic import Sanic
 
 # create sanic app
 app = Sanic(__name__)
+
+# __name__ 可改為自定義 App 名稱
 ```
 
-* tips: `__name__` 可自定義 App 名稱。
 
 - 最後使用以下 shell 指令執行 sanic 伺服器。
 ```shell
@@ -217,7 +218,7 @@ app.blueprint(bp)
 
 當建立 Sanic instance 時，會將該 instance 寫入 Sanic 內部的註冊表中，可以透過 `Sanic.get_app()` 取得 app 的 instance。
 
-- app.py
+- **app.py**
 ```python
 from sanic import Sanic
 
@@ -341,6 +342,6 @@ async def main_start(*_):
 - Sanic 是 Python 3.8 版本以上的輕量 Web 框架，支援 async / await 的非同步特性。
 - 推薦使用 Sanic CLI 運行 Server ，在環境配置上有更多的彈性。
 - Handler 是處理 Request 的基本單元，會**至少接收一個 Request 物件並返回 HttpResponse 物件**。
-- 應該盡量使用 async / await 處理 handler 邏輯，避免執行緒阻塞、增加運作效率。
-- Routing 用於將路由與 Handler 進行綁定，當 Server 接收到指定的路徑時，會將資料打包成 Request 送至對應的 Handler。
-- App Context 用於存放希望重複使用的 instance，像是資料庫連接、排程器等。
+- 應該**盡量使用 async / await** 處理 handler 邏輯，避免執行緒阻塞、增加運作效率。
+- Routing 用於**將路由與 Handler 進行綁定**，當 Server 接收到指定的路徑時，會將資料打包成 Request 送至對應的 Handler。
+- App Context 用於**存放希望重複使用的 instance**，像是資料庫連接、排程器等。
