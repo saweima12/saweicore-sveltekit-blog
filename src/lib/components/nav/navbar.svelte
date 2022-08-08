@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { siteConfig } from '$lib/store';
 	import Hamburger from '$lib/components/nav/hamburger.svelte';
-	import SearchWidget from '$lib/components/widgets/searchwidget.svelte';
+	import NavSearchBtn from './navsearchbtn.svelte';
 
 	let prevScrollY: number = 0;
 	let newScrollY: number = 0;
@@ -16,22 +16,32 @@
 
 <svelte:window bind:scrollY={newScrollY}/>
 
-<nav class="flex items-center h-14 p-2 top-navbar"
+<nav class="h-14 p-2 top-navbar"
 	class:hide={isHide}>
-	<a sveltekit:prefetch class="flex ml-2 raleway-font site-title" href="/">
-		<div class="logo">
-			<img width="36" height="36" src="/logo.png" alt={$siteConfig.title} />
+
+	<div class="flex md:p-1 items-center navbar-container">
+		<div class="md:hidden w-30 px-2">
+			<Hamburger />
 		</div>
-	</a>
-
-	<div class="grow spacer" />
-
-	<div class="w-40 search-box">
-		<SearchWidget />
-	</div>
 	
-	<div class="grow spacer" />
-	<Hamburger />
+		<a sveltekit:prefetch class="flex raleway-font site-title" href="/">
+			<div class="logo">
+				<img width="36" height="36" src="/logo.png" alt={$siteConfig.title} />
+			</div>
+			
+			<div class="hidden md:flex px-2 letter-title-font title">
+				{$siteConfig.title}
+			</div>
+		</a>
+	
+		<div class="grow spacer" />
+	
+		<div class="lg:hidden search-box">
+			<NavSearchBtn/>
+		</div>	
+	</div>
+
+
 </nav>
 
 <style>
@@ -50,16 +60,21 @@
 
 }
 
-
-
-.top-navbar .search-box{
-	width: 10rem;
+.navbar-container {
+	max-width: var(--max-width);
+	margin: 0 auto;
 }
 
-@media screen and (min-width: 640px) {
-	.top-navbar .search-box{
-		width: 14rem;
-	}
 
+.title {
+	margin-top: .2rem;
+	align-items: flex-end;
+	font-size: 1.4rem;
+	color: var(--text);
+	font-weight: 600;
+}
+
+
+@media screen and (min-width: 640px) {
 }
 </style>

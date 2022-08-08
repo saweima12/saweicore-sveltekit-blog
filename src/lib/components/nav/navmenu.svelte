@@ -23,8 +23,8 @@
 <svelte:window on:keydown={(e) => escapeHandle(e)} />
 
 <div
-	class="fixed z-30 top-0 right-0 bottom-0 w-60 md:w-80 transition-all duration-200 navmenu"
-	class:translate-x-full={!isVisible}
+	class="fixed z-30 top-0 left-0 bottom-0 w-60 md:w-80 h-screen transition-all duration-200 navmenu"
+	class:-translate-x-full={!isVisible}
 >
 	<div class="flex flex-col h-full navmenu-container">
 		<div class="mx-6 py-4 mb-6 author">

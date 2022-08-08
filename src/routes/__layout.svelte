@@ -58,19 +58,16 @@
 
 <div
 	class="transition-all duration-200 min-h-screen main-wrapper"
-	class:-translate-x-60={isMenuOpen}
-	class:md:-translate-x-80={isMenuOpen}
+	class:translate-x-60={isMenuOpen}
+	class:md:translate-x-80={isMenuOpen}
 >
-	<div class="fixed top-0 w-screen lg:hidden wrapper">
+	<div class="fixed top-0 w-screen wrapper">
 		<Navbar />
 	</div>
 
-	<div class="lg:flex lg:flex-row justify-between main-container">
-		<div class="hidden lg:block nav-wrapper">
-			<SideNav />
-		</div>
+	<div class="flex flex-col justify-between main-container">
 
-		<div class="pt-14 lg:pt-0 flex flex-col content-wrapper">
+		<div class="w-full content-wrapper">
 			<main class="mx-auto min-h-screen content-container">
 				<PageTransition refresh={$page.url.pathname}>
 					<slot />
@@ -98,13 +95,18 @@
 
 
 <style>
-.main-wrapper {
-	max-width: 1504px;
+.main-container {
+	max-width: var(--max-width);
 	margin: 0 auto;
+	padding-top: 3.5rem;
 }
 
-.nav-wrapper {
-	min-width: 80px;
-}
 
+@media screen and (min-width: 1024px) {
+	.main-container {
+		display: flex;
+		flex-direction: row;
+	}
+
+}
 </style>

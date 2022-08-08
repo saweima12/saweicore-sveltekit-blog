@@ -31,10 +31,3 @@
 	color: var(--navitem-active);
 	font-weight: 600;
 }
-
-
-@media screen and (min-width: 1504px) {
-	.side-navbar {
-		background-color: var(--bg-color);
-	}
-}

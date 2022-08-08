@@ -23,7 +23,7 @@
     </div>
     
     {#if headingList.length > 0 }
-        <div class="widget-list-item sticky top-0">
+        <div class="widget-list-item sticky top-14">
             <OutlineWidget headings={headingList} headingClassName="heading-item" />
         </div>
     {/if}

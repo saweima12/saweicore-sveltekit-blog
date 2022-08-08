@@ -91,6 +91,7 @@ $: {
 
 .outline-item a {
     color: var(--navitem);
+    font-size: 1.05rem;
 }
 
 .outline-item.active {

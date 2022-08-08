@@ -9,22 +9,40 @@
 	}
 
 	.drawer-wrapper {
-		width: 240px;
+		width: 100%;
 		border-left: 1px solid var(--border);
 	}
-	
+
 	.drawer-container {
-		width: 240px;
+		width: 100%;
 	}
 
 }
 
-@media screen and (min-width: 1280px) {
-	.drawer-wrapper{
-		width: 400px;
+@media screen and (min-width: 1024px) {
+	.content-container {
+		width: 720px;
+	}
+
+	.drawer-wrapper {
+		width: 300px;
 	}
 
 	.drawer-container {
-		width: 400px;
+		width: 300px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.content-container {
+		width: 900px;
+	}
+
+	.drawer-wrapper {
+		width: 300px;
+	}
+
+	.drawer-container {
+		width: 300px;
 	}
 }
