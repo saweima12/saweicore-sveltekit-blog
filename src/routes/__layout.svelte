@@ -19,7 +19,6 @@
 	import PageTransition from '$lib/components/pagetransition.svelte';
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
-	import SideNav from '$lib/components/nav/sidenav.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
 	// 
@@ -56,29 +55,33 @@
 	}
 </script>
 
-<div
-	class="transition-all duration-200 min-h-screen main-wrapper"
-	class:translate-x-60={isMenuOpen}
-	class:md:translate-x-80={isMenuOpen}
+<div 
+	class="wrapper-container"
+	class:overflow-hidden={isMenuOpen}
 >
-	<div class="fixed top-0 w-screen wrapper">
-		<Navbar />
-	</div>
-
-	<div class="flex flex-col justify-between main-container">
-
-		<div class="w-full content-wrapper">
-			<main class="mx-auto min-h-screen content-container">
-				<PageTransition refresh={$page.url.pathname}>
-					<slot />
-				</PageTransition>
-			</main>
-			<Footer />
+	<div
+		class="transition-all duration-200 min-h-screen main-wrapper"
+		class:translate-x-60={isMenuOpen}
+		class:md:translate-x-80={isMenuOpen}
+	>
+		<div class="fixed top-0 w-screen wrapper">
+			<Navbar />
 		</div>
 
-		<div class="hidden lg:block drawer-wrapper mr-0.5">
-			<div class="w-full min-h-screen h-full drawer-container">
-				<Drawer />
+		<div class="flex flex-col justify-between main-container">
+			<div class="w-full content-wrapper">
+				<main class="mx-auto min-h-screen content-container">
+					<PageTransition refresh={$page.url.pathname}>
+						<slot />
+					</PageTransition>
+				</main>
+				<Footer />
+			</div>
+
+			<div class="hidden lg:block drawer-wrapper mr-0.5">
+				<div class="w-full min-h-screen h-full drawer-container">
+					<Drawer />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -95,6 +98,10 @@
 
 
 <style>
+.main-wrapper {
+	width: 100vw;
+}
+
 .main-container {
 	max-width: var(--max-width);
 	margin: 0 auto;

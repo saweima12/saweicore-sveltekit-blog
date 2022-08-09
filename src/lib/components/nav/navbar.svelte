@@ -19,8 +19,8 @@
 <nav class="h-14 p-2 top-navbar"
 	class:hide={isHide}>
 
-	<div class="flex md:p-1 items-center navbar-container">
-		<div class="md:hidden w-30 px-2">
+	<div class="flex px-1 py-0.5 items-center navbar-container">
+		<div class="lg:hidden w-30 px-2">
 			<Hamburger />
 		</div>
 	
@@ -69,7 +69,7 @@
 .title {
 	margin-top: .2rem;
 	align-items: flex-end;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	color: var(--text);
 	font-weight: 600;
 }

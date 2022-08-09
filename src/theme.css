@@ -39,21 +39,21 @@ body {
 /* Dark */
 @media (prefers-color-scheme: dark) {
 	:root {
-		background-color: #1e1e22;
-		--bg-color: #1e1e22;
+		background-color: #21252b;
+		--bg-color: #21252b;
 		--navbar: #2f333d;
 		--border: rgba(175,175,175,0.15);
-		--navitem: #757575;
+		--navitem: #9d9d9d;
 		--navitem-hover: #e8e8e8;
 		--navitem-active: #fff;
-		--tagitem-bg: #525252;
-		--tagitem-hover: #6c6c6c;
+		--tagitem-bg: rgb(98, 81, 81);
+		--tagitem-hover: #6a5d5d;
 		--mask-bg: rgba(60, 60, 60, 0.6);
-		--odd-bg: hsla(0,0%,58.8%,.1);
+		--odd-bg: #282d36;
 		--even-bg: #24272b;
-		--second-bg: #282c35;
-		--text: #9b9baa;
+		--second-bg: #2a313a;
 		--code-text: #ddd;
+		--text: #abb2bf;
 		--bold-text: rgb(65, 190, 97);
 		--progress-bg: rgb(151, 199, 223);
 	}
@@ -61,20 +61,21 @@ body {
 
 
 .dark {
-	background-color: #1e1e22;
-	--bg-color: #1e1e22;
+	background-color: #21252b;
+	--bg-color: #21252b;
 	--navbar: #2f333d;
 	--border: rgba(175,175,175,0.15);
-	--navitem: #757575;
+	--navitem: #9d9d9d;
 	--navitem-hover: #e8e8e8;
 	--navitem-active: #fff;
-	--tagitem-bg: #525252;
-	--tagitem-hover: #6c6c6c;
+	--tagitem-bg: rgb(98, 81, 81);
+	--tagitem-hover: #6a5d5d;
 	--mask-bg: rgba(60, 60, 60, 0.6);
-	--odd-bg: hsla(0,0%,58.8%,.1);
+	--odd-bg: #282d36;
 	--even-bg: #24272b;
-	--second-bg: #282c35;
-	--text: #9b9baa;
+	--second-bg: #2a313a;
+	--code-text: #ddd;
+	--text: #abb2bf;
 	--bold-text: rgb(65, 190, 97);
 	--progress-bg: rgb(151, 199, 223);
 }

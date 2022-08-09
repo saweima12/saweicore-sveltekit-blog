@@ -17,5 +17,6 @@
     .nav-search {
         color: var(--text);
         padding: 5px;
+        cursor: pointer;
     }
 </style>
