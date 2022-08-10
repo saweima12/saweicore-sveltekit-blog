@@ -25,9 +25,3 @@
 .side-navbar .nav-item:hover {
 	color: var(--navitem-hover);
 }
-
-
-.nav-item.active {
-	color: var(--navitem-active);
-	font-weight: 600;
-}
