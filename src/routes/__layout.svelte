@@ -98,10 +98,6 @@
 
 
 <style>
-.main-wrapper {
-	width: 100vw;
-}
-
 .main-container {
 	max-width: var(--max-width);
 	margin: 0 auto;
