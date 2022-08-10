@@ -9,7 +9,7 @@ export let headingClassName: string;
 let maxScrollY = 0;
 let windowInnerHeight: number = 0;
 let scrollY:number = 0;
-let activeIndex: number = 0;
+let activeIndexList: Set<number> = new Set();
 let offsetArr: Array<number> = [];
 let detailsArr: Array<HTMLDetailsElement> = [];
 
@@ -33,17 +33,26 @@ const refreshOffsetArr = () => {
 
 const refreshActiveIndex = () => {
     const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    const currentWindowBottomY = currentScrollY + windowInnerHeight
 
     const _html = document.documentElement;
     const _body = document.body;
-    // calculate maxScrollY
-    maxScrollY = Math.max(_body.scrollHeight, _body.offsetHeight, _html.clientHeight, _html.scrollHeight, _html.offsetHeight) - window.innerHeight; 
 
-    const _index = offsetArr.findIndex(item => item > currentScrollY + (windowInnerHeight / 2));
-    activeIndex = _index < 0 ? offsetArr.length - 1 
-                : _index > 0 ? _index - 1: _index;
-    // process threshold
-    activeIndex = maxScrollY - currentScrollY <= 100 ? (offsetArr.length - 1) : activeIndex;
+    const result: Set<number> = new Set()
+
+    offsetArr.map((value, index) => {
+        if ((value > currentScrollY && value < currentWindowBottomY) )
+            result.add(index);
+    });
+
+    if (result.size < 1) {
+        // calculate baseIndex
+        let _baseIndex = offsetArr.findIndex(item => item > currentScrollY);
+        _baseIndex = _baseIndex < 0 ? offsetArr.length - 1 
+                : _baseIndex > 0 ? _baseIndex - 1: _baseIndex;
+        result.add(_baseIndex);
+    } 
+    activeIndexList = result;
 }
 
 beforeNavigate(() => unRegisterDetailsToggle())
@@ -69,7 +78,7 @@ $: {
 
 <div class="outline-widget">
     {#each headings as heading, i}
-        <div class="{`level-${heading.depth}`} mb-2 outline-item" class:active={activeIndex == i}>
+        <div class="{`level-${heading.depth}`} py-0.5 outline-item" class:active={activeIndexList.has(i)}>
             <a href="#{heading.id}">{heading.text}</a>
         </div>
     {/each}
