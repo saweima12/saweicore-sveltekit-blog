@@ -1,8 +1,8 @@
 <script lang="ts">
-	import textstr from '$lib/textstr';
 	import type { NavItem } from '$lib/types';
 	import { isExternal } from '$lib/client/helper';
 	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
+	import textstr from '$lib/textstr';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
 
