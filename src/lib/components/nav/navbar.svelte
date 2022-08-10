@@ -96,6 +96,11 @@
 
 }
 
+.navbar-container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+}
+
 .nav-list {
 	font-weight: 600;
 	box-sizing: content-box;
