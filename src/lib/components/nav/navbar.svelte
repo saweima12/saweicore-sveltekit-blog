@@ -1,13 +1,14 @@
 <script lang="ts">
+	import textlang from '$lib/textstr';
 	import type { NavItem } from '$lib/types';
-
-
 	import { siteConfig } from '$lib/store';
 	import { isExternal } from '$lib/client/helper';
 	import Hamburger from '$lib/components/nav/hamburger.svelte';
 	import NavSearchBtn from './navsearchbtn.svelte';
-	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
+	import NavIcon from '$lib/components/nav/navicon.svelte';
+
+	import { themeMode } from '$lib/store';
 
 	const navList: Array<NavItem> = $siteConfig.nav;
 
@@ -24,14 +25,14 @@
 
 <svelte:window bind:scrollY={newScrollY}/>
 
-<nav class="h-14 p-2 top-navbar"
+<nav class="py-2 px-2 top-navbar"
 	class:hide={isHide}>
 
-	<div class="flex px-1 py-0.5 items-center navbar-container">
+	<div class="flex pl-1 items-center navbar-container">
 		<div class="lg:hidden w-30 px-2">
 			<Hamburger />
 		</div>
-	
+
 		<a sveltekit:prefetch class="flex raleway-font site-title" href="/">
 			<div class="logo">
 				<img width="36" height="36" src="/logo.png" alt={$siteConfig.title} />
@@ -43,25 +44,35 @@
 		</a>
 	
 		<div class="grow spacer"></div>
-		<div class="hidden lg:flex nav-list-container">
-			<ul class="nav-list flex flex-row">
-				{#each navList as navItem} 
+
+		<div class="hidden lg:flex items-center">
+			<ul class="h-full flex flex-row nav-list">
+				{#each navList as navItem}
 				<li class="nav-item mr-5 px-2">
 					<a class="flex flex-row items-center" href={navItem.link} alt={navItem.name}>
-						{navItem.name}
+						<div class="item-name">{navItem.name}</div>
 						{#if isExternal(navItem.link)}
 							<ExternalIcon />
 						{/if}
 					</a>
 				</li>
 				{/each}
-
 			</ul>
+			<button
+			   class="flex text-xl letter-content-font theme-switch" 
+			   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
+			>
+				<div class="icon-base w-6">
+					<NavIcon key="theme" />
+				</div>
+			</button>
+			<div class="icon-base w-4">
 
+			</div>
 
 		</div>
-		
-		<div class="lg:hidden search-box">
+
+		<div class="lg:hidden search-icon">
 			<NavSearchBtn/>
 		</div>	
 	</div>
@@ -70,8 +81,8 @@
 </nav>
 
 <style>
-
 .top-navbar {
+	color: var(--text);
 	translate: all .3s;
 }
 
@@ -85,11 +96,31 @@
 
 }
 
-.navbar-container {
-	max-width: var(--max-width);
-	margin: 0 auto;
+.nav-list {
+	font-weight: 600;
+	box-sizing: content-box;
 }
 
+.nav-item:hover a{
+	color: var(--navitem-hover);
+}
+
+.nav-item a{
+	border-bottom: 2px solid transparent;
+}
+
+.nav-item:hover a{
+	border-bottom: 2px solid #fff;
+}
+
+.theme-switch {
+	padding: 5px;
+}
+
+.theme-switch:hover {
+	border-radius: 10rem;
+	background: var(--tagitem-hover);
+}
 
 .title {
 	margin-top: .2rem;
@@ -98,4 +129,5 @@
 	color: var(--text);
 	font-weight: 600;
 }
+
 </style>

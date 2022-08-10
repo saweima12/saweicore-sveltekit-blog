@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { page } from "$app/stores";
 	import type { NavItem } from '$lib/types';
 	import { isExternal } from '$lib/client/helper';
 	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
 	import textstr from '$lib/textstr';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
+	import NavLinkItem from "./navlinkitem.svelte";
 
 	const textlang = textstr.common;
 	const author: Record<string, any> = $siteConfig.author;
@@ -30,24 +32,18 @@
 		<div class="mx-6 py-4 mb-6 author">
 			<div class="flex flex-row avatar-block">
 				<img src={author.avatar} alt="saweima" loading="lazy"/>
-				<div class="flex flex-col items-center justify-center ml-4 avatar-info">
-					<div class="word-font font-bold text-lg">{author.name}</div>
-					<div class="word-font">{author.summary}</div>
+				<div class="flex flex-col word-font items-center justify-center ml-4 avatar-info">
+					<div class="font-bold text-lg">{author.name}</div>
+					<div>{author.summary}</div>
 				</div>
 			</div>
 		</div>
 		<ul class="nav-list">
-			<li class="flex items-center mt-4 pl-8 nav-item">
-				<div class="icon-base w-6">
-					<NavIcon key="home" />
-				</div>
-				<a href="/" class="pl-4 text-xl letter-content-font">
-					{textlang.home}
-				</a>
-				<div class="icon-base w-3" />
-			</li>
 			{#each navList as navItem}
-				<li class="flex items-center mt-4 pl-8 nav-item">
+			{@const reg = new RegExp(`^${navItem.link}`)}
+			<li class="flex nav-item" class:active={reg.test($page.url.pathname)}>
+				<NavLinkItem link={navItem.link}>
+				<div class="flex items-center pl-8 mt-1 mb-4 nav-item-content">
 					<div class="icon-base w-6">
 						<NavIcon key={navItem.id} />
 					</div>
@@ -57,21 +53,26 @@
 					{#if isExternal(navItem.link)}
 						<ExternalIcon />
 					{/if}
-				</li>
+				</div>
+				</NavLinkItem>
+			</li>
 			{/each}
 		</ul>
 		<div class="grow spacer"></div>
+
 		<div class="flex items-center mb-8 pl-8 nav-item">
-			<div class="icon-base w-6">
-				<NavIcon key="theme" />
-			</div>
-			<a href="#!" 
-			   class="pl-4 text-xl letter-content-font" 
-			   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}>
-				{textlang.themeMode}
-			</a>
+			<button
+			   class="flex text-xl letter-content-font" 
+			   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
+			>
+				<div class="icon-base w-6">
+					<NavIcon key="theme" />
+				</div>
+				<div class="pl-4">{textlang.themeMode}</div>
+			</button>
 			<div class="icon-base w-3" />
 		</div>
+	
 	</div>
 </div>
 
@@ -83,20 +84,27 @@
 	background-color: var(--bg-color);
 }
 
-.navmenu .author {
+.author {
 	border-bottom: 1px solid var(--border);
 }
 
-.navmenu .author img {
+.author img {
 	width: 5rem;
 	border-radius: 1rem;
 }
 
-.navmenu .nav-item {
+.nav-item {
 	font-weight: 500;
 }
 
-.navmenu .nav-item:hover {
+.nav-item:not(.active):hover {
 	color: var(--navitem-hover);
 }
+
+.nav-item.active {
+	color: var(--navitem-active);
+	font-weight: 600;
+}
+
+
 </style>
