@@ -8,7 +8,6 @@
 	import ExternalIcon from '$lib/icons/external.svelte';
 	import NavLinkItem from "./navlinkitem.svelte";
 
-	const textlang = textstr.common;
 	const author: Record<string, any> = $siteConfig.author;
 	const navList: Array<NavItem> = $siteConfig.nav;
 
@@ -31,15 +30,15 @@
 	<div class="flex flex-col h-full navmenu-container">
 		<div class="py-4 mb-2 header">
 
-			<div class="flex items-center mb-4 pl-8 nav-item">
-				<button
-				   class="flex text-xl letter-content-font" 
-				   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
-				>
-					<div class="title">
+			<div class="flex items-center mb-4 pl-8">
+
+					<div class="title text-lg">
 						{$siteConfig.title}
 					</div>
-
+					<button
+						class="flex text-xl letter-content-font theme-switch" 
+						on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
+					>
 					<div class="icon-base w-6">
 						<NavIcon key="theme" />
 					</div>
@@ -103,6 +102,16 @@
 	width: 5rem;
 	border-radius: 1rem;
 }
+
+.theme-switch {
+	padding: 5px;
+}
+
+.theme-switch:hover {
+	border-radius: 10rem;
+	background: var(--tagitem-hover);
+}
+
 
 .nav-item {
 	font-weight: 500;

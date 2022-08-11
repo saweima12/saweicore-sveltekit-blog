@@ -69,9 +69,6 @@
 					<NavIcon key="theme" />
 				</div>
 			</button>
-			<div class="icon-base w-4">
-
-			</div>
 
 		</div>
 
@@ -118,7 +115,7 @@
 }
 
 .nav-item:hover .nav-item-block{
-	border-bottom: 2px solid #fff;
+	border-bottom: 2px solid var(--border);
 }
 
 .theme-switch {
