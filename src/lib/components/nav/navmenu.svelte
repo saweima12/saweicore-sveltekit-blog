@@ -29,14 +29,31 @@
 	class:-translate-x-full={!isVisible}
 >
 	<div class="flex flex-col h-full navmenu-container">
-		<div class="mx-6 py-4 mb-6 author">
-			<div class="flex flex-row avatar-block">
+		<div class="py-4 mb-2 header">
+
+			<div class="flex items-center mb-4 pl-8 nav-item">
+				<button
+				   class="flex text-xl letter-content-font" 
+				   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
+				>
+					<div class="title">
+						{$siteConfig.title}
+					</div>
+
+					<div class="icon-base w-6">
+						<NavIcon key="theme" />
+					</div>
+				</button>
+			</div>
+
+			<div class="flex flex-row mx-6 author-block">
 				<img src={author.avatar} alt="saweima" loading="lazy"/>
 				<div class="flex flex-col word-font items-center justify-center ml-4 avatar-info">
 					<div class="font-bold text-lg">{author.name}</div>
 					<div>{author.summary}</div>
 				</div>
 			</div>
+
 		</div>
 		<ul class="nav-list">
 			{#each navList as navItem}
@@ -58,21 +75,7 @@
 			</li>
 			{/each}
 		</ul>
-		<div class="grow spacer"></div>
-
-		<div class="flex items-center mb-8 pl-8 nav-item">
-			<button
-			   class="flex text-xl letter-content-font" 
-			   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
-			>
-				<div class="icon-base w-6">
-					<NavIcon key="theme" />
-				</div>
-				<div class="pl-4">{textlang.themeMode}</div>
-			</button>
-			<div class="icon-base w-3" />
-		</div>
-	
+		<div class="grow spacer"></div>	
 	</div>
 </div>
 
@@ -84,11 +87,19 @@
 	background-color: var(--bg-color);
 }
 
-.author {
+.title {
+	font-weight: 600;
+	margin-right: 1rem;
+
+}
+
+.author-block {
+	padding: 1rem 0;
+	border-top: 1px solid var(--border);
 	border-bottom: 1px solid var(--border);
 }
 
-.author img {
+.author-block img {
 	width: 5rem;
 	border-radius: 1rem;
 }
