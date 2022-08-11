@@ -9,6 +9,7 @@
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 
 	import { themeMode } from '$lib/store';
+	import NavLinkItem from './navlinkitem.svelte';
 
 	const navList: Array<NavItem> = $siteConfig.nav;
 
@@ -49,12 +50,14 @@
 			<ul class="h-full flex flex-row nav-list">
 				{#each navList as navItem}
 				<li class="nav-item mr-5 px-2">
-					<a class="flex flex-row items-center" href={navItem.link} alt={navItem.name}>
-						<div class="item-name">{navItem.name}</div>
-						{#if isExternal(navItem.link)}
-							<ExternalIcon />
-						{/if}
-					</a>
+					<NavLinkItem link={navItem.link}>
+						<div class="flex items-center nav-item-block">
+							<div class="item-name">{navItem.name}</div>
+							{#if isExternal(navItem.link)}
+								<ExternalIcon />
+							{/if}
+						</div>
+					</NavLinkItem>
 				</li>
 				{/each}
 			</ul>
@@ -106,15 +109,15 @@
 	box-sizing: content-box;
 }
 
-.nav-item:hover a{
+.nav-item:hover .nav-item-block{
 	color: var(--navitem-hover);
 }
 
-.nav-item a{
+.nav-item .nav-item-block{
 	border-bottom: 2px solid transparent;
 }
 
-.nav-item:hover a{
+.nav-item:hover .nav-item-block{
 	border-bottom: 2px solid #fff;
 }
 

@@ -47,9 +47,9 @@
 					<div class="icon-base w-6">
 						<NavIcon key={navItem.id} />
 					</div>
-					<a sveltekit:prefetch href={navItem.link} class="pl-4 text-xl letter-content-font">
+					<div class="pl-4 text-xl letter-content-font">
 						{navItem.name}
-					</a>
+					</div>
 					{#if isExternal(navItem.link)}
 						<ExternalIcon />
 					{/if}
