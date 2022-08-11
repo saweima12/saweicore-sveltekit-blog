@@ -62,7 +62,7 @@
 				{/each}
 			</ul>
 			<button
-			   class="flex text-xl letter-content-font theme-switch" 
+			   class="flex text-xl letter-content-font mr-1 theme-switch" 
 			   on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
 			>
 				<div class="icon-base w-6">
