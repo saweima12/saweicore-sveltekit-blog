@@ -1,6 +1,5 @@
 import { writable } from 'svelte/store';
 import type { Writable } from 'svelte/store';
-import type { HeadingItem } from './types/response';
 
 export const viewId = {
   navMenu: "navMenu",
