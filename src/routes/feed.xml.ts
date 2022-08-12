@@ -30,6 +30,9 @@ export const GET: RequestHandler = async () => {
   // generate post feed.
   await generateItems(postSet.pages, config, builder)
 
+  // add atom:xml self
+  builder.ele("atom:link", { rel: "self", href: `${config.url}/feed.xml`, type: "application/rss+xml"})
+
   const xml = builder.end({ prettyPrint: true })
   return {
     headers: headers,
