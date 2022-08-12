@@ -18,6 +18,8 @@ export const GET: RequestHandler = async () => {
     'Content-Type': 'application/xml',
   }
 
+
+
   // define xml struct.
   const builder = create({version:"1.0", encoding: "UTF-8"})
     .ele("rss", {"version": "2.0", "xmlns:atom": "http://www.w3.org/2005/Atom" })
@@ -27,11 +29,12 @@ export const GET: RequestHandler = async () => {
       .ele("description").txt(config.description).up()
       .ele("lastBuildDate").txt(new Date().toUTCString()).up()
 
-  // generate post feed.
-  await generateItems(postSet.pages, config, builder)
 
   // add atom:xml self
   builder.ele("atom:link", { rel: "self", href: `${config.url}/feed.xml`, type: "application/rss+xml"}).up()
+
+  // generate post feed.
+  await generateItems(postSet.pages, config, builder)
 
   const xml = builder.end({ prettyPrint: true })
   return {
