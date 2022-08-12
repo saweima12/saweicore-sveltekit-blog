@@ -2,6 +2,7 @@
 import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 import type { HeadingItem } from "$lib/types/response";
+import { onMount } from "svelte";
 
 export let headings: Array<HeadingItem>;
 export let headingClassName: string;
@@ -17,7 +18,7 @@ const detailsToggleHandle = (e: Event) => {
     refreshOffsetArr();
 }
 
-const unRegisterDetailsToggle = () => {
+const deRegisterDetailsToggle = () => {
     detailsArr?.map(item => item.removeEventListener('toggle', detailsToggleHandle));
 }
 
@@ -32,13 +33,10 @@ const refreshOffsetArr = () => {
 }
 
 const refreshActiveIndex = () => {
-    const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
-    const currentWindowBottomY = currentScrollY + windowInnerHeight
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    const currentWindowBottomY = currentScrollY + windowInnerHeight;
 
-    const _html = document.documentElement;
-    const _body = document.body;
-
-    const result: Set<number> = new Set()
+    const result: Set<number> = new Set();
 
     offsetArr.map((value, index) => {
         if ((value > currentScrollY && value < currentWindowBottomY) )
@@ -55,15 +53,19 @@ const refreshActiveIndex = () => {
     activeIndexList = result;
 }
 
-beforeNavigate(() => unRegisterDetailsToggle())
+beforeNavigate(() => deRegisterDetailsToggle())
 
 afterNavigate(() => {
     // Register new details elements
     detailsArr = Object.values(document.getElementsByTagName("details"));
     detailsArr.map(item => item.addEventListener("toggle", detailsToggleHandle))
-    // refresh scrollList
-    refreshOffsetArr();
 });
+
+onMount(async ()=> {
+    // refresh scrollList
+    console.log("refresh scrolllist");
+    refreshOffsetArr();
+})
 
 // On ScrollUpdate
 $: {

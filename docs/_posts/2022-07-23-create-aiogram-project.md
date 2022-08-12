@@ -32,7 +32,7 @@ AIOGram 是 Telegram Bot API 的 Python 包裝器，用於將繁瑣的 HTTP API 
  
 在使用之前，必須先透過 Telegram Bot Father 註冊新的 bot 帳戶。
 
-<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/register-tg-bot.jpg" style="max-height:500px" />
+<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/register-tg-bot.jpg" height="300" />
 
 
 - 加入有藍色勾勾（證明為官方帳號）的 BotFather
@@ -176,7 +176,7 @@ ngrok http 8000
 ```
 成功後如下：
 
-<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/ngrok-test.jpg" />
+<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/ngrok-test.jpg" height="195"/>
 
 圖中的 `https://928c-211-23-21-139.ngrok.io` 就是透過 ngrok 取得的 URL DOMAIN，它就相當於連接到本機的 port 8000 。
 
