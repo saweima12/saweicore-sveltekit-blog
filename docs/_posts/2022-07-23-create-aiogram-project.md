@@ -32,7 +32,7 @@ AIOGram 是 Telegram Bot API 的 Python 包裝器，用於將繁瑣的 HTTP API 
  
 在使用之前，必須先透過 Telegram Bot Father 註冊新的 bot 帳戶。
 
-<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/register-tg-bot.jpg" height="300" />
+<img class="lightbox" src="https://media.saweicore.com/blog/create-aiogram-project/register-tg-bot.jpg" height="500" />
 
 
 - 加入有藍色勾勾（證明為官方帳號）的 BotFather
