@@ -72,8 +72,13 @@
 
 <svelte:head>
 	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
-
-	<!-- OpenGraph -->
+	<!-- Twitter Card -->	
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@saweima12" />
+	<meta name="twitter:title" content="{metadata.title} - {getTitleStr($siteConfig)}" />
+	<meta name="twitter:description" content={metadata.description} />
+	<meta name="twitter:url" content={routePath} />
+	<!-- Facebook OpenGraph -->
 	<meta property="og:url" content="{routePath}"/>
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="article" />

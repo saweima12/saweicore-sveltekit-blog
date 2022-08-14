@@ -2,6 +2,7 @@
 import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 import type { HeadingItem } from "$lib/types/response";
+import { onMount, tick } from "svelte";
 
 export let headings: Array<HeadingItem>;
 export let headingClassName: string;
@@ -17,23 +18,28 @@ const detailsToggleHandle = (e: Event) => {
     refreshOffsetArr();
 }
 
-const unRegisterDetailsToggle = () => {
+const deRegisterDetailsToggle = () => {
     detailsArr?.map(item => item.removeEventListener('toggle', detailsToggleHandle));
 }
 
-const refreshOffsetArr = () => {
+const refreshOffsetArr = async() => {
     let collection = document.getElementsByClassName(headingClassName);
+    await tick();
+
+
     offsetArr = Object.values(collection).map((item) => {
         const element = item as HTMLElement;
         return element.offsetTop + (element.clientHeight / 2);
     });
-
     refreshActiveIndex();
 }
 
 const refreshActiveIndex = () => {
     const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
-    const currentWindowBottomY = (currentScrollY + windowInnerHeight);
+    const currentWindowBottomY = currentScrollY + windowInnerHeight
+
+    const _html = document.documentElement;
+    const _body = document.body;
 
     const result: Set<number> = new Set()
 
@@ -52,15 +58,31 @@ const refreshActiveIndex = () => {
     activeIndexList = result;
 }
 
-beforeNavigate(() => unRegisterDetailsToggle())
+beforeNavigate(() => deRegisterDetailsToggle())
 
-afterNavigate(() => {
+afterNavigate(async () => {
     // Register new details elements
     detailsArr = Object.values(document.getElementsByTagName("details"));
     detailsArr.map(item => item.addEventListener("toggle", detailsToggleHandle))
-    // refresh scrollList
-    refreshOffsetArr();
+
+    // when all picture loaded, refresh offset array.
+    Promise.all(
+        Object.values<HTMLImageElement>(document.querySelectorAll("main img")).map(async (img) => {
+            if (img.complete) return Promise.resolve(true);
+            return new Promise(resolve => {
+                img.addEventListener('load', () => resolve(true));
+                img.addEventListener('error', () => resolve(false));
+            })
+        })
+    ).then(async (results) => {
+        await refreshOffsetArr();
+    });
 });
+
+onMount(async ()=> {
+    // refresh scrollList
+    await refreshOffsetArr();
+})
 
 // On ScrollUpdate
 $: {

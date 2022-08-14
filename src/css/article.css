@@ -119,6 +119,7 @@
 .content img {
 	margin: 1.5rem auto;
 	cursor: pointer;
+	max-height: 500px;
 }
 
 .content ul {

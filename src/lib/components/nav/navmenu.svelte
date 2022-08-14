@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="flex flex-row mx-6 author-block">
-				<img src={author.avatar} alt="saweima" loading="lazy"/>
+				<img src={author.avatar} alt="saweima" loading="lazy" width="80" height="80" />
 				<div class="flex flex-col word-font items-center justify-center ml-4 avatar-info">
 					<div class="font-bold text-lg">{author.name}</div>
 					<div>{author.summary}</div>

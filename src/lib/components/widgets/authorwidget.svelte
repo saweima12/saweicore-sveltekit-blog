@@ -5,7 +5,7 @@
 </script>
 <div class="author-widget">
     <div class="w-32 h-32">
-        <img class="avatar" src={author.avatar} alt="{author.name}" loading="lazy">
+        <img class="avatar" src={author.avatar} alt="{author.name}" loading="lazy" width="128" height="128" />
     </div>  
     <div class="mt-3 name">
         <h2>{author.name}</h2>

@@ -6,7 +6,6 @@
 		"build": "vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync",
 		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
@@ -17,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@beyonk/svelte-google-analytics": "^2.6.4",
-		"@playwright/test": "^1.24.2",
+		"@playwright/test": "^1.25.0",
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
 		"@types/html-minifier": "^4.0.2",
@@ -49,6 +48,6 @@
 	"dependencies": {
 		"algoliasearch": "^4.14.2",
 		"markedpage": "^0.1.10",
-		"vite": "^3.0.5"
+		"vite": "^3.0.6"
 	}
 }
