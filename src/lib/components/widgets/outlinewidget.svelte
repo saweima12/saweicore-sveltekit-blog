@@ -2,7 +2,6 @@
 import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 import type { HeadingItem } from "$lib/types/response";
-import { onMount, tick } from "svelte";
 
 export let headings: Array<HeadingItem>;
 export let headingClassName: string;
@@ -24,8 +23,6 @@ const deRegisterDetailsToggle = () => {
 
 const refreshOffsetArr = async() => {
     let collection = document.getElementsByClassName(headingClassName);
-    await tick();
-
 
     offsetArr = Object.values(collection).map((item) => {
         const element = item as HTMLElement;
@@ -37,9 +34,6 @@ const refreshOffsetArr = async() => {
 const refreshActiveIndex = () => {
     const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
     const currentWindowBottomY = currentScrollY + windowInnerHeight
-
-    const _html = document.documentElement;
-    const _body = document.body;
 
     const result: Set<number> = new Set()
 
@@ -78,11 +72,6 @@ afterNavigate(async () => {
         await refreshOffsetArr();
     });
 });
-
-onMount(async ()=> {
-    // refresh scrollList
-    await refreshOffsetArr();
-})
 
 // On ScrollUpdate
 $: {
