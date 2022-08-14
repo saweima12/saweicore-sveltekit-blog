@@ -33,10 +33,7 @@ const refreshOffsetArr = () => {
 
 const refreshActiveIndex = () => {
     const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
-    const currentWindowBottomY = currentScrollY + windowInnerHeight
-
-    const _html = document.documentElement;
-    const _body = document.body;
+    const currentWindowBottomY = (currentScrollY + windowInnerHeight);
 
     const result: Set<number> = new Set()
 
@@ -77,11 +74,15 @@ $: {
 <svelte:window bind:scrollY={scrollY} bind:innerHeight={windowInnerHeight}/>
 
 <div class="outline-widget">
-    {#each headings as heading, i}
-        <div class="{`level-${heading.depth}`} py-0.5 outline-item" class:active={activeIndexList.has(i)}>
-            <a href="#{heading.id}">{heading.text}</a>
-        </div>
-    {/each}
+    <ul class="overflow-y-auto outline-list">
+        {#each headings as heading, i}
+            <div class="{`level-${heading.depth}`} py-0.5 outline-item" 
+                class:active={activeIndexList.has(i)}
+            >
+                <a href="#{heading.id}">{heading.text}</a>
+            </div>
+        {/each}
+    </ul>
 </div>
 
 <style>
@@ -91,6 +92,18 @@ $: {
 
 .outline-widget .level-3 {
     padding-left: 2rem;
+}
+
+.outline-list {
+    max-height: calc(100vh - 12rem);
+}
+
+.outline-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.outline-list::-webkit-scrollbar-thumb {
+    background-color: #7e7e7e;
 }
 
 .outline-item {
