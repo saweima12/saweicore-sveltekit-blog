@@ -2,7 +2,6 @@
 import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 import type { HeadingItem } from "$lib/types/response";
-import { onMount, tick } from "svelte";
 
 export let headings: Array<HeadingItem>;
 export let headingClassName: string;
@@ -24,8 +23,6 @@ const deRegisterDetailsToggle = () => {
 
 const refreshOffsetArr = async() => {
     let collection = document.getElementsByClassName(headingClassName);
-    await tick();
-
 
     offsetArr = Object.values(collection).map((item) => {
         const element = item as HTMLElement;
@@ -34,11 +31,11 @@ const refreshOffsetArr = async() => {
     refreshActiveIndex();
 }
 
-const refreshActiveIndex = async () => {
-    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    const currentWindowBottomY = currentScrollY + windowInnerHeight;
+const refreshActiveIndex = () => {
+    const currentScrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    const currentWindowBottomY = currentScrollY + windowInnerHeight
 
-    const result: Set<number> = new Set();
+    const result: Set<number> = new Set()
 
     offsetArr.map((value, index) => {
         if ((value > currentScrollY && value < currentWindowBottomY) )
@@ -76,11 +73,6 @@ afterNavigate(async () => {
     });
 });
 
-onMount(async ()=> {
-    // refresh scrollList
-    await refreshOffsetArr();
-})
-
 // On ScrollUpdate
 $: {
     if (typeof window !== 'undefined' && offsetArr.length > 0 && scrollY) {
@@ -93,11 +85,15 @@ $: {
 <svelte:window bind:scrollY={scrollY} bind:innerHeight={windowInnerHeight}/>
 
 <div class="outline-widget">
-    {#each headings as heading, i}
-        <div class="{`level-${heading.depth}`} py-0.5 outline-item" class:active={activeIndexList.has(i)}>
-            <a href="#{heading.id}">{heading.text}</a>
-        </div>
-    {/each}
+    <ul class="overflow-y-auto outline-list">
+        {#each headings as heading, i}
+            <div class="{`level-${heading.depth}`} py-0.5 outline-item" 
+                class:active={activeIndexList.has(i)}
+            >
+                <a href="#{heading.id}">{heading.text}</a>
+            </div>
+        {/each}
+    </ul>
 </div>
 
 <style>
@@ -107,6 +103,18 @@ $: {
 
 .outline-widget .level-3 {
     padding-left: 2rem;
+}
+
+.outline-list {
+    max-height: calc(100vh - 12rem);
+}
+
+.outline-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.outline-list::-webkit-scrollbar-thumb {
+    background-color: #7e7e7e;
 }
 
 .outline-item {
