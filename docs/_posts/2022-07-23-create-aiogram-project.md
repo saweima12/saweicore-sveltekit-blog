@@ -45,7 +45,18 @@ AIOGram 是 Telegram Bot API 的 Python 包裝器，用於將繁瑣的 HTTP API 
 
 ## 建立基本結構
 
-AIOGram 有兩種取得 update 資訊的方式。以下為兩種範例。
+AIOGram 各 Module 負責的功能：
+-  `Bot` class 將所有 Telegram Bot API 的指令包裝成 function 形式，主要負責傳送 request 給 Telegram 伺服器。
+- `Dispatcher` class 負責接收所有透過 Webhook 收到的訊息，並轉換為對應的 Object。
+- `types` module 底下包含所有型別及其相關的輔助 Function，如 Update、Message。
+
+運行的主要流程：
+-> 接收 Telegram 的 Update 訊息
+-> 傳入 Dispatcher 進行分類
+-> Dispatcher 將分類後的訊息發送給註冊的 Handler 
+-> Handler 進行處理後回傳 HTTP Response 給 Telegram 伺服器（如果收到非 200 的 status code 會等待一定時間後重新傳送）
+
+**Update 資訊的取得方式有以下兩種：**
 
 ### 使用 Polling 
 
