@@ -1,12 +1,11 @@
 <script lang="ts">
-import { siteConfig } from '$lib/store';
-import { getTitleStr } from '$lib/client';
+	import type { PageData } from './$types';
+	import { siteConfig } from '$lib/store';
+	import { getTitleStr } from '$lib/client';
 
-import type { PageData } from './$types';
 
-export let data: PageData;
-$: ({content, metadata} = data);
-
+	export let data: PageData;
+	$: ({content, metadata} = data);
 </script>
 
 <svelte:head>

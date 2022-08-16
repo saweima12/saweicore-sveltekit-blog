@@ -9,12 +9,10 @@
 	import { siteConfig } from '$lib/store';
 	import { afterNavigate } from '$app/navigation';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
-	import type { PageMeta } from '$lib/types';
 	import { dataAPI } from '$lib/client';
 	
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
-
 	
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;

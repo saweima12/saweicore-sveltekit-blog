@@ -1,19 +1,16 @@
 <script lang="ts">
-	import { dataAPI, getTitleStr } from '$lib/client';
-	import type { PageListResult, PageMeta, TabItem, TagItem } from '$lib/types';
-	import Postlist from '$lib/components/article/postlist.svelte';
+	import type { PageData } from './$types';
+	import { getTitleStr } from '$lib/client';
+	import type { TabItem } from '$lib/types';
 
 	import textstr from '$lib/textstr';
 	import { siteConfig } from '$lib/store';
 	import Taglist from '$lib/components/article/taglist.svelte';
 	import TabGroup from '$lib/components/tabs/tabgroup.svelte';
 	
-	import type { PageData } from './$types';
-
 	// loading page data.
 	export let data: PageData;
 	$: ({ tagList } = data);
-	
 	
 	const textlang = textstr.home;
 	let tabGroup: Array<TabItem> = [ 

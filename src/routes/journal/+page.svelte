@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { PageData } from './$types';
 	import textstr from '$lib/textstr';
 	import { siteConfig } from '$lib/store';
 	import { getTitleStr } from '$lib/client';
+	// import components.
 	import JournalList from '$lib/components/article/journallist.svelte';
-	import type { PageData } from './$types';
 
 	export let data: PageData;
 	const textlang: Record<string, any> = textstr.journal;
