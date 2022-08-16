@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import type { TagPageResult } from '$lib/types';
 	import { dataAPI } from '$lib/client';
 	import { siteConfig } from '$lib/store';
 	import { getTitleStr } from '$lib/client';

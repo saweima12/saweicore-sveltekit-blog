@@ -5,7 +5,6 @@ import { getTitleStr } from '$lib/client';
 import type { PageData } from './$types';
 
 export let data: PageData;
-console.log(data)
 $: ({content, metadata} = data);
 
 </script>

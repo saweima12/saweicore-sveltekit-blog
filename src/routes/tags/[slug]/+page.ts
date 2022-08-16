@@ -1,6 +1,5 @@
-import { json } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import type { PageMeta, TagPageResult } from '$lib/types';
+import type { TagPageResult } from '$lib/types';
 import { dataAPI } from '$lib/client';
 
 export const load: PageLoad = async ({ params, fetch }) => {

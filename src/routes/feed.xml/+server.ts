@@ -39,7 +39,7 @@ export const GET: RequestHandler = async () => {
 
   const xml = builder.end({ prettyPrint: true })
 
-  return json(xml, {
+  return new Response(xml, {
       headers: headers
   });
 }

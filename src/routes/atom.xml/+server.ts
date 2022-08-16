@@ -1,4 +1,3 @@
-import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import type { XMLBuilder } from 'xmlbuilder2/lib/interfaces';
 import type { SourcePage, DirectoryClassifierResult } from 'markedpage';
