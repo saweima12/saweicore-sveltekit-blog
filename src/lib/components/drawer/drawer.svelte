@@ -6,9 +6,10 @@
     import { page } from '$app/stores';
     import type { HeadingItem } from "$lib/types/response";
 
+
     let headingList: Array<HeadingItem> = [];
     $: {
-        const { headings } : any = $page.stuff;
+        const { headings } : any = $page.data;
         headingList = headings || [];
     }
 </script>
