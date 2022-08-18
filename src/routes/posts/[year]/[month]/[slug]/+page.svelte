@@ -16,11 +16,12 @@
 	
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
-	
+
+	// support auto reload
+	$: ({ metadata, content, pageMeta} = data);	
 
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
-	let tags: Array<string> = metadata.tags || [];
-
+ 
 	import { page } from '$app/stores';
 
 	// Fix: navigation/goto can't support id.
@@ -40,7 +41,6 @@
 	onContentUpdate(async (payload: Record<string, any>) => {
 		const { year, month, slug} = $page.params;
 		invalidate(dataAPI.getPostData(year, month,slug))
-
 		setTimeout(() => {
 			PrismJs.highlightAll();
 		}, 500);
@@ -84,7 +84,7 @@
 			</div>
 
 			<div class="mt-4 flex flex-row post-tag-list">
-				{#each tags as tag}
+				{#each metadata.tags as tag}
 					<div class="post-tag-item">
 						<a sveltekit:prefetch href="{pageRoute.getTagPath(tag)}">{tag}</a>
 					</div>

@@ -6,11 +6,9 @@ export const GET: RequestHandler = async ({ url }) => {
 
   const _pathMap = await pathMap();
   const _slugMap = await slugMap();
-  const _custom = await classifiedSet("custom");
-
   return json({
-  pathMap: _pathMap,
-  slugMap: _slugMap,
-  custom: _custom
-})
+    pathMap: _pathMap,
+    slugMap: _slugMap,
+
+  })
 };
