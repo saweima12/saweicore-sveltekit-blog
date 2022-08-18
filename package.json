@@ -17,8 +17,8 @@
 	"devDependencies": {
 		"@beyonk/svelte-google-analytics": "^2.6.4",
 		"@playwright/test": "^1.25.0",
-		"@sveltejs/adapter-static": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-static": "1.0.0-next.39",
+		"@sveltejs/kit": "1.0.0-next.420",
 		"@types/html-minifier": "^4.0.2",
 		"@types/nprogress": "^0.2.0",
 		"@types/prismjs": "^1.26.0",
@@ -37,7 +37,7 @@
 		"prism-themes": "^1.9.0",
 		"prismjs": "^1.28.0",
 		"svelte": "^3.49.0",
-		"svelte-check": "^2.8.0",
+		"svelte-check": "^2.8.1",
 		"svelte-preprocess": "^4.10.7",
 		"tailwindcss": "^3.1.8",
 		"tslib": "^2.4.0",
@@ -47,7 +47,7 @@
 	"type": "module",
 	"dependencies": {
 		"algoliasearch": "^4.14.2",
-		"markedpage": "^0.1.10",
-		"vite": "^3.0.7"
+		"markedpage": "0.1.13",
+		"vite": "^3.0.8"
 	}
 }
