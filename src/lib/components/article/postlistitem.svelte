@@ -26,15 +26,15 @@
 			</div>
 
 			<div class="hidden sm:inline-block summary">
+				{#if metadata.excerpt}
 				<a sveltekit:prefetch href={pageRoute.getPostPath(post)} alt="{metadata.title}">
-					{#if metadata.excerpt}
 						<p class="letter-content-font">
 							{metadata.excerpt.length > 30
 								? metadata.excerpt.slice(0, 100) + '...'
 								: metadata.excerpt}
 						</p>
-					{/if}
-				</a>
+					</a>
+				{/if}
 			</div>
 
 			<footer class="flex items-center my-3">
@@ -73,6 +73,7 @@
 						class="object-cover thumbnail-pic"
 						alt="test"
 					/>
+					<p class="hidden">{metadata.title}</p>
 				</a>
 			</div>
 		{/if}
