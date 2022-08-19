@@ -23,14 +23,7 @@
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
  
 	import { page } from '$app/stores';
-
-	// Fix: navigation/goto can't support id.
-	afterNavigate(() => {
-		if ($page.url.hash.length > 0) {
-			location.href = location.href;
-		}
-	});
-
+	
 	onMount(async () => {
 		await PrismJs.highlightAll();
 	});
