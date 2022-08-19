@@ -3,7 +3,6 @@
 	import type { NavItem } from '$lib/types';
 	import { isExternal } from '$lib/client/helper';
 	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
-	import textstr from '$lib/textstr';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
 	import NavLinkItem from "./navlinkitem.svelte";
@@ -31,7 +30,6 @@
 		<div class="py-4 mb-2 header">
 
 			<div class="flex items-center mb-4 pl-8">
-
 					<div class="title text-lg">
 						{$siteConfig.title}
 					</div>

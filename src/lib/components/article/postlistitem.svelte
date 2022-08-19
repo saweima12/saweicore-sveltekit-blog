@@ -20,13 +20,13 @@
 	<main class="flex flex-row mb-2 post-content">
 		<div class="flex-1 context">
 			<div class="letter-title-font font-bold ">
-				<a sveltekit:prefetch class="post-title" href={pageRoute.getPostPath(post)}>
+				<a sveltekit:prefetch class="post-title" href={pageRoute.getPostPath(post)} alt="{metadata.title}">
 					{metadata.title}
 				</a>
 			</div>
 
 			<div class="hidden sm:inline-block summary">
-				<a sveltekit:prefetch href={pageRoute.getPostPath(post)}>
+				<a sveltekit:prefetch href={pageRoute.getPostPath(post)} alt="{metadata.title}">
 					{#if metadata.excerpt}
 						<p class="letter-content-font">
 							{metadata.excerpt.length > 30
@@ -56,7 +56,7 @@
 
 				{#if !metadata.thumbnail}
 					<div class="mr-2 flex self-center more">
-						<a sveltekit:prefetch href={pageRoute.getPostPath(post)}>
+						<a sveltekit:prefetch href={pageRoute.getPostPath(post)} alt="{metadata.title}">
 							<div class="icon-base w-6 h-6">
 								<MoreIcon />
 							</div>
@@ -67,7 +67,7 @@
 		</div>
 		{#if metadata.thumbnail}
 			<div class="min-w-20 ml-3 align-center thumbnail">
-				<a href={pageRoute.getPostPath(post)}>
+				<a href={pageRoute.getPostPath(post)} alt="{metadata.title}">
 					<img
 						src={metadata.thumbnail}
 						class="object-cover thumbnail-pic"
