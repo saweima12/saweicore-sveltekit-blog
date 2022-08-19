@@ -7,7 +7,6 @@
 
 	import { onMount } from 'svelte';
 	import { siteConfig } from '$lib/store';
-	import { afterNavigate } from '$app/navigation';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import { dataAPI } from '$lib/client';
 	
