@@ -37,10 +37,11 @@ const refreshActiveIndex = () => {
 
     const result: Set<number> = new Set()
 
-    offsetArr.map((value, index) => {
+    for (let index = 0; index < offsetArr.length; index++) {
+        let value = offsetArr[index];
         if ((value > currentScrollY && value < currentWindowBottomY) )
             result.add(index);
-    });
+    }
 
     if (result.size < 1) {
         // calculate baseIndex
