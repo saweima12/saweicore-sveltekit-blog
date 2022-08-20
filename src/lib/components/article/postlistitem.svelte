@@ -71,7 +71,7 @@
 					<img
 						src={metadata.thumbnail}
 						class="object-cover thumbnail-pic"
-						alt="test"
+						alt="{metadata.title}"
 					/>
 					<p class="hidden">{metadata.title}</p>
 				</a>
