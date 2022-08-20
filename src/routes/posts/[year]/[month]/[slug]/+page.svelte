@@ -2,9 +2,9 @@
 	import type { PageData } from './$types';
 	// import prismjs
 	import PrismJs from 'prismjs';
+	import 'prismjs/components/prism-python.js'
 	import 'prism-themes/themes/prism-dracula.css';
 
-	import { onMount } from 'svelte';
 	import { siteConfig } from '$lib/store';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import { dataAPI } from '$lib/client';
@@ -21,21 +21,22 @@
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
  
 	import { page } from '$app/stores';
-	
-	onMount(async () => {
-		await PrismJs.highlightAll();
-	});
-	
+
 	// support HMR
 	import { invalidate } from '$app/navigation';
-	import { onContentUpdate } from 'markedpage';
-	onContentUpdate(async (payload: Record<string, any>) => {
-		const { year, month, slug} = $page.params;
-		invalidate(dataAPI.getPostData(year, month,slug))
-		setTimeout(() => {
-			PrismJs.highlightAll();
-		}, 500);
+	import { onMount } from 'svelte';
+	
+	onMount(async () => {
+		PrismJs.highlightAll();
 	})
+
+	if (import.meta.hot) {
+		import.meta.hot.on("markedpage:content-update", () => {
+			const { year, month, slug} = $page.params;
+			invalidate(dataAPI.getPostData(year, month,slug));
+			setTimeout(() => PrismJs.highlightAll(), 200);
+		});
+	}
 </script>
 
 <svelte:head>
