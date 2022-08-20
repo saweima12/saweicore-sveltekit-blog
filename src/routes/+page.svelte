@@ -32,11 +32,10 @@
 	const clickTab = (item: TabItem) => { const link = item.link as string; goto(link) };	
 	// support HMR
 	import { invalidate } from '$app/navigation';
-	import { onContentUpdate } from 'markedpage';
 
-	onContentUpdate((payload: Record<string, any>) => {
+	if (import.meta.hot) {
 		invalidate(dataAPI.getPostList(1))
-	})
+	}
 </script>
 
 <svelte:head>
