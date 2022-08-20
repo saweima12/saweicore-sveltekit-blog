@@ -50,11 +50,11 @@ AIOGram 各 Module 負責的功能：
 - `Dispatcher` class 負責接收所有透過 Webhook 收到的訊息，並轉換為對應的 Object。
 - `types` module 底下包含所有型別及其相關的輔助 Function，如 Update、Message。
 
-運行的主要流程：
--> 接收 Telegram 的 Update 訊息
--> 傳入 Dispatcher 進行分類
--> Dispatcher 將分類後的訊息發送給註冊的 Handler 
--> Handler 進行處理後回傳 HTTP Response 給 Telegram 伺服器（如果收到非 200 的 status code 會等待一定時間後重新傳送）
+運行的主要流程：  
+-> 接收 Telegram 的 Update 訊息  
+-> 傳入 Dispatcher 進行分類  
+-> Dispatcher 將分類後的訊息發送給註冊的 Handler  
+-> Handler 進行處理後回傳 HTTP Response 給 Telegram 伺服器（如果收到非 200 的 status code 會等待一定時間後重新傳送）  
 
 **Update 資訊的取得方式有以下兩種：**
 
@@ -264,5 +264,5 @@ https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
 - AIOGram 支援**輪詢抓取更新 - Polling** 及**被動接收更新 - Webhook**。
 - 推薦使用 Webhook 作為接收更新的方式，用以節省流量與運算資源。
 - 使用 Webhook 接收更新需要有支援 https 的 domain。
-- 可以透過 Ngrok 的反向代理，測試本機端的 Webhook 與 API 。
+- 可以**透過 Ngrok 的反向代理**，**測試本機端**的 Webhook 與 API 。
 - 若不使用包裝器，則需要自己組合出 HTTP URL 及自行處理訊息的解析。

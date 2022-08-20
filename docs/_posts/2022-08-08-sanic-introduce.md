@@ -285,6 +285,8 @@ from sanic import Blueprint, HTTPResponse, Request, response
 from . import scheduler
 
 bp = Blueprint("peon")
+
+@bp.get("/")
 def typed(request: Request) -> HTTPResponse:
     """
     get Done(sync)
