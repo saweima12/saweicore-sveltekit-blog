@@ -60,8 +60,14 @@ afterNavigate(async () => {
     detailsArr = Object.values(document.getElementsByTagName("details"));
     detailsArr.map(item => item.addEventListener("toggle", detailsToggleHandle))
 
+    // register scroll event.
+    document.addEventListener("scroll", () => {
+        if (offsetArr.length > 0) 
+            refreshActiveIndex();
+    })
+
     // when all picture loaded, refresh offset array.
-    Promise.all(
+    await Promise.all(
         Object.values<HTMLImageElement>(document.querySelectorAll("main img")).map(async (img) => {
             if (img.complete) return Promise.resolve(true);
             return new Promise(resolve => {
@@ -73,13 +79,6 @@ afterNavigate(async () => {
         await refreshOffsetArr();
     });
 });
-
-// On ScrollUpdate
-$: {
-    if (typeof window !== 'undefined' && offsetArr.length > 0 && scrollY) {
-        refreshActiveIndex();
-    }
-}
 
 </script>
 
