@@ -9,7 +9,7 @@
     }
 
     onMount(() => {
-        elements = Object.values(document.getElementsByClassName("lightbox"));
+        elements = Object.values(document.getElementsByClassName("main img"));
         elements.map(element => {
             element.addEventListener('click', listenerHandle);
         })

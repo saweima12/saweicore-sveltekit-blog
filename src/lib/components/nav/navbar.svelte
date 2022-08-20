@@ -1,8 +1,7 @@
 <script lang="ts">
-	import textlang from '$lib/textstr';
 	import type { NavItem } from '$lib/types';
 	import { siteConfig } from '$lib/store';
-	import { isExternal } from '$lib/client/helper';
+	import { isExternal } from '$lib/client';
 	import Hamburger from '$lib/components/nav/hamburger.svelte';
 	import NavSearchBtn from './navsearchbtn.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';

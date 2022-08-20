@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import type { NavItem } from '$lib/types';
-	import { isExternal } from '$lib/client/helper';
+	import { isExternal } from '$lib/client';
 	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';

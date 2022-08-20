@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { isExternal } from '$lib/client/helper';
+    import { isExternal } from '$lib/client';
     export let link: string;
     
 </script>
