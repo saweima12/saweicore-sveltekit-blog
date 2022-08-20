@@ -34,7 +34,9 @@
 	import { invalidate } from '$app/navigation';
 
 	if (import.meta.hot) {
-		invalidate(dataAPI.getPostList(1))
+		import.meta.hot.on("markedpage:content-update", () => {
+			invalidate(dataAPI.getPostList(1))
+		});
 	}
 </script>
 
