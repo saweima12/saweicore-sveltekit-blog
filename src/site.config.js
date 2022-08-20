@@ -1,8 +1,5 @@
 import nav from './config/nav.js';
 import { headingClassName, customALink } from './marked/index.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const config = {
 	title: 'Saweicore Lab',
