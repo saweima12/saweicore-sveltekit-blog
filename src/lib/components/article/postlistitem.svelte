@@ -29,7 +29,7 @@
 				{#if metadata.excerpt}
 				<a sveltekit:prefetch href={pageRoute.getPostPath(post)} alt="{metadata.title}">
 						<p class="letter-content-font">
-							{metadata.excerpt.length > 30
+							{metadata.excerpt.length > 100
 								? metadata.excerpt.slice(0, 100) + '...'
 								: metadata.excerpt}
 						</p>
@@ -60,6 +60,7 @@
 							<div class="icon-base w-6 h-6">
 								<MoreIcon />
 							</div>
+							<p class="hidden">{metadata.title}</p>
 						</a>
 					</div>
 				{/if}
