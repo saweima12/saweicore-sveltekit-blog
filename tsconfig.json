@@ -8,11 +8,7 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"strict": true,
-		"paths": {
-			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
-		}
+		"strict": true
 	},
-	"exclude": ["src/site.config.js", "tsconfig.json", "src/**/*.js"]
+	"exclude": ["src/site.config.js", "src/**/*.js"]
 }
