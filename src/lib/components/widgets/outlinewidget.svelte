@@ -2,18 +2,20 @@
 import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 import type { HeadingItem } from "$lib/types/response";
+import { waitImageLoad } from '$lib/client'
 
 export let headings: Array<HeadingItem>;
 export let headingClassName: string;
 
-let maxScrollY = 0;
 let windowInnerHeight: number = 0;
 let scrollY:number = 0;
 let activeIndexList: Set<number> = new Set();
 let offsetArr: Array<number> = [];
 let detailsArr: Array<HTMLDetailsElement> = [];
 
-const detailsToggleHandle = (e: Event) => {
+const detailsToggleHandle = async (e: Event) => {
+    const avaliablePics = Object.values(document.querySelectorAll<HTMLImageElement>("details img"));
+    await waitImageLoad(avaliablePics).finally(async () => await refreshOffsetArr())
     refreshOffsetArr();
 }
 
@@ -67,17 +69,13 @@ afterNavigate(async () => {
     })
 
     // when all picture loaded, refresh offset array.
-    await Promise.all(
-        Object.values<HTMLImageElement>(document.querySelectorAll("main img")).map(async (img) => {
-            if (img.complete) return Promise.resolve(true);
-            return new Promise(resolve => {
-                img.addEventListener('load', () => resolve(true));
-                img.addEventListener('error', () => resolve(false));
-            })
-        })
-    ).then(async (results) => {
+    const articlePics = Object.values(document.querySelectorAll<HTMLImageElement>("main img"));
+    const excludePics = Object.values(document.querySelectorAll<HTMLImageElement>("details img"));
+    const avaliablePics = articlePics.filter((item) => excludePics.indexOf(item) < 0);
+    await waitImageLoad(avaliablePics).finally(async () => {
         await refreshOffsetArr();
     });
+
 });
 
 </script>

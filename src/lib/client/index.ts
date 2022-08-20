@@ -2,4 +2,4 @@ export { getYYYYMMDD, getMMDD } from './formater';
 
 export { dataAPI, pageRoute } from './route';
 
-export { getTitleStr } from './helper';
+export { getTitleStr, isExternal, waitImageLoad } from './helper';
