@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
 強化方案會將各個部件依照職責進行拆分藉此獲得更好的擴展性、更乾淨的結構並在開發時啟用 debug 模式，當腳本變更時自動重新伺服器，藉此獲得更好的開發體驗。
 
-```txt
+```
 /
 ├─ sanicbot
 │   ├─ bot.py       - AIOGram 的輔助功能
@@ -251,7 +251,7 @@ app.blueprint(view.bp)
 
 ### 使用自動重載
 
-```sh
+```bash
 sanic sanicbot:app -d
 ```
 

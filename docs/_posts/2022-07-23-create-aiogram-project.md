@@ -177,12 +177,12 @@ Webhook 方式是在啟動時通知 Telegram 伺服器將新訊息傳輸至對�
 
 Ngrok 是一款有提供免費方案的反向代理工具，並且支援 HTTPS 轉發，可以用於本地端的 Webhook 測試，完全滿足這次的需求，使用前需要先在官網註冊帳號取得 AUTH_TOKEN 並下載對應作業系統的檔案。輸入以下指令設定 AUTH_TOKEN
 
-```sh
+```bash
 ngrok config add-authtoken {AUTH_TOKEN}
 ```
 
 設定完成後，再來只需要輸入以下指令即可將自己的 PORT 8000 綁定到 ngrok 提供的 domain 上。
-```sh
+```bash
 ngrok http 8000
 ```
 成功後如下：

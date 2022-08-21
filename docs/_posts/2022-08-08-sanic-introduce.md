@@ -13,7 +13,7 @@ Sanic 是一款 Python 的 Web 框架，編寫風格繼承了老牌框架 Flask 
 > 官方網站： [點我進入](https://sanic.dev/)<br/>
 
 **安裝方式：**
-```sh
+```bash
 pip install sanic
 ```
 
@@ -72,7 +72,7 @@ app = Sanic(__name__)
 
 
 - 最後使用以下 shell 指令執行 sanic 伺服器。
-```shell
+```bash
 sanic sanicapp:app -H 0.0.0.0 -p 8080 -d
 ```
 

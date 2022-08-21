@@ -24,16 +24,16 @@ Makredpage 雖然可單獨使用，但主要用於配合 SvelteKit 專案。因�
 
 ### 安裝
 
-```js
+```bash
 npm install markedpage
-// yarn add markedpage
-// pnpm install markedpage
+# yarn add markedpage
+# pnpm install markedpage
 ```
 
 ### 目錄結構
 
 創建基本資料夾結構及檔案：
-```js
+```txt
 /
 ├─ docs
 │   └─ _posts
