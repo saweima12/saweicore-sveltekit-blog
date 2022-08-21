@@ -31,7 +31,7 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^3.4.1",
 		"html-minifier": "^4.0.0",
-		"markedpage": "0.1.13",
+		"markedpage": "0.1.14",
 		"nprogress": "^0.2.0",
 		"postcss": "^8.4.16",
 		"prettier": "^2.7.1",
