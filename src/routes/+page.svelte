@@ -9,6 +9,7 @@
 	import PostList from '$lib/components/article/postlist.svelte';
 	import TabGroup from '$lib/components/tabs/tabgroup.svelte';
 
+	import { onContentUpdate } from 'markedpage/helper';
 	import type { PageData } from './$types';
 
 	// loading page data.
@@ -33,11 +34,9 @@
 	// support HMR
 	import { invalidate } from '$app/navigation';
 
-	if (import.meta.hot) {
-		import.meta.hot.on("markedpage:content-update", () => {
-			invalidate(dataAPI.getPostList(1))
-		});
-	}
+	onContentUpdate(() => {
+		invalidate(dataAPI.getPostList(1));
+	})
 </script>
 
 <svelte:head>

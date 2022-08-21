@@ -1,8 +1,5 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	// import prismjs
-	import PrismJs from 'prismjs';
-	import 'prismjs/components/prism-python.js'
 	import 'prism-themes/themes/prism-dracula.css';
 
 	import { siteConfig } from '$lib/store';
@@ -19,24 +16,23 @@
 	$: ({ metadata, content, pageMeta} = data);	
 
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
- 
 	import { page } from '$app/stores';
-
 	// support HMR
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { onContentUpdate } from 'markedpage/helper';
 	
 	onMount(async () => {
-		PrismJs.highlightAll();
+		// import prismjs
+		let _Prism = window.Prism;
+		_Prism.highlightAll();
 	})
 
-	if (import.meta.hot) {
-		import.meta.hot.on("markedpage:content-update", () => {
-			const { year, month, slug} = $page.params;
-			invalidate(dataAPI.getPostData(year, month,slug));
-			setTimeout(() => PrismJs.highlightAll(), 200);
-		});
-	}
+	onContentUpdate(() => {
+		const { year, month, slug} = $page.params;
+		invalidate(dataAPI.getPostData(year, month,slug));
+	})
+
 </script>
 
 <svelte:head>
@@ -61,6 +57,8 @@
 		<meta property="og:image" content="{metadata.thumbnail}" />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
+	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </svelte:head>
 
 <div class="my-10 post-page wrapper">
