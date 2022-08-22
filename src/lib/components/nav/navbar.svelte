@@ -11,22 +11,9 @@
 	import NavLinkItem from './navlinkitem.svelte';
 
 	const navList: Array<NavItem> = $siteConfig.nav;
-
-	let prevScrollY: number = 0;
-	let newScrollY: number = 0;
-	let isHide: boolean = false;
-	$: { 
-		if (Math.abs(newScrollY - prevScrollY) > 50) {
-			isHide = newScrollY - prevScrollY > 0 
-			prevScrollY = newScrollY;
-		}
-	};
 </script>
 
-<svelte:window bind:scrollY={newScrollY}/>
-
-<nav class="py-2 px-2 top-navbar"
-	class:hide={isHide}>
+<nav class="py-2 px-2 top-navbar">
 
 	<div class="flex pl-1 items-center navbar-container">
 		<div class="lg:hidden w-30 px-2">
