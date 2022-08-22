@@ -25,7 +25,10 @@
 	onMount(async () => {
 		// import prismjs
 		let _Prism = window.Prism;
-		_Prism.highlightAll();
+		
+		if (_Prism) {
+			_Prism.highlightAll();
+		}
 	})
 
 	onContentUpdate(() => {
