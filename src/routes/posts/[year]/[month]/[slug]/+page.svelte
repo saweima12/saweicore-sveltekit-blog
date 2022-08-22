@@ -4,12 +4,12 @@
 
 	import { siteConfig, themeMode } from '$lib/store';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
-	import Utterances  from '$lib/vendor/utterances.svelte'
 	import { dataAPI } from '$lib/client';
 	
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
-	
+	import Comment from '$lib/components/comment.svelte';
+
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
 
@@ -22,11 +22,6 @@
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { onContentUpdate } from 'markedpage/helper';
-	
-	const comment: Record<string, any> = $siteConfig.utterances;
-
-	// handle comment-theme
-	$: theme = $themeMode == "light" ? comment.light : comment.dark;
 
 	onMount(async () => {
 		// import prismjs
@@ -82,9 +77,9 @@
 				<time class="flex self-center ml-2">{getYYYYMMDD(metadata.created)}</time>
 			</div>
 
-			<div class="mt-4 flex flex-row post-tag-list">
+			<div class="mt-4 flex flex-wrap post-tag-list">
 				{#each metadata.tags as tag}
-					<div class="post-tag-item">
+					<div class="mb-3 post-tag-item">
 						<a sveltekit:prefetch href="{pageRoute.getTagPath(tag)}">{tag}</a>
 					</div>
 				{/each}
@@ -95,8 +90,8 @@
 			{@html content}
 		</article>
 
-		<div class="comment">
-			<Utterances reponame="{$siteConfig.utterances.repo}" issueTerm="og:title" {theme} />
+		<div class="px-4 comment">
+			<Comment />
 		</div>
 	</div>
 </div>
