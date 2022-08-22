@@ -41,12 +41,17 @@
 	.journel-list .page-item {
 		padding: .5rem 1rem;
 		border-radius: .2rem;
+		
 	}
 
-	.journel-list .page-item a:hover {
-		padding-left: 1rem;
+	.page-item a:hover {
 		color: var(--navitem-active);
 		transition: all .2s;
+
+	}
+
+	.page-item a:hover .post-title {
+		text-decoration: underline;
 	}
 
 </style>
