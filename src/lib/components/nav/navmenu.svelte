@@ -30,9 +30,9 @@
 		<div class="py-4 mb-2 header">
 
 			<div class="flex items-center mb-4 pl-8">
-					<div class="title text-lg">
+					<a sveltekit:prefetch href="/" class="title text-lg">
 						{$siteConfig.title}
-					</div>
+					</a>
 					<button
 						class="flex text-xl letter-content-font theme-switch" 
 						on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
@@ -89,6 +89,11 @@
 	margin-right: 1rem;
 
 }
+
+.title:not(.active):hover {
+	color: var(--navitem-hover);
+}
+
 
 .author-block {
 	padding: 1rem 0;
