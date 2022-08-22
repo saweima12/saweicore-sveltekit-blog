@@ -2,8 +2,9 @@
 	import type { PageData } from './$types';
 	import 'prism-themes/themes/prism-dracula.css';
 
-	import { siteConfig } from '$lib/store';
+	import { siteConfig, themeMode } from '$lib/store';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
+	import Utterances  from '$lib/vendor/utterances.svelte'
 	import { dataAPI } from '$lib/client';
 	
 	import CalenderIcon from '$lib/icons/calender.svelte';
@@ -22,6 +23,11 @@
 	import { onMount } from 'svelte';
 	import { onContentUpdate } from 'markedpage/helper';
 	
+	const comment: Record<string, any> = $siteConfig.utterances;
+
+	// handle comment-theme
+	$: theme = $themeMode == "light" ? comment.light : comment.dark;
+
 	onMount(async () => {
 		// import prismjs
 		let _Prism = window.Prism;
@@ -88,6 +94,10 @@
 		<article class="content">
 			{@html content}
 		</article>
+
+		<div class="comment">
+			<Utterances reponame="{$siteConfig.utterances.repo}" {theme} />
+		</div>
 	</div>
 </div>
 

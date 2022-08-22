@@ -14,6 +14,11 @@ const config = {
     description: '雜項工程師 | 幣圈小白 | 想到再寫',
     avatar: 'https://avatars.githubusercontent.com/u/62002212?s=128&v=4'
   },
+  utterances: {
+    repo: "saweima12/blog-comment",
+    light: "github-light",
+    dark: "github-dark-orange"
+  },
   pagination: {
     maxPerPage: 8
   },
