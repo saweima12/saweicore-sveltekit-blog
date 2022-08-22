@@ -96,7 +96,7 @@
 		</article>
 
 		<div class="comment">
-			<Utterances reponame="{$siteConfig.utterances.repo}" {theme} />
+			<Utterances reponame="{$siteConfig.utterances.repo}" issueTerm="og:title" {theme} />
 		</div>
 	</div>
 </div>
