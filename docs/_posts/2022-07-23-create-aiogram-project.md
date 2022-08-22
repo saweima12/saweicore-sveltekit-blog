@@ -198,7 +198,7 @@ ngrok http 8000
 
 若不使用包裝器，在 Telegram Bot API 中所有的操作，不論是 **[接收資訊]** 還是 **[發送訊息]** 都是透過 HTTP API 來進行。結構如下：
 
-```text
+```txt
 https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}
 ```
 
@@ -206,7 +206,7 @@ https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}
 - `METHOD_NAME` -> 對應的方法名稱，如：getMe、getUpdates
 
 支援 GET 與 POST 的操作，意味著對於簡單的訊息可以直接使用瀏覽器輸入 Url QueryParams。
-```text
+```txt
 https://api.telegram.org/bot{BOT_TOKEN}/{METHOD_NAME}?url={API_URL}
 ```
 針對複雜的操作可以透過 POST 並夾帶於 Body 中。支援的 Content-Type：

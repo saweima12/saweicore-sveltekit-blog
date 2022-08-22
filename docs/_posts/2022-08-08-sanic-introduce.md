@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
  建立以下資料夾結構，當資料夾內有 `__init__.py` 檔案時，該資料夾就會被 python 視為 pacakge。
 
-```text
+```txt
 /
 ├─ sanicapp
 │   └─  __init__.py
