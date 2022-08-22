@@ -1,8 +1,10 @@
 ---
 title: Sanic - 輕量快速的 Python Web Framework
 tags:
+- sanic
 - web
 - python
+- framework
 - programing
 excerpt: 一款支援非同步調用不阻塞執行緒、編寫風格簡潔不拖泥帶水、內置高效率伺服器方便部署的 Python 框架，適合用於快速開發中小型專案。
 ---

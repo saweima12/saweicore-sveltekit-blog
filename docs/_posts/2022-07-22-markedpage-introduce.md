@@ -3,6 +3,7 @@ title: MarkedPage — SvelteKit 靜態網站的內容管理方案
 tags:
 - svelte
 - markdown
+- nodejs
 - programing
 excerpt: 想試著做個靜態網站卻又對現成的生成器感到不滿意？不妨試試看 SvelteKit 與這個專門為靜態網站而生的 Markdown 內容索引工具吧，相信能夠帶來些不一樣的使用體驗。
 ---

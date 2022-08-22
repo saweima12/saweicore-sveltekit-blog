@@ -1,9 +1,12 @@
 ---
 title: 結合 Sanic 進行全方位強化  - Telegram Bot 開發雜談（二）
 tags:
+- sanic
+- aiogram
 - bot
 - web
 - python
+- framework
 - programing
 excerpt: 使用 Sanic Framework 取代 AIOGram 內建的 HTTP Server 可以獲得更好的開發體驗、更高的效能以及更高的擴展性。
 ---
