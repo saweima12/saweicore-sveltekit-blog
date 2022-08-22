@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import { siteConfig } from '$lib/store';
 	import { getTitleStr } from '$lib/client';
-
+	import Comment from '$lib/components/comment.svelte';
 
 	export let data: PageData;
 	$: ({content, metadata} = data);
@@ -10,6 +10,8 @@
 
 <svelte:head>
 	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
+	<meta property="og:title" content="{metadata.title}" />
+	<meta property="og:site_name" content="{getTitleStr($siteConfig)}" />
 </svelte:head>
 
 <div class="my-10 about-page wrapper">
@@ -20,6 +22,9 @@
 	</header>
 	<div class="content">
 		{@html content}
+	</div>
+	<div class="px-4 comment">
+		<Comment />
 	</div>
 </div>
 
