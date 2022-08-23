@@ -20,17 +20,17 @@
 	import { page } from '$app/stores';
 	// support HMR
 	import { invalidate } from '$app/navigation';
-	import { onMount } from 'svelte';
 	import { onContentUpdate } from 'markedpage/helper';
 
-	onMount(async () => {
-		// import prismjs
-		let _Prism = window.Prism;
-		
-		if (_Prism) {
-			_Prism.highlightAll();
+	$: {
+		if (typeof(window) !== undefined) {
+			// import prismjs
+			let _Prism = window.Prism;
+			if (_Prism) {
+				_Prism.highlightAll();
+			}
 		}
-	})
+	}
 
 	onContentUpdate(() => {
 		const { year, month, slug} = $page.params;
