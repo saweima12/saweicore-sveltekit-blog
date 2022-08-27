@@ -2,7 +2,7 @@
 title: 用 AIOGram 建立機器人專案 — Telegram Bot 開發雜談（一）
 tags:
  - aiogram
- - bot
+ - tgbot
  - python
  - programing
 excerpt: 廣告機器人一大堆、鬧群份子一個接一個？又或是想要做些聊天機器人小工具？透過 AIOGram 快速開發 Python Telegram Bot，用流程自動化解決所有麻煩事情。
