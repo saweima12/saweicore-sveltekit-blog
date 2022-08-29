@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { siteConfig } from '$lib/store';
+	import siteConfig  from '$lib/site';
 	import { getTitleStr } from '$lib/client';
 	import Comment from '$lib/components/comment.svelte';
 
@@ -9,9 +9,9 @@
 </script>
 
 <svelte:head>
-	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
+	<title>{metadata.title} - {getTitleStr(siteConfig)}</title>
 	<meta property="og:title" content="{metadata.title}" />
-	<meta property="og:site_name" content="{getTitleStr($siteConfig)}" />
+	<meta property="og:site_name" content="{getTitleStr(siteConfig)}" />
 </svelte:head>
 
 <div class="my-10 about-page wrapper">

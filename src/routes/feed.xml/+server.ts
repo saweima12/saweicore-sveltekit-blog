@@ -2,7 +2,8 @@ import { json } from '@sveltejs/kit';
 import type { DirectoryClassifierResult, SourcePage } from 'markedpage';
 import type { RequestHandler } from '@sveltejs/kit';
 
-import { siteConfig, classifiedSet } from 'markedpage';
+import siteConfig from '$lib/site';
+import { classifiedSet } from 'markedpage';
 import { create } from 'xmlbuilder2';
 import type { XMLBuilder } from 'xmlbuilder2/lib/interfaces';
 import { pageRoute } from '$lib/client';
@@ -10,7 +11,6 @@ import { pageRoute } from '$lib/client';
 
 export const GET: RequestHandler = async () => {
   // get data source.
-  const config = await siteConfig();
   const postSet: DirectoryClassifierResult = await classifiedSet("post");
 
   // declare headers
@@ -25,17 +25,17 @@ export const GET: RequestHandler = async () => {
   const builder = create({version:"1.0", encoding: "UTF-8"})
     .ele("rss", {"version": "2.0", "xmlns:atom": "http://www.w3.org/2005/Atom" })
     .ele("channel")
-      .ele("title").txt(config.title).up()
-      .ele("link").txt(config.url).up()
-      .ele("description").txt(config.description).up()
+      .ele("title").txt(siteConfig.title).up()
+      .ele("link").txt(siteConfig.url).up()
+      .ele("description").txt(siteConfig.description).up()
       .ele("lastBuildDate").txt(new Date().toUTCString()).up()
 
 
   // add atom:xml self
-  builder.ele("atom:link", { rel: "self", href: `${config.url}/feed.xml`, type: "application/rss+xml"}).up()
+  builder.ele("atom:link", { rel: "self", href: `${siteConfig.url}/feed.xml`, type: "application/rss+xml"}).up()
 
   // generate post feed.
-  await generateItems(postSet.pages, config, builder)
+  await generateItems(postSet.pages, siteConfig, builder)
 
   const xml = builder.end({ prettyPrint: true })
 

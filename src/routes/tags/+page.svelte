@@ -4,7 +4,7 @@
 	import type { TabItem } from '$lib/types';
 
 	import textstr from '$lib/textstr';
-	import { siteConfig } from '$lib/store';
+	import siteConfig  from '$lib/site';
 	import Taglist from '$lib/components/article/taglist.svelte';
 	import TabGroup from '$lib/components/tabs/tabgroup.svelte';
 	
@@ -20,7 +20,7 @@
 </script>
 
 <svelte:head>
-	<title>{getTitleStr($siteConfig)}</title>
+	<title>{getTitleStr(siteConfig)}</title>
 </svelte:head>
 
 <div class="tag-page">

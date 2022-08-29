@@ -3,7 +3,7 @@
 	import type { PageListResult, TabItem } from '$lib/types';
 
 	import textstr from '$lib/textstr';
-	import { siteConfig } from '$lib/store';
+	import siteConfig  from '$lib/site';
 	
 	import { goto } from '$app/navigation';
 	import PostList from '$lib/components/article/postlist.svelte';
@@ -40,19 +40,19 @@
 </script>
 
 <svelte:head>
-	<title>{getTitleStr($siteConfig)}</title>
+	<title>{getTitleStr(siteConfig)}</title>
 	<!-- Twitter Card -->	
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@saweima12" />
-	<meta name="twitter:title" content={$siteConfig.title} />
-	<meta name="twitter:description" content={$siteConfig.description} />
-	<meta name="twitter:url" content={$siteConfig.url} />
+	<meta name="twitter:title" content={siteConfig.title} />
+	<meta name="twitter:description" content={siteConfig.description} />
+	<meta name="twitter:url" content={siteConfig.url} />
 	<!-- Facebook OpenGraph -->
-	<meta property="og:url" content="{$siteConfig.url}"/>
+	<meta property="og:url" content="{siteConfig.url}"/>
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{getTitleStr($siteConfig)}" />
-	<meta name="description" content="{$siteConfig.description}" />
+	<meta property="og:title" content="{getTitleStr(siteConfig)}" />
+	<meta name="description" content="{siteConfig.description}" />
 </svelte:head>
 
 <div class="index-page">

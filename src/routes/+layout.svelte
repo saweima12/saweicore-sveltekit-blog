@@ -13,7 +13,7 @@
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
 	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
 
-	import { dev } from '$app/env';
+	import { dev } from '$app/environment';
 	import { page, navigating } from '$app/stores';
 	import { themeMode, viewStack, viewId } from '$lib/store';
 	$: isMenuOpen = $viewStack.includes(viewId.navMenu);
@@ -25,7 +25,7 @@
 	$: $navigating ? NProgress.start() : NProgress.done();
 
 	// Stores
-	import { siteConfig } from '$lib/store';
+	import siteConfig  from '$lib/site';
 
 	$: {
 		if (typeof window !== "undefined") {
@@ -81,8 +81,8 @@
 <SearchView />
 <ImageLightBox />
 
-{#if $siteConfig.ga && !dev}
-	<GoogleAnalytics properties={[ $siteConfig.ga ]} />
+{#if siteConfig.ga && !dev}
+	<GoogleAnalytics properties={[ siteConfig.ga ]} />
 {/if}
 
 

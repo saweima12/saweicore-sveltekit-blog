@@ -2,13 +2,14 @@
 	import { page } from "$app/stores";
 	import type { NavItem } from '$lib/types';
 	import { isExternal } from '$lib/client';
-	import { themeMode, siteConfig, viewStack, viewId } from '$lib/store';
+	import siteConfig  from '$lib/site';
+	import { themeMode, viewStack, viewId } from '$lib/store';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
 	import NavLinkItem from "./navlinkitem.svelte";
 
-	const author: Record<string, any> = $siteConfig.author;
-	const navList: Array<NavItem> = $siteConfig.nav;
+	const author: Record<string, any> = siteConfig.author;
+	const navList: Array<NavItem> = siteConfig.nav;
 
 	export const uniqueId: string = viewId.navMenu;
 	$: isVisible = $viewStack.includes(uniqueId);
@@ -31,7 +32,7 @@
 
 			<div class="flex items-center mb-4 pl-8">
 					<a sveltekit:prefetch href="/" class="title text-lg">
-						{$siteConfig.title}
+						{siteConfig.title}
 					</a>
 					<button
 						class="flex text-xl letter-content-font theme-switch" 

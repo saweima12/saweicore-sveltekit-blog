@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import 'prism-themes/themes/prism-dracula.css';
 
-	import { siteConfig } from '$lib/store';
+	import siteConfig  from '$lib/site';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import { dataAPI } from '$lib/client';
 	
@@ -16,7 +16,7 @@
 	// support auto reload
 	$: ({ metadata, content, pageMeta} = data);	
 
-	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), $siteConfig.url).href;
+	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), siteConfig.url).href;
 	let autoLoader: HTMLScriptElement;
 	import { page } from '$app/stores';
 	// support HMR
@@ -40,11 +40,11 @@
 </script>
 
 <svelte:head>
-	<title>{metadata.title} - {getTitleStr($siteConfig)}</title>
+	<title>{metadata.title} - {getTitleStr(siteConfig)}</title>
 	<!-- Twitter Card -->	
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@saweima12" />
-	<meta name="twitter:title" content="{metadata.title} - {getTitleStr($siteConfig)}" />
+	<meta name="twitter:title" content="{metadata.title} - {getTitleStr(siteConfig)}" />
 	<meta name="twitter:description" content={metadata.description} />
 	<meta name="twitter:url" content={routePath} />
 	<!-- Facebook OpenGraph -->
@@ -52,7 +52,7 @@
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{metadata.title}" />
-	<meta property="og:site_name" content="{getTitleStr($siteConfig)}" />
+	<meta property="og:site_name" content="{getTitleStr(siteConfig)}" />
 	{#if metadata.excerpt}
 		<meta property="og:description" content="{metadata.excerpt}"/>
 		<meta name="description" content="{metadata.excerpt}"/>

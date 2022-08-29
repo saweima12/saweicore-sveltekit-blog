@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import type { TagPageResult } from '$lib/types';
 	import { dataAPI } from '$lib/client';
-	import { siteConfig } from '$lib/store';
+	import siteConfig  from '$lib/site';
 	import { getTitleStr } from '$lib/client';
 
 	import Postlist from '$lib/components/article/postlist.svelte';
@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<title>{tagName} - {getTitleStr($siteConfig)}</title>
+	<title>{tagName} - {getTitleStr(siteConfig)}</title>
 </svelte:head>
 
 <div class="tag-page wrapper">

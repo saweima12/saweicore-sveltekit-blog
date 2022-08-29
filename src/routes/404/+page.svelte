@@ -1,11 +1,11 @@
 <script lang="ts">
     import { getTitleStr } from "$lib/client";
     import FzfIcon from "$lib/icons/fzf.svelte";
-    import { siteConfig } from "$lib/store";
+    import siteConfig  from '$lib/site';
 </script>
 
 <svelte:head>
-    <title>{getTitleStr($siteConfig)}</title>
+    <title>{getTitleStr(siteConfig)}</title>
 </svelte:head>
 
 <div class="fzf-page">

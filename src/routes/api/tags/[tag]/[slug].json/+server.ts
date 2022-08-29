@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
-import { classifiedSet, siteConfig } from 'markedpage';
+import { classifiedSet } from 'markedpage';
+import siteConfig from '$lib/site';
 import type { SourcePage, FrontMatterClassifierResult } from 'markedpage';
 
 import type { PageMeta } from '$lib/types';
@@ -7,11 +8,13 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ params }) => {
 	//  get params
-	const { tag, slug } = params;
+	let { tag, slug } = params;
+
+	if (!tag) { return {};}
+
 	const pageNum = Number(slug);
 	// load config.
-	const config = await siteConfig();
-	const maxPerPage = config.pagination.maxPerPage;
+	const maxPerPage = siteConfig.pagination.maxPerPage;
 	// GET: tag list.
 	const tagSetMap: FrontMatterClassifierResult = await classifiedSet('tag');
 	const tagSet = tagSetMap[tag] || [];

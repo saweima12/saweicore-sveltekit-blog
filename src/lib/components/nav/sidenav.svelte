@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { siteConfig, themeMode } from '$lib/store';
+	import { themeMode } from '$lib/store';
+	import siteConfig from '$lib/site'
 	import type { NavItem } from '$lib/types';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 
@@ -8,14 +9,14 @@
 		$themeMode = $themeMode == "light" ? "dark" : "light";
 	}
 
-	const navList: Array<NavItem> = $siteConfig.nav;
+	const navList: Array<NavItem> = siteConfig.nav;
 </script>
 
 <nav class="flex fixed h-screen side-navbar">
 	<div class="flex flex-col justify-between h-full px-5 sidenav-container">
 		<div class="mt-8 logo">
 			<a sveltekit:prefetch href="/">
-				<img width="36" height="36" class="rounded-full" src="/logo.png" alt={$siteConfig.title} />
+				<img width="36" height="36" class="rounded-full" src="/logo.png" alt={siteConfig.title} />
 			</a>
 		</div>
 

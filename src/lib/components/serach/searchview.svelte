@@ -1,6 +1,6 @@
 <script lang="ts">
 import { onMount } from 'svelte';
-import { siteConfig } from '$lib/store';
+import siteConfig from '$lib/site'
 import { viewId, viewStack } from '$lib/store';
 import type { SearchClient } from 'algoliasearch';
 import algoliasearch from 'algoliasearch';
@@ -8,9 +8,9 @@ import algoliasearch from 'algoliasearch';
 import SearchIcon from '$lib/icons/search.svelte';
 import Typehead from '$lib/components/serach/typehead.svelte';
 
-const appKey = $siteConfig.search.appKey;
-const apiKey = $siteConfig.search.apiKey;
-const appIndex = $siteConfig.search.index;
+const appKey = siteConfig.search.appKey;
+const apiKey = siteConfig.search.apiKey;
+const appIndex = siteConfig.search.index;
 
 let client: SearchClient;
 let preSearchText: string;

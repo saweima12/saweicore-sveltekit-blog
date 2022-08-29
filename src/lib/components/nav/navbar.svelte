@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { NavItem } from '$lib/types';
-	import { siteConfig } from '$lib/store';
 	import { isExternal } from '$lib/client';
+	import siteConfig  from '$lib/site';
 	import Hamburger from '$lib/components/nav/hamburger.svelte';
 	import NavSearchBtn from './navsearchbtn.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
@@ -10,7 +10,7 @@
 	import { themeMode } from '$lib/store';
 	import NavLinkItem from './navlinkitem.svelte';
 
-	const navList: Array<NavItem> = $siteConfig.nav;
+	const navList: Array<NavItem> = siteConfig.nav;
 </script>
 
 <nav class="py-2 px-2 top-navbar">
@@ -22,11 +22,11 @@
 
 		<a sveltekit:prefetch class="flex raleway-font site-title" href="/">
 			<div class="logo">
-				<img width="36" height="36" src="/logo.png" alt={$siteConfig.title} />
+				<img width="36" height="36" src="/logo.png" alt={siteConfig.title} />
 			</div>
 			
 			<div class="hidden md:flex px-2 letter-title-font title">
-				{$siteConfig.title}
+				{siteConfig.title}
 			</div>
 		</a>
 	

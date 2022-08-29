@@ -4,13 +4,13 @@ import type { SourcePage, DirectoryClassifierResult } from 'markedpage';
 
 import { minify } from 'html-minifier';
 import { create } from 'xmlbuilder2';
-import { siteConfig, classifiedSet, type FrontMatterClassifierResult} from 'markedpage';
+import siteConfig from '$lib/site';
+import { classifiedSet, type FrontMatterClassifierResult} from 'markedpage';
 
 import { pageRoute } from '$lib/client/route';
 
 export const GET: RequestHandler = async () => {
   // get config & pages.
-  const config = await siteConfig();
   const postSet: DirectoryClassifierResult = await classifiedSet("post");
   const tagSet: FrontMatterClassifierResult = await classifiedSet("tag");
 
@@ -22,22 +22,22 @@ export const GET: RequestHandler = async () => {
 
   const builder = create({ version: '1.0', encoding: "UTF-8"})
     .ele("feed", { xmlns: 'http://www.w3.org/2005/Atom', 'xml:lang': 'zh'})
-    .ele("title").ele({"$": config.title}).up()
-    .ele("subtitle").ele({"$": config.summary}).up()
-    .ele("id").txt(config.url).up()
-    .ele("link", { href: config.url}).up()
-    .ele("link", { href: `${config.url}/atom.xml`, rel: "self", type:"application/atom+xml"}).up()
+    .ele("title").ele({"$": siteConfig.title}).up()
+    .ele("subtitle").ele({"$": siteConfig.summary}).up()
+    .ele("id").txt(siteConfig.url).up()
+    .ele("link", { href: siteConfig.url}).up()
+    .ele("link", { href: `${siteConfig.url}/atom.xml`, rel: "self", type:"application/atom+xml"}).up()
     .ele("author")
-      .ele("name").txt(`${config.author.name}`).up()
-      .ele("email").txt(`${config.author.email}`).up()
-      .ele("url").txt(config.url).up()
+      .ele("name").txt(`${siteConfig.author.name}`).up()
+      .ele("email").txt(`${siteConfig.author.email}`).up()
+      .ele("url").txt(siteConfig.url).up()
       .up()
     .ele("updated").txt(new Date().toISOString()).up()
 
   // generate category & entry
   const tags = Object.keys(tagSet);
-  await generateCategory(tags, config, builder);
-  await generateEntry(postSet.pages.slice(), config, builder);
+  await generateCategory(tags, siteConfig, builder);
+  await generateEntry(postSet.pages.slice(), siteConfig, builder);
 
   const xml = builder.end({ prettyPrint: true})
 

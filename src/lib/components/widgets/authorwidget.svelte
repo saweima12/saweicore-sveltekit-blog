@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { siteConfig } from '$lib/store';
-    const author: Record<string, any> = $siteConfig.author;
+    import siteConfig from '$lib/site';
+    const author: Record<string, any> = siteConfig.author;
 
 </script>
 <div class="author-widget">
