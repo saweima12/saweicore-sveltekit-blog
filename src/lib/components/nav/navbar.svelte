@@ -72,10 +72,6 @@
 	translate: all .3s;
 }
 
-.top-navbar.hide {
-	transform: translateY(-60px);
-}
-
 .top-navbar .logo {
 	width: 35px;
 	height: 35px;
