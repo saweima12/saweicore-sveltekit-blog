@@ -3,7 +3,7 @@ title: 結合 Sanic 進行全方位強化  - Telegram Bot 開發雜談（二）
 tags:
 - sanic
 - aiogram
-- bot
+- tgbot
 - web
 - python
 - framework
