@@ -264,7 +264,7 @@ sanic sanicbot:app -d
 
 > **AIOGram-Sanic-Example**<br/>
 > 撰寫本篇文章時建立的專案，也可作為最基礎專案的樣板使用。<br/><br/>
-> GitHub：[點我進入](https://github.com/saweima12/aiogram-sanic-example)
+> GitHub：[點我進入](https://github.com/tassis/aiogram-sanic-example)
 
 <br/>
 

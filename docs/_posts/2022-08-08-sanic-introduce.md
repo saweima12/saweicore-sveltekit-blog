@@ -338,7 +338,7 @@ async def main_start(*_):
 ## 應用範例
 
 > **Sanic Example**<br/>
-> Github: [點我進入](https://github.com/saweima12/sanic-example)
+> Github: [點我進入](https://github.com/tassis/sanic-example)
 
 
 ## TL;DR
