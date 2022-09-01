@@ -22,15 +22,20 @@
 	// support HMR
 	import { invalidate } from '$app/navigation';
 	import { onContentUpdate } from 'markedpage/helper';
+	import { onMount } from 'svelte';
 
 	$: {
 		if (typeof window !== "undefined") {
 			if (autoLoader) {
 				// import prismjs
-				let _Prism = window.Prism?.highlightAll();
+				window.Prism?.highlightAll();
 			}
 		}
 	}
+
+	onMount(() => {
+		window.Prism?.highlightAll();
+	})
 
 	onContentUpdate(() => {
 		const { year, month, slug} = $page.params;
