@@ -28,7 +28,6 @@
 		if (typeof window !== "undefined") {
 			if (autoLoader) {
 				// import prismjs
-				console.log(autoLoader)
 				window.Prism?.highlightAll();
 			}
 		}
@@ -67,8 +66,8 @@
 		<meta property="og:image" content="{metadata.thumbnail}" />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
-	<script defer async src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
-	<script defer async src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" bind:this={autoLoader}></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" bind:this={autoLoader}></script>
 </svelte:head>
 
 <div class="my-10 post-page wrapper">
