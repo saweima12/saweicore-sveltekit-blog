@@ -17,8 +17,8 @@
 	"devDependencies": {
 		"@beyonk/svelte-google-analytics": "^2.6.4",
 		"@playwright/test": "^1.25.1",
-		"@sveltejs/adapter-cloudflare": "1.0.0-next.31",
-		"@sveltejs/adapter-static": "1.0.0-next.39",
+		"@sveltejs/adapter-cloudflare": "1.0.0-next.32",
+		"@sveltejs/adapter-static": "1.0.0-next.42",
 		"@sveltejs/kit": "1.0.0-next.471",
 		"@types/html-minifier": "^4.0.2",
 		"@types/nprogress": "^0.2.0",
