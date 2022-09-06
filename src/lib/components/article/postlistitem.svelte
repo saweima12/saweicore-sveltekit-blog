@@ -10,7 +10,7 @@
 </script>
 
 <section class="mx-6 mt-5 post-item">
-	<a sveltekit:prefetch  href={pageRoute.getPostPath(post)} alt="{metadata.title}">
+	<a   href={pageRoute.getPostPath(post)} alt="{metadata.title}">
 		<header class="mb-3 post-header">
 			<div class="flex items-center">
 				<div class="icon-base w-4 h-4"><CalenderIcon /></div>
@@ -42,11 +42,11 @@
 						<div class="flex post-tag-list">
 							{#if tags}
 								<div class="flex self-center mr-2 post-tag-item">
-									<a sveltekit:prefetch href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
+									<a  href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
 								</div>
 								{#each tags.slice(1, 5) as tag}
 									<div class="hidden sm:flex self-center post-tag-item">
-										<a sveltekit:prefetch href={pageRoute.getTagPath(tag)}>{tag}</a>
+										<a  href={pageRoute.getTagPath(tag)}>{tag}</a>
 									</div>
 								{/each}
 							{/if}

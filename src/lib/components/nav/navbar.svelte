@@ -20,7 +20,7 @@
 			<Hamburger />
 		</div>
 
-		<a sveltekit:prefetch class="flex raleway-font site-title" href="/">
+		<a  class="flex raleway-font site-title" href="/">
 			<div class="logo">
 				<img width="36" height="36" src="/logo.png" alt={siteConfig.title} />
 			</div>

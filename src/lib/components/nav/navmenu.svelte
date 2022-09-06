@@ -31,7 +31,7 @@
 		<div class="py-4 mb-2 header">
 
 			<div class="flex items-center mb-4 pl-8">
-					<a sveltekit:prefetch href="/" class="title text-lg">
+					<a  href="/" class="title text-lg">
 						{siteConfig.title}
 					</a>
 					<button

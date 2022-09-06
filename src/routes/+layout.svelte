@@ -11,7 +11,7 @@
 	import ScreenMask from '$lib/components/screenmask.svelte';
 	import SearchView from '$lib/components/serach/searchview.svelte';
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
-	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
+	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics';
 
 	import { dev } from '$app/environment';
 	import { page, navigating } from '$app/stores';
@@ -47,6 +47,7 @@
 <div 
 	class="wrapper-container"
 	class:overflow-hidden={isMenuOpen}
+
 >
 	<div
 		class="transition-all duration-200 min-h-screen main-wrapper"
@@ -59,7 +60,7 @@
 
 		<div class="flex flex-col justify-between main-container">
 			<div class="w-full content-wrapper">
-				<main class="mx-auto min-h-screen content-container">
+				<main class="mx-auto min-h-screen content-container" data-sveltekit-prefetch>
 					<PageTransition refresh={$page.url.pathname}>
 						<slot />
 					</PageTransition>

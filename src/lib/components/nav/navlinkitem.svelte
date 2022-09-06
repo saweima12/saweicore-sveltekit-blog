@@ -9,7 +9,7 @@
         <slot />
     </a>
 {:else}
-    <a sveltekit:prefetch href={link} alt="" class="w-full h-full">
+    <a  href={link} alt="" class="w-full h-full">
         <slot />
     </a>
 {/if}
