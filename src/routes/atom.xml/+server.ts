@@ -9,6 +9,10 @@ import { classifiedSet, type FrontMatterClassifierResult} from 'markedpage';
 
 import { pageRoute } from '$lib/client/route';
 
+// This can be false if you're using a fallback (i.e. SPA mode)
+export const prerender = true;
+
+
 export const GET: RequestHandler = async () => {
   // get config & pages.
   const postSet: DirectoryClassifierResult = await classifiedSet("post");

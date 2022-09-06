@@ -8,6 +8,9 @@ import { create } from 'xmlbuilder2';
 import type { XMLBuilder } from 'xmlbuilder2/lib/interfaces';
 import { pageRoute } from '$lib/client';
 
+// This can be false if you're using a fallback (i.e. SPA mode)
+export const prerender = true;
+
 
 export const GET: RequestHandler = async () => {
   // get data source.
