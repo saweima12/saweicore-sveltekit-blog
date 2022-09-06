@@ -1,8 +1,5 @@
-import dotenv from 'dotenv';
 import algoliasearch from 'algoliasearch';
 import { classifiedSet } from 'markedpage';
-
-dotenv.config();
 
 const getFormatedDate = (dateStr) => {
 	let dateObj = new Date(dateStr);
