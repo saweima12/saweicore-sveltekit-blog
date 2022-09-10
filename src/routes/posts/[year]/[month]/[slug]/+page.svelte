@@ -66,7 +66,7 @@
 		<meta property="og:image" content="{metadata.thumbnail}" />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
-	<script async src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" bind:this={autoLoader}></script>
 </svelte:head>
 
