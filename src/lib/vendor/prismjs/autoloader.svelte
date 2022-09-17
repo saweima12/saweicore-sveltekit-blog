@@ -1,6 +1,7 @@
 <script lang="ts">
     import { lang_aliases, lang_dependencies} from './langdata';
     import type { LangDataItem } from './langdata';
+	import { onMount } from 'svelte/types/runtime/internal/lifecycle';
     // export parameter.
     export let languages_path: string = "";
     export let use_minified: boolean = true;
@@ -9,42 +10,49 @@
 
 	$: {
 		if (typeof window !== "undefined" && typeof window.Prism !== 'undefined') {
-			// add to prism.plugins
-			Prism = window.Prism;
-
-			Prism.plugins.autoloader = {
-				languages_path: languages_path,
-				loadLanguages: loadLanguages,
-				use_minified: use_minified
-			}
-
-			Prism.hooks.add("complete", (env: any) => {
-				let element = env.element;
-				let language = env.language;
-
-				if (!element || !language) {
-					return;
-				}
-
-				var deps = getDependencies(element);
-				if (/^diff-./i.test(language)) {
-					// the "diff-xxxx" format is used by the Diff Highlight plugin
-					deps.push('diff');
-					deps.push(language.substring('diff-'.length));
-				} else {
-					deps.push(language);
-				}
-
-				if (!deps.every(isLoaded)) {
-					// the language or some dependencies aren't loaded
-					loadLanguages(deps, function () {
-						Prism.highlightElement(element);
-					});
-				}
-			});
+			registerPlugin();
 		}
 	}
 
+	onMount(() => {
+		registerPlugin();
+	})
+
+	const registerPlugin = () => {
+		// add to prism.plugins
+		Prism = window.Prism;
+
+		Prism.plugins.autoloader = {
+			languages_path: languages_path,
+			loadLanguages: loadLanguages,
+			use_minified: use_minified
+		}
+
+		Prism.hooks.add("complete", (env: any) => {
+			let element = env.element;
+			let language = env.language;
+
+			if (!element || !language) {
+				return;
+			}
+
+			var deps = getDependencies(element);
+			if (/^diff-./i.test(language)) {
+				// the "diff-xxxx" format is used by the Diff Highlight plugin
+				deps.push('diff');
+				deps.push(language.substring('diff-'.length));
+			} else {
+				deps.push(language);
+			}
+
+			if (!deps.every(isLoaded)) {
+				// the language or some dependencies aren't loaded
+				loadLanguages(deps, function () {
+					Prism.highlightElement(element);
+				});
+			}
+		});
+	}
 
     /**
      * Lazily loads an external script.
