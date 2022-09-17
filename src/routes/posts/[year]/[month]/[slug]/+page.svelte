@@ -9,6 +9,7 @@
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
 	import Comment from '$lib/components/comment.svelte';
+	import AutoLoader from '$lib/vendor/prismjs/autoloader.svelte';
 
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
@@ -26,15 +27,11 @@
 
 	$: {
 		if (typeof window !== "undefined") {
-			if (autoLoader) {
-				// import prismjs
-				window.Prism?.highlightAll();
-			}
+			
 		}
 	}
 
 	onMount(() => {
-		window.Prism?.highlightAll();
 	})
 
 	onContentUpdate(() => {
@@ -66,8 +63,8 @@
 		<meta property="og:image" content="{metadata.thumbnail}" />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
-	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" bind:this={autoLoader}></script>
+	<!-- <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" bind:this={autoLoader}></script> -->
 </svelte:head>
 
 <div class="my-10 post-page wrapper">
@@ -102,3 +99,4 @@
 </div>
 
 <LightBoxListener />
+<AutoLoader languages_path="{siteConfig.prismCDN}"/>
