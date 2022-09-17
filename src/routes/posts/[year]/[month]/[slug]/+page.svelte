@@ -25,23 +25,9 @@
 	import { onContentUpdate } from 'markedpage/helper';
 	import { onMount } from 'svelte';
 
-	let autoLoader: HTMLScriptElement;
-
-	$: {
-		if (typeof window !== "undefined" && autoLoader) {
-			highlightAll();
-		}
-	}
-	
 	onMount(() => {
-		highlightAll();
+		Prism.highlightAll();
 	});
-
-	const highlightAll = () => {
-		let Prism = window.Prism;
-		Prism?.highlightAll();
-	}
-
 
 	onContentUpdate(() => {
 		const { year, month, slug} = $page.params;
@@ -72,7 +58,6 @@
 		<meta property="og:image" content="{metadata.thumbnail}" />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
-	<script async src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" bind:this={autoLoader}></script>
 </svelte:head>
 
 <div class="my-10 post-page wrapper">

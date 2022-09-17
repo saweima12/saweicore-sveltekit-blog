@@ -1,7 +1,4 @@
 <script lang="ts">
-	// @ts-ignore
-	import Prism from 'prismjs/components/prism-core';
-
     import { lang_aliases, lang_dependencies} from './langdata';
     import type { LangDataItem } from './langdata';
 	import { onMount } from 'svelte';
@@ -9,6 +6,7 @@
     export let languages_path: string = "";
     export let use_minified: boolean = true;
     let lang_data: Record<string, LangDataItem> = {};
+	let Prism: any = undefined;
 
 	$: {
 		if (typeof window !== "undefined" && typeof window.Prism !== 'undefined') {
@@ -21,6 +19,9 @@
 	})
 
 	const registerPlugin = () => {
+		// add to prism.plugins
+		Prism = window.Prism;
+
 		Prism.plugins.autoloader = {
 			languages_path: languages_path,
 			loadLanguages: loadLanguages,
