@@ -13,26 +13,33 @@
 
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
-
 	// support auto reload
 	$: ({ metadata, content, pageMeta} = data);	
 
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), siteConfig.url).href;
-	let autoLoader: HTMLScriptElement;
 	import { page } from '$app/stores';
 	// support HMR
 	import { invalidate } from '$app/navigation';
 	import { onContentUpdate } from 'markedpage/helper';
 	import { onMount } from 'svelte';
 
+	let autoLoader: HTMLScriptElement;
+
 	$: {
-		if (typeof window !== "undefined") {
-			
+		if (typeof window !== "undefined" && autoLoader) {
+			highlightAll();
 		}
 	}
-
+	
 	onMount(() => {
-	})
+		highlightAll();
+	});
+
+	const highlightAll = () => {
+		let Prism = window.Prism;
+		Prism?.highlightAll();
+	}
+
 
 	onContentUpdate(() => {
 		const { year, month, slug} = $page.params;
@@ -63,8 +70,7 @@
 		<meta property="og:image" content="{metadata.thumbnail}" />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
-	<!-- <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" bind:this={autoLoader}></script> -->
+	<script async src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" bind:this={autoLoader}></script>
 </svelte:head>
 
 <div class="my-10 post-page wrapper">
