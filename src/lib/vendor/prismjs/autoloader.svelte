@@ -1,7 +1,7 @@
 <script lang="ts">
     import { lang_aliases, lang_dependencies} from './langdata';
     import type { LangDataItem } from './langdata';
-	import { onMount } from 'svelte/types/runtime/internal/lifecycle';
+	import { onMount } from 'svelte';
     // export parameter.
     export let languages_path: string = "";
     export let use_minified: boolean = true;
