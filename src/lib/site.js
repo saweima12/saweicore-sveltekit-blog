@@ -25,6 +25,7 @@ const config = {
 		apiKey: "5f4c05344cf6d1cbe581c20e049a7c14",
 		index: "SaweicoreLab"
 	},
+  prismCDN: "https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/",
   nav: nav
 }
 export default config;
