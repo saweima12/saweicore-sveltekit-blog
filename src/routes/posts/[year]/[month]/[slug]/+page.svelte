@@ -1,4 +1,6 @@
 <script lang="ts">
+	/** @ts-ignore */
+	import Prism from 'prismjs/components/prism-core';
 	import type { PageData } from './$types';
 	import 'prism-themes/themes/prism-dracula.css';
 
