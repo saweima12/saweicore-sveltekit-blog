@@ -17,8 +17,6 @@
 			loadLanguages: loadLanguages,
 			use_minified: use_minified
 		}
-		// trigger hightlightAll.
-		Prism.highlightAll();
 	})
 
 	Prism.hooks.add("complete", (env) => {
