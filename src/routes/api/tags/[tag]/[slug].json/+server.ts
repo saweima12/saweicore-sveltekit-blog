@@ -10,7 +10,7 @@ export const GET: RequestHandler = async ({ params }) => {
 	//  get params
 	let { tag, slug } = params;
 
-	if (!tag) { return {};}
+	if (!tag || !slug) { return json({});}
 
 	const pageNum = Number(slug);
 	// load config.
