@@ -1,7 +1,7 @@
 <script lang="ts">
-	/** @ts-ignore */
-	import Prism from 'prismjs/components/prism-core';
 	import type { PageData } from './$types';
+	/** @ts-ignore */
+	import Prism from 'prismjs/components/prism-core.min.js';
 	import 'prism-themes/themes/prism-dracula.css';
 
 	import siteConfig  from '$lib/site';
@@ -11,7 +11,7 @@
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
 	import Comment from '$lib/components/comment.svelte';
-	import AutoLoader from '$lib/vendor/prismjs/autoloader.svelte';
+	import { AutoLoader } from 'svelte-prism-autoloader';
 
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
@@ -25,8 +25,9 @@
 	import { onContentUpdate } from 'markedpage/helper';
 	import { onMount } from 'svelte';
 
+	let contentElm: HTMLElement;
 	onMount(() => {
-		Prism.highlightAll();
+		Prism.highlightAllUnder(contentElm);
 	});
 
 	onContentUpdate(() => {
@@ -81,7 +82,7 @@
 			</div>
 		</header>
 
-		<article class="content">
+		<article class="content" bind:this={contentElm}>
 			{@html content}
 		</article>
 
@@ -92,4 +93,4 @@
 </div>
 
 <LightBoxListener />
-<AutoLoader languages_path="{siteConfig.prismCDN}"/>
+<AutoLoader />
