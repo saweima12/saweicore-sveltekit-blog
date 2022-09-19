@@ -1,23 +1,32 @@
 <script lang="ts">
-import { page } from '$app/stores'
+    import { page } from '$app/stores'
+    import { onMount } from 'svelte';
 
-export let id: string = "";
+    export let id: string = "";
+    let gtag: any
 
-$: {
-    if (typeof window !== 'undefined') {
-        let _window: any = window
-        // get gtag.
-        let gtag = _window.gtag 
-        if (typeof gtag !== "undefined" ) {
-            gtag('js', new Date());
-            gtag('config', id);
-            gtag('config', id, {
-                page_title: document.title,
-                page_path: $page.url.pathname,
-            })
+    $: {
+        if (typeof window !== 'undefined') {
+            let _window: any = window
+            // get gtag.
+            gtag = _window.gtag 
+            if (typeof gtag !== "undefined" ) {
+
+
+                gtag('config', id, {
+                    page_title: document.title,
+                    page_path: $page.url.pathname,
+                })
+            }
         }
     }
-}
+
+    onMount(() => {
+        if (typeof gtag !== undefined) {
+            gtag('js', new Date());
+            gtag('config', id);
+        }
+    })
 </script>
 
 <svelte:head>
