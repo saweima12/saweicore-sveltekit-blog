@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import siteConfig  from '$lib/site';
 	import { getTitleStr } from '$lib/client';
-	import Comment from '$lib/components/comment.svelte';
+	import Comment from '$lib/components/common/comment.svelte';
 
 	export let data: PageData;
 	$: ({content, metadata} = data);

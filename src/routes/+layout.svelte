@@ -1,17 +1,19 @@
 <script lang="ts">
 	import '../app.css';
 	import '../theme.css';
-	// Components
-	import PageTransition from '$lib/components/pagetransition.svelte';
+	// Layout Components
 	import Navbar from '$lib/components/nav/navbar.svelte';
 	import Navmenu from '$lib/components/nav/navmenu.svelte';
-	import Footer from '$lib/components/footer.svelte';
 	import Drawer from '$lib/components/drawer/drawer.svelte';
+	
 	// GlobalComponents
-	import ScreenMask from '$lib/components/screenmask.svelte';
+	import PageTransition from '$lib/components/common/pagetransition.svelte';
+	import ScreenMask from '$lib/components/common/screenmask.svelte';
 	import SearchView from '$lib/components/serach/searchview.svelte';
 	import ImageLightBox from '$lib/components/lightbox/imagelightbox.svelte';
-	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics';
+
+	// @ts-ignore
+	import GoogleAnalytics from '$lib/components/common/googleanalytics.svelte';
 
 	import { dev } from '$app/environment';
 	import { page, navigating } from '$app/stores';
@@ -54,7 +56,7 @@
 		class:translate-x-60={isMenuOpen}
 		class:md:translate-x-80={isMenuOpen}
 	>
-		<div class="fixed top-0 w-screen wrapper">
+		<div class="fixed top-0 w-screen wrapper z-50">
 			<Navbar />
 		</div>
 
@@ -65,7 +67,11 @@
 						<slot />
 					</PageTransition>
 				</main>
-				<Footer />
+				<footer class="w-full pt-20 pb-5 site-footer">
+					<div class="flex justify-center items-center px-10 h-full footer-container">
+						<div class="copyright">Copyright © 2020 - {new Date().getFullYear()} {siteConfig.title} All Rights Reserved.</div>
+					</div>
+				</footer>
 			</div>
 
 			<div class="hidden lg:block drawer-wrapper mr-0.5">
@@ -83,7 +89,7 @@
 <ImageLightBox />
 
 {#if siteConfig.ga && !dev}
-	<GoogleAnalytics properties={[ siteConfig.ga ]} />
+	<GoogleAnalytics id={siteConfig.ga} />
 {/if}
 
 
@@ -94,12 +100,15 @@
 	padding-top: 3.5rem;
 }
 
+.site-footer {
+	color: var(--text);
+}
 
 @media screen and (min-width: 1024px) {
 	.main-container {
 		display: flex;
 		flex-direction: row;
 	}
-
 }
+
 </style>

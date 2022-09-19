@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageMeta } from '$lib/types';
-	import InfiniteScroll from '$lib/components/infinitescroll.svelte';
+	import InfiniteScroll from '$lib/components/article/infinitescroll.svelte';
 	import PostListItem from '$lib/components/article/postlistitem.svelte';
 
 	export let pageNum: number;

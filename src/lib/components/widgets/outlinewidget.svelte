@@ -117,7 +117,7 @@ afterNavigate(async () => {
 
 .outline-item {
     padding-left: 1rem;
-    transition: all .2s;
+    transition: border .2s;
 }
 
 .outline-item a {

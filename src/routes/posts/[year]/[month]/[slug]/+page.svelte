@@ -1,8 +1,5 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	/** @ts-ignore */
-	import Prism from 'prismjs/components/prism-core.min.js';
-	import 'prism-themes/themes/prism-dracula.css';
 
 	import siteConfig  from '$lib/site';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
@@ -10,8 +7,8 @@
 	
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
-	import Comment from '$lib/components/comment.svelte';
-	import { AutoLoader } from 'svelte-prism-autoloader';
+	import Comment from '$lib/components/common/comment.svelte';
+	import CodePrism from '$lib/components/common/codeprism.svelte';
 
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
@@ -23,12 +20,6 @@
 	// support HMR
 	import { invalidate } from '$app/navigation';
 	import { onContentUpdate } from 'markedpage/helper';
-	import { onMount } from 'svelte';
-
-	let contentElm: HTMLElement;
-	onMount(() => {
-		Prism.highlightAllUnder(contentElm);
-	});
 
 	onContentUpdate(() => {
 		const { year, month, slug} = $page.params;
@@ -82,7 +73,11 @@
 			</div>
 		</header>
 
-		<article class="content" bind:this={contentElm}>
+		<article class="content" 
+			data-prismjs-copy="Скопировать"
+			data-prismjs-copy-error="Нажмите Ctrl+C, чтобы скопировать"
+			data-prismjs-copy-success="Скопировано!"
+		>
 			{@html content}
 		</article>
 
@@ -93,4 +88,4 @@
 </div>
 
 <LightBoxListener />
-<AutoLoader />
+<CodePrism />
