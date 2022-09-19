@@ -6,10 +6,6 @@
 @import './css/tag.css';
 @import './css/article.css';
 
-body {
-	transition: all .3s;
-}
-
 :root {
 	--max-width: 1360px;
 }
