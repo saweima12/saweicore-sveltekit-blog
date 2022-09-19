@@ -105,7 +105,7 @@ const searchHandle = async (e: Record<string, any> | any) => {
     right: 0;
     margin: 0 auto;
     width: 100%;
-    z-index:40;
+    z-index:60;
 }    
 
 .search-box .search-bar {
