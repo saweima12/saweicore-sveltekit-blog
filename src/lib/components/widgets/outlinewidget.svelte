@@ -67,6 +67,8 @@ afterNavigate(async () => {
         if (offsetArr.length > 0) 
             refreshActiveIndex();
     })
+    
+    await refreshOffsetArr();
 
     // when all picture loaded, refresh offset array.
     const articlePics = Object.values(document.querySelectorAll<HTMLImageElement>("main img"));
