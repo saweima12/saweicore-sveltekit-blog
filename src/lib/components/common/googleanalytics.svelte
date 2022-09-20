@@ -31,7 +31,7 @@
 
 <svelte:head>
 <script
-    async
+    defer
     src="{`https://www.googletagmanager.com/gtag/js?id=${id}`}">
 </script>
 
