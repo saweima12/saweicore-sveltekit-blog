@@ -49,6 +49,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@giscus/svelte": "^2.2.0",
 		"algoliasearch": "^4.14.2"
 	}
 }
