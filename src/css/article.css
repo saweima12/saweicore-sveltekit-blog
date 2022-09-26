@@ -11,6 +11,7 @@
 .post-page .content  {
 	font-family: "Microsoft JhengHei fixed", "Helvetica Neue", "Microsoft JhengHei", Helvetica, "Segoe UI", Tahoma;
 	font-style: normal;
+	word-break: break-word;
 }
 
 
@@ -98,7 +99,6 @@
 	border-bottom: 1px solid var(--border);
 	padding: 1rem;
 }
-
 
 .content details summary{
 	font-size: 24px;
