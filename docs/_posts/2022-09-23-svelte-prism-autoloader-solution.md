@@ -62,7 +62,7 @@ PrismJS 是一款熱門的 Syntax Highlighting (語法高亮) 工具，支援上
 Not found: /posts/2022/08/components/prism-python.min.js
 ```
 
-並且由於是直接 Import ，會錯過修改`Prism.plugins.autoloader.languages_path` 的時機，因此錯誤無法避免。
+並且由於是直接 Import ，會錯過修改`languages_path` 的時機，因此錯誤無法避免。
 
 **透過 CDN 連接的場合**
 
