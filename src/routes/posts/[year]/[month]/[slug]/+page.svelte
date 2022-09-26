@@ -74,9 +74,8 @@
 		</header>
 
 		<article class="content" 
-			data-prismjs-copy="Скопировать"
-			data-prismjs-copy-error="Нажмите Ctrl+C, чтобы скопировать"
-			data-prismjs-copy-success="Скопировано!"
+			data-prismjs-copy="Copy"
+			data-prismjs-copy-success="Copy Success!"
 		>
 			{@html content}
 		</article>
