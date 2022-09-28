@@ -10,11 +10,13 @@
 </script>
 
 <section class="mx-6 mt-5 post-item">
-	<a   href={pageRoute.getPostPath(post)} alt="{metadata.title}">
+	<a href={pageRoute.getPostPath(post)} alt={metadata.title}>
 		<header class="mb-3 post-header">
 			<div class="flex items-center">
 				<div class="icon-base w-4 h-4"><CalenderIcon /></div>
-				<time class="flex self-center text-sm ml-1 created-date">{getYYYYMMDD(metadata.created)}</time>
+				<time class="flex self-center text-sm ml-1 created-date"
+					>{getYYYYMMDD(metadata.created)}</time
+				>
 			</div>
 		</header>
 
@@ -23,7 +25,6 @@
 				<div class="letter-title-font font-bold ">
 					<h2 class="post-title">
 						{metadata.title}
-
 					</h2>
 				</div>
 
@@ -42,11 +43,11 @@
 						<div class="flex post-tag-list">
 							{#if tags}
 								<div class="flex self-center mr-2 post-tag-item">
-									<a  href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
+									<a href={pageRoute.getTagPath(tags[0])}>{tags[0]}</a>
 								</div>
 								{#each tags.slice(1, 5) as tag}
 									<div class="hidden sm:flex self-center post-tag-item">
-										<a  href={pageRoute.getTagPath(tag)}>{tag}</a>
+										<a href={pageRoute.getTagPath(tag)}>{tag}</a>
 									</div>
 								{/each}
 							{/if}
@@ -65,11 +66,7 @@
 			</div>
 			{#if metadata.thumbnail}
 				<div class="min-w-20 ml-3 align-center thumbnail">
-					<img
-						src={metadata.thumbnail}
-						class="object-cover thumbnail-pic"
-						alt="{metadata.title}"
-					/>
+					<img src={metadata.thumbnail} class="object-cover thumbnail-pic" alt={metadata.title} />
 					<p class="hidden">{metadata.title}</p>
 				</div>
 			{/if}

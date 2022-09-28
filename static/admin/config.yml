@@ -8,20 +8,20 @@ backend:
 publish_mode: editorial_workflow
 
 # These lines should *not* be indented
-media_folder: "static/images/uploads" # Media files will be stored in the repo under static/images/uploads
-public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+media_folder: 'static/images/uploads' # Media files will be stored in the repo under static/images/uploads
+public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
-  - name: "post"
-    label: "Post"
-    folder: "docs/_posts"
+  - name: 'post'
+    label: 'Post'
+    folder: 'docs/_posts'
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - name: "tags" 
-        label: "Tags" 
-        widget: "list"
-      - { name: "excerpt", label: "Excerpt", widget: "string" }
-      - { name: "_draft", label: "isDraft", widget: "boolean", default: true}
-      - { name: "body", label: "Body", widget: "markdown"}
+      - { name: 'title', label: 'Title', widget: 'string' }
+      - name: 'tags'
+        label: 'Tags'
+        widget: 'list'
+      - { name: 'excerpt', label: 'Excerpt', widget: 'string' }
+      - { name: '_draft', label: 'isDraft', widget: 'boolean', default: true }
+      - { name: 'body', label: 'Body', widget: 'markdown' }

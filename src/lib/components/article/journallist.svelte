@@ -6,25 +6,25 @@
 </script>
 
 <ol class="flex flex-col journel-list">
-{#each groups as group}
-	<li class="mb-8 group">
-		<h1 class="text-2xl letter-title-font group-name">{group.name}</h1>
-		<ul class="flex flex-col mt-2 page-list">
-			{#each group.pageList as page}
-				<li class="my-2 page-item">
-					<a class="flex flex-row" href={pageRoute.getPostPath(page)}>
-						<time class="flex text-lg self-center page-date">
-							{getMMDD(page.metadata.created)}
-						</time>
-						<div class="ml-4 text-lg word-font post-title">
-							{page.metadata.title}							
-						</div>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</li>
-{/each}
+	{#each groups as group}
+		<li class="mb-8 group">
+			<h1 class="text-2xl letter-title-font group-name">{group.name}</h1>
+			<ul class="flex flex-col mt-2 page-list">
+				{#each group.pageList as page}
+					<li class="my-2 page-item">
+						<a class="flex flex-row" href={pageRoute.getPostPath(page)}>
+							<time class="flex text-lg self-center page-date">
+								{getMMDD(page.metadata.created)}
+							</time>
+							<div class="ml-4 text-lg word-font post-title">
+								{page.metadata.title}
+							</div>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</li>
+	{/each}
 </ol>
 
 <style>
@@ -39,20 +39,16 @@
 	}
 
 	.journel-list .page-item {
-		padding: .5rem 1rem;
-		border-radius: .2rem;
-		
+		padding: 0.5rem 1rem;
+		border-radius: 0.2rem;
 	}
 
 	.page-item a:hover {
 		color: var(--navitem-active);
-		transition: all .2s;
-
+		transition: all 0.2s;
 	}
 
 	.page-item a:hover .post-title {
 		text-decoration: underline;
 	}
-
 </style>
-

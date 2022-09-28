@@ -22,15 +22,14 @@
 	--tagitem-bg: #e8e8e8;
 	--tagitem-hover: #9e9e9e;
 	--mask-bg: rgba(60, 60, 60, 0.6);
-	--odd-bg: #E9EFF5;
+	--odd-bg: #e9eff5;
 	--even-bg: #d2e7fa;
-	--second-bg: #FAFAFA;
+	--second-bg: #fafafa;
 	--text: #3f3f3f;
 	--code-text: #333;
 	--bold-text: #333;
 	--progress-bg: rgb(136, 197, 135);
 }
-
 
 /* Dark */
 @media (prefers-color-scheme: dark) {
@@ -38,7 +37,7 @@
 		background-color: #21252b;
 		--bg-color: #21252b;
 		--navbar: #2f333d;
-		--border: rgba(175,175,175,0.15);
+		--border: rgba(175, 175, 175, 0.15);
 		--navitem: #9d9d9d;
 		--navitem-hover: #e8e8e8;
 		--navitem-active: #fff;
@@ -55,12 +54,11 @@
 	}
 }
 
-
 .dark {
 	background-color: #21252b;
 	--bg-color: #21252b;
 	--navbar: #2f333d;
-	--border: rgba(175,175,175,0.15);
+	--border: rgba(175, 175, 175, 0.15);
 	--navitem: #9d9d9d;
 	--navitem-hover: #e8e8e8;
 	--navitem-active: #fff;
@@ -76,7 +74,6 @@
 	--progress-bg: rgb(151, 199, 223);
 }
 
-
 .word-font {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
 		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -87,18 +84,18 @@
 }
 
 .letter-content-font {
-	font-family: "Microsoft JhengHei fixed", "Helvetica Neue", "Microsoft JhengHei", Helvetica, "Segoe UI", Tahoma;
+	font-family: 'Microsoft JhengHei fixed', 'Helvetica Neue', 'Microsoft JhengHei', Helvetica,
+		'Segoe UI', Tahoma;
 }
 
-
 .mono-font {
-	font-family: "Fira Mono", monospace;
+	font-family: 'Fira Mono', monospace;
 }
 
 .raleway-font {
 	font-family: Raleway, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
-	Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-	Segoe UI Symbol, Noto Color Emoji;
+		Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+		Segoe UI Symbol, Noto Color Emoji;
 }
 
 .screenmask {

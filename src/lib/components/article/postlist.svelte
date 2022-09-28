@@ -15,7 +15,7 @@
 		<PostListItem {post} {tags} metadata={post.metadata} />
 	{/each}
 </div>
-		
+
 {#if pageNum < maxPage}
 	<div class="mt-14 more-btn">
 		<InfiniteScroll handler={callback} />

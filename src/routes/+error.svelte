@@ -2,8 +2,7 @@
 	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 
-	$: ({error, status} = $page)
-
+	$: ({ error, status } = $page);
 </script>
 
 <svelte:head>
@@ -11,7 +10,6 @@
 </svelte:head>
 
 <div class="col-md-9">
-
 	{#if status != 500}
 		<h1>{status}</h1>
 		<p>{error.message}</p>

@@ -1,13 +1,13 @@
 ---
 title: 結合 Sanic 進行全方位強化  - Telegram Bot 開發雜談（二）
 tags:
-- sanic
-- aiogram
-- tgbot
-- web
-- python
-- framework
-- programing
+  - sanic
+  - aiogram
+  - tgbot
+  - web
+  - python
+  - framework
+  - programing
 excerpt: 使用 Sanic Framework 取代 AIOGram 內建的 HTTP Server 可以獲得更好的開發體驗、更高的效能以及更高的擴展性。
 ---
 
@@ -18,6 +18,7 @@ excerpt: 使用 Sanic Framework 取代 AIOGram 內建的 HTTP Server 可以獲�
 在這篇會簡略的說明與 Sanic 框架一起使用的好處以及如何將 AIOGram 及 Sanic 兩者整合起來。
 
 > **若是誤入此地的旅人，還不清楚 AIOGram 和 Sanic 是什麽的話，可以參考以下兩篇文章：**
+>
 > - [用 AIOGram 建立機器人專案 — Telegram Bot 開發雜談（一）](https://saweicore.com/posts/2022/07/create-aiogram-project) <br/>
 > - [Sanic - 輕量快速的 Python Web Framework](https://saweicore.com/posts/2022/08/sanic-introduce)
 
@@ -26,9 +27,8 @@ excerpt: 使用 Sanic Framework 取代 AIOGram 內建的 HTTP Server 可以獲�
 Sanic 是當前 Python 生態中最兼具效能與工具鏈的 Web 框架，支援 async / await 特性與 AIOGram 正好契合，結合 Sanic 可獲得以下好處：
 
 - **更高的效能** => Sanic 框架採用 uvloop 作為事件循環，相比 AIOGram 預設的 EventLoop 有著 40% 以上的性能提昇。[參考文章](https://magic.io/blog/uvloop-blazing-fast-python-networking/)
-- **更靈活的應用** =>  透過 Sanic 定義 API 接口，可實作**呼叫對應 URL 對 Bot 下指令**的機制。
-- **更方便的開發環境** =>  Sanic 提供了自動重載、讀取 Config 、完善的 Debug 訊息機制並且內建快速的 Server 方便開發與部署。
-
+- **更靈活的應用** => 透過 Sanic 定義 API 接口，可實作**呼叫對應 URL 對 Bot 下指令**的機制。
+- **更方便的開發環境** => Sanic 提供了自動重載、讀取 Config 、完善的 Debug 訊息機制並且內建快速的 Server 方便開發與部署。
 
 ## 基本結構
 
@@ -40,7 +40,7 @@ from aiogram.types import Update, ContentTypes, Message
 # API_URL 用於填寫 DOMAIN 網址，更換環境時只要替換掉即可。
 APP_URL = "https://21cd-61-64-6-47.jp.ngrok.io"
 
-# 透過 BOT_TOKEN 及路由設定組合出需要註冊的 WEBHOOK_URL 
+# 透過 BOT_TOKEN 及路由設定組合出需要註冊的 WEBHOOK_URL
 BOT_TOKEN = "5509354767:AAEJbXnhEI5cwrXAUMEsGcF4le5I9I0QAac"
 BOT_WEBHOOK_PATH = f"/bot/{BOT_TOKEN}"
 BOT_WEBHOOK_URL = f"{APP_URL}{BOT_WEBHOOK_PATH}"
@@ -58,7 +58,7 @@ async def on_webhook(request: Request, token: str):
     # 由於 BOT_TOKEN 理論上只有使用者及 Telegram 雙方知道，因此可以用於確認訊息是否來自於 telegram.
     if token != BOT_TOKEN:
         return response.empty(200)
-		
+
     # 將收到的訊息轉換成 Update 物件並傳入 Dispatcher 進行型別轉換及分發事件。
     update = Update(**request.json)
     await dp.process_update(update)
@@ -79,7 +79,7 @@ async def on_message(message: Message):
     # Message 類中包含 reply 、anser 等回覆用的 function.
     # 會自動取用 Bot.set_current 設置的 instance。
     await message.reply("Hello")
-	
+
 
 # 僅在 App 啟動時執行一次，避免多 worker 時重複設置 webhook。
 @app.main_process_start
@@ -93,7 +93,7 @@ async def dispose(app: Sanic):
     await bot.delete_webhook()
 
 if __name__ == '__main__':
-    app.run() 
+    app.run()
 ```
 
 上面的範例，已經成功將 AIOGram 與 Sanic 組合在一起，主要流程為：
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 -> 透過 Webhook 的 route 接收 Update 訊息。  
 -> 將接收到的 Update 訊息處理成 Update 物件送入 Dispatcher。  
 -> Dispatcher 會將內容轉換成 Message 物件並依據分類送入對應的 Handler。  
--> 最後 Handler 依據收到的 message 發送回應。  
+-> 最後 Handler 依據收到的 message 發送回應。
 
 雖然合併使用沒問題，但目前所有的內容都擠在一起，有點雜亂，接下來將會對此進行強化。
 
@@ -123,6 +123,7 @@ if __name__ == '__main__':
 ### 分離 Config 配置
 
 - 建立 `config.py` 檔案，將需要配置的內容移動過去。
+
 ```python
 APP_URL = "https://21cd-61-64-6-47.jp.ngrok.io"
 BOT_TOKEN = "5509354767:AAEJbXnhEI5cwrXAUMEsGcF4le5I9I0QAac"
@@ -131,6 +132,7 @@ BOT_WEBHOOK_URL = f"{APP_URL}{BOT_WEBHOOK_PATH}"
 ```
 
 - 在`__init__.py` 中，使用 `app.update_config()` 讀取 config module 。
+
 ```python
 ...
 from . import config
@@ -152,7 +154,7 @@ from aiogram.types import ContentTypes, Message
 
 # 作為 app.ctx 中的 key 值，不可重複。
 SERVICE_CODE = "bot"
-DP_CODE = f"{SERVICE_CODE}_dp" 
+DP_CODE = f"{SERVICE_CODE}_dp"
 
 # 類型標注可幫助 IDE 取得類型，方便辨認。
 def get_bot() -> Bot:
@@ -177,7 +179,7 @@ async def register(app: Sanic):
     async def on_message(message: Message):
         await message.reply("Hello")
 
-    
+
     # 啟動時向 telegram 註冊 webhook.
     @app.main_process_start
     async def startup(app: Sanic):
@@ -207,7 +209,7 @@ bot.register(app)
 
 ### 分離 Route 設置
 
-- 建立 `view.py` 檔案，編寫所有的路由。 
+- 建立 `view.py` 檔案，編寫所有的路由。
 
 ```python
 from sanic import Blueprint, Request, response
@@ -234,15 +236,16 @@ async def on_webhook(request: Request, token: str):
     # 每次 request 都需要重新設定預設的 bot instance。
     Bot.set_current(bot)
     update = Update(**request.json)
-    
+
     # 送入分發器進行處理。
     await dp.process_update(update)
-    
+
     # must return status code 200.
     return response.empty(200)
 ```
 
 - 在 `__init__.py` 中，使用 `app.blueprint()` 註冊路由。
+
 ```python
 ...
 from . import view

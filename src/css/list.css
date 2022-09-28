@@ -17,8 +17,8 @@
 }
 
 .post-item .summary {
-	margin-top: .5rem;
-	margin-bottom: .5rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 /* PostList */
@@ -59,13 +59,12 @@
 .journel-list .group-name {
 	font-size: 1.8rem;
 	color: var(--navitem-hover);
-	border-bottom: 2px solid var(--border)
+	border-bottom: 2px solid var(--border);
 }
 
 .journel-list .page-item:nth-child(odd) {
 	background-color: var(--odd-bg);
 }
-
 
 .journel-list .page-item:nth-child(even) {
 	background-color: var(--even-bg);
@@ -75,7 +74,6 @@
 
 .hit-list .title {
 	font-size: 1rem;
-
 }
 
 .hit-list em {

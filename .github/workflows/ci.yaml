@@ -11,20 +11,19 @@ jobs:
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v3
-      
+
       - name: Setup node version
         uses: actions/setup-node@v3
         with:
           node-version: 16
-  
+
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7
-        
+
       - name: run publish
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           ALGOLIA_APPID: ${{ secrets.ALGOLIA_APPID }}
           ALGOLIA_ADMINKEY: ${{ secrets.ALGOLIA_ADMINKEY }}
-        run: "pnpm install --no-frozen-lockfile && pnpm run postbuild"
-          
+        run: 'pnpm install --no-frozen-lockfile && pnpm run postbuild'

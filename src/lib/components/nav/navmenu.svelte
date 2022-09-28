@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from '$app/stores';
 	import type { NavItem } from '$lib/types';
 	import { isExternal } from '$lib/client';
-	import siteConfig  from '$lib/site';
+	import siteConfig from '$lib/site';
 	import { themeMode, viewStack, viewId } from '$lib/store';
 	import NavIcon from '$lib/components/nav/navicon.svelte';
 	import ExternalIcon from '$lib/icons/external.svelte';
-	import NavLinkItem from "./navlinkitem.svelte";
+	import NavLinkItem from './navlinkitem.svelte';
 
 	const author: Record<string, any> = siteConfig.author;
 	const navList: Array<NavItem> = siteConfig.nav;
@@ -15,10 +15,10 @@
 	$: isVisible = $viewStack.includes(uniqueId);
 
 	const escapeHandle = (e: KeyboardEvent) => {
-		if (isVisible && e.key == "Escape") {
+		if (isVisible && e.key == 'Escape') {
 			viewStack.remove(uniqueId);
 		}
-	}
+	};
 </script>
 
 <svelte:window on:keydown={(e) => escapeHandle(e)} />
@@ -29,15 +29,14 @@
 >
 	<div class="flex flex-col h-full navmenu-container">
 		<div class="py-4 mb-2 header">
-
 			<div class="flex items-center mb-4 pl-8">
-					<a  href="/" class="title text-lg">
-						{siteConfig.title}
-					</a>
-					<button
-						class="flex text-xl letter-content-font theme-switch" 
-						on:click={() => themeMode.set($themeMode == "light" ? "dark" : "light")}
-					>
+				<a href="/" class="title text-lg">
+					{siteConfig.title}
+				</a>
+				<button
+					class="flex text-xl letter-content-font theme-switch"
+					on:click={() => themeMode.set($themeMode == 'light' ? 'dark' : 'light')}
+				>
 					<div class="icon-base w-6">
 						<NavIcon key="theme" />
 					</div>
@@ -51,84 +50,77 @@
 					<div>{author.summary}</div>
 				</div>
 			</div>
-
 		</div>
 		<ul class="nav-list">
 			{#each navList as navItem}
-			{@const reg = new RegExp(`^${navItem.link}`)}
-			<li class="flex nav-item" class:active={reg.test($page.url.pathname)}>
-				<NavLinkItem link={navItem.link}>
-				<div class="flex items-center pl-8 mt-1 mb-4 nav-item-content">
-					<div class="icon-base w-6">
-						<NavIcon key={navItem.id} />
-					</div>
-					<div class="pl-4 text-xl letter-content-font">
-						{navItem.name}
-					</div>
-					{#if isExternal(navItem.link)}
-						<ExternalIcon />
-					{/if}
-				</div>
-				</NavLinkItem>
-			</li>
+				{@const reg = new RegExp(`^${navItem.link}`)}
+				<li class="flex nav-item" class:active={reg.test($page.url.pathname)}>
+					<NavLinkItem link={navItem.link}>
+						<div class="flex items-center pl-8 mt-1 mb-4 nav-item-content">
+							<div class="icon-base w-6">
+								<NavIcon key={navItem.id} />
+							</div>
+							<div class="pl-4 text-xl letter-content-font">
+								{navItem.name}
+							</div>
+							{#if isExternal(navItem.link)}
+								<ExternalIcon />
+							{/if}
+						</div>
+					</NavLinkItem>
+				</li>
 			{/each}
 		</ul>
-		<div class="grow spacer"></div>	
+		<div class="grow spacer" />
 	</div>
 </div>
 
 <style>
+	/* navmenu */
+	.navmenu {
+		color: var(--text);
+		background-color: var(--bg-color);
+	}
 
-/* navmenu */
-.navmenu {
-	color: var(--text);
-	background-color: var(--bg-color);
-}
+	.title {
+		font-weight: 600;
+		margin-right: 1rem;
+	}
 
-.title {
-	font-weight: 600;
-	margin-right: 1rem;
+	.title:not(.active):hover {
+		color: var(--navitem-hover);
+	}
 
-}
+	.author-block {
+		padding: 1rem 0;
+		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+	}
 
-.title:not(.active):hover {
-	color: var(--navitem-hover);
-}
+	.author-block img {
+		width: 5rem;
+		border-radius: 1rem;
+	}
 
+	.theme-switch {
+		padding: 5px;
+	}
 
-.author-block {
-	padding: 1rem 0;
-	border-top: 1px solid var(--border);
-	border-bottom: 1px solid var(--border);
-}
+	.theme-switch:hover {
+		border-radius: 10rem;
+		background: var(--tagitem-hover);
+	}
 
-.author-block img {
-	width: 5rem;
-	border-radius: 1rem;
-}
+	.nav-item {
+		font-weight: 500;
+	}
 
-.theme-switch {
-	padding: 5px;
-}
+	.nav-item:not(.active):hover {
+		color: var(--navitem-hover);
+	}
 
-.theme-switch:hover {
-	border-radius: 10rem;
-	background: var(--tagitem-hover);
-}
-
-
-.nav-item {
-	font-weight: 500;
-}
-
-.nav-item:not(.active):hover {
-	color: var(--navitem-hover);
-}
-
-.nav-item.active {
-	color: var(--navitem-active);
-	font-weight: 600;
-}
-
-
+	.nav-item.active {
+		color: var(--navitem-active);
+		font-weight: 600;
+	}
 </style>

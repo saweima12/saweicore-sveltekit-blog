@@ -8,6 +8,6 @@ export const load: PageLoad = async ({ fetch }) => {
 	const { tagList } = await response.json();
 
 	return {
-    tagList: tagList
-  };
+		tagList: tagList
+	};
 };

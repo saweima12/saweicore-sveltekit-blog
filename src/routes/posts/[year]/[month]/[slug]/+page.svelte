@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	import siteConfig  from '$lib/site';
+	import siteConfig from '$lib/site';
 	import { getYYYYMMDD, getTitleStr, pageRoute } from '$lib/client';
 	import { dataAPI } from '$lib/client';
-	
+
 	import CalenderIcon from '$lib/icons/calender.svelte';
 	import LightBoxListener from '$lib/components/lightbox/lightboxlistener.svelte';
 	import Comment from '$lib/components/common/comment.svelte';
@@ -13,7 +13,7 @@
 	export let data: PageData;
 	let { metadata, content, pageMeta } = data;
 	// support auto reload
-	$: ({ metadata, content, pageMeta} = data);	
+	$: ({ metadata, content, pageMeta } = data);
 
 	let routePath: string = new URL(pageRoute.getPostPath(pageMeta), siteConfig.url).href;
 	import { page } from '$app/stores';
@@ -22,32 +22,31 @@
 	import { onContentUpdate } from 'markedpage/helper';
 
 	onContentUpdate(() => {
-		const { year, month, slug} = $page.params;
-		invalidate(dataAPI.getPostData(year, month,slug));
-	})
-
+		const { year, month, slug } = $page.params;
+		invalidate(dataAPI.getPostData(year, month, slug));
+	});
 </script>
 
 <svelte:head>
 	<title>{metadata.title} - {getTitleStr(siteConfig)}</title>
-	<!-- Twitter Card -->	
+	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@saweima12" />
 	<meta name="twitter:title" content="{metadata.title} - {getTitleStr(siteConfig)}" />
 	<meta name="twitter:description" content={metadata.description} />
 	<meta name="twitter:url" content={routePath} />
 	<!-- Facebook OpenGraph -->
-	<meta property="og:url" content="{routePath}"/>
+	<meta property="og:url" content={routePath} />
 	<meta property="og:locale" content="zh_TW" />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content="{metadata.title}" />
-	<meta property="og:site_name" content="{getTitleStr(siteConfig)}" />
+	<meta property="og:title" content={metadata.title} />
+	<meta property="og:site_name" content={getTitleStr(siteConfig)} />
 	{#if metadata.excerpt}
-		<meta property="og:description" content="{metadata.excerpt}"/>
-		<meta name="description" content="{metadata.excerpt}"/>
+		<meta property="og:description" content={metadata.excerpt} />
+		<meta name="description" content={metadata.excerpt} />
 	{/if}
 	{#if metadata.thumbnail}
-		<meta property="og:image" content="{metadata.thumbnail}" />
+		<meta property="og:image" content={metadata.thumbnail} />
 		<meta property="og:image" content="image/jpg" />
 	{/if}
 </svelte:head>
@@ -67,16 +66,13 @@
 			<div class="mt-4 flex flex-wrap post-tag-list">
 				{#each metadata.tags as tag}
 					<div class="mb-3 post-tag-item">
-						<a  href="{pageRoute.getTagPath(tag)}">{tag}</a>
+						<a href={pageRoute.getTagPath(tag)}>{tag}</a>
 					</div>
 				{/each}
 			</div>
 		</header>
 
-		<article class="content" 
-			data-prismjs-copy="Copy"
-			data-prismjs-copy-success="Copy Success!"
-		>
+		<article class="content" data-prismjs-copy="Copy" data-prismjs-copy-success="Copy Success!">
 			{@html content}
 		</article>
 

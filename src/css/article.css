@@ -1,5 +1,6 @@
 /* PostPage  */
-.post-page, .about-page {
+.post-page,
+.about-page {
 	color: var(--text);
 }
 
@@ -8,12 +9,12 @@
 	line-height: 40px;
 }
 
-.post-page .content  {
-	font-family: "Microsoft JhengHei fixed", "Helvetica Neue", "Microsoft JhengHei", Helvetica, "Segoe UI", Tahoma;
+.post-page .content {
+	font-family: 'Microsoft JhengHei fixed', 'Helvetica Neue', 'Microsoft JhengHei', Helvetica,
+		'Segoe UI', Tahoma;
 	font-style: normal;
 	word-break: break-word;
 }
-
 
 .content > p,
 .content > ul,
@@ -43,23 +44,35 @@
 	line-height: 2rem;
 }
 
-.content > h1 { font-size: 30px;}
-.content > h2 { font-size: 28px;}
-.content > h3 { font-size: 24px;}
-.content > h4 { font-size: 20px;}
-.content > h5 { font-size: 18px;}
-.content > h6 { font-size: 16px;}
+.content > h1 {
+	font-size: 30px;
+}
+.content > h2 {
+	font-size: 28px;
+}
+.content > h3 {
+	font-size: 24px;
+}
+.content > h4 {
+	font-size: 20px;
+}
+.content > h5 {
+	font-size: 18px;
+}
+.content > h6 {
+	font-size: 16px;
+}
 
 .content > pre {
-	margin-left: 1.2rem!important;
-	margin-right: 1.2rem!important;
+	margin-left: 1.2rem !important;
+	margin-right: 1.2rem !important;
 }
 
 .content > blockquote {
 	background-color: var(--second-bg);
 	border-left: 6px solid var(--border);
 	padding: 1rem 1rem 1rem 1rem;
-	font-family: "Fira Mono", monospace;
+	font-family: 'Fira Mono', monospace;
 	color: var(--text);
 }
 
@@ -81,8 +94,8 @@
 .content li > code {
 	color: var(--code-text);
 	background-color: var(--tagitem-bg);
-	padding: .2rem .5rem;
-	border-radius: .8rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.8rem;
 }
 
 .content a {
@@ -100,7 +113,7 @@
 	padding: 1rem;
 }
 
-.content details summary{
+.content details summary {
 	font-size: 24px;
 }
 
@@ -121,7 +134,7 @@
 }
 
 .content ul {
-	margin-top: .5rem;
+	margin-top: 0.5rem;
 	margin-bottom: 1rem;
 }
 

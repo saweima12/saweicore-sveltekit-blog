@@ -1,5 +1,5 @@
 <script lang="ts">
-	import textstr from '$lib/textstr'
+	import textstr from '$lib/textstr';
 	import { pageRoute, getYYYYMMDD } from '$lib/client';
 	import type { TagItem } from '$lib/types';
 
@@ -17,14 +17,15 @@
 			</div>
 		</li>
 		{#each tags as tag}
-		<li class="py-3 tag-list-item">
-			<a class="flex flex-row justify-around" href={pageRoute.getTagPath(tag.name)}>
-				<div class="w-60 tag-name">{tag.name}</div>
-				<div class="flex-1 hidden lg:flex justify-center tag-updated">{getYYYYMMDD(tag.updated)}</div>
-				<div class="flex-1 tag-count">{tag.count}</div>
-			</a>
-		</li>
+			<li class="py-3 tag-list-item">
+				<a class="flex flex-row justify-around" href={pageRoute.getTagPath(tag.name)}>
+					<div class="w-60 tag-name">{tag.name}</div>
+					<div class="flex-1 hidden lg:flex justify-center tag-updated">
+						{getYYYYMMDD(tag.updated)}
+					</div>
+					<div class="flex-1 tag-count">{tag.count}</div>
+				</a>
+			</li>
 		{/each}
-
 	</ul>
 </div>

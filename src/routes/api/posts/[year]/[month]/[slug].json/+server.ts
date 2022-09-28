@@ -8,8 +8,7 @@ import { getFormatedDate } from '$lib/helper';
 export const GET: RequestHandler = async ({ params }) => {
 	const { year, month, slug } = params;
 
-  if (!slug)
-    return json({});
+	if (!slug) return json({});
 
 	// Search page by params.
 	const page: SourcePage = await getPage(slug, (page) => {
@@ -21,17 +20,17 @@ export const GET: RequestHandler = async ({ params }) => {
 
 	const content: string = await page.render();
 
-  const headings = page.headings.map(item => {
-    return {
-		depth: item.depth,
-		text: item.text,
-		id: item.id
-    }
-  });
+	const headings = page.headings.map((item) => {
+		return {
+			depth: item.depth,
+			text: item.text,
+			id: item.id
+		};
+	});
 
 	return json({
 		metadata: page.frontMatter,
 		content: content,
-      		headings: headings
+		headings: headings
 	});
 };

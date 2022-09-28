@@ -7,14 +7,13 @@ export const isExternal = (link: string): boolean => {
 };
 
 export const waitImageLoad = (imgElements: Array<HTMLImageElement>) => {
-  return Promise.all(
-    imgElements.map(async (img) => {
-      if (img.complete) return Promise.resolve(true);
-      return new Promise(resolve => {
-          img.addEventListener('load', () => resolve(true));
-          img.addEventListener('error', () => resolve(false));
-      })
-    })
-  )
-
-}
+	return Promise.all(
+		imgElements.map(async (img) => {
+			if (img.complete) return Promise.resolve(true);
+			return new Promise((resolve) => {
+				img.addEventListener('load', () => resolve(true));
+				img.addEventListener('error', () => resolve(false));
+			});
+		})
+	);
+};

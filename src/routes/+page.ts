@@ -17,6 +17,6 @@ export const load: PageLoad = async ({ fetch }) => {
 	return {
 		pageList,
 		maxPage,
-		pageNum,
+		pageNum
 	};
 };

@@ -10,37 +10,36 @@ const getFormatedDate = (dateStr) => {
 		month: month < 10 ? `0${month}` : String(month),
 		day: day < 10 ? `0${day}` : String(day)
 	};
-}
-
-const getPostLink = (page) => {
-  let dateObj = getFormatedDate(page.frontMatter.created)
-  return `/posts/${dateObj.year}/${dateObj.month}/${page.slugKey}`;
 };
 
-const postSet = await classifiedSet("post");
+const getPostLink = (page) => {
+	let dateObj = getFormatedDate(page.frontMatter.created);
+	return `/posts/${dateObj.year}/${dateObj.month}/${page.slugKey}`;
+};
+
+const postSet = await classifiedSet('post');
 const pages = postSet.pages;
 
 // Define json struct for Algolia
-const result = pages.map(page => {
-  const metadata = page.frontMatter;
-  let headings = page.headings || [];
-  headings = headings.map(heading => ({text: heading.text, id:heading.id}))
+const result = pages.map((page) => {
+	const metadata = page.frontMatter;
+	let headings = page.headings || [];
+	headings = headings.map((heading) => ({ text: heading.text, id: heading.id }));
 
-  return {
-    title: metadata.title,
-    tags: metadata.tags,
-    headings: headings,
-    permalink: getPostLink(page),
-    objectID: page.indexPath
-  };
+	return {
+		title: metadata.title,
+		tags: metadata.tags,
+		headings: headings,
+		permalink: getPostLink(page),
+		objectID: page.indexPath
+	};
 });
-
 
 // Loading
 const conn = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_ADMINKEY);
-const index = conn.initIndex("SaweicoreLab");
+const index = conn.initIndex('SaweicoreLab');
 
-await index.clearObjects()
+await index.clearObjects();
 let response = await index.saveObjects(result);
 console.log(response.objectIDs);
 // console.log(JSON.stringify(result));

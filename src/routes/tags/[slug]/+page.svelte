@@ -2,15 +2,14 @@
 	import type { PageData } from './$types';
 	import type { TagPageResult } from '$lib/types';
 	import { dataAPI } from '$lib/client';
-	import siteConfig  from '$lib/site';
+	import siteConfig from '$lib/site';
 	import { getTitleStr } from '$lib/client';
 
 	import Postlist from '$lib/components/article/postlist.svelte';
 	import TagIcon from '$lib/icons/tag.svelte';
 
-
 	export let data: PageData;
-	$: ({ tagName, pageList, pageNum, maxPage} = data )
+	$: ({ tagName, pageList, pageNum, maxPage } = data);
 
 	const fetchMorePost = async () => {
 		pageNum += 1;

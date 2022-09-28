@@ -3,7 +3,7 @@
 
 	const uniqueId = viewId.navMenu;
 	$: toggle = $viewStack.includes(uniqueId);
-	
+
 	const toggleHandle = () => {
 		if (!toggle) viewStack.push(uniqueId);
 		else viewStack.remove(uniqueId);

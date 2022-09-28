@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import type { PageMeta } from '$lib/types';
-import type { DirectoryClassifierResult, SourcePage } from 'markedpage';
+import type { DirectoryClassifierResult } from 'markedpage';
 
 import { classifiedSet } from 'markedpage';
 import { getFormatedDate } from '$lib/helper';

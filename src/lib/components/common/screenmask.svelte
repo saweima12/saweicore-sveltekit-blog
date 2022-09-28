@@ -4,18 +4,16 @@
 
 	let isVisible = false;
 
-	viewStack.subscribe(arr => {
-		if (!isVisible && arr.length > 0)
-			isVisible = true;
+	viewStack.subscribe((arr) => {
+		if (!isVisible && arr.length > 0) isVisible = true;
 
 		if (isVisible && arr.length < 1) {
 			isVisible = false;
 		}
 	});
 
-
 	const closeHandle = () => {
-		if(isVisible) {
+		if (isVisible) {
 			viewStack.reset();
 			setTimeout(() => (isVisible = false), 200);
 		}

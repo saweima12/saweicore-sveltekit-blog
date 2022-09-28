@@ -4,22 +4,21 @@
 	background-color: var(--navbar);
 	border-bottom: 1px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px -2px 10px;
-	transition: all .3s;
+	transition: all 0.3s;
 }
-
 
 /* side-navbar */
 .side-navbar {
 	background-color: var(--navbar);
-	border-right: 1px solid ;
+	border-right: 1px solid;
 	border-color: var(--border);
-	transition: all .3s;
+	transition: all 0.3s;
 }
 
 .side-navbar .nav-item {
 	width: 36px;
 	color: var(--navitem);
-	transition: all .3s;
+	transition: all 0.3s;
 }
 
 .side-navbar .nav-item:hover {
